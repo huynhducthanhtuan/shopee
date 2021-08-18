@@ -1,9 +1,318 @@
 {
-    "names": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
+    "headerSearchHistoryItemLinksInfo": [
+        {   
+            "id": 1,
+            "innerHTML": "người yêu giá rẻ",
+            "href": "https://shopee.vn/search?keyword=người yêu giá rẻ"
+        },
+        {   
+            "id": 2,
+            "innerHTML": "iphone 12 pro max",
+            "href": "https://shopee.vn/search?keyword=iphone 12 pro max"
+        },
+        {   
+            "id": 3,
+            "innerHTML": "giày converse cổ cao",
+            "href": "https://shopee.vn/search?keyword=giày converse cổ cao"
+        }
     ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
+    "headerSearchHistoryKeywordsItems_innerHTMLs": [
+        {
+            "id": 1,
+            "innerHTML": "Giày đá bóng nam",
+            "href": "https://shopee.vn/search?keyword=Giày đá bóng nam"
+        },
+        {
+            "id": 2,
+            "innerHTML": "Giá đỡ laptop",
+            "href": "https://shopee.vn/search?keyword=Giá đỡ laptop"
+        },
+        {
+            "id": 3,
+            "innerHTML": "Kệ để laptop",
+            "href": "https://shopee.vn/search?keyword=Kệ để laptop"
+        },
+        {
+            "id": 4,
+            "innerHTML": "Kê laptop",
+            "href": "https://shopee.vn/search?keyword=Kê laptop"
+        },
+        {
+            "id": 5,
+            "innerHTML": "Kệ tản nhiệt laptop",
+            "href": "https://shopee.vn/search?keyword=Kệ tản nhiệt laptop"
+        },
+        {
+            "id": 6,
+            "innerHTML": "Sạc laptop asus",
+            "href": "https://shopee.vn/search?keyword=Sạc laptop asus"
+        },
+        {
+            "id": 7,
+            "innerHTML": "Giá đỡ laptop gỗ",
+            "href": "https://shopee.vn/search?keyword=Giá đỡ laptop gỗ"
+        },
+        {
+            "id": 8,
+            "innerHTML": "Kệ macbook",
+            "href": "https://shopee.vn/search?keyword=Kệ macbook"
+        }
     ],
-    "profile": { "name": "typicode" }
+    "headerNotificationPopupWhenLoggedInLinksInfo": [
+        {
+            "id": 1,
+            "href": "https://shopee.vn/m/khung-gio-san-sale?&utm_source=crm&utm_medium=pn&utm_campaign=AP01_MIXPLAT_Normal_2045-Thematic-A7-FlatPice1kn9K-Mix_Promotion_None_Microsite_150821",
+            "itemImage": "https://cf.shopee.vn/file/86773ac686448ddcbb60e3b454d2e1f0_tn",
+            "itemTitle": "Úm ba la mở ra deal 9K HOT",
+            "itemDescription": "Siêu hot! Đồng giá 1K, 9K. Deal tiết kiệm dưới 99K\n    & Freeship toàn sàn từ 99K. Số lượng có hạn! Săn\n    ngay!"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.vn/user/voucher-wallet/?type=0",
+            "itemImage": "https://cf.shopee.vn/file/328935aafafe7586e3e6f163ba758e4b_tn",
+            "itemTitle": "Voucher Hoàn Xu Xtra 10% tối đa 100K Xu cho đơn\n    từ 150K.",
+            "itemDescription": "Voucher Hoàn Xu Xtra hoàn 10% tối đa 100K Xu đã có sẵn\n    trong ví voucher. Hiệu lực: 16/08/2021 00:00 - 21/08/2021\n    23:59."
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.vn/user/voucher-wallet/?type=0",
+            "itemImage": "https://cf.shopee.vn/file/7d0f0bfa69163ac64cd4125de27804e3_tn",
+            "itemTitle": "Voucher Hoàn Xu Xtra 20% tối đa 40K Xu cho đơn\n    từ 0Ð.",
+            "itemDescription": "Voucher Hoàn Xu Xtra hoàn 20% tối đa 40K Xu đã có sấn\n    trong ví voucher. Hiệu lực: 16/08/2021 00:00 - 21/08/2021\n    23:59. Số lượng có hạn. Dùng ngay bạn nhé!"
+        },
+        {
+            "id": 4,
+            "href": "https://shopee.vn/m/khung-gio-san-sale?&utm_source=crm&utm_medium=pn&utm_campaign=AP01_MIXPLAT_Normal_1145-Thematic-A7-MiddayFlashSale-Mix_FlashSale_None__150821",
+            "itemImage": "https://cf.shopee.vn/file/1567991b5d3f8c444c388d2ebd7f13ab_tn",
+            "itemTitle": "Sale giữa tháng! Freeship đơn 99K",
+            "itemDescription": "12H! Đồng loạt giảm sốc 50%: Điện tử, thời trang,\n    tiêu dùng, đời sống. Siêu thị tại nhà cùng Shopee Mart"
+        },
+        {
+            "id": 5,
+            "href": "https://shopee.vn/m/hangquocte-1508",
+            "itemImage": "https://cf.shopee.vn/file/ea510c1c21affd0d1236e15fe410b6f7_tn",
+            "itemTitle": "Quốc Tế sale cực đã tới 50%",
+            "itemDescription": "Vô vàn deal hot từ 29K, 59K Mặt hàng đa dạng cho\n    bạn chọn lựa. Vào săn ngay!"
+        }
+    ],
+    "sliderFavouriteSelectionsLinksInfo": [
+        {
+            "id": 1,
+            "href": "https://shopee.vn/m/shopeesogiday",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_1.gif",
+            "text": "Shopee Số Gì Đây"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.vn/m/o-nha-khong-kho-co-shopee-lo",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_2.png",
+            "text": "Ở Nhà Không Khó"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.vn/m/shopee-tech-zone",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_3.png",
+            "text": "Tech Zone - Siêu Thị Điện Tử"
+        },
+        {
+            "id": 4,
+            "href": "https://shopee.vn/m/deal-1k",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_4.png",
+            "text": "Gì Cũng Rẻ - Từ 1K"
+        },
+        {
+            "id": 5,
+            "href": "https://shopee.vn/m/shopee-cashback",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_5.png",
+            "text": "Hoàn Xu 20% - Đơn Từ 0Đ"
+        },
+        {
+            "id": 6,
+            "href": "https://shopee.vn/digital-product/m/?dp_from_source=1",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_6.png",
+            "text": "Nạp Thẻ, Dịch Vụ & Phim"
+        },
+        {
+            "id": 7,
+            "href": "https://shopee.vn/freeshipxtra",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_7.png",
+            "text": "Freeship Xtra - Deal giảm tới 50%"
+        },
+        {
+            "id": 8,
+            "href": "https://shopee.vn/m/tram-ty-uu-dai",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_8.png",
+            "text": "Hàng Hiệu -50%"
+        },
+        {
+            "id": 9,
+            "href": "https://shopee.vn/hangquocte",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_9.gif",
+            "text": "Hàng Quốc Tế"
+        },
+        {
+            "id": 10,
+            "href": "https://shopee.vn/m/shopee-premium",
+            "image": "./assests/img/container/slider/slider__favourite-selections/selection_10.png",
+            "text": "Shopee Premium"
+        }
+    ],
+    "directoryMainItemLinksInfo": [
+        {
+            "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567",
+            "itemImage": "https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn",
+            "itemTitle": "Thời Trang Nam",
+            "id": 1
+        },
+        {
+            "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-N%E1%BB%AF-cat.11035639",
+            "itemImage": "https://cf.shopee.vn/file/75ea42f9eca124e9cb3cde744c060e4d_tn",
+            "itemTitle": "Thời Trang Nữ",
+            "id": 2
+        },
+        {
+            "href": "https://shopee.vn/%C4%90i%E1%BB%87n-Tho%E1%BA%A1i-Ph%E1%BB%A5-Ki%E1%BB%87n-cat.11036030",
+            "itemImage": "https://cf.shopee.vn/file/31234a27876fb89cd522d7e3db1ba5ca_tn",
+            "itemTitle": "Điện Thoại & Phụ Kiện",
+            "id": 3
+        },
+        {
+            "href": "https://shopee.vn/M%E1%BA%B9-B%C3%A9-cat.11036194",
+            "itemImage": "https://cf.shopee.vn/file/099edde1ab31df35bc255912bab54a5e_tn",
+            "itemTitle": "Mẹ & Bé",
+            "id": 4
+        },
+        {
+            "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-T%E1%BB%AD-cat.11036132",
+            "itemImage": "https://cf.shopee.vn/file/978b9e4cb61c611aaaf58664fae133c5_tn",
+            "itemTitle": "Thiết Bị Điện Tử",
+            "id": 5
+        },
+        {
+            "href": "https://shopee.vn/Nh%C3%A0-C%E1%BB%ADa-%C4%90%E1%BB%9Di-S%E1%BB%91ng-cat.11036670",
+            "itemImage": "https://cf.shopee.vn/file/24b194a695ea59d384768b7b471d563f_tn",
+            "itemTitle": "Nhà Cửa & Đời Sống",
+            "id": 6
+        },
+        {
+            "href": "https://shopee.vn/M%C3%A1y-T%C3%ADnh-Laptop-cat.11035954",
+            "itemImage": "https://cf.shopee.vn/file/c3f3edfaa9f6dafc4825b77d8449999d_tn",
+            "itemTitle": "Máy Tính & Laptop",
+            "id": 7
+        },
+        {
+            "href": "https://shopee.vn/S%E1%BA%AFc-%C4%90%E1%BA%B9p-cat.11036279",
+            "itemImage": "https://cf.shopee.vn/file/c765998fda99b2be9eb6e348df29af28_tn",
+            "itemTitle": "Sắc Đẹp",
+            "id": 8
+        },
+        {
+            "href": "https://shopee.vn/M%C3%A1y-%E1%BA%A2nh-M%C3%A1y-Quay-Phim-cat.11036101",
+            "itemImage": "https://cf.shopee.vn/file/ec14dd4fc238e676e43be2a911414d4d_tn",
+            "itemTitle": "Máy Ảnh & Máy Quay Phim",
+            "id": 9
+        },
+        {
+            "href": "https://shopee.vn/S%E1%BB%A9c-Kh%E1%BB%8Fe-cat.11036345",
+            "itemImage": "https://cf.shopee.vn/file/bf87b50b463f646bb7fb8a1a606d9ed2_tn",
+            "itemTitle": "Sức Khỏe",
+            "id": 10
+        },
+        {
+            "href": "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-cat.11035788",
+            "itemImage": "https://cf.shopee.vn/file/86c294aae72ca1db5f541790f7796260_tn",
+            "itemTitle": "Đồng Hồ",
+            "id": 11
+        },
+        {
+            "href": "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-N%E1%BB%AF-cat.11035825",
+            "itemImage": "https://cf.shopee.vn/file/48630b7c76a7b62bc070c9e227097847_tn",
+            "itemTitle": "Giày Dép Nữ",
+            "id": 12
+        },
+        {
+            "href": "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-Nam-cat.11035801",
+            "itemImage": "https://cf.shopee.vn/file/74ca517e1fa74dc4d974e5d03c3139de_tn",
+            "itemTitle": "Giày Dép Nam",
+            "id": 13
+        },
+        {
+            "href": "https://shopee.vn/T%C3%BAi-V%C3%AD-N%E1%BB%AF-cat.11035761",
+            "itemImage": "https://cf.shopee.vn/file/fa6ada2555e8e51f369718bbc92ccc52_tn",
+            "itemTitle": "Túi Ví Nữ",
+            "id": 14
+        },
+        {
+            "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-Gia-D%E1%BB%A5ng-cat.11036971",
+            "itemImage": "https://cf.shopee.vn/file/7abfbfee3c4844652b4a8245e473d857_tn",
+            "itemTitle": "Thiết Bị Điện Gia Dụng",
+            "id": 15
+        },
+        {
+            "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Trang-S%E1%BB%A9c-N%E1%BB%AF-cat.11035853",
+            "itemImage": "https://cf.shopee.vn/file/8e71245b9659ea72c1b4e737be5cf42e_tn",
+            "itemTitle": "Phụ Kiện & Trang Sức Nữ",
+            "id": 16
+        },
+        {
+            "href": "https://shopee.vn/Th%E1%BB%83-Thao-Du-L%E1%BB%8Bch-cat.11035478",
+            "itemImage": "https://cf.shopee.vn/file/6cb7e633f8b63757463b676bd19a50e4_tn",
+            "itemTitle": "Thể Thao & Du Lịch",
+            "id": 17
+        },
+        {
+            "href": "https://shopee.vn/B%C3%A1ch-H%C3%B3a-Online-cat.11036525",
+            "itemImage": "https://cf.shopee.vn/file/c432168ee788f903f1ea024487f2c889_tn",
+            "itemTitle": "Bách Hóa Online",
+            "id": 18
+        },
+        {
+            "href": "https://shopee.vn/%C3%94-T%C3%B4-Xe-M%C3%A1y-Xe-%C4%90%E1%BA%A1p-cat.11036793",
+            "itemImage": "https://cf.shopee.vn/file/3fb459e3449905545701b418e8220334_tn",
+            "itemTitle": "Ô Tô & Xe Máy & Xe Đạp",
+            "id": 19
+        },
+        {
+            "href": "https://shopee.vn/Nh%C3%A0-S%C3%A1ch-Online-cat.11036863",
+            "itemImage": "https://cf.shopee.vn/file/36013311815c55d303b0e6c62d6a8139_tn",
+            "itemTitle": "Nhà Sách Online",
+            "id": 20
+        },
+        {
+            "href": "https://shopee.vn/Balo-T%C3%BAi-V%C3%AD-Nam-cat.11035741",
+            "itemImage": "https://cf.shopee.vn/file/18fd9d878ad946db2f1bf4e33760c86f_tn",
+            "itemTitle": "Balo & Túi Ví Nam",
+            "id": 21
+        },
+        {
+            "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Tr%E1%BA%BB-Em-cat.11036382",
+            "itemImage": "https://cf.shopee.vn/file/4540f87aa3cbe99db739f9e8dd2cdaf0_tn",
+            "itemTitle": "Thời Trang Trẻ Em",
+            "id": 22
+        },
+        {
+            "href": "https://shopee.vn/%C4%90%E1%BB%93-Ch%C6%A1i-cat.11036932",
+            "itemImage": "https://cf.shopee.vn/file/ce8f8abc726cafff671d0e5311caa684_tn",
+            "itemTitle": "Đồ Chơi",
+            "id": 23
+        },
+        {
+            "href": "https://shopee.vn/Gi%E1%BA%B7t-Gi%C5%A9-Ch%C4%83m-S%C3%B3c-Nh%C3%A0-C%E1%BB%ADa-cat.11036624",
+            "itemImage": "https://cf.shopee.vn/file/cd8e0d2e6c14c4904058ae20821d0763_tn",
+            "itemTitle": "Giặt Giũ & Chăm Sóc Nhà Cửa",
+            "id": 24
+        },
+        {
+            "href": "https://shopee.vn/Ch%C4%83m-S%C3%B3c-Th%C3%BA-C%C6%B0ng-cat.11036478",
+            "itemImage": "https://cf.shopee.vn/file/cdf21b1bf4bfff257efe29054ecea1ec_tn",
+            "itemTitle": "Chăm Sóc Thú Cưng",
+            "id": 25
+        },
+        {
+            "href": "https://shopee.vn/Voucher-D%E1%BB%8Bch-V%E1%BB%A5-cat.11035898",
+            "itemImage": "https://cf.shopee.vn/file/b0f78c3136d2d78d49af71dd1c3f38c1_tn",
+            "itemTitle": "Voucher & Dịch Vụ",
+            "id": 26
+        }
+    ]
 }

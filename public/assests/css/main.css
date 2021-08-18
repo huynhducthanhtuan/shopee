@@ -1768,14 +1768,14 @@ width: 13.5rem;
     -webkit-transform: translateY(-.0625rem);
 }
 
-.slider__favourite-selections__link > img {
+.slider__favourite-selections__link-img {
     width: 4.5rem;
     height: 4.5rem;
     display: block;
     margin: 0 auto;
 }
 
-.slider__favourite-selections__link > h4 {
+.slider__favourite-selections__link-text {
     display: block;
     color: #222;
     text-align: center;

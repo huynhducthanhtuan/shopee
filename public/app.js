@@ -14,13 +14,13 @@
 
 
 //#region TEST: call API
-fetch("http://localhost:3000/names")
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(data) {
-        console.log(data)
-    });
+// fetch("http://localhost:3000/names")
+//     .then(function(response) {
+//         return response.json();
+//     })
+//     .then(function(data) {
+//         console.log(data)
+//     });
 
 
 
@@ -1201,318 +1201,318 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
 
 
 /* B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...*/
+//#region (f) Work with API
+function deleteObj (url, id) {
+    fetch(`${url}/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .catch(function(err) {
+        console.log(err);
+    })
+}
+
+function createObj (url, data) {
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .catch(function(err) {
+        console.log(err);
+    })
+}
+//#endregion
+
+
 
 //#region headerSearchFrameInput, headerSearchHistory
 var headerSearchFrameInput = document.querySelector('.header__search-frame__input');
 var headerSearchHistory = document.querySelector('.header__search-history');
 var headerSearchFrameBtn = document.querySelector('.header__search-frame__btn');
 var headerSearchHistoryList = document.querySelector('.header__search-history-list');
-var headerSearchHistoryItemLinksInfo = [
-    {
-        innerHTML: 'người yêu giá rẻ',
-        href: "https://shopee.vn/search?keyword=" + 'người yêu giá rẻ'
-    },
-    {
-        innerHTML: 'iphone 12 pro max',
-        href: "https://shopee.vn/search?keyword=" + 'iphone 12 pro max'
-    },
-    {
-        innerHTML: 'giày converse cổ cao',
-        href: "https://shopee.vn/search?keyword=" + 'giày converse cổ cao'
-    }
-];
 var headerSearchHistoryItemIndex = 0;
+var headerSearchHistoryItemLinksInfoLength;
 
 
-//#region (f) removeHeaderSearchHistoryItemInDOM
-function removeHeaderSearchHistoryItemInDOM () {
-    var headerSearchHistoryItems = document.querySelectorAll('.header__search-history-item');
+// --> OK
+//#region updateInDOMHeaderSearchHistoryItemLinks
+var urlHeaderSearchHistoryItemLinksInfo = "http://localhost:3000/headerSearchHistoryItemLinksInfo";
 
-    for(var i = 1; i < headerSearchHistoryItems.length; i++) {
-        headerSearchHistoryItems[i].parentNode.removeChild(headerSearchHistoryItems[i]);
-    }
+function updateInDOMHeaderSearchHistoryItemLinks (url) {
+    fetch(url)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (datas) {
+            // headerSearchHistoryItemLinksInfoLength = datas.length;
+            handleHeaderSearchHistoryItemLinks(datas);
+        })
 }
-//#endregion
-
-//#region (f) updateHeaderSearchHistoryItemInDOM
-function updateHeaderSearchHistoryItemInDOM () {
-    for(var i = 0; i < headerSearchHistoryItemLinksInfo.length; i++) {
-        var liTag = document.createElement('li');
-        liTag.classList.add('header__search-history-item');
-
-        var aTag = document.createElement('a');
-        aTag.classList.add('header__search-history-item__link')
-        aTag.href = headerSearchHistoryItemLinksInfo[i].href;
-        aTag.innerHTML = headerSearchHistoryItemLinksInfo[i].innerHTML;
-
-        // add these two properties to open link in new tab
-        aTag.target = "_blank";
-        aTag.rel = "noopener noreferrer";
-
-        liTag.appendChild(aTag);
-        headerSearchHistoryList.appendChild(liTag);
-    }
-}
-//#endregion
-
-//#region updateHeaderSearchHistoryItemInDOM --> default data
-updateHeaderSearchHistoryItemInDOM();
-//#endregion
-
-var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
-
-
-//#region (f) updateHeaderSearchHistoryItemLinksInfo
-function updateHeaderSearchHistoryItemLinksInfo (innerHTML, href) {
-    var length = headerSearchHistoryItemLinksInfo.length;
-    if (length == 10) {
-        // insert element at first position of array
-        headerSearchHistoryItemLinksInfo.unshift({
-            innerHTML, 
-            href
-        });
-
-        // remove last element & remove, updateHeaderSearchHistoryItemInDOM
-        headerSearchHistoryItemLinksInfo.pop();
-        removeHeaderSearchHistoryItemInDOM();
-        updateHeaderSearchHistoryItemInDOM();
-    } 
-    else {
-        // insert element at first position of array
-        headerSearchHistoryItemLinksInfo.unshift({
-            innerHTML,
-            href
-        });
-    }
-}
-//#endregion
-
-//#region (f) removeHeaderSearchHistoryItemLinksHover
-function removeHeaderSearchHistoryItemLinksHover () {
-    headerSearchHistoryItemLinks.forEach(function (a) {
-        if (a.classList.contains('header__search-history-item__link--hover')) {
-            a.classList.remove('header__search-history-item__link--hover');
-        }
+function handleHeaderSearchHistoryItemLinks (datas) {
+    var liTags = datas.map(function (data) {
+        return `<li class="header__search-history-item">
+                    <a class="header__search-history-item__link" href="${data.href}" target="_blank" rel="noopener noreferrer">${data.innerHTML}</a>
+                </li>`
     });
+    headerSearchHistoryList.innerHTML += liTags.join('');
 }
+updateInDOMHeaderSearchHistoryItemLinks(urlHeaderSearchHistoryItemLinksInfo);
+
+// undefined
+// console.log(headerSearchHistoryItemLinksInfoLength)
 //#endregion
 
 
-//#region headerSearchFrameInput onclick(), onblur()
-headerSearchFrameInput.onclick = function () {
-    headerSearchHistory.style.display = 'block';
-}
+//#region Chưa xử lí
+// var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
 
-headerSearchFrameInput.onblur = function () {
-    // return default search option index
-    headerSearchHistoryItemIndex = 0;
+// // Chưa xử lí
+// // // #region (f) removeHeaderSearchHistoryItemInDOM
+// // function removeHeaderSearchHistoryItemInDOM () {
+// //     var headerSearchHistoryItems = document.querySelectorAll('.header__search-history-item');
 
-    removeHeaderSearchHistoryItemLinksHover();
+// //     for(var i = 1; i < headerSearchHistoryItems.length; i++) {
+// //         headerSearchHistoryItems[i].parentNode.removeChild(headerSearchHistoryItems[i]);
+// //     }
+// // }
+// // //#endregion
 
-    setTimeout(function() {
-        headerSearchHistory.style.display = 'none';
-    }, 200);
-}
-//#endregion
+// // Chưa xử lí
+// // //#region (f) updateHeaderSearchHistoryItemLinksInfo
+// // function updateHeaderSearchHistoryItemLinksInfo (innerHTML, href) {
+// //     var length = headerSearchHistoryItemLinksInfo.length;
+// //     if (length == 10) {
+// //         //-> insert element at first position of array -> (PUT method)
+// //         // headerSearchHistoryItemLinksInfo.unshift({
+// //         //     innerHTML, 
+// //         //     href
+// //         // });
+
+// //         //-> remove last element & remove, updateHeaderSearchHistoryItemInDOM
+// //         // headerSearchHistoryItemLinksInfo.pop();
+// //         // removeHeaderSearchHistoryItemInDOM();
+// //         // updateHeaderSearchHistoryItemInDOM();
+// //     } 
+// //     else {
+// //         //-> insert element at first position of array
+// //         // headerSearchHistoryItemLinksInfo.unshift({
+// //         //     innerHTML,
+// //         //     href
+// //         // });
+// //     }
+// // }
+// // //#endregion
+
+// //#region (f) removeHeaderSearchHistoryItemLinksHover
+// function removeHeaderSearchHistoryItemLinksHover () {
+//     headerSearchHistoryItemLinks.forEach(function (a) {
+//         if (a.classList.contains('header__search-history-item__link--hover')) {
+//             a.classList.remove('header__search-history-item__link--hover');
+//         }
+//     });
+// }
+// //#endregion
 
 
-//#region headerSearchFrameBtn onclick() 
-headerSearchFrameBtn.addEventListener('click', function(e) {
+// //#region headerSearchFrameInput onclick(), onblur()
+// headerSearchFrameInput.onclick = function () {
+//     headerSearchHistory.style.display = 'block';
+// }
+
+// headerSearchFrameInput.onblur = function () {
+//     // return default search option index
+//     headerSearchHistoryItemIndex = 0;
+
+//     //-> removeHeaderSearchHistoryItemLinksHover();
+
+//     setTimeout(function() {
+//         headerSearchHistory.style.display = 'none';
+//     }, 200);
+// }
+// //#endregion
+
+
+// //#region headerSearchFrameBtn onclick() 
+// headerSearchFrameBtn.addEventListener('click', function(e) {
     
-    if(headerSearchFrameInput.value != '') {
-        var innerHTML = headerSearchFrameInput.value;
-        var href = `https://shopee.vn/search?keyword=` + `${innerHTML}`;
+//     if(headerSearchFrameInput.value != '') {
+//         var innerHTML = headerSearchFrameInput.value;
+//         var href = `https://shopee.vn/search?keyword=` + `${innerHTML}`;
 
-        // optional
-        headerSearchFrameBtn.href = href;
+//         // optional
+//         headerSearchFrameBtn.href = href;
 
-        // BUGS...RUN OK BUT NEED JSON JS HANDLE
-        /*
-        updateHeaderSearchHistoryItemLinksInfo(innerHTML, href);
-        removeHeaderSearchHistoryItemInDOM();
-        updateHeaderSearchHistoryItemInDOM();
-        console.log(headerSearchHistoryItemLinksInfo)
-        */
-    }   
+//         // BUGS...RUN OK BUT NEED JSON JS HANDLE
+//         /*
+//         updateHeaderSearchHistoryItemLinksInfo(innerHTML, href);
+//         removeHeaderSearchHistoryItemInDOM();
+//         updateHeaderSearchHistoryItemInDOM();
+//         console.log(headerSearchHistoryItemLinksInfo)
+//         */
+//     }   
 
-    // setTimeout
-});
+//     // setTimeout
+// });
+// //#endregion
+
+
+// //#region headerSearchFrameInput onkeydown()
+// headerSearchFrameInput.addEventListener('keydown', function(e) {
+//     switch (e.keyCode) {
+//         // 'Enter'
+//         case 13: {
+//             e.preventDefault();
+
+//             if (headerSearchFrameInput.value == '') {
+//                 //open search page 'with default option' new tab
+//                 window.open(
+//                     `${headerSearchFrameBtn.href}`,
+//                     '_blank'  
+//                 );
+//             }
+//             else {
+//                 //open search page 'with keyword' in new tab
+//                 window.open(
+//                     `https://shopee.vn/search?keyword=` + `${headerSearchFrameInput.value}`,
+//                     '_blank'  
+//                 );
+//             }
+//             break;
+//         }
+
+//         // 'page up'
+//         case 38: {
+//             // 1. set next index
+//             var headerSearchHistoryItemLength = 
+//                 document.querySelectorAll(`.header__search-history-item`).length;
+
+//             // if initial position (in input) or when being active first element
+//             if (headerSearchHistoryItemIndex == 0 || headerSearchHistoryItemIndex == 1) {
+//                 headerSearchHistoryItemIndex = headerSearchHistoryItemLength;
+//             } else {
+//                 headerSearchHistoryItemIndex--;
+//             }
+
+//             // 2.add class .header__search-history-item__link--hover on next element
+//             removeHeaderSearchHistoryItemLinksHover();
+//             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
+
+//             // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
+//             var headerSearchHistoryItemCurrent = document.querySelector(`
+//                 .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
+//             headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
+
+//             break;
+//         }
+
+//         // 'page down'
+//         case 40: {
+//             // 1. set next index
+//             var headerSearchHistoryItemLength = 
+//                 document.querySelectorAll(`.header__search-history-item`).length;
+
+//             // when being active last element
+//             if (headerSearchHistoryItemIndex == headerSearchHistoryItemLength) {
+//                 headerSearchHistoryItemIndex = 1;
+//             } else {
+//                 headerSearchHistoryItemIndex++;
+//             }
+
+//             // 2. add class .header__search-history-item__link--hover on next element
+//             removeHeaderSearchHistoryItemLinksHover();
+//             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
+
+//             // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
+//             var headerSearchHistoryItemCurrent = document.querySelector(`
+//                 .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
+//             headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
+
+//             break;
+//         }
+//     }
+// });
+// //#endregion
+
+
+// //#region headerSearchHistoryItemLink onmouseover(), onmouseout()
+// for(var i = 0; i < headerSearchHistoryItemLinks.length; i++) {
+//     headerSearchHistoryItemLinks[i].addEventListener('mouseover', function () {
+//         // off all
+//         removeHeaderSearchHistoryItemLinksHover();
+//         // on only it
+//         this.classList.add('header__search-history-item__link--hover');
+//     });
+
+//     headerSearchHistoryItemLinks[i].addEventListener('mouseleave', function () {
+//         // off only it
+//         this.classList.remove('header__search-history-item__link--hover');
+//     });
+// }
+// //#endregion
 //#endregion
 
 
-//#region headerSearchFrameInput onkeydown()
-headerSearchFrameInput.addEventListener('keydown', function(e) {
-    switch (e.keyCode) {
-        // 'Enter'
-        case 13: {
-            e.preventDefault();
+//--> (NO RELATED -> OK)
+//#region headerSearchHistoryKeywordsList -> update data in DOM
+var headerSearchHistoryKeywordsList = document.querySelector('.header__search-history-keywords-list');
 
-            if (headerSearchFrameInput.value == '') {
-                //open search page 'with default option' new tab
-                window.open(
-                    `${headerSearchFrameBtn.href}`,
-                    '_blank'  
-                );
-            }
-            else {
-                //open search page 'with keyword' in new tab
-                window.open(
-                    `https://shopee.vn/search?keyword=` + `${headerSearchFrameInput.value}`,
-                    '_blank'  
-                );
-            }
-            break;
-        }
+var urlHeaderSearchHistoryKeywordsItems_innerHTMLs = 'http://localhost:3000/headerSearchHistoryKeywordsItems_innerHTMLs';
 
-        // 'page up'
-        case 38: {
-            // 1. set next index
-            var headerSearchHistoryItemLength = 
-                document.querySelectorAll(`.header__search-history-item`).length;
-
-            // if initial position (in input) or when being active first element
-            if (headerSearchHistoryItemIndex == 0 || headerSearchHistoryItemIndex == 1) {
-                headerSearchHistoryItemIndex = headerSearchHistoryItemLength;
-            } else {
-                headerSearchHistoryItemIndex--;
-            }
-
-            // 2.add class .header__search-history-item__link--hover on next element
-            removeHeaderSearchHistoryItemLinksHover();
-            headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
-
-            // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
-            var headerSearchHistoryItemCurrent = document.querySelector(`
-                .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
-            headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
-
-            break;
-        }
-
-        // 'page down'
-        case 40: {
-            // 1. set next index
-            var headerSearchHistoryItemLength = 
-                document.querySelectorAll(`.header__search-history-item`).length;
-
-            // when being active last element
-            if (headerSearchHistoryItemIndex == headerSearchHistoryItemLength) {
-                headerSearchHistoryItemIndex = 1;
-            } else {
-                headerSearchHistoryItemIndex++;
-            }
-
-            // 2. add class .header__search-history-item__link--hover on next element
-            removeHeaderSearchHistoryItemLinksHover();
-            headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
-
-            // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
-            var headerSearchHistoryItemCurrent = document.querySelector(`
-                .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
-            headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
-
-            break;
-        }
-    }
-});
+fetch(urlHeaderSearchHistoryKeywordsItems_innerHTMLs) 
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(datas) {
+        var aTags = datas.map(function (data) {
+            return `<a target="_blank" rel="noopener noreferrer" class="header__search-history-keywords-item" 
+                href="${data.href}">${data.innerHTML}</a>`;
+        });
+        headerSearchHistoryKeywordsList.innerHTML = aTags.join('');
+    })
 //#endregion
 
 
-//#region headerSearchHistoryItemLink onmouseover(), onmouseout()
-for(var i = 0; i < headerSearchHistoryItemLinks.length; i++) {
-    headerSearchHistoryItemLinks[i].addEventListener('mouseover', function () {
-        // off all
-        removeHeaderSearchHistoryItemLinksHover();
-        // on only it
-        this.classList.add('header__search-history-item__link--hover');
-    });
-
-    headerSearchHistoryItemLinks[i].addEventListener('mouseleave', function () {
-        // off only it
-        this.classList.remove('header__search-history-item__link--hover');
-    });
-}
-//#endregion
-
-//#endregion headerSearchFrameInput, headerSearchHistory
-
-
-//#region headerSearchHistoryKeywordsItems -> update data in DOM
-var headerSearchHistoryKeywordsItems = document.querySelectorAll('.header__search-history-keywords-item');
-
-var headerSearchHistoryKeywordsItems_innerHTMLs = [
-    'Giày đá bóng nam',
-    'Giá đỡ laptop',
-    'Kệ để laptop',
-    'Kê laptop',
-    'Kệ tản nhiệt laptop',
-    'Sạc laptop asus',
-    'Giá đỡ laptop gỗ',
-    'Kệ macbook'
-];
-
-for(var i = 0; i < headerSearchHistoryKeywordsItems.length; i++) {
-    headerSearchHistoryKeywordsItems[i].href = `https://shopee.vn/search?keyword=${headerSearchHistoryKeywordsItems_innerHTMLs[i]}`;
-    headerSearchHistoryKeywordsItems[i].innerHTML = headerSearchHistoryKeywordsItems_innerHTMLs[i];
-}
-//#endregion
-
-
+//---> OK
 //#region headerNotificationPopupWhenLoggedIn -> update data in DOM
-var headerNotificationPopupWhenLoggedInLinks = document.querySelectorAll('.header__notification__popup--when-logged-in__link');
-var headerNotificationPopupWhenLoggedInItemImgs = document.querySelectorAll('.header__notification__popup--when-logged-in__item__img > img');
-var headerNotificationPopupWhenLoggedInItemTitles = document.querySelectorAll('.header__notification__popup--when-logged-in__item__title');
-var headerNotificationPopupWhenLoggedInItemDescriptions = document.querySelectorAll('.header__notification__popup--when-logged-in__item__description');
 
-var headerNotificationPopupWhenLoggedInLinks_href = [
-    "https://shopee.vn/m/khung-gio-san-sale?&utm_source=crm&utm_medium=pn&utm_campaign=AP01_MIXPLAT_Normal_2045-Thematic-A7-FlatPice1kn9K-Mix_Promotion_None_Microsite_150821",
-    "https://shopee.vn/user/voucher-wallet/?type=0",
-    "https://shopee.vn/user/voucher-wallet/?type=0",
-    "https://shopee.vn/m/khung-gio-san-sale?&utm_source=crm&utm_medium=pn&utm_campaign=AP01_MIXPLAT_Normal_1145-Thematic-A7-MiddayFlashSale-Mix_FlashSale_None__150821",
-    "https://shopee.vn/m/hangquocte-1508"
-];
+var headerNotificationPopupWhenLoggedInList = 
+    document.querySelector('.header__notification__popup--when-logged-in__list');
 
-var headerNotificationPopupWhenLoggedInItemImgs_src = [
-    "https://cf.shopee.vn/file/86773ac686448ddcbb60e3b454d2e1f0_tn",
-    "https://cf.shopee.vn/file/328935aafafe7586e3e6f163ba758e4b_tn",
-    "https://cf.shopee.vn/file/7d0f0bfa69163ac64cd4125de27804e3_tn",
-    "https://cf.shopee.vn/file/1567991b5d3f8c444c388d2ebd7f13ab_tn",
-    "https://cf.shopee.vn/file/ea510c1c21affd0d1236e15fe410b6f7_tn"
-];
+var urlHeaderNotificationPopupWhenLoggedInLinksInfo = 
+    'http://localhost:3000/headerNotificationPopupWhenLoggedInLinksInfo';
 
-var headerNotificationPopupWhenLoggedInItemTitles_innerHTML = [
-    `Úm ba la mở ra deal 9K HOT`,
-    `Voucher Hoàn Xu Xtra 10% tối đa 100K Xu cho đơn
-    từ 150K.`,
-    `Voucher Hoàn Xu Xtra 20% tối đa 40K Xu cho đơn
-    từ 0Ð.`,
-    `Sale giữa tháng! Freeship đơn 99K`,
-    `Quốc Tế sale cực đã tới 50%`
-];
-
-var headerNotificationPopupWhenLoggedInItemDescriptions_innerHTML = [
-    `Siêu hot! Đồng giá 1K, 9K. Deal tiết kiệm dưới 99K
-    & Freeship toàn sàn từ 99K. Số lượng có hạn! Săn
-    ngay!`,
-    `Voucher Hoàn Xu Xtra hoàn 10% tối đa 100K Xu đã có sẵn
-    trong ví voucher. Hiệu lực: 16/08/2021 00:00 - 21/08/2021
-    23:59.`,
-    `Voucher Hoàn Xu Xtra hoàn 20% tối đa 40K Xu đã có sấn
-    trong ví voucher. Hiệu lực: 16/08/2021 00:00 - 21/08/2021
-    23:59. Số lượng có hạn. Dùng ngay bạn nhé!`,
-    `12H! Đồng loạt giảm sốc 50%: Điện tử, thời trang,
-    tiêu dùng, đời sống. Siêu thị tại nhà cùng Shopee Mart`,
-    `Vô vàn deal hot từ 29K, 59K Mặt hàng đa dạng cho
-    bạn chọn lựa. Vào săn ngay!`
-];
-
-
-for(var i = 0; i < headerNotificationPopupWhenLoggedInItemTitles.length; i++) {
-    headerNotificationPopupWhenLoggedInLinks[i].href = headerNotificationPopupWhenLoggedInLinks_href[i];
-    headerNotificationPopupWhenLoggedInItemImgs[i].src = headerNotificationPopupWhenLoggedInItemImgs_src[i];
-    headerNotificationPopupWhenLoggedInItemTitles[i].innerHTML = headerNotificationPopupWhenLoggedInItemTitles_innerHTML[i];
-    headerNotificationPopupWhenLoggedInItemDescriptions[i].innerHTML = headerNotificationPopupWhenLoggedInItemDescriptions_innerHTML[i];
-}
+fetch(urlHeaderNotificationPopupWhenLoggedInLinksInfo) 
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(datas) {
+        var liTags = datas.map(function (data) {
+            return `
+                <li class="header__notification__popup--when-logged-in__item">
+                    <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="header__notification__popup--when-logged-in__link">
+                        <div class="header__notification__popup--when-logged-in__item__img">
+                            <img src="${data.itemImage}" alt="">
+                        </div>
+                        <div class="header__notification__popup--when-logged-in__item__content">
+                            <h3 class="header__notification__popup--when-logged-in__item__title">${data.itemTitle}</h3>
+                            <p class="header__notification__popup--when-logged-in__item__description">${data.itemDescription}</p>
+                        </div>
+                    </a>
+                </li>`;
+        });
+        headerNotificationPopupWhenLoggedInList.innerHTML = liTags.join('');
+    })
 //#endregion
 
 
@@ -1623,70 +1623,27 @@ if (true) {
 //#endregion
 
 
-//#region slider__favourite-selections (append child: a > img, h4)
+//--> OK
+//#region sliderFavouriteSelections -> update data in DOM
 var sliderFavouriteSelections = document.querySelector('.slider__favourite-selections');
 
-var sliderFavouriteSelectionsLink_hrefs = [
-    'https://shopee.vn/m/shopeesogiday',
-    'https://shopee.vn/m/o-nha-khong-kho-co-shopee-lo',
-    'https://shopee.vn/m/shopee-tech-zone',
-    'https://shopee.vn/m/deal-1k',
-    'https://shopee.vn/m/shopee-cashback',
-    'https://shopee.vn/digital-product/m/?dp_from_source=1',
-    'https://shopee.vn/freeshipxtra',
-    'https://shopee.vn/m/tram-ty-uu-dai',
-    'https://shopee.vn/hangquocte',
-    'https://shopee.vn/m/shopee-premium'
-];
+var urlSliderFavouriteSelectionsLinksInfo = 
+    'http://localhost:3000/sliderFavouriteSelectionsLinksInfo';
 
-var sliderFavouriteSelectionsImg_srcs = [
-    './assests/img/container/slider/slider__favourite-selections/selection_1.gif',
-    './assests/img/container/slider/slider__favourite-selections/selection_2.png',
-    './assests/img/container/slider/slider__favourite-selections/selection_3.png',
-    './assests/img/container/slider/slider__favourite-selections/selection_4.png',
-    './assests/img/container/slider/slider__favourite-selections/selection_5.png',
-    './assests/img/container/slider/slider__favourite-selections/selection_6.png',
-    './assests/img/container/slider/slider__favourite-selections/selection_7.png',
-    './assests/img/container/slider/slider__favourite-selections/selection_8.png',
-    './assests/img/container/slider/slider__favourite-selections/selection_9.gif',
-    './assests/img/container/slider/slider__favourite-selections/selection_10.png'
-];
-
-var sliderFavouriteSelectionsH4_innerHTMLs = [
-    'Shopee Số Gì Đây',
-    'Ở Nhà Không Khó',
-    'Tech Zone - Siêu Thị Điện Tử',
-    'Gì Cũng Rẻ - Từ 1K',
-    'Hoàn Xu 20% - Đơn Từ 0Đ',
-    'Nạp Thẻ, Dịch Vụ & Phim',
-    'Freeship Xtra - Deal giảm tới 50%',
-    'Hàng Hiệu -50%',
-    'Hàng Quốc Tế',
-    'Shopee Premium'
-];
-
-
-for(var i = 0; i < sliderFavouriteSelectionsLink_hrefs.length; i++) {
-    // create a tag
-    var aTag = document.createElement('a');
-    aTag.classList.add('slider__favourite-selections__link');
-    aTag.href = sliderFavouriteSelectionsLink_hrefs[i];
-    aTag.target = "_blank";
-    aTag.rel = "noopener noreferrer";
-
-    // create childs of a
-    var imgTag = document.createElement('img');
-    imgTag.src = sliderFavouriteSelectionsImg_srcs[i];
-    var h4Tag = document.createElement('h4');
-    h4Tag.innerHTML = sliderFavouriteSelectionsH4_innerHTMLs[i];
-
-    // append above childs to a
-    aTag.appendChild(imgTag);
-    aTag.appendChild(h4Tag);
-
-    // make above a tag become the child of sliderFavouriteSelections (div tag)
-    sliderFavouriteSelections.appendChild(aTag);
-}
+fetch(urlSliderFavouriteSelectionsLinksInfo) 
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(datas) {
+        var aTags = datas.map(function (data) {
+            return `
+                <a class="slider__favourite-selections__link" href="${data.href}" target="_blank" rel="noopener noreferrer">
+                    <img class="slider__favourite-selections__link-img" src="${data.image}">
+                    <h4 class="slider__favourite-selections__link-text">${data.text}</h4>
+                </a>`;
+        });
+        sliderFavouriteSelections.innerHTML = aTags.join('');
+    })
 //#endregion
 
 
@@ -1768,158 +1725,35 @@ for(var j = 0; j < outstandingHotBrandsLinks.length; j++) {
 //#endregion
 
 
-//#region directoryMainItemLinks info
-var directoryMainItemLinksInfo = [
-    {
-        "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567",
-        "imgSrc": "https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn",
-        "spanInnerHTML": "Thời Trang Nam"
-    },
-    {
-        "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-N%E1%BB%AF-cat.11035639",
-        "imgSrc": "https://cf.shopee.vn/file/75ea42f9eca124e9cb3cde744c060e4d_tn",
-        "spanInnerHTML": "Thời Trang Nữ"
-    },
-    {
-        "href": "https://shopee.vn/%C4%90i%E1%BB%87n-Tho%E1%BA%A1i-Ph%E1%BB%A5-Ki%E1%BB%87n-cat.11036030",
-        "imgSrc": "https://cf.shopee.vn/file/31234a27876fb89cd522d7e3db1ba5ca_tn",
-        "spanInnerHTML": "Điện Thoại & Phụ Kiện"
-    },
-    {
-        "href": "https://shopee.vn/M%E1%BA%B9-B%C3%A9-cat.11036194",
-        "imgSrc": "https://cf.shopee.vn/file/099edde1ab31df35bc255912bab54a5e_tn",
-        "spanInnerHTML": "Mẹ & Bé"
-    },
-    {
-        "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-T%E1%BB%AD-cat.11036132",
-        "imgSrc": "https://cf.shopee.vn/file/978b9e4cb61c611aaaf58664fae133c5_tn",
-        "spanInnerHTML": "Thiết Bị Điện Tử"
-    },
-    {
-        "href": "https://shopee.vn/Nh%C3%A0-C%E1%BB%ADa-%C4%90%E1%BB%9Di-S%E1%BB%91ng-cat.11036670",
-        "imgSrc": "https://cf.shopee.vn/file/24b194a695ea59d384768b7b471d563f_tn",
-        "spanInnerHTML": "Nhà Cửa & Đời Sống"
-    },
-    {
-        "href": "https://shopee.vn/M%C3%A1y-T%C3%ADnh-Laptop-cat.11035954",
-        "imgSrc": "https://cf.shopee.vn/file/c3f3edfaa9f6dafc4825b77d8449999d_tn",
-        "spanInnerHTML": "Máy Tính & Laptop"
-    },
-    {
-        "href": "https://shopee.vn/S%E1%BA%AFc-%C4%90%E1%BA%B9p-cat.11036279",
-        "imgSrc": "https://cf.shopee.vn/file/c765998fda99b2be9eb6e348df29af28_tn",
-        "spanInnerHTML": "Sắc Đẹp"
-    },
-    {
-        "href": "https://shopee.vn/M%C3%A1y-%E1%BA%A2nh-M%C3%A1y-Quay-Phim-cat.11036101",
-        "imgSrc": "https://cf.shopee.vn/file/ec14dd4fc238e676e43be2a911414d4d_tn",
-        "spanInnerHTML": "Máy Ảnh & Máy Quay Phim"
-    },
-    {
-        "href": "https://shopee.vn/S%E1%BB%A9c-Kh%E1%BB%8Fe-cat.11036345",
-        "imgSrc": "https://cf.shopee.vn/file/bf87b50b463f646bb7fb8a1a606d9ed2_tn",
-        "spanInnerHTML": "Sức Khỏe"
-    },
-    {
-        "href": "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-cat.11035788",
-        "imgSrc": "https://cf.shopee.vn/file/86c294aae72ca1db5f541790f7796260_tn",
-        "spanInnerHTML": "Đồng Hồ"
-    },
-    {
-        "href": "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-N%E1%BB%AF-cat.11035825",
-        "imgSrc": "https://cf.shopee.vn/file/48630b7c76a7b62bc070c9e227097847_tn",
-        "spanInnerHTML": "Giày Dép Nữ"
-    },
-    {
-        "href": "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-Nam-cat.11035801",
-        "imgSrc": "https://cf.shopee.vn/file/74ca517e1fa74dc4d974e5d03c3139de_tn",
-        "spanInnerHTML": "Giày Dép Nam"
-    },
-    {
-        "href": "https://shopee.vn/T%C3%BAi-V%C3%AD-N%E1%BB%AF-cat.11035761",
-        "imgSrc": "https://cf.shopee.vn/file/fa6ada2555e8e51f369718bbc92ccc52_tn",
-        "spanInnerHTML": "Túi Ví Nữ"
-    },
-    {
-        "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-Gia-D%E1%BB%A5ng-cat.11036971",
-        "imgSrc": "https://cf.shopee.vn/file/7abfbfee3c4844652b4a8245e473d857_tn",
-        "spanInnerHTML": "Thiết Bị Điện Gia Dụng"
-    },
-    {
-        "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Trang-S%E1%BB%A9c-N%E1%BB%AF-cat.11035853",
-        "imgSrc": "https://cf.shopee.vn/file/8e71245b9659ea72c1b4e737be5cf42e_tn",
-        "spanInnerHTML": "Phụ Kiện & Trang Sức Nữ"
-    },
-    {
-        "href": "https://shopee.vn/Th%E1%BB%83-Thao-Du-L%E1%BB%8Bch-cat.11035478",
-        "imgSrc": "https://cf.shopee.vn/file/6cb7e633f8b63757463b676bd19a50e4_tn",
-        "spanInnerHTML": "Thể Thao & Du Lịch"
-    },
-    {
-        "href": "https://shopee.vn/B%C3%A1ch-H%C3%B3a-Online-cat.11036525",
-        "imgSrc": "https://cf.shopee.vn/file/c432168ee788f903f1ea024487f2c889_tn",
-        "spanInnerHTML": "Bách Hóa Online"
-    },
-    {
-        "href": "https://shopee.vn/%C3%94-T%C3%B4-Xe-M%C3%A1y-Xe-%C4%90%E1%BA%A1p-cat.11036793",
-        "imgSrc": "https://cf.shopee.vn/file/3fb459e3449905545701b418e8220334_tn",
-        "spanInnerHTML": "Ô Tô & Xe Máy & Xe Đạp"
-    },
-    {
-        "href": "https://shopee.vn/Nh%C3%A0-S%C3%A1ch-Online-cat.11036863",
-        "imgSrc": "https://cf.shopee.vn/file/36013311815c55d303b0e6c62d6a8139_tn",
-        "spanInnerHTML": "Nhà Sách Online"
-    },
-    {
-        "href": "https://shopee.vn/Balo-T%C3%BAi-V%C3%AD-Nam-cat.11035741",
-        "imgSrc": "https://cf.shopee.vn/file/18fd9d878ad946db2f1bf4e33760c86f_tn",
-        "spanInnerHTML": "Balo & Túi Ví Nam"
-    },
-    {
-        "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Tr%E1%BA%BB-Em-cat.11036382",
-        "imgSrc": "https://cf.shopee.vn/file/4540f87aa3cbe99db739f9e8dd2cdaf0_tn",
-        "spanInnerHTML": "Thời Trang Trẻ Em"
-    },
-    {
-        "href": "https://shopee.vn/%C4%90%E1%BB%93-Ch%C6%A1i-cat.11036932",
-        "imgSrc": "https://cf.shopee.vn/file/ce8f8abc726cafff671d0e5311caa684_tn",
-        "spanInnerHTML": "Đồ Chơi"
-    },
-    {
-        "href": "https://shopee.vn/Gi%E1%BA%B7t-Gi%C5%A9-Ch%C4%83m-S%C3%B3c-Nh%C3%A0-C%E1%BB%ADa-cat.11036624",
-        "imgSrc": "https://cf.shopee.vn/file/cd8e0d2e6c14c4904058ae20821d0763_tn",
-        "spanInnerHTML": "Giặt Giũ & Chăm Sóc Nhà Cửa"
-    },
-    {
-        "href": "https://shopee.vn/Ch%C4%83m-S%C3%B3c-Th%C3%BA-C%C6%B0ng-cat.11036478",
-        "imgSrc": "https://cf.shopee.vn/file/cdf21b1bf4bfff257efe29054ecea1ec_tn",
-        "spanInnerHTML": "Chăm Sóc Thú Cưng"
-    },
-    {
-        "href": "https://shopee.vn/Voucher-D%E1%BB%8Bch-V%E1%BB%A5-cat.11035898",
-        "imgSrc": "https://cf.shopee.vn/file/b0f78c3136d2d78d49af71dd1c3f38c1_tn",
-        "spanInnerHTML": "Voucher & Dịch Vụ"
-    }
-];
+// --> OK
+//#region directoryMainItemLinksInfo -> update data in DOM
+var directoryMainList = document.querySelector('.directory__main__list');
 
-var directoryMainItemLinksInfo_index = 0;
-var directoryMainItems_length = document.querySelectorAll('.directory__main__item').length;
-for(var i = 0; i < directoryMainItems_length; i++) {
-    for(var j = 0; j < 2; j++) {
-        var directoryMainItemLink = document.querySelector(`.directory__main__item:nth-child(${i+1}) 
-            > .directory__main__item__link:nth-child(${j+1})`);
-        var directoryMainItemImg = document.querySelector(`.directory__main__item:nth-child(${i+1}) 
-            > .directory__main__item__link:nth-child(${j+1}) > .directory__main__item__img`);
-        var directoryMainItemTitle = document.querySelector(`.directory__main__item:nth-child(${i+1}) 
-            > .directory__main__item__link:nth-child(${j+1}) > .directory__main__item__title`);
+var urlDirectoryMainItemLinksInfo = 
+    'http://localhost:3000/directoryMainItemLinksInfo';
 
-        directoryMainItemLink.href = directoryMainItemLinksInfo[directoryMainItemLinksInfo_index].href;
-        directoryMainItemImg.src = directoryMainItemLinksInfo[directoryMainItemLinksInfo_index].imgSrc;
-        directoryMainItemTitle.innerHTML = directoryMainItemLinksInfo[directoryMainItemLinksInfo_index].spanInnerHTML;
+fetch(urlDirectoryMainItemLinksInfo) 
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(datas) {
+        var liTags = '';
+        for(var i = 0; i < datas.length; i+=2) {
+            liTags += `
+                <li class="directory__main__item">
+                    <a target="_blank" rel="noopener noreferrer" href="${datas[i].href}" class="directory__main__item__link">
+                        <img src="${datas[i].itemImage}" alt="" class="directory__main__item__img">
+                        <span class="directory__main__item__title">${datas[i].itemTitle}</span>
+                    </a>
+                    <a target="_blank" rel="noopener noreferrer" href="${datas[i+1].href}" class="directory__main__item__link">
+                        <img src="${datas[i+1].itemImage}" alt="" class="directory__main__item__img">
+                        <span class="directory__main__item__title">${datas[i+1].itemTitle}</span>
+                    </a>
+                </li>`;
+        }
 
-        directoryMainItemLinksInfo_index ++;
-    }
-}
+        directoryMainList.innerHTML = liTags;
+    })
 //#endregion
 
 
