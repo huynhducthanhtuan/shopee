@@ -13,27 +13,8 @@
 //#endregion
 
 
-//#region BUGS: call API
-// var jsURL = 'https://www.freeformatter.com/json-formatter.html';
-// var jsURL = 'https://jsonplaceholder.typicode.com/comments';
-
-
-// fetch(jsURL)
-//     .then(function (response) {
-//         return response.json();
-//     })
-//     .then(function (array) {
-//         console.log(array);
-//     })
-//#endregion
-
-
-
-//
-// var response = require(data)
-// console.log(response)
-// var data1 = {};
-fetch("data-storage.txt")
+//#region TEST: call API
+fetch("http://localhost:3000/names")
     .then(function(response) {
         return response.json();
     })
