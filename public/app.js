@@ -28,6 +28,22 @@
 //#endregion
 
 
+
+//
+// var response = require(data)
+// console.log(response)
+// var data1 = {};
+fetch("data-storage.txt")
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data)
+    });
+
+
+
+
 /* A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS) */
 
 //#region OBJECTS DECLARATION
