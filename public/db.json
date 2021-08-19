@@ -476,5 +476,575 @@
             "selledPartWidthPercent": 0,
             "id": 16
         }
+    ],
+    "underFlashSalePartInfo": [
+        {
+            "id": 1,
+            "href": "https://shopee.vn/m/o-nha-khong-kho-co-shopee-lo",
+            "image": "https://cf.shopee.vn/file/de62993c259c6a7f5117008243550e6a"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.vn/m/khung-gio-san-sale",
+            "image": "https://cf.shopee.vn/file/707c41a6c0202dfaf68ced7b8518137f"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.vn/m/8-8#phong-cach-song-68",
+            "image": "https://cf.shopee.vn/file/96b9c9c82c06b407fa0e7f9e2a9f8855"
+        }
+    ],
+    "shopeeMallHeadingTextInfo": [
+        {
+            "id": 1,
+            "image": "http://127.0.0.1:5500/public/assests/img/container/shopee-mall/heading/back.png",
+            "title": "7 ngày miễn phí trả hàng"
+        },
+        {
+            "id": 2,
+            "image": "http://127.0.0.1:5500/public/assests/img/container/shopee-mall/heading/quality.png",
+            "title": "Hàng chính hãng 100%"
+        },
+        {
+            "id": 3,
+            "image": "http://127.0.0.1:5500/public/assests/img/container/shopee-mall/heading/shipping.png",
+            "title": "Miễn phí vận chuyển"
+        }
+    ],
+    "shopeeMallMainProductListInfo": [
+        {
+            "id": 1,
+            "href": "https://shopee.vn/uu-dai-vando",
+            "image": "https://cf.shopee.vn/file/a4d85b2c4bba4049289b7cb3e2db849c_xhdpi",
+            "text": "Mua là có quà"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.vn/dettol-fmcg",
+            "image": "https://cf.shopee.vn/file/35404bb6cb6428380de312a23aba6a79_xhdpi",
+            "text": "Ưu đãi 30%"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.vn/rohto",
+            "image": "https://cf.shopee.vn/file/4bed0d26c1276288c8776d42517cb6d3_xhdpi",
+            "text": "Mua là có quà"
+        },
+        {
+            "id": 4,
+            "href": "https://shopee.vn/gumac_sieu_sale",
+            "image": "https://cf.shopee.vn/file/27aca02931d04b5f0317260d76c27584_xhdpi",
+            "text": "Siêu sale nhất năm"
+        },
+        {
+            "id": 5,
+            "href": "https://shopee.vn/tefal-vn",
+            "image": "https://cf.shopee.vn/file/52a031d82f78f3b515a0eb1f2f9096fb_xhdpi",
+            "text": "Siêu sale lớn của năm"
+        },
+        {
+            "id": 6,
+            "href": "https://shopee.vn/focallure.vn",
+            "image": "https://cf.shopee.vn/file/7d5ddd21cc10e484de60e12d6c58734e_xhdpi",
+            "text": "Giảm đến 50%"
+        },
+        {
+            "id": 7,
+            "href": "https://shopee.vn/unilever-hb",
+            "image": "https://cf.shopee.vn/file/30296a7572b4fb5d45802862fe8dd2a3_xhdpi",
+            "text": "Mua 1 được 2"
+        },
+        {
+            "id": 8,
+            "href": "https://shopee.vn/perfectdiaryday",
+            "image": "https://cf.shopee.vn/file/945318089c84f313da7b04082b65f031_xhdpi",
+            "text": "Siêu ưu đãi đến 50%"
+        },
+        {
+            "id": 9,
+            "href": "https://shopee.vn/larocheposay",
+            "image": "https://cf.shopee.vn/file/c5355c3595e546617d2bebe305893b5f_xhdpi",
+            "text": "Da khỏe sạch mụn"
+        },
+        {
+            "id": 10,
+            "href": "https://shopee.vn/loreal",
+            "image": "https://cf.shopee.vn/file/8091d0934014d2b1bdf97874ca2c2a52_xhdpi",
+            "text": "Giảm đến 50%"
+        },
+        {
+            "id": 11,
+            "href": "https://shopee.vn/cpc",
+            "image": "https://cf.shopee.vn/file/740ae8e67514258739260217675fb3fc_xhdpi",
+            "text": "Quà tặng đến 2 tỷ"
+        },
+        {
+            "id": 12,
+            "href": "https://shopee.vn/delivietnam",
+            "image": "https://cf.shopee.vn/file/ea507ee06252bb4c0d90eed99c1db288_xhdpi",
+            "text": "Deli giảm tới 50%"
+        },
+        {
+            "id": 13,
+            "href": "https://shopee.vn/unilever-hc",
+            "image": "https://cf.shopee.vn/file/7d977851c3587255800db8f1dd8027da_xhdpi",
+            "text": "Mua là có quà"
+        },
+        {
+            "id": 14,
+            "href": "https://shopee.vn/cocoon",
+            "image": "https://cf.shopee.vn/file/a04fa1753f820475db4f018659d4bab4_xhdpi",
+            "text": "Mua 1 tặng 1"
+        },
+        {
+            "id": 15,
+            "href": "https://shopee.vn/unicharm-hb",
+            "image": "https://cf.shopee.vn/file/915cd0feb271e1d9bb93eec823ac5ff0_xhdpi",
+            "text": "Mát lạnh dài lâu"
+        },
+        {
+            "id": 16,
+            "href": "https://shopee.vn/innisfreeday",
+            "image": "https://cf.shopee.vn/file/5b256291ff44873719ab9a5d72845fbe_xhdpi",
+            "text": "Ưu đãi đến 40%"
+        },
+        {
+            "id": 17,
+            "href": "https://shopee.vn/m/lily-sale-don-he-0704",
+            "image": "https://cf.shopee.vn/file/ffd36a03ea7980d2f7df67ac0c716092_xhdpi",
+            "text": "Ưu đãi từ 1k"
+        },
+        {
+            "id": 18,
+            "href": "https://shopee.vn/POLOMAN-uu-dai-Mall-Fes",
+            "image": "https://cf.shopee.vn/file/00519cb5c56e4ef5845e71d7efdb84be_xhdpi",
+            "text": "Ưu đãi đến 45%"
+        },
+        {
+            "id": 19,
+            "href": "https://shopee.vn/yody-sieu-sale",
+            "image": "https://cf.shopee.vn/file/1c0a570cb1c5309a1b7b7ad6b5d023b4_xhdpi",
+            "text": "Deal sốc 9k"
+        },
+        {
+            "id": 20,
+            "href": "https://shopee.vn/nestle",
+            "image": "https://cf.shopee.vn/file/acf189bab99ffc428d7219ff434e05b3_xhdpi",
+            "text": "5000 deal 0đ"
+        },
+        {
+            "id": 21,
+            "href": "https://shopee.vn/nhasachazvietnam",
+            "image": "https://cf.shopee.vn/file/93255b05c68d1024a8e4dab100efdcbd_xhdpi",
+            "text": "Siêu deal giảm cực đỉnh"
+        },
+        {
+            "id": 22,
+            "href": "https://shopee.vn/uudaidentuvicero",
+            "image": "https://cf.shopee.vn/file/646a55e27b673e220daadd426eccd8fd_xhdpi",
+            "text": "Đồng giá 9k"
+        },
+        {
+            "id": 23,
+            "href": "https://shopee.vn/nivea-fmcg",
+            "image": "https://cf.shopee.vn/file/7179f99e858435af171aa616d8063626_xhdpi",
+            "text": "Quà đến 300K"
+        }
+    ],
+    "topSearchMainListInfo": [
+        {
+            "href": "https://shopee.vn/top_products?catId=834",
+            "productImage": "https://cf.shopee.vn/file/22e96943aa497b88da5c27954ffb5060_tn",
+            "text": "GUMAC - Top bán chạy",
+            "id": 1
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_58",
+            "productImage": "https://cf.shopee.vn/file/300fe9faaec0ed3fa2888e96e788b2a0_tn",
+            "price": 3,
+            "text": "Giày Đá Bóng",
+            "id": 2
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_157",
+            "productImage": "https://cf.shopee.vn/file/1c23ccb76031614584cbdd977e31bd7a_tn",
+            "price": 126,
+            "text": "Ốp Lưng Iphone",
+            "id": 3
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_169",
+            "productImage": "https://cf.shopee.vn/file/362669996dc2f2f98c47cdc37f6da6d3_tn",
+            "price": 114,
+            "text": "Bông Tẩy Trang 3 Lớp Cotton Pads",
+            "id": 4
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_173",
+            "productImage": "https://cf.shopee.vn/file/f3e77445b1e7f5f72bb5dbbfba98cc34_tn",
+            "price": 38,
+            "text": "Dây Buộc Tóc Dễ Thương",
+            "id": 5
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_155",
+            "productImage": "https://cf.shopee.vn/file/88caf78233a0b901155210a61cf19751_tn",
+            "price": 75,
+            "text": "Dây Sạc Iphone",
+            "id": 6
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_2230",
+            "productImage": "https://cf.shopee.vn/file/85a0a69a1ccdd7e2461acac9977018f1_tn",
+            "price": 32,
+            "text": "Hạt Giống",
+            "id": 7
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_733",
+            "productImage": "https://cf.shopee.vn/file/7ccebb7910c00edd0b767d1f75c03fd2_tn",
+            "price": 77,
+            "text": "Dây Nhảy Tập Thể Dục",
+            "id": 8
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_3091",
+            "productImage": "https://cf.shopee.vn/file/bc24d8e6913f0c917cfca3e9a8db0fd2_tn",
+            "price": 75,
+            "text": "Bút Kẻ Mắt Chống Nước",
+            "id": 9
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_99",
+            "productImage": "https://cf.shopee.vn/file/569f5566d9c55f4b3fa34d70e0d5acc3_tn",
+            "price": 67,
+            "text": "Nước Tẩy Trang L'Oreal Paris 3-In-1",
+            "id": 10
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_131",
+            "productImage": "https://cf.shopee.vn/file/32cc566d008cac4b53f3b7ce245fc9a4_tn",
+            "price": 40,
+            "text": "Sticker Dán Trang Trí Sổ Dễ Thương",
+            "id": 11
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_2063",
+            "productImage": "https://cf.shopee.vn/file/9a67b555ee38eeacc8f483cad33d535c_tn",
+            "price": 44,
+            "text": "Kẹp Tóc Càng Cua Đơn Giản Cho Nữ",
+            "id": 12
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_41",
+            "productImage": "https://cf.shopee.vn/file/99348069fb99f1dccbfe596a8050f4c4_tn",
+            "price": 58,
+            "text": "Khẩu Trang Kháng Khuẩn",
+            "id": 13
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_26",
+            "productImage": "https://cf.shopee.vn/file/9ec433bca2d7e0f8f6fc2ce1c5097882_tn",
+            "price": 57,
+            "text": "Quần Ống Rộng Nữ",
+            "id": 14
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_174",
+            "productImage": "https://cf.shopee.vn/file/7452230b36bbe8c16d4780d2e2ef123c_tn",
+            "price": 59,
+            "text": "Tai Nghe Nhét Tai",
+            "id": 15
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_769",
+            "productImage": "https://cf.shopee.vn/file/c302abe3c6a17063d1271f46ce542210_tn",
+            "price": 42,
+            "text": "Áo Thun Polo Nam Ngắn Tay",
+            "id": 16
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_5",
+            "productImage": "https://cf.shopee.vn/file/4963ce89b97723c97154d95f9e3e31eb_tn",
+            "price": 53,
+            "text": "Serum Giảm Mụn The Ordinary Niacinamide",
+            "id": 17
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_125",
+            "productImage": "https://cf.shopee.vn/file/34f639248c0c5145f9156cf9a5db9d35_tn",
+            "price": 41,
+            "text": "Áo Thun Form Rộng Ngắn Tay Unisex",
+            "id": 18
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_174",
+            "productImage": "https://cf.shopee.vn/file/7452230b36bbe8c16d4780d2e2ef123c_tn",
+            "price": 59,
+            "text": "Tai Nghe Nhét Tai",
+            "id": 19
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_769",
+            "productImage": "https://cf.shopee.vn/file/c302abe3c6a17063d1271f46ce542210_tn",
+            "price": 42,
+            "text": "Áo Thun Polo Nam Ngắn Tay",
+            "id": 20
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_5",
+            "productImage": "https://cf.shopee.vn/file/4963ce89b97723c97154d95f9e3e31eb_tn",
+            "price": 53,
+            "text": "Serum Giảm Mụn The Ordinary Niacinamide",
+            "id": 21
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_125",
+            "productImage": "https://cf.shopee.vn/file/34f639248c0c5145f9156cf9a5db9d35_tn",
+            "price": 41,
+            "text": "Áo Thun Form Rộng Ngắn Tay Unisex",
+            "id": 22
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_115",
+            "productImage": "https://cf.shopee.vn/file/58519a6e4edd72b3fd3a8fa4ca97524f_tn",
+            "price": 61,
+            "text": "Quần Lót Nữ Cotton",
+            "id": 23
+        },
+        {
+            "href": "https://shopee.vn/top_products?catId=VN_BITL0_24",
+            "productImage": "https://cf.shopee.vn/file/88c7b37f3c2c4481d6dc51edd75b7d00_tn",
+            "price": 62,
+            "text": "Thảm Yoga",
+            "id": 24
+        }
+    ],
+    "footerLinkAboutTextCSKHInfo": [
+        {
+            "id": 1,
+            "href": "https://help.shopee.vn/vn/s",
+            "innerHTML": "Trung Tâm Trợ Giúp"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.vn/blog",
+            "innerHTML": "Shopee Blog"
+        },
+        {
+            "id": 3,
+            "href": "https://help.shopee.vn/vn/s/article/C%C3%A1c-c%C3%A2u-h%E1%BB%8Fi-li%C3%AAn-quan-%C4%91%E1%BA%BFn-SHOPEE-MALL",
+            "innerHTML": "Shopee Mall"
+        },
+        {
+            "id": 4,
+            "href": "https://help.shopee.vn/vn/s/article/H%C6%B0%E1%BB%9Bng-d%E1%BA%ABn-mua-h%C3%A0ng-t%E1%BA%A1i-Shopee-1542942315487",
+            "innerHTML": "Hướng Dẫn Mua Hàng"
+        },
+        {
+            "id": 5,
+            "href": "https://help.shopee.vn/vn/s/article/L%C3%A0m-c%C3%A1ch-n%C3%A0o-%C4%91%E1%BB%83-b%E1%BA%AFt-%C4%91%E1%BA%A7u-%C4%91%C4%83ng-b%C3%A1n-tr%C3%AAn-Shopee-1542942317110",
+            "innerHTML": "Hướng Dẫn Bán Hàng"
+        },
+        {
+            "id": 6,
+            "href": "https://help.shopee.vn/vn/s/topic/0TO6F000000QzBjWAK/thanh-to%C3%A1n",
+            "innerHTML": "Thanh Toán"
+        },
+        {
+            "id": 7,
+            "href": "https://help.shopee.vn/vn/s/article/Shopee-Xu-l%C3%A0-g%C3%AC-1542942386643",
+            "innerHTML": "Shopee Xu"
+        },
+        {
+            "id": 8,
+            "href": "https://help.shopee.vn/vn/s/topic/0TO6F000000QzKWWA0/v%E1%BA%ADn-chuy%E1%BB%83n",
+            "innerHTML": "Vận Chuyển"
+        },
+        {
+            "id": 9,
+            "href": "https://help.shopee.vn/vn/s/article/C%C3%A1c-c%C3%A2u-h%E1%BB%8Fi-li%C3%AAn-quan-%C4%91%E1%BA%BFn-Tr%E1%BA%A3-h%C3%A0ng-Ho%C3%A0n-ti%E1%BB%81n-1542942680526",
+            "innerHTML": "Trả Hàng & Hoàn Tiền"
+        },
+        {
+            "id": 10,
+            "href": "https://help.shopee.vn/vn/s/contactus",
+            "innerHTML": "Chăm Sóc Khách Hàng"
+        },
+        {
+            "id": 11,
+            "href": "https://help.shopee.vn/vn/s/article/CH%C3%8DNH-S%C3%81CH-B%E1%BA%A2O-H%C3%80NH-T%E1%BA%A0I-SHOPEE-1542942563283",
+            "innerHTML": "Chính Sách Bảo Hành"
+        }
+    ],
+    "footerLinkAboutTextVeShopeeInfo": [
+        {
+            "id": 1,
+            "href": "https://careers.shopee.com/about/",
+            "innerHTML": "Giới Thiệu Về Shopee Việt Nam"
+        },
+        {
+            "id": 2,
+            "href": "https://careers.shopee.com/jobs",
+            "innerHTML": "Tuyển Dụng"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.vn/legaldoc/policies/",
+            "innerHTML": "Điều Khoản Shopee"
+        },
+        {
+            "id": 4,
+            "href": "https://shopee.vn/docs/3603",
+            "innerHTML": "Chính Sách Bảo Mật"
+        },
+        {
+            "id": 5,
+            "href": "https://shopee.vn/mall/",
+            "innerHTML": "Chính Hãng"
+        },
+        {
+            "id": 6,
+            "href": "https://banhang.shopee.vn/",
+            "innerHTML": "Kênh Người Bán"
+        },
+        {
+            "id": 7,
+            "href": "https://shopee.vn/flash_sale/",
+            "innerHTML": "Flash Sales"
+        },
+        {
+            "id": 8,
+            "href": "https://shopee.vn/affiliate/",
+            "innerHTML": "Chương Trình Tiếp Thị Liên Kết Shopee"
+        },
+        {
+            "id": 9,
+            "href": "mailto:media.vn%40shopee.com",
+            "innerHTML": "Liên Hệ Với Truyền Thông"
+        }
+    ],
+    "footerLinkAboutSocialInfo": [
+        {
+            "id": 1,
+            "href": "https://facebook.com/ShopeeVN",
+            "image": "./assests/img/footer/link/social-icon-fb.png",
+            "text": "Facebook"
+        },
+        {
+            "id": 2,
+            "href": "https://instagram.com/Shopee_VN",
+            "image": "./assests/img/footer/link/social-icon-ig.png",
+            "text": "Instagram"
+        },
+        {
+            "id": 3,
+            "href": "https://linkedin.com/company/shopee",
+            "image": "./assests/img/footer/link/social-icon-li.png",
+            "text": "Linked"
+        }
+    ],
+    "footerLinkCopyrightCountryAndAreaListInfo": [
+        {
+            "id": 1,
+            "href": "https://shopee.sg/",
+            "innerHTML": "Singapore"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.co.id/",
+            "innerHTML": "Indonesia"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.tw/",
+            "innerHTML": "Đài Loan"
+        },
+        {
+            "id": 4,
+            "href": "https://shopee.co.th/",
+            "innerHTML": "Thái Lan"
+        },
+        {
+            "id": 5,
+            "href": "https://shopee.com.my/",
+            "innerHTML": "Malaysia"
+        },
+        {
+            "id": 6,
+            "href": "https://shopee.vn/",
+            "innerHTML": "Việt Nam"
+        },
+        {
+            "id": 7,
+            "href": "https://shopee.ph/",
+            "innerHTML": "Philippines"
+        },
+        {
+            "id": 8,
+            "href": "https://shopee.com.br/",
+            "innerHTML": "Brazil"
+        },
+        {
+            "id": 9,
+            "href": "https://shopee.com.mx/",
+            "innerHTML": "México"
+        },
+        {
+            "id": 10,
+            "href": "https://shopee.com.co/",
+            "innerHTML": "Colombia"
+        },
+        {
+            "id": 11,
+            "href": "https://shopee.cl/",
+            "innerHTML": "Chile"
+        }
+    ],
+    "footerPolicyTermsPartTitleInfo": [
+        {
+            "id": 1,
+            "href": "https://shopee.vn/legaldoc/privacy",
+            "innerHTML": "CHÍNH SÁCH BẢO MẬT"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.vn/docs/170",
+            "innerHTML": "QUY CHẾ HOẠT ĐỘNG"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.vn/legaldoc/shipping",
+            "innerHTML": "CHÍNH SÁCH VẬN CHUYỂN"
+        },
+        {
+            "id": 4,
+            "href": "https://shopee.vn/docs/3111",
+            "innerHTML": "CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN"
+        }
+    ],
+    "footerPolicyTermsPartCertificateInfo": [
+        {
+            "id": 1,
+            "href": "http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=18375",
+            "image": "./assests/img/footer/policy-terms/1.png"
+        },
+        {
+            "id": 2,
+            "href": "http://online.gov.vn/HomePage/AppDisplay.aspx?DocId=29",
+            "image": "./assests/img/footer/policy-terms/2.png"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.vn/docs/170",
+            "image": "./assests/img/footer/policy-terms/3.png"
+        }
+    ],
+    "footerPolicyTermsPartCompanyInfoInfo": [
+        "Công ty TNHH Shopee",
+        "Địa chỉ: Tầng 4-5-6, Tòa nhà Capital Place, số 29 đường Liễu Giai, Phường Ngọc Khánh, Quận Ba Đình, Thành phố Hà Nội, Việt Nam. Tổng đài hỗ trợ: 19001221 - Email: cskh@hotro.shopee.vn",
+        "Chịu Trách Nhiệm Quản Lý Nội Dung: Nguyễn Đức Trí - Điện thoại liên hệ: 024 73081221 (ext 4678)",
+        "Mã số doanh nghiệp: 0106773786 do Sở Kế hoạch & Đầu tư TP Hà Nội cấp lần đầu ngày 10/02/2015",
+        "© 2015 - Bản quyền thuộc về Công ty TNHH Shopee"
     ]
 }
