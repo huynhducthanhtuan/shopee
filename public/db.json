@@ -1,5 +1,5 @@
 {
-    "headerSearchHistoryItemLinksInfo": [
+    "headerSearchHistoryListInfo": [
         {   
             "id": 1,
             "innerHTML": "người yêu giá rẻ",
@@ -16,7 +16,7 @@
             "href": "https://shopee.vn/search?keyword=giày converse cổ cao"
         }
     ],
-    "headerSearchHistoryKeywordsItems_innerHTMLs": [
+    "headerSearchHistoryKeywordsListInfo": [
         {
             "id": 1,
             "innerHTML": "Giày đá bóng nam",
@@ -58,7 +58,7 @@
             "href": "https://shopee.vn/search?keyword=Kệ macbook"
         }
     ],
-    "headerNotificationPopupWhenLoggedInLinksInfo": [
+    "headerNotificationPopupWhenLoggedInListInfo": [
         {
             "id": 1,
             "href": "https://shopee.vn/m/khung-gio-san-sale?&utm_source=crm&utm_medium=pn&utm_campaign=AP01_MIXPLAT_Normal_2045-Thematic-A7-FlatPice1kn9K-Mix_Promotion_None_Microsite_150821",
@@ -95,7 +95,7 @@
             "itemDescription": "Vô vàn deal hot từ 29K, 59K Mặt hàng đa dạng cho\n    bạn chọn lựa. Vào săn ngay!"
         }
     ],
-    "sliderFavouriteSelectionsLinksInfo": [
+    "sliderFavouriteSelectionsInfo": [
         {
             "id": 1,
             "href": "https://shopee.vn/m/shopeesogiday",
@@ -157,7 +157,7 @@
             "text": "Shopee Premium"
         }
     ],
-    "directoryMainItemLinksInfo": [
+    "directoryMainItemListInfo": [
         {
             "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567",
             "itemImage": "https://cf.shopee.vn/file/687f3967b7c2fe6a134a2c11894eea4b_tn",
@@ -313,6 +313,168 @@
             "itemImage": "https://cf.shopee.vn/file/b0f78c3136d2d78d49af71dd1c3f38c1_tn",
             "itemTitle": "Voucher & Dịch Vụ",
             "id": 26
+        }
+    ],
+    "flashSaleMainListInfo": [
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=6805421995&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/4ec1a78ec68941b9e1c6f0de593ecf4b_tn",
+            "frameImage": "https://cf.shopee.vn/file/f286373806fcb09f3f96fd52f820c60d_tn",
+            "price": "₫8.000",
+            "selledStatus": "Đã bán 148",
+            "saleOffPercent": "80%",
+            "selledPartWidthPercent": 72,
+            "id": 1
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=5632738828&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/305a2d4ba7348f6085c2342be98f127c_tn",
+            "frameImage": "https://cf.shopee.vn/file/24533c61f5d7333c5dee7e5b3408b016_tn",
+            "price": "₫364.000",
+            "selledStatus": "Đã bán 62",
+            "saleOffPercent": "26%",
+            "selledPartWidthPercent": 71,
+            "id": 2
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=6895421166&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/cc7a349da101ad55a0f991ac0ea02078_tn",
+            "frameImage": "https://cf.shopee.vn/file/f286373806fcb09f3f96fd52f820c60d_tn",
+            "price": "₫1.425.000",
+            "selledStatus": "Đã bán 96",
+            "saleOffPercent": "5%",
+            "selledPartWidthPercent": 75,
+            "id": 3
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=3330959266&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/9baf600fe33586d8a0240343c674056e_tn",
+            "frameImage": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
+            "price": "₫275.000",
+            "selledStatus": "Đã bán 27",
+            "saleOffPercent": "24%",
+            "selledPartWidthPercent": 16,
+            "id": 4
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=3508817294&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/f5134db596490f5543691f700cd6a2a8_tn",
+            "frameImage": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
+            "price": "₫343.000",
+            "selledStatus": "Đã bán 137",
+            "saleOffPercent": "50%",
+            "selledPartWidthPercent": 45,
+            "id": 5
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=5120130578&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/2d59ced8b26f7747c3bd75fa3b4c3aba_tn",
+            "frameImage": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
+            "price": "₫299.000",
+            "selledStatus": "Đã bán 34",
+            "saleOffPercent": "10%",
+            "selledPartWidthPercent": 27,
+            "id": 6
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=9033562627&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/25fecab4d0c9dbfc7dc590df1e732026_tn",
+            "frameImage": "https://cf.shopee.vn/file/f286373806fcb09f3f96fd52f820c60d_tn",
+            "price": "₫1.000",
+            "selledStatus": "Đã bán 427",
+            "saleOffPercent": "96%",
+            "selledPartWidthPercent": 4,
+            "id": 7
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=9232133964&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/b61c8aecd845cf4491fe1861cd6cd209_tn",
+            "frameImage": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
+            "price": "₫975.000",
+            "selledStatus": "Đã bán 16",
+            "saleOffPercent": "13%",
+            "selledPartWidthPercent": 22,
+            "id": 8
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=7117497781&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/26691b698fc74d150f1356309d11c654_tn",
+            "frameImage": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
+            "price": "₫709.000",
+            "selledStatus": "Đã bán 1",
+            "saleOffPercent": "20%",
+            "selledPartWidthPercent": 3,
+            "id": 9
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=10111329183&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/618dd826bb0fa2a522ccf3908d18e237_tn",
+            "frameImage": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
+            "price": "₫219.000",
+            "selledStatus": "Đã bán 16",
+            "saleOffPercent": "62%",
+            "selledPartWidthPercent": 30,
+            "id": 10
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=3843067226&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/9885f11a08bb72471b3c2b2f925a91d1_tn",
+            "frameImage": "https://cf.shopee.vn/file/24533c61f5d7333c5dee7e5b3408b016_tn",
+            "price": "₫479.000",
+            "selledStatus": "Đã bán 2",
+            "saleOffPercent": "44%",
+            "selledPartWidthPercent": 10,
+            "id": 11
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=2374546040&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/c96c911936b349191f9c194a5ff8f144_tn",
+            "frameImage": "https://cf.shopee.vn/file/24533c61f5d7333c5dee7e5b3408b016_tn",
+            "price": "₫325.000",
+            "selledStatus": "Đã bán 16",
+            "saleOffPercent": "35%",
+            "selledPartWidthPercent": 7,
+            "id": 12
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=5027646135&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/1cf8933eeb47cb0bfef2827625d96b95_tn",
+            "frameImage": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
+            "price": "₫282.000",
+            "selledStatus": "Đã bán 74",
+            "saleOffPercent": "29%",
+            "selledPartWidthPercent": 12,
+            "id": 13
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=3227807434&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/efdd9f2b67f8642d7a78a5d023648b07_tn",
+            "frameImage": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
+            "price": "₫282.000",
+            "selledStatus": "Đã bán 17",
+            "saleOffPercent": "29%",
+            "selledPartWidthPercent": 4,
+            "id": 14
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=9817261646&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/971971bedcc56649f37c58664c544a6f_tn",
+            "frameImage": "https://cf.shopee.vn/file/f286373806fcb09f3f96fd52f820c60d_tn",
+            "price": "₫199.000",
+            "selledStatus": "Đã bán 5",
+            "saleOffPercent": "50%",
+            "selledPartWidthPercent": 0,
+            "id": 15
+        },
+        {
+            "href": "https://shopee.vn/flash_sale?fromItem=3320220757&promotionId=2020998880",
+            "bubbleImage": "https://cf.shopee.vn/file/82599724d05dc2805a3af7df50f70788_tn",
+            "frameImage": "https://cf.shopee.vn/file/24533c61f5d7333c5dee7e5b3408b016_tn",
+            "price": "₫182.000",
+            "selledStatus": "Đã bán 16",
+            "saleOffPercent": "26%",
+            "selledPartWidthPercent": 0,
+            "id": 16
         }
     ]
 }

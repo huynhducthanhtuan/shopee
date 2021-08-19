@@ -12,17 +12,20 @@
 // alert(hello());
 //#endregion
 
-
 //#region TEST: call API
-// fetch("http://localhost:3000/names")
+// var len = 0;
+// fetch("db.json")
 //     .then(function(response) {
 //         return response.json();
 //     })
 //     .then(function(data) {
-//         console.log(data)
+//         // len = data.directoryMainItemLinksInfo.length;
+//         console.log(data);
 //     });
-
-
+// setTimeout(function () {
+//     console.log(len)
+// }, 1000)
+//#endregion
 
 
 /* A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS) */
@@ -1243,38 +1246,30 @@ var headerSearchFrameBtn = document.querySelector('.header__search-frame__btn');
 var headerSearchHistoryList = document.querySelector('.header__search-history-list');
 var headerSearchHistoryItemIndex = 0;
 var headerSearchHistoryItemLinksInfoLength;
-
+//#endregion
 
 // --> OK
-//#region updateInDOMHeaderSearchHistoryItemLinks
-var urlHeaderSearchHistoryItemLinksInfo = "http://localhost:3000/headerSearchHistoryItemLinksInfo";
-
-function updateInDOMHeaderSearchHistoryItemLinks (url) {
-    fetch(url)
+//#region updateInDOMHeaderSearchHistoryList
+function updateInDOMHeaderSearchHistoryList () {
+    fetch("db.json")
         .then(function (response) {
             return response.json();
         })
         .then(function (datas) {
-            // headerSearchHistoryItemLinksInfoLength = datas.length;
-            handleHeaderSearchHistoryItemLinks(datas);
+            var liTags = datas.headerSearchHistoryListInfo.map(function (data) {
+                return `<li class="header__search-history-item">
+                            <a class="header__search-history-item__link" href="${data.href}" target="_blank" rel="noopener noreferrer">${data.innerHTML}</a>
+                        </li>`
+            });
+            headerSearchHistoryList.innerHTML += liTags.join('');
         })
 }
-function handleHeaderSearchHistoryItemLinks (datas) {
-    var liTags = datas.map(function (data) {
-        return `<li class="header__search-history-item">
-                    <a class="header__search-history-item__link" href="${data.href}" target="_blank" rel="noopener noreferrer">${data.innerHTML}</a>
-                </li>`
-    });
-    headerSearchHistoryList.innerHTML += liTags.join('');
-}
-updateInDOMHeaderSearchHistoryItemLinks(urlHeaderSearchHistoryItemLinksInfo);
 
-// undefined
-// console.log(headerSearchHistoryItemLinksInfoLength)
+updateInDOMHeaderSearchHistoryList();
 //#endregion
 
-
-//#region Chưa xử lí
+// -> Cần xử lí
+//#region 
 // var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
 
 // // Chưa xử lí
@@ -1464,55 +1459,57 @@ updateInDOMHeaderSearchHistoryItemLinks(urlHeaderSearchHistoryItemLinksInfo);
 
 
 //--> (NO RELATED -> OK)
-//#region headerSearchHistoryKeywordsList -> update data in DOM
+//#region updateInDOMHeaderSearchHistoryKeywordsList
 var headerSearchHistoryKeywordsList = document.querySelector('.header__search-history-keywords-list');
 
-var urlHeaderSearchHistoryKeywordsItems_innerHTMLs = 'http://localhost:3000/headerSearchHistoryKeywordsItems_innerHTMLs';
+function updateInDOMHeaderSearchHistoryKeywordsList () {
+    fetch("db.json") 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) {
+            var aTags = datas.headerSearchHistoryKeywordsListInfo.map(function (data) {
+                return `<a target="_blank" rel="noopener noreferrer" class="header__search-history-keywords-item" 
+                    href="${data.href}">${data.innerHTML}</a>`;
+            });
+            headerSearchHistoryKeywordsList.innerHTML = aTags.join('');
+        })
+}
 
-fetch(urlHeaderSearchHistoryKeywordsItems_innerHTMLs) 
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(datas) {
-        var aTags = datas.map(function (data) {
-            return `<a target="_blank" rel="noopener noreferrer" class="header__search-history-keywords-item" 
-                href="${data.href}">${data.innerHTML}</a>`;
-        });
-        headerSearchHistoryKeywordsList.innerHTML = aTags.join('');
-    })
+updateInDOMHeaderSearchHistoryKeywordsList ();
 //#endregion
 
 
 //---> OK
-//#region headerNotificationPopupWhenLoggedIn -> update data in DOM
-
+//#region updateInDOMHeaderNotificationPopupWhenLoggedInList
 var headerNotificationPopupWhenLoggedInList = 
     document.querySelector('.header__notification__popup--when-logged-in__list');
 
-var urlHeaderNotificationPopupWhenLoggedInLinksInfo = 
-    'http://localhost:3000/headerNotificationPopupWhenLoggedInLinksInfo';
+function updateInDOMHeaderNotificationPopupWhenLoggedInList () {
+    fetch("db.json") 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) {
+            var liTags = datas.headerNotificationPopupWhenLoggedInListInfo.map(function (data) {
+                return `
+                    <li class="header__notification__popup--when-logged-in__item">
+                        <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="header__notification__popup--when-logged-in__link">
+                            <div class="header__notification__popup--when-logged-in__item__img">
+                                <img src="${data.itemImage}" alt="">
+                            </div>
+                            <div class="header__notification__popup--when-logged-in__item__content">
+                                <h3 class="header__notification__popup--when-logged-in__item__title">${data.itemTitle}</h3>
+                                <p class="header__notification__popup--when-logged-in__item__description">${data.itemDescription}</p>
+                            </div>
+                        </a>
+                    </li>`;
+            });
+            headerNotificationPopupWhenLoggedInList.innerHTML = liTags.join('');
+        })
+}
 
-fetch(urlHeaderNotificationPopupWhenLoggedInLinksInfo) 
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(datas) {
-        var liTags = datas.map(function (data) {
-            return `
-                <li class="header__notification__popup--when-logged-in__item">
-                    <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="header__notification__popup--when-logged-in__link">
-                        <div class="header__notification__popup--when-logged-in__item__img">
-                            <img src="${data.itemImage}" alt="">
-                        </div>
-                        <div class="header__notification__popup--when-logged-in__item__content">
-                            <h3 class="header__notification__popup--when-logged-in__item__title">${data.itemTitle}</h3>
-                            <p class="header__notification__popup--when-logged-in__item__description">${data.itemDescription}</p>
-                        </div>
-                    </a>
-                </li>`;
-        });
-        headerNotificationPopupWhenLoggedInList.innerHTML = liTags.join('');
-    })
+updateInDOMHeaderNotificationPopupWhenLoggedInList();
 //#endregion
 
 
@@ -1624,29 +1621,31 @@ if (true) {
 
 
 //--> OK
-//#region sliderFavouriteSelections -> update data in DOM
+//#region updateInDOMSliderFavouriteSelections
 var sliderFavouriteSelections = document.querySelector('.slider__favourite-selections');
 
-var urlSliderFavouriteSelectionsLinksInfo = 
-    'http://localhost:3000/sliderFavouriteSelectionsLinksInfo';
+function updateInDOMSliderFavouriteSelections () {
+    fetch("db.json") 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) {
+            var aTags = datas.sliderFavouriteSelectionsInfo.map(function (data) {
+                return `
+                    <a class="slider__favourite-selections__link" href="${data.href}" target="_blank" rel="noopener noreferrer">
+                        <img class="slider__favourite-selections__link-img" src="${data.image}">
+                        <h4 class="slider__favourite-selections__link-text">${data.text}</h4>
+                    </a>`;
+            });
+            sliderFavouriteSelections.innerHTML = aTags.join('');
+        })
+}
 
-fetch(urlSliderFavouriteSelectionsLinksInfo) 
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(datas) {
-        var aTags = datas.map(function (data) {
-            return `
-                <a class="slider__favourite-selections__link" href="${data.href}" target="_blank" rel="noopener noreferrer">
-                    <img class="slider__favourite-selections__link-img" src="${data.image}">
-                    <h4 class="slider__favourite-selections__link-text">${data.text}</h4>
-                </a>`;
-        });
-        sliderFavouriteSelections.innerHTML = aTags.join('');
-    })
+updateInDOMSliderFavouriteSelections();
 //#endregion
 
 
+// -> Cần xử lí
 //#region outstandingHotSellingProductsLinks, outstandingHotBrandsLinks -> update in DOM
 var outstandingHotSellingProductsLinks = document.querySelectorAll('.outstanding__hot-selling-products__link');
 var outstandingHotBrandsLinks = document.querySelectorAll('.outstanding__hot-brands__link');
@@ -1726,34 +1725,34 @@ for(var j = 0; j < outstandingHotBrandsLinks.length; j++) {
 
 
 // --> OK
-//#region directoryMainItemLinksInfo -> update data in DOM
+//#region updateInDOMDirectoryMainList
 var directoryMainList = document.querySelector('.directory__main__list');
 
-var urlDirectoryMainItemLinksInfo = 
-    'http://localhost:3000/directoryMainItemLinksInfo';
+function updateInDOMDirectoryMainList () {
+    fetch("db.json") 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) {
+            var liTags = '';
+            for(var i = 0; i < datas.directoryMainItemListInfo.length; i+=2) {
+                liTags += `
+                    <li class="directory__main__item">
+                        <a target="_blank" rel="noopener noreferrer" href="${datas.directoryMainItemListInfo[i].href}" class="directory__main__item__link">
+                            <img src="${datas.directoryMainItemListInfo[i].itemImage}" alt="" class="directory__main__item__img">
+                            <span class="directory__main__item__title">${datas.directoryMainItemListInfo[i].itemTitle}</span>
+                        </a>
+                        <a target="_blank" rel="noopener noreferrer" href="${datas.directoryMainItemListInfo[i+1].href}" class="directory__main__item__link">
+                            <img src="${datas.directoryMainItemListInfo[i+1].itemImage}" alt="" class="directory__main__item__img">
+                            <span class="directory__main__item__title">${datas.directoryMainItemListInfo[i+1].itemTitle}</span>
+                        </a>
+                    </li>`;
+            }
+            directoryMainList.innerHTML = liTags;
+        })
+}
 
-fetch(urlDirectoryMainItemLinksInfo) 
-    .then(function(response) {
-        return response.json();
-    })
-    .then(function(datas) {
-        var liTags = '';
-        for(var i = 0; i < datas.length; i+=2) {
-            liTags += `
-                <li class="directory__main__item">
-                    <a target="_blank" rel="noopener noreferrer" href="${datas[i].href}" class="directory__main__item__link">
-                        <img src="${datas[i].itemImage}" alt="" class="directory__main__item__img">
-                        <span class="directory__main__item__title">${datas[i].itemTitle}</span>
-                    </a>
-                    <a target="_blank" rel="noopener noreferrer" href="${datas[i+1].href}" class="directory__main__item__link">
-                        <img src="${datas[i+1].itemImage}" alt="" class="directory__main__item__img">
-                        <span class="directory__main__item__title">${datas[i+1].itemTitle}</span>
-                    </a>
-                </li>`;
-        }
-
-        directoryMainList.innerHTML = liTags;
-    })
+updateInDOMDirectoryMainList();
 //#endregion
 
 
@@ -1786,186 +1785,53 @@ directoryMainPreviousBtn.addEventListener('click', function(e) {
 //#endregion
 
 
-//#region flashSale -> update data in DOM
-var flashSaleMainLinksInfo = [
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=6805421995&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/4ec1a78ec68941b9e1c6f0de593ecf4b_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/f286373806fcb09f3f96fd52f820c60d_tn",
-        "price": "₫8.000",
-        "selledStatus": "Đã bán 148",
-        "saleOffPercent": "80%",
-        "selledPartWidthPercent": 72
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=5632738828&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/305a2d4ba7348f6085c2342be98f127c_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/24533c61f5d7333c5dee7e5b3408b016_tn",
-        "price": "₫364.000",
-        "selledStatus": "Đã bán 62",
-        "saleOffPercent": "26%",
-        "selledPartWidthPercent": 71
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=6895421166&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/cc7a349da101ad55a0f991ac0ea02078_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/f286373806fcb09f3f96fd52f820c60d_tn",
-        "price": "₫1.425.000",
-        "selledStatus": "Đã bán 96",
-        "saleOffPercent": "5%",
-        "selledPartWidthPercent": 75
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=3330959266&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/9baf600fe33586d8a0240343c674056e_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
-        "price": "₫275.000",
-        "selledStatus": "Đã bán 27",
-        "saleOffPercent": "24%",
-        "selledPartWidthPercent": 16
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=3508817294&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/f5134db596490f5543691f700cd6a2a8_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
-        "price": "₫343.000",
-        "selledStatus": "Đã bán 137",
-        "saleOffPercent": "50%",
-        "selledPartWidthPercent": 45
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=5120130578&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/2d59ced8b26f7747c3bd75fa3b4c3aba_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
-        "price": "₫299.000",
-        "selledStatus": "Đã bán 34",
-        "saleOffPercent": "10%",
-        "selledPartWidthPercent": 27
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=9033562627&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/25fecab4d0c9dbfc7dc590df1e732026_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/f286373806fcb09f3f96fd52f820c60d_tn",
-        "price": "₫1.000",
-        "selledStatus": "Đã bán 427",
-        "saleOffPercent": "96%",
-        "selledPartWidthPercent": 4
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=9232133964&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/b61c8aecd845cf4491fe1861cd6cd209_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
-        "price": "₫975.000",
-        "selledStatus": "Đã bán 16",
-        "saleOffPercent": "13%",
-        "selledPartWidthPercent": 22
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=7117497781&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/26691b698fc74d150f1356309d11c654_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
-        "price": "₫709.000",
-        "selledStatus": "Đã bán 1",
-        "saleOffPercent": "20%",
-        "selledPartWidthPercent": 3
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=10111329183&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/618dd826bb0fa2a522ccf3908d18e237_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
-        "price": "₫219.000",
-        "selledStatus": "Đã bán 16",
-        "saleOffPercent": "62%",
-        "selledPartWidthPercent": 30
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=3843067226&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/9885f11a08bb72471b3c2b2f925a91d1_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/24533c61f5d7333c5dee7e5b3408b016_tn",
-        "price": "₫479.000",
-        "selledStatus": "Đã bán 2",
-        "saleOffPercent": "44%",
-        "selledPartWidthPercent": 10
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=2374546040&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/c96c911936b349191f9c194a5ff8f144_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/24533c61f5d7333c5dee7e5b3408b016_tn",
-        "price": "₫325.000",
-        "selledStatus": "Đã bán 16",
-        "saleOffPercent": "35%",
-        "selledPartWidthPercent": 7
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=5027646135&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/1cf8933eeb47cb0bfef2827625d96b95_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
-        "price": "₫282.000",
-        "selledStatus": "Đã bán 74",
-        "saleOffPercent": "29%",
-        "selledPartWidthPercent": 12
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=3227807434&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/efdd9f2b67f8642d7a78a5d023648b07_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/cbee7ffbe0732229dd75b9e8815b6379_tn",
-        "price": "₫282.000",
-        "selledStatus": "Đã bán 17",
-        "saleOffPercent": "29%",
-        "selledPartWidthPercent": 4
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=9817261646&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/971971bedcc56649f37c58664c544a6f_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/f286373806fcb09f3f96fd52f820c60d_tn",
-        "price": "₫199.000",
-        "selledStatus": "Đã bán 5",
-        "saleOffPercent": "50%",
-        "selledPartWidthPercent": 0
-    },
-    {
-        "href": "https://shopee.vn/flash_sale?fromItem=3320220757&promotionId=2020998880",
-        "bubbleImgSrc": "https://cf.shopee.vn/file/82599724d05dc2805a3af7df50f70788_tn",
-        "frameImgSrc": "https://cf.shopee.vn/file/24533c61f5d7333c5dee7e5b3408b016_tn",
-        "price": "₫182.000",
-        "selledStatus": "Đã bán 16",
-        "saleOffPercent": "26%",
-        "selledPartWidthPercent": 0
-    }
-];
+//--> OK --BEING HERE--
+//#region updateInDOMFlashSaleMainList
+var flashSaleMainList = document.querySelectorAll('.flash-sale__main__list');
 
-var flashSaleMainLinks = document.querySelectorAll('.flash-sale__main__link');
-
-for(var i = 0; i < flashSaleMainLinks.length; i++) {
-    var bubbleImg = document.querySelector(`.flash-sale__main__link:nth-child(${i+1})
-        > .flash-sale__main__bubble-img`);
-    var frameImg = document.querySelector(`.flash-sale__main__link:nth-child(${i+1})
-        > .flash-sale__main__frame-img`);
-    var price = document.querySelector(`.flash-sale__main__link:nth-child(${i+1})
-        > .flash-sale__main__price`);
-    var selledStatus = document.querySelector(`.flash-sale__main__link:nth-child(${i+1})
-        .flash-sale__main__percent-bar__selled-status`);
-    var saleOffPercent = document.querySelector(`.flash-sale__main__link:nth-child(${i+1})
-        .flash-sale__main__sale-off-label__percent`);
-    var selledPart = document.querySelector(`.flash-sale__main__link:nth-child(${i+1})
-        .flash-sale__main__percent-bar__selled-part`);
-    
-
-    flashSaleMainLinks[i].href = flashSaleMainLinksInfo[i].href;
-    bubbleImg.src = flashSaleMainLinksInfo[i].bubbleImgSrc;
-    frameImg.src = flashSaleMainLinksInfo[i].frameImgSrc;
-    price.innerHTML = flashSaleMainLinksInfo[i].price;
-    selledStatus.innerHTML = flashSaleMainLinksInfo[i].selledStatus;
-    saleOffPercent.innerHTML = flashSaleMainLinksInfo[i].saleOffPercent;
-
-    // add div tag (.flash-sale__main__percent-bar--hot) if conditions match
-    selledPart.style.width = `${flashSaleMainLinksInfo[i].selledPartWidthPercent}%`;
-    if (flashSaleMainLinksInfo[i].selledPartWidthPercent >= 70) {
-        var flashSaleMainPercentBarHot = document.createElement('div');
-        flashSaleMainPercentBarHot.classList.add('flash-sale__main__percent-bar--hot');
-        selledPart.parentElement.appendChild(flashSaleMainPercentBarHot);
-    }
+function updateInDOMFlashSaleMainList () {
+    fetch("db.json")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) {
+            handleUpdateInDOMFlashSaleMainList(datas.flashSaleMainListInfo);
+        })
 }
+
+function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
+    var aTags = '';
+    for (var i = 0; i < flashSaleMainListInfo.length; i++) {
+
+        // add this element if conditions matched
+        var flashSaleMainPercentBarHot = (flashSaleMainListInfo[i].selledPartWidthPercent >= 70) ?
+            '<div class="flash-sale__main__percent-bar--hot"></div>' : '';
+        
+        aTags += `
+        <a target="_blank" rel="noopener noreferrer" href="${flashSaleMainListInfo[i].href}" class="flash-sale__main__link">
+            <img src="${flashSaleMainListInfo[i].bubbleImage}" alt="" class="flash-sale__main__bubble-img">
+            <img src="${flashSaleMainListInfo[i].frameImage}" alt="" class="flash-sale__main__frame-img">
+            <span class="flash-sale__main__price">${flashSaleMainListInfo[i].price}</span>
+            <div class="flash-sale__main__percent-bar">
+                <div class="flash-sale__main__percent-bar__text">
+                    <span class="flash-sale__main__percent-bar__selled-status">${flashSaleMainListInfo[i].selledStatus}</span>
+                </div>
+                <div class="flash-sale__main__percent-bar__total-part"></div>
+                <div class="flash-sale__main__percent-bar__selled-part" style="width: ${flashSaleMainListInfo[i].selledPartWidthPercent}%;"></div>
+                ${flashSaleMainPercentBarHot}
+            </div>
+            <div class="flash-sale__main__sale-off-label">
+                <span class="flash-sale__main__sale-off-label__percent">${flashSaleMainListInfo[i].saleOffPercent}</span>
+                <span class="flash-sale__main__sale-off-label__text">GIẢM</span>                                                                            
+            </div>
+        </a>`
+    }
+
+    // add innerHTML for this element
+    flashSaleMainList.innerHTML = aTags;
+}
+
+updateInDOMFlashSaleMainList();
 //#endregion
 
 
@@ -2027,6 +1893,7 @@ flashSaleMainPreviousBtn.addEventListener('click', function(e) {
 //#endregion
 
 
+// -> Cần xử lí
 //#region underFlashSaleLinks -> update data in DOM
 var underFlashSaleLinksInfo = [
     {
@@ -2054,7 +1921,7 @@ for (var i = 0; i < underFlashSaleLinks.length; i++) {
 }
 //#endregion
 
-
+// -> Cần xử lí
 //#region shopeeMallMainMotion, shopeeMallMainMotionQueueItems -> motion
 var shopeeMallMainMotion = document.querySelector('.shopee-mall__main__motion');
 var shopeeMallMainMotionLink = document.querySelector('.shopee-mall__main__motion__link');
@@ -2117,7 +1984,7 @@ if (true) {
 }
 //#endregion
 
-
+// -> Cần xử lí
 //#region shopeeMallMainProductItemLinks -> update data in DOM
 var shopeeMallMainProductItemLinksInfo =  {
     href: [
@@ -2269,7 +2136,7 @@ shopeeMallMainProductPreviousBtn.addEventListener('click', function(e) {
 });
 //#endregion
 
-
+// -> Cần xử lí
 //#region updateSearchTrendingLinksInDOM
 var searchTrendingLinksObjectInfo = {
     "href": [
@@ -2405,7 +2272,7 @@ searchTrendingHeadingViewMoreBtn.onclick = function () {
 }
 //#endregion
 
-
+// -> Cần xử lí
 //#region topSearchMainLinks -> update data in DOM
 var topSearchMainLinksInfo = [
     {
@@ -2656,7 +2523,7 @@ topSearchMainPreviousBtn.onclick = function () {
 }
 //#endregion
 
-
+// -> Cần xử lí
 //#region *todaySuggestion
 
 //#region 1.todaySuggestionMainProductsInfo
@@ -4287,12 +4154,12 @@ todaySuggestionHeadingTabSuperSale88.addEventListener('click', function() {
 
 //#endregion
 
-
+// -> Cần xử lí (ẩn hiện & animation)
 //#region todaySuggestionMainLoading...
 var todaySuggestionMainLoading = document.querySelector('.today-suggestion__main__loading');
 //#endregion
 
-
+// -> Cần xử lí
 //#region all of a tags of .footer__text (add href & innerHTML)
 var footerTextATags = document.querySelectorAll('.footer__text a');
 
@@ -4391,7 +4258,7 @@ for(var i = 0; i < footerTextATags.length; i++) {
 }
 //#endregion
 
-
+// -> Cần xử lí
 //#region footer__directory__item (part__heading, part__item, part__link)
 if (true) {
     var footerDirectoryItems = document.querySelectorAll('.footer__directory__item');
@@ -4527,7 +4394,7 @@ if (true) {
 }
 //#endregion
 
-
+// -> Cần xử lí
 //#region footerLinkAboutTextCSKHLinks, footerLinkAboutTextVeShopeeLinks (add href & innerHTML)
 if (true) {
     var footerLinkAboutTextCSKHLinks = 
@@ -4598,7 +4465,7 @@ if (true) {
 }
 //#endregion
 
-
+// -> Cần xử lí
 //#region footer__link__copyright__country-and-area__link (add href & innerHTML)
 if (true) {
     var footerLinkCopyrightCountryAndAreaLinks = 
@@ -4638,7 +4505,7 @@ if (true) {
 }
 //#endregion
 
-
+// -> Cần xử lí
 //#region footerPolicyTermsPartCompanyInfoTexts (add innerHTML)
 var footerPolicyTermsPartCompanyInfoTexts = document.querySelectorAll('.footer__policy-terms__part__company-info__text');
 
