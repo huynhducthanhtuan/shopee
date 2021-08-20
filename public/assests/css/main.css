@@ -1065,7 +1065,8 @@ width: 13.5rem;
     border-radius: 2px;
     border: 1px solid rgba(255,255,255,0.8);
     box-shadow: 0 0 10px rgb(0 0 0 / 20%);
-    animation: fadeIn ease-in-out 0.2s;
+    -webkit-animation: fadeIn ease-in-out 0.2s;
+            animation: fadeIn ease-in-out 0.2s;
     will-change: opacity;
     display: none;
 }
@@ -1150,7 +1151,8 @@ width: 13.5rem;
     box-shadow: 0 0 10px rgb(0 0 0 / 20%);
     z-index: 1;
     transform-origin: calc(100% - 32px) top; 
-    animation: growth ease 0.2s;
+    -webkit-animation: growth ease 0.2s; 
+            animation: growth ease 0.2s;
     will-change: opacity, transform;
     display: none;
 }
@@ -1348,7 +1350,8 @@ width: 13.5rem;
     top: calc(100% + 10px);
     left: 10px;
     transform-origin: 50% top;
-    animation: growth ease 0.3s;
+    -webkit-animation: growth ease 0.3s;
+            animation: growth ease 0.3s;
     will-change: opacity, transform;
     display: none;
 }
@@ -1562,7 +1565,8 @@ width: 13.5rem;
     border-top-right-radius: 2px;
     box-shadow: 0 0 10px rgb(0 0 0 / 20%);
     transform-origin: calc(100% - 20px) top;
-    animation: growth ease-in 0.25s;
+    -webkit-animation: growth ease-in 0.25s;
+            animation: growth ease-in 0.25s;
     will-change: opacity, transform;
     display: none;
 }
@@ -1835,15 +1839,15 @@ width: 13.5rem;
     height: 100%;
 }
 
-.outstanding__hot-selling-products > div:nth-child(2), 
-.outstanding__hot-brands > div:nth-child(2) {
+.outstanding__hot-selling-products__list, 
+.outstanding__hot-brands__list {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 23.7rem;
 }
 
-.outstanding__hot-selling-products__link {
+.outstanding__hot-selling-products__item {
     display: block;
     width: 19.2rem;
     height: 100%;
@@ -1941,7 +1945,7 @@ width: 13.5rem;
     opacity: 0.8;
 }
 
-.outstanding__hot-brands__link {
+.outstanding__hot-brands__item {
     display: block;
     width: 19.2rem;
     height: 100%;
@@ -1951,19 +1955,19 @@ width: 13.5rem;
     position: relative;
 }
 
-.outstanding__hot-selling-products__link:hover,
-.outstanding__hot-brands__link:hover {
+.outstanding__hot-selling-products__item:hover,
+.outstanding__hot-brands__item:hover {
     transform: translateY(-1px);
     border-color: rgba(0,0,0,.12);
     box-shadow: 0 0 0.8125rem 0 rgb(0 0 0 / 5%);
 }
 
-.outstanding__hot-selling-products__link:not(:last-child),
-.outstanding__hot-brands__link:not(:last-child) {
+.outstanding__hot-selling-products__item:not(:last-child),
+.outstanding__hot-brands__item:not(:last-child) {
     margin-right: 1px;
 }
 
-.outstanding__hot-brands__link > div {
+.outstanding__hot-brands__item > div {
     width: 14rem;
     height: 5.6rem;
     border-radius: 3rem;
@@ -2917,6 +2921,7 @@ width: 13.5rem;
     height: 6rem;
     background-color: #fff;
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
+    position: -webkit-sticky;
     position: sticky;
     top: 11.95rem;
     z-index: 10;
@@ -3166,7 +3171,8 @@ width: 13.5rem;
     content: "";
     border-top: 3px solid rgb(242, 82, 32);
     border-left: 3px solid transparent;
-    filter: brightness(60%);     /* giảm độ sáng của màu hiện tại */
+    -webkit-filter: brightness(60%);
+            filter: brightness(60%);     /* giảm độ sáng của màu hiện tại */
     position: absolute;
     top: 100%;
     left: 0;
@@ -3184,7 +3190,8 @@ width: 13.5rem;
     content: "";
     border-top: 3px solid rgb(242, 82, 32);
     border-left: 3px solid transparent;
-    filter: brightness(60%);
+    -webkit-filter: brightness(60%);
+            filter: brightness(60%);
     position: absolute;
     top: 100%;
     left: 0;
@@ -3207,7 +3214,8 @@ width: 13.5rem;
     content: "";
     border-top: 3px solid rgb(208, 1, 27);
     border-left: 3px solid transparent;
-    filter: brightness(60%);
+    -webkit-filter: brightness(60%);
+            filter: brightness(60%);
     position: absolute;
     top: 100%;
     left: 0;

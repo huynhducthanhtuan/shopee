@@ -1238,7 +1238,6 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
 // //#endregion
 
 
-
 //#region headerSearchFrameInput, headerSearchHistory
 var headerSearchFrameInput = document.querySelector('.header__search-frame__input');
 var headerSearchHistory = document.querySelector('.header__search-history');
@@ -1268,7 +1267,7 @@ function updateInDOMHeaderSearchHistoryList () {
 updateInDOMHeaderSearchHistoryList();
 //#endregion
 
-// -> Cần xử lí (logic -> len)
+//--> (1) Cần xử lí (logic -> len) 
 //#region 
 // var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
 
@@ -1458,7 +1457,7 @@ updateInDOMHeaderSearchHistoryList();
 //#endregion
 
 
-//--> (NO RELATED -> OK)
+//--> OK
 //#region updateInDOMHeaderSearchHistoryKeywordsList
 var headerSearchHistoryKeywordsList = document.querySelector('.header__search-history-keywords-list');
 
@@ -1480,7 +1479,7 @@ updateInDOMHeaderSearchHistoryKeywordsList ();
 //#endregion
 
 
-//---> OK
+//--> OK
 //#region updateInDOMHeaderNotificationPopupWhenLoggedInList
 var headerNotificationPopupWhenLoggedInList = 
     document.querySelector('.header__notification__popup--when-logged-in__list');
@@ -1644,87 +1643,101 @@ function updateInDOMSliderFavouriteSelections () {
 updateInDOMSliderFavouriteSelections();
 //#endregion
 
+//--> OK
+//#region updateInDOMOutstandingHotSellingProducts
+var outstandingHotSellingProducts = document.querySelector('.outstanding__hot-selling-products');
 
-// -> Cần xử lí
-//#region outstandingHotSellingProductsLinks, outstandingHotBrandsLinks -> update in DOM
-var outstandingHotSellingProductsLinks = document.querySelectorAll('.outstanding__hot-selling-products__link');
-var outstandingHotBrandsLinks = document.querySelectorAll('.outstanding__hot-brands__link');
-
-var outstandingHotSellingProductsLinksInfo = [
-    {
-        href: 'https://shopee.vn/product/278100765/3552233781',
-        imgSrc: "https://cf.shopee.vn/file/2474dcd7d8a770fbb862d9fac880e90b_tn", 
-        price: '₫135.000',
-        saleOffPercent: '27%'
-    },
-    {
-        href: 'https://shopee.vn/product/89827191/9033562627',
-        imgSrc: "https://cf.shopee.vn/file/25fecab4d0c9dbfc7dc590df1e732026_tn", 
-        price: '₫1.000',
-        saleOffPercent: '96%'
-    },
-    {
-        href: 'https://shopee.vn/product/7669738/9351648769',
-        imgSrc: "https://cf.shopee.vn/file/6c1cd11be5e5e11a5d6343b235dbe31f_tn", 
-        price: '₫9.000',
-        saleOffPercent: '84%'
-    }
-];
-var outstandingHotBrandsLinksInfo = [
-    {
-        href: 'https://shopee.vn/shop/89960894',
-        imgSrc: 'https://cf.shopee.vn/file/https%3A%2F%2Fcf.shopee.vn%2Ffile%2Fdf619bb0c4e690913f7d6348d183cd97',
-        subImgSrc: "https://cf.shopee.vn/file/80cc0ea48958169be67d1ed574b52434_tn", 
-        text: 'GIẢM 50%'
-    },
-    {
-        href: 'https://shopee.vn/shop/55771655',
-        imgSrc: 'https://cf.shopee.vn/file/https%3A%2F%2Fcf.shopee.vn%2Ffile%2Fe0f3412ebf428a2284359455bf2c1c77',
-        subImgSrc: "https://cf.shopee.vn/file/b40723eb741c71bd1c82ec7eb98a2e0b_tn", 
-        text: 'GIẢM 50%'
-    },
-    {
-        href: 'https://shopee.vn/shop/37252407',
-        imgSrc: 'https://cf.shopee.vn/file/http%3A%2F%2Ff.shopee.vn%2Ffile%2Fb450ccdedc4efe1f5251a77e556239e8',
-        subImgSrc: "https://cf.shopee.vn/file/8e463cf906402ac67ffc45daf452e0ec_tn", 
-        text: 'GIẢM 50%'
-    }
-];
-
-
-for(var i = 0; i < outstandingHotSellingProductsLinks.length; i++) {
-
-    var img = document.querySelector(`.outstanding__hot-selling-products__link:nth-child(${i+1})
-        > .outstanding__hot-selling-products__img`);
-    var price = document.querySelector(`.outstanding__hot-selling-products__link:nth-child(${i+1})
-        > .outstanding__hot-selling-products__price`);
-    var saleOffPercent = document.querySelector(`.outstanding__hot-selling-products__link:nth-child(${i+1})
-        .outstanding__hot-selling-products__sale-off-label__percent`);
-
-    outstandingHotSellingProductsLinks[i].href = outstandingHotSellingProductsLinksInfo[i].href;
-    img.src = outstandingHotSellingProductsLinksInfo[i].imgSrc;
-    price.innerHTML = outstandingHotSellingProductsLinksInfo[i].price;
-    saleOffPercent.innerHTML = outstandingHotSellingProductsLinksInfo[i].saleOffPercent;
+function updateInDOMOutstandingHotSellingProducts () {
+    fetch("db.json") 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) { 
+            handleUpdateInDOMOutstandingHotSellingProducts(datas);
+        })
 }
 
-for(var j = 0; j < outstandingHotBrandsLinks.length; j++) {
+function handleUpdateInDOMOutstandingHotSellingProducts (datas) {
+    var firstDivTag = `
+        <div class="outstanding__hot-selling-products__info">
+            <h4 class="outstanding__hot-selling-products__info__heading">
+                ${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.heading}
+            </h4>
+            <a target="_blank" rel="noopener noreferrer" href="${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.href}" class="outstanding__hot-selling-products__info__view-more-btn">
+                Xem thêm <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>`;
 
-    var img = document.querySelector(`.outstanding__hot-brands__link:nth-child(${j+1})
-        > .outstanding__hot-brands__img`);
-    var subImg = document.querySelector(`.outstanding__hot-brands__link:nth-child(${j+1})
-        .outstanding__hot-brands__sub-img`);
-    var text = document.querySelector(`.outstanding__hot-brands__link:nth-child(${j+1})
-        > .outstanding__hot-brands__text`);
+    var aTags = datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsListInfo.map(function (data) {
+        return `<a target="_blank" rel="noopener noreferrer" href="${data.href}" class="outstanding__hot-selling-products__item">
+            <img src="${data.image}" alt="" class="outstanding__hot-selling-products__img">
+            <span class="outstanding__hot-selling-products__price">${data.price}</span>
+            <div class="outstanding__hot-selling-products__sale-off-label">
+                <span class="outstanding__hot-selling-products__sale-off-label__percent">${data.percent}</span>
+                <span class="outstanding__hot-selling-products__sale-off-label__text">GIẢM</span>                                                                            
+            </div>
+        </a>`;
+    });
 
-    outstandingHotBrandsLinks[j].href = outstandingHotBrandsLinksInfo[j].href;
-    img.src = outstandingHotBrandsLinksInfo[j].imgSrc;
-    subImg.src = outstandingHotBrandsLinksInfo[j].subImgSrc;
-    text.innerHTML = outstandingHotBrandsLinksInfo[j].text;
+    var secondDivTag = `<div class="outstanding__hot-selling-products__list">${aTags.join('')}</div>`;
+
+    outstandingHotSellingProducts.innerHTML = `<div class="outstanding__hot-selling-products">
+            ${firstDivTag}
+            ${secondDivTag}
+        </div>`;
 }
+
+updateInDOMOutstandingHotSellingProducts();
+//#endregion 
+
+//--> OK
+//#region updateInDOMOutstandingHotBrands
+var outstandingHotBrands = document.querySelector('.outstanding__hot-brands');
+
+function updateInDOMOutstandingHotBrands () {
+    fetch("db.json") 
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) { 
+            handleUpdateInDOMOutstandingHotBrands(datas);
+        })
+}
+
+function handleUpdateInDOMOutstandingHotBrands (datas) {
+    var firstDivTag = `
+        <div class="outstanding__hot-brands__info">
+            <h4 class="outstanding__hot-brands__info__heading">
+                ${datas.outstandingHotBrandsInfo.outstandingHotBrandsInfoInfo.heading}
+            </h4>
+            <a target="_blank" rel="noopener noreferrer" href="${datas.outstandingHotBrandsInfo.outstandingHotBrandsInfoInfo.href}" class="outstanding__hot-brands__info__view-more-btn">
+                Xem thêm <i class="fas fa-chevron-right"></i>
+            </a>
+        </div>`;
+
+    var aTags = datas.outstandingHotBrandsInfo.outstandingHotBrandsListInfo.map(function (data) {
+        return `
+            <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="outstanding__hot-brands__item">
+                <img src="${data.image}" alt="" class="outstanding__hot-brands__img">
+                <div class="">
+                    <img src="${data.subImage}" alt="" class="outstanding__hot-brands__sub-img">
+                </div>
+                <span class="outstanding__hot-brands__text">${data.text}</span>
+            </a>`;
+    });
+
+    var secondDivTag = `<div class="outstanding__hot-brands__list">${aTags.join('')}</div>`;
+
+    outstandingHotBrands.innerHTML = `<div class="outstanding__hot-brands">
+            ${firstDivTag}
+            ${secondDivTag}
+        </div>`;
+}
+
+updateInDOMOutstandingHotBrands();
 //#endregion
 
-
-// --> OK
+//--> OK
 //#region updateInDOMDirectoryMainList
 var directoryMainList = document.querySelector('.directory__main__list');
 
@@ -1783,7 +1796,6 @@ directoryMainPreviousBtn.addEventListener('click', function(e) {
     }, 0);
 });
 //#endregion
-
 
 //--> OK 
 //#region updateInDOMFlashSaleMainList
@@ -1892,7 +1904,6 @@ flashSaleMainPreviousBtn.addEventListener('click', function(e) {
 });
 //#endregion
 
-
 // -> OK
 //#region updateInDOMFlashSalePart
 var underFlashSalePart = document.querySelector('.under-flash-sale__part');
@@ -1916,7 +1927,7 @@ function updateInDOMFlashSalePart () {
 updateInDOMFlashSalePart();
 //#endregion
 
-// -> Cần xử lí (logic -> len)
+//--> (2) Cần xử lí (logic -> len)
 //#region shopeeMallMainMotion, shopeeMallMainMotionQueueItems -> motion
 var shopeeMallMainMotion = document.querySelector('.shopee-mall__main__motion');
 var shopeeMallMainMotionLink = document.querySelector('.shopee-mall__main__motion__link');
@@ -2118,7 +2129,7 @@ shopeeMallMainProductPreviousBtn.addEventListener('click', function(e) {
 //#endregion
 
 
-// -> Cần xử lí --> TO HERE <--
+// -> (TODAY) Cần xử lí --> TO HERE <--
 //#region updateSearchTrendingLinksInDOM
 var searchTrendingLinksObjectInfo = {
     "href": [
@@ -2377,7 +2388,7 @@ topSearchMainPreviousBtn.onclick = function () {
 //#endregion
 
 
-// -> Cần xử lí --
+// -> (TODAY) Cần xử lí 
 //#region *todaySuggestion
 
 //#region 1.todaySuggestionMainProductsInfo
@@ -4008,7 +4019,7 @@ todaySuggestionHeadingTabSuperSale88.addEventListener('click', function() {
 
 //#endregion
 
-// -> Cần xử lí (ẩn hiện & animation)
+// -> (3) Cần xử lí (ẩn hiện & animation)
 //#region todaySuggestionMainLoading...
 var todaySuggestionMainLoading = document.querySelector('.today-suggestion__main__loading');
 //#endregion

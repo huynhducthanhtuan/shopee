@@ -157,6 +157,58 @@
             "text": "Shopee Premium"
         }
     ],
+    "outstandingHotSellingProductsInfo": {
+        "outstandingHotSellingProductsInfoInfo": {
+            "heading": "SẢN PHẨM BÁN CHẠY",
+            "href": "https://shopee.vn/m/shopee-cashback"
+        },
+        "outstandingHotSellingProductsListInfo": [
+            {
+                "href": "https://shopee.vn/product/278100765/3552233781",
+                "image": "https://cf.shopee.vn/file/2474dcd7d8a770fbb862d9fac880e90b_tn",
+                "price": "₫135.000",
+                "percent": "27%"
+            },
+            {
+                "href": "https://shopee.vn/product/89827191/9033562627",
+                "image": "https://cf.shopee.vn/file/25fecab4d0c9dbfc7dc590df1e732026_tn",
+                "price": "₫1.000",
+                "percent": "96%"
+            },
+            {
+                "href": "https://shopee.vn/product/7669738/9351648769",
+                "image": "https://cf.shopee.vn/file/6c1cd11be5e5e11a5d6343b235dbe31f_tn",
+                "price": "₫9.000",
+                "percent": "84%"
+            }
+        ]
+    },
+    "outstandingHotBrandsInfo": {
+        "outstandingHotBrandsInfoInfo": {
+            "heading": "THƯƠNG HIỆU NỔI BẬT",
+            "href": "https://shopee.vn/m/shopee-cashback"
+        },
+        "outstandingHotBrandsListInfo": [
+            {
+                "href": "https://shopee.vn/shop/89960894",
+                "image": "https://cf.shopee.vn/file/https%3A%2F%2Fcf.shopee.vn%2Ffile%2Fdf619bb0c4e690913f7d6348d183cd97",
+                "subImage": "https://cf.shopee.vn/file/80cc0ea48958169be67d1ed574b52434_tn",
+                "text": "GIẢM 50%"
+            },
+            {
+                "href": "https://shopee.vn/shop/55771655",
+                "image": "https://cf.shopee.vn/file/https%3A%2F%2Fcf.shopee.vn%2Ffile%2Fe0f3412ebf428a2284359455bf2c1c77",
+                "subImage": "https://cf.shopee.vn/file/b40723eb741c71bd1c82ec7eb98a2e0b_tn",
+                "text": "GIẢM 50%"
+            },
+            {
+                "href": "https://shopee.vn/shop/37252407",
+                "image": "https://cf.shopee.vn/file/http%3A%2F%2Ff.shopee.vn%2Ffile%2Fb450ccdedc4efe1f5251a77e556239e8",
+                "subImage": "https://cf.shopee.vn/file/8e463cf906402ac67ffc45daf452e0ec_tn",
+                "text": "GIẢM 50%"
+            }
+        ]
+    },
     "directoryMainItemListInfo": [
         {
             "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567",
