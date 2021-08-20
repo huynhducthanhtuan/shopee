@@ -2118,7 +2118,7 @@ shopeeMallMainProductPreviousBtn.addEventListener('click', function(e) {
 //#endregion
 
 
-// -> Cần xử lí --> CURRENT
+// -> Cần xử lí --> TO HERE <--
 //#region updateSearchTrendingLinksInDOM
 var searchTrendingLinksObjectInfo = {
     "href": [
@@ -2375,7 +2375,6 @@ topSearchMainPreviousBtn.onclick = function () {
     }
 }
 //#endregion
-
 
 
 // -> Cần xử lí --
@@ -4014,241 +4013,85 @@ todaySuggestionHeadingTabSuperSale88.addEventListener('click', function() {
 var todaySuggestionMainLoading = document.querySelector('.today-suggestion__main__loading');
 //#endregion
 
-// -> Cần xử lí
-//#region all of a tags of .footer__text (add href & innerHTML)
+// -> OK
+//#region updateInDOMFooterTextATags
 var footerTextATags = document.querySelectorAll('.footer__text a');
 
-var footerTextATags_hrefs = [
-    "https://shopee.sg/",
-    "https://shopee.com.my/",
-    "https://shopee.co.id/",
-    "https://shopee.co.th/",
-    "https://shopee.ph/",
-    "https://shopee.tw/",
-    "https://shopee.com.br/",
-    "https://shopee.vn/mall/",
-    "https://banhang.shopee.vn/edu/article/231",
-    "https://banhang.shopee.vn/edu/article/119",
-    "https://banhang.shopee.vn/edu/article/66",
-    "https://shopee.vn/flash_sale/",
-    "https://shopee.vn/m/ma-giam-gia",
-    "https://shopee.vn/m/mien-phi-van-chuyen",
-    "https://shopee.vn/m/4-4",
-    "https://shopee.vn/m/99",
-    "https://shopee.vn/m/1010",
-    "https://shopee.vn/m/11-11",
-    "https://shopee.vn/m/12-12",
-    "https://shopee.vn/m/tet-sieu-sale",
-    "https://shopee.vn/m/shopee-premium",
-    "https://shopee.vn/m/tram-ty-uu-dai",
-    "https://shopee.vn/m/kiehls-sale",
-    "https://shopee.vn/m/fresh-sale",
-    "https://shopee.vn/m/the-ordinary-sale",
-    "https://shopee.vn/m/foreo-sale",
-    "https://shopee.vn/m/transino-sale",
-    "https://shopee.vn/m/sk-ii-sale",
-    "https://shopee.vn/m/gopro-sale",
-    "https://shopee.vn/marshall_official_storevn",
-    "https://shopee.vn/m/huion-sale",
-    "https://shopee.vn/m/dji-sale",
-    "https://shopee.vn/m/harman-kardon-sale",
-    "https://shopee.vn/m/razer-sale",
-    "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.78",
-    "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-cat.9607",
-    "https://shopee.vn/search?keyword=n%C6%B0%E1%BB%9Bc%20r%E1%BB%ADa%20tay%20kh%C3%B4",
-    "https://shopee.vn/search?keyword=kh%E1%BA%A9u%20trang%20n95",
-    "https://shopee.vn/shopee-coins/",
-    "https://shopee.vn/m/mum-club",
-    "https://shopee.vn/m/beauty-club",
-    "https://shopee.vn/m/book-club"
-];
-var footerTextATags_innerHTMLs = [
-    "Singapore",
-    "Malaysia",
-    "Indonesia",
-    "Thái Lan",
-    "Philipin",
-    "Đài Loan",
-    "Brazil",
-    "Shopee Mall",
-    "tính năng “Shop tạm nghỉ”",
-    "tạo chương trình khuyến mãi trên Shopee",
-    "phân loại sản phẩm",
-    "Shopee flash sale",
-    "mã giảm giá Shopee",
-    "mã miễn phí vận chuyển toàn quốc",
-    "Siêu hội mua sắm 4.4",
-    "Shopee 9.9 sale",
-    "Shopee 10.10 sale",
-    "Shopee 11.11 sale",
-    "Shopee 12.12 sale",
-    "Shopee Tết Sale",
-    "Shopee Premium",
-    "hàng hiệu giảm đến 50%",
-    "Kiehl's",
-    "Fresh",
-    "The Ordinary",
-    "Foreo",
-    "Transino",
-    "SK-II",
-    "camera hành trình Gopro",
-    "Marshall",
-    "bảng vẽ điện tử Huion",
-    "máy quay DJI Osmo Pocket",
-    "loa Harman Kardon",
-    "Razer",
-    "thời trang nam",
-    "đồng hồ",
-    "nước rửa tay khô",
-    "khẩu trang N95",
-    "Shopee Xu",
-    "Shopee Mum's Club",
-    "Shopee Beauty Club",
-    "Shopee Book Club"
-];
-
-for(var i = 0; i < footerTextATags.length; i++) {
-    footerTextATags[i].href = footerTextATags_hrefs[i];
-    footerTextATags[i].innerHTML = footerTextATags_innerHTMLs[i];
-}
-//#endregion
-
-// -> Cần xử lí
-//#region footer__directory__item (part__heading, part__item, part__link)
-if (true) {
-    var footerDirectoryItems = document.querySelectorAll('.footer__directory__item');
-
-    var footerDirectoryItemPartHeading_innerHTMLs = [
-        'Thời Trang Nam', 'Nhà Cửa & Đời Sống', 'Đồng Hồ', 'Phụ Kiện & Trang Sức Nữ', 'Balo & Túi Ví Nam', 'Voucher & Dịch Vụ', 'Thời Trang Nữ', 
-        'Máy Tính & Laptop', 'Giày Dép Nữ', 'Thể Thao & Du Lịch', 'Thời Trang Trẻ Em', 'Điện Thoại & Phụ Kiện', 'Sắc Đẹp', 'Giày Dép Nam', 'Bách Hóa Online', 'Đồ Chơi',
-        'Mẹ & Bé', 'Máy Ảnh & Máy Quay Phim', 'Túi Ví Nữ', 'Ô Tô & Xe Máy & Xe Đạp', 'Giặt Giũ & Chăm Sóc Nhà Cửa', 'Thiết Bị Điện Tử', 
-        'Sức Khỏe', 'Thiết Bị Điện Gia Dụng', 'Nhà Sách Online', 'Chăm Sóc Thú Cưng'
-    ];
-
-    var footerDirectoryItemPartHeading_hrefs = [
-        "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567",
-        "https://shopee.vn/Nh%C3%A0-C%E1%BB%ADa-%C4%90%E1%BB%9Di-S%E1%BB%91ng-cat.11036670",
-        "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-cat.11035788",
-        "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Trang-S%E1%BB%A9c-N%E1%BB%AF-cat.11035853",
-        "https://shopee.vn/Balo-T%C3%BAi-V%C3%AD-Nam-cat.11035741",
-        "https://shopee.vn/Voucher-D%E1%BB%8Bch-V%E1%BB%A5-cat.11035898",
-        "https://shopee.vn/Th%E1%BB%9Di-Trang-N%E1%BB%AF-cat.11035639",
-        "https://shopee.vn/M%C3%A1y-T%C3%ADnh-Laptop-cat.11035954",
-        "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-N%E1%BB%AF-cat.11035825",
-        "https://shopee.vn/Th%E1%BB%83-Thao-Du-L%E1%BB%8Bch-cat.11035478",
-        "https://shopee.vn/Th%E1%BB%9Di-Trang-Tr%E1%BA%BB-Em-cat.11036382",
-        "https://shopee.vn/%C4%90i%E1%BB%87n-Tho%E1%BA%A1i-Ph%E1%BB%A5-Ki%E1%BB%87n-cat.11036030",
-        "https://shopee.vn/S%E1%BA%AFc-%C4%90%E1%BA%B9p-cat.11036279",
-        "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-Nam-cat.11035801",
-        "https://shopee.vn/B%C3%A1ch-H%C3%B3a-Online-cat.11036525",
-        "https://shopee.vn/%C4%90%E1%BB%93-Ch%C6%A1i-cat.11036932",
-        "https://shopee.vn/M%E1%BA%B9-B%C3%A9-cat.11036194",
-        "https://shopee.vn/M%C3%A1y-%E1%BA%A2nh-M%C3%A1y-Quay-Phim-cat.11036101",
-        "https://shopee.vn/T%C3%BAi-V%C3%AD-N%E1%BB%AF-cat.11035761",
-        "https://shopee.vn/%C3%94-T%C3%B4-Xe-M%C3%A1y-Xe-%C4%90%E1%BA%A1p-cat.11036793",
-        "https://shopee.vn/Gi%E1%BA%B7t-Gi%C5%A9-Ch%C4%83m-S%C3%B3c-Nh%C3%A0-C%E1%BB%ADa-cat.11036624",
-        "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-T%E1%BB%AD-cat.11036132",
-        "https://shopee.vn/S%E1%BB%A9c-Kh%E1%BB%8Fe-cat.11036345",
-        "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-Gia-D%E1%BB%A5ng-cat.11036971",
-        "https://shopee.vn/Nh%C3%A0-S%C3%A1ch-Online-cat.11036863",
-        "https://shopee.vn/Ch%C4%83m-S%C3%B3c-Th%C3%BA-C%C6%B0ng-cat.11036478"
-    ];
-
-    var footerDirectoryItemPartLink_innerHTMLs = [
-        ['Áo Khoác', 'Áo Vest và Blazer', 'Áo Hoodie, Áo Len & Áo Nỉ', 'Quần Jeans','Quần Dài/Quần Âu', 'Quần Short', 'Áo', 'Áo Ba Lỗ','Đồ Lót', 'Đồ Ngủ', 'Đồ Bộ', 'Vớ/Tất','Trang Phục Truyền Thống', 'Đồ Hóa Trang', 'Trang Phục Ngành Nghề', 'Khác','Trang Sức Nam', 'Kính Mắt Nam', 'Thắt Lưng Nam', 'Cà vạt & Nơ cổ', 'Phụ Kiện Nam'],
-        ['Chăn, Ga, Gối & Nệm','Đồ nội thất','Dụng cụ cầm tay','Trang trí nhà cửa','Dụng cụ & Thiết bị tiện ích','Đồ dùng nhà bếp & Phòng ăn','Đèn','Ngoài trời & Sân vườn','Tủ đựng & Hộp lưu trữ','Khác','Đồ dùng phòng tắm'],
-        ['Đồng Hồ Nam','Đồng Hồ Nữ','Bộ Đồng Hồ & Đồng Hồ Cặp','Đồng Hồ Trẻ Em','Phụ Kiện Đồng Hồ','Khác'],
-        ['Nhẫn','Bông tai','Khăn choàng','Găng tay','Phụ kiện tóc','Vòng tay & Lắc tay','Lắc chân','Mũ','Dây chuyền','Kính mắt','Kim loại quý','Thắt lưng','Cà vạt & Nơ cổ','Phụ kiện thêm','Bộ phụ kiện','Khác','Vớ/ Tất','Ô/ Dù'],
-        ['Ba Lô Nam','Ba Lô Laptop Nam','Túi & Cặp Đựng Laptop','Túi Chống Sốc Laptop Nam','Túi Tote Nam','Cặp Xách Công Sở Nam','Ví Cầm Tay Nam','Túi Đeo Hông & Túi Đeo Ngực Nam','Túi Đeo Chéo Nam','Bóp/Ví Nam','Khác'],
-        ['Nhà hàng & Ăn uống','Sự kiện & Giải trí','Nạp tiền tài khoản','Sức khỏe & Làm đẹp','Gọi xe','Khóa học','Du lịch & Khách sạn','Mua sắm','Mã quà tặng Shopee','Thanh toán hóa đơn','Dịch vụ khác','Tiền điện tử','Thẻ game','Streaming','Khác'],
-        ['Quần','Quần đùi','Chân váy','Quần jeans','Đầm/Váy','Váy cưới','Đồ liền thân','Áo khoác, Áo choàng & Vest','Áo len & Cardigan','Hoodie và Áo nỉ','Bộ','Đồ lót','Đồ ngủ','Áo','Đồ tập','Đồ Bầu','Đồ truyền thống','Đồ hóa trang','Vải','Vớ/ Tất','Khác'],
-        ['Máy Tính Bàn','Màn Hình','Linh Kiện Máy Tính','Thiết Bị Lưu Trữ','Thiết Bị Mạng','Máy In, Máy Scan & Máy Chiếu','Phụ Kiện Máy Tính','Laptop','Khác','Gaming'],
-        ['Bốt','Giày Thể Thao/ Sneaker','Giày Đế Bằng','Giày Cao Gót','Giày Đế Xuồng','Xăng-đan Và Dép','Phụ Kiện Giày','Giày Khác'],
-        ['Vali','Túi du lịch','Phụ kiện du lịch','Dụng Cụ Thể Thao & Dã Ngoại','Giày Thể Thao','Thời Trang Thể Thao & Dã Ngoại','Phụ Kiện Thể Thao & Dã Ngoại','Khác'],
-        ['Trang phục bé trai','Trang phục bé gái','Giày dép bé trai','Giày dép bé gái','Khác','Quần áo em bé','Giày tập đi & Tất sơ sinh','Phụ kiện trẻ em'],
-        ['Điện thoại','Máy tính bảng','Pin Dự Phòng','Pin Gắn Trong, Cáp và Bộ Sạc','Ốp lưng, bao da, Miếng dán điện thoại','Bảo vệ màn hình','Đế giữ điện thoại & Gậy Chụp hình','Thẻ nhớ','Sim','Khác','Điện Thoại Bàn'],
-        ['Tắm & chăm sóc cơ thể','Chăm sóc tay, chân & móng','Chăm sóc tóc','Chăm sóc nam giới','Nước hoa','Trang điểm','Dụng cụ làm đẹp','Chăm sóc da mặt','Bộ sản phẩm làm đẹp','Khác'],
-        ['Bốt','Giày Thể Thao/ Sneakers','Giày Sục','Giày Tây Lười','Giày Oxfords & Giày Buộc Dây','Xăng-đan và Dép','Phụ kiện giày dép','Khác'],
-        ['Đồ ăn vặt','Đồ chế biến sẵn','Nhu yếu phẩm','Nguyên liệu nấu ăn','Đồ làm bánh','Sữa - trứng','Đồ uống','Ngũ cốc & mứt','Các loại bánh','Đồ uống có cồn','Bộ quà tặng','Thực phẩm tươi sống và thực phẩm đông lạnh','Khác'],
-        ['Đồ chơi mô hình','Đồ chơi giải trí','Đồ chơi giáo dục','Đồ chơi cho trẻ sơ sinh & trẻ nhỏ','Đồ chơi vận động & ngoài trời','Búp bê & Đồ chơi nhồi bông'],
-        ['Đồ dùng du lịch cho bé','Đồ dùng ăn dặm cho bé','Phụ kiện cho mẹ','Chăm sóc sức khỏe mẹ','Đồ dùng phòng tắm & Chăm sóc cơ thể bé','Đồ dùng phòng ngủ cho bé','An toàn cho bé','Thực phẩm cho bé','Chăm sóc sức khỏe bé','Tã & bô em bé','Đồ chơi','Bộ & Gói quà tặng','Khác','Sữa công thức trên 24 tháng','Sữa công thức 0-24 tháng tuổi'],
-        ['Máy ảnh - Máy quay phim','Camera giám sát & Camera hệ thống','Thẻ nhớ','Ống kính','Phụ kiện máy ảnh','Máy bay camera & Phụ kiện'],
-        ['Ba Lô Nữ','Cặp Laptop','Ví Dự Tiệc & Ví Cầm Tay','Túi Đeo Hông & Túi Đeo Ngực','Túi Tote','Túi Quai Xách','Túi Đeo Chéo & Túi Đeo Vai','Ví/Bóp Nữ','Phụ Kiện Túi','Khác'],
-        ['Xe đạp, xe điện','Mô tô, xe máy','Xe Ô tô','Mũ bảo hiểm','Phụ kiện xe máy','Phụ tùng xe máy','Chăm sóc xe máy','Phụ tùng, phụ kiện xe đạp, xe đạp điện','Chăm sóc, sửa chữa xe','Chăm sóc ô tô'],
-        ['Giặt giũ & Chăm sóc nhà cửa','Giấy vệ sinh, khăn giấy','Vệ sinh nhà cửa','Vệ sinh bát đĩa','Dụng cụ vệ sinh','Chất khử mùi, làm thơm','Thuốc diệt côn trùng','Túi, màng bọc thực phẩm','Bao bì, túi đựng rác'],
-        ['Thiết bị đeo thông minh','Phụ kiện tivi','Máy Game Console','Phụ kiện Console','Game Console','Thiết Bị Điện Tử','Loa','Tai Nghe','Tivi','Tivi Box'],
-        ['Thực phẩm chức năng','Vật tư y tế','Chăm sóc cá nhân','Hỗ trợ tình dục','Khác'],
-        ['Đồ gia dụng nhà bếp','Đồ gia dụng lớn','Máy hút bụi & Thiết bị làm sạch','Quạt & Máy nóng lạnh','Thiết bị chăm sóc quần áo','Khác'],
-        ['Đĩa Than','Album Ảnh','Dụng Cụ May Vá','Khác','Tạp Chí & Báo Giấy','Sách','Khác','Văn Phòng Phẩm','Quà Lưu Niệm','Băng - Đĩa','Nhạc Cụ & Phụ Kiện'],
-        ['Thức ăn cho thú cưng','Phụ kiện cho thú cưng','Vệ sinh cho thú cưng','Quần áo & phụ kiện','Chăm sóc sức khỏe','Khác']
-    ];
-
-    var footerDirectoryItemPartLink_hrefs = [
-        ["https://shopee.vn/%C3%81o-Kho%C3%A1c-cat.11035567.11035568", "https://shopee.vn/%C3%81o-Vest-v%C3%A0-Blazer-cat.11035567.11035572", "https://shopee.vn/%C3%81o-Hoodie-%C3%81o-Len-%C3%81o-N%E1%BB%89-cat.11035567.11035578", "https://shopee.vn/Qu%E1%BA%A7n-Jeans-cat.11035567.11035583", "https://shopee.vn/Qu%E1%BA%A7n-D%C3%A0i-Qu%E1%BA%A7n-%C3%82u-cat.11035567.11035584", "https://shopee.vn/Qu%E1%BA%A7n-Short-cat.11035567.11035590", "https://shopee.vn/%C3%81o-cat.11035567.11035592", "https://shopee.vn/%C3%81o-Ba-L%E1%BB%97-cat.11035567.11035597", "https://shopee.vn/%C4%90%E1%BB%93-L%C3%B3t-cat.11035567.11035598", "https://shopee.vn/%C4%90%E1%BB%93-Ng%E1%BB%A7-cat.11035567.11035603", "https://shopee.vn/%C4%90%E1%BB%93-B%E1%BB%99-cat.11035567.11035604", "https://shopee.vn/V%E1%BB%9B-T%E1%BA%A5t-cat.11035567.11035605", "https://shopee.vn/Trang-Ph%E1%BB%A5c-Truy%E1%BB%81n-Th%E1%BB%91ng-cat.11035567.11035606", "https://shopee.vn/%C4%90%E1%BB%93-H%C3%B3a-Trang-cat.11035567.11035611", "https://shopee.vn/Trang-Ph%E1%BB%A5c-Ng%C3%A0nh-Ngh%E1%BB%81-cat.11035567.11035612", "https://shopee.vn/Kh%C3%A1c-cat.11035567.11035613", "https://shopee.vn/Trang-S%E1%BB%A9c-Nam-cat.11035567.11035614", "https://shopee.vn/K%C3%ADnh-M%E1%BA%AFt-Nam-cat.11035567.11035620", "https://shopee.vn/Th%E1%BA%AFt-L%C6%B0ng-Nam-cat.11035567.11035625", "https://shopee.vn/C%C3%A0-v%E1%BA%A1t-N%C6%A1-c%E1%BB%95-cat.11035567.11035626", "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Nam-cat.11035567.11035627"],
-        ["https://shopee.vn/Ch%C4%83n-Ga-G%E1%BB%91i-N%E1%BB%87m-cat.11036670.11036683", "https://shopee.vn/%C4%90%E1%BB%93-n%E1%BB%99i-th%E1%BA%A5t-cat.11036670.11036695", "https://shopee.vn/D%E1%BB%A5ng-c%E1%BB%A5-c%E1%BA%A7m-tay-cat.11036670.11036704", "https://shopee.vn/Trang-tr%C3%AD-nh%C3%A0-c%E1%BB%ADa-cat.11036670.11036717", "https://shopee.vn/D%E1%BB%A5ng-c%E1%BB%A5-Thi%E1%B…BB%8B-ti%E1%BB%87n-%C3%ADch-cat.11036670.11036732", "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-nh%C3%…1%BA%BFp-Ph%C3%B2ng-%C4%83n-cat.11036670.11036748", "https://shopee.vn/%C4%90%C3%A8n-cat.11036670.11036760", "https://shopee.vn/Ngo%C3%A0i-tr%E1%BB%9Di-S%C3%A2n-v%C6%B0%E1%BB%9Dn-cat.11036670.11036776", "https://shopee.vn/T%E1%BB%A7-%C4%91%E1%BB%B1ng-H%E…BB%99p-l%C6%B0u-tr%E1%BB%AF-cat.11036670.11036783", "https://shopee.vn/Kh%C3%A1c-cat.11036670.11036792", "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-ph%C3%B2ng-t%E1%BA%AFm-cat.11036670.11036671"],
-        ["https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-Nam-cat.11035788.11035789", "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-N%E1%BB%AF-cat.11035788.11035790", "https://shopee.vn/B%E1%BB%99-%C4%90%E1%BB%93ng-H%E…93ng-H%E1%BB%93-C%E1%BA%B7p-cat.11035788.11035791", "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-Tr%E1%BA%BB-Em-cat.11035788.11035792", "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-%C4%90%E1%BB%93ng-H%E1%BB%93-cat.11035788.11035793", "https://shopee.vn/Kh%C3%A1c-cat.11035788.11035800"],
-        ["https://shopee.vn/Nh%E1%BA%ABn-cat.11035853.11035854", "https://shopee.vn/B%C3%B4ng-tai-cat.11035853.11035855", "https://shopee.vn/Kh%C4%83n-cho%C3%A0ng-cat.11035853.11035856", "https://shopee.vn/G%C4%83ng-tay-cat.11035853.11035857", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-t%C3%B3c-cat.11035853.11035858", "https://shopee.vn/V%C3%B2ng-tay-L%E1%BA%AFc-tay-cat.11035853.11035865", "https://shopee.vn/L%E1%BA%AFc-ch%C3%A2n-cat.11035853.11035866", "https://shopee.vn/M%C5%A9-cat.11035853.11035867", "https://shopee.vn/D%C3%A2y-chuy%E1%BB%81n-cat.11035853.11035868", "https://shopee.vn/K%C3%ADnh-m%E1%BA%AFt-cat.11035853.11035869", "https://shopee.vn/Kim-lo%E1%BA%A1i-qu%C3%BD-cat.11035853.11035874", "https://shopee.vn/Th%E1%BA%AFt-l%C6%B0ng-cat.11035853.11035880", "https://shopee.vn/C%C3%A0-v%E1%BA%A1t-N%C6%A1-c%E1%BB%95-cat.11035853.11035881", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-th%C3%AAm-cat.11035853.11035882", "https://shopee.vn/B%E1%BB%99-ph%E1%BB%A5-ki%E1%BB%87n-cat.11035853.11035891", "https://shopee.vn/Kh%C3%A1c-cat.11035853.11035892", "https://shopee.vn/V%E1%BB%9B-T%E1%BA%A5t-cat.11035853.11035893", "https://shopee.vn/%C3%94-D%C3%B9-cat.11035853.11035897"],
-        ["https://shopee.vn/Ba-L%C3%B4-Nam-cat.11035741.11035742", "https://shopee.vn/Ba-L%C3%B4-Laptop-Nam-cat.11035741.11035743", "https://shopee.vn/T%C3%BAi-C%E1%BA%B7p-%C4%90%E1%BB%B1ng-Laptop-cat.11035741.11035744", "https://shopee.vn/T%C3%BAi-Ch%E1%BB%91ng-S%E1%BB%91c-Laptop-Nam-cat.11035741.11035747", "https://shopee.vn/T%C3%BAi-Tote-Nam-cat.11035741.11035748", "https://shopee.vn/C%E1%BA%B7p-X%C3%A1ch-C%C3%B4ng-S%E1%BB%9F-Nam-cat.11035741.11035749", "https://shopee.vn/V%C3%AD-C%E1%BA%A7m-Tay-Nam-cat.11035741.11035750", "https://shopee.vn/T%C3%BAi-%C4%90eo-H%C3%B4ng-T%C3…i-%C4%90eo-Ng%E1%BB%B1c-Nam-cat.11035741.11035751", "https://shopee.vn/T%C3%BAi-%C4%90eo-Ch%C3%A9o-Nam-cat.11035741.11035752", "https://shopee.vn/B%C3%B3p-V%C3%AD-Nam-cat.11035741.11035753", "https://shopee.vn/Kh%C3%A1c-cat.11035741.11035760"],
-        ["https://shopee.vn/Nh%C3%A0-h%C3%A0ng-%C4%82n-u%E1%BB%91ng-cat.11035898.11035905", "https://shopee.vn/S%E1%BB%B1-ki%E1%BB%87n-Gi%E1%BA%A3i-tr%C3%AD-cat.11035898.11035899", "https://shopee.vn/N%E1%BA%A1p-ti%E1%BB%81n-t%C3%A0i-kho%E1%BA%A3n-cat.11035898.11035931", "https://shopee.vn/S%E1%BB%A9c-kh%E1%BB%8Fe-L%C3%A0m-%C4%91%E1%BA%B9p-cat.11035898.11035922", "https://shopee.vn/G%E1%BB%8Di-xe-cat.11035898.11035929", "https://shopee.vn/Kh%C3%B3a-h%E1%BB%8Dc-cat.11035898.11035930", "https://shopee.vn/Du-l%E1%BB%8Bch-Kh%C3%A1ch-s%E1%BA%A1n-cat.11035898.11035936", "https://shopee.vn/Mua-s%E1%BA%AFm-cat.11035898.11035909", "https://shopee.vn/M%C3%A3-qu%C3%A0-t%E1%BA%B7ng-Shopee-cat.11035898.11035949", "https://shopee.vn/Thanh-to%C3%A1n-h%C3%B3a-%C4%91%C6%A1n-cat.11035898.11035913", "https://shopee.vn/D%E1%BB%8Bch-v%E1%BB%A5-kh%C3%A1c-cat.11035898.11035914", "https://shopee.vn/Ti%E1%BB%81n-%C4%91i%E1%BB%87n-t%E1%BB%AD-cat.11035898.11035945", "https://shopee.vn/Th%E1%BA%BB-game-cat.11035898.11035947", "https://shopee.vn/Streaming-cat.11035898.11035948", "https://shopee.vn/Kh%C3%A1c-cat.11035898.11035953"],
-        ["https://shopee.vn/Qu%E1%BA%A7n-cat.11035639.11035648", "https://shopee.vn/Qu%E1%BA%A7n-%C4%91%C3%B9i-cat.11035639.11035652", "https://shopee.vn/Ch%C3%A2n-v%C3%A1y-cat.11035639.11035656", "https://shopee.vn/Qu%E1%BA%A7n-jeans-cat.11035639.11035657", "https://shopee.vn/%C4%90%E1%BA%A7m-V%C3%A1y-cat.11035639.11035658", "https://shopee.vn/V%C3%A1y-c%C6%B0%E1%BB%9Bi-cat.11035639.11035659", "https://shopee.vn/%C4%90%E1%BB%93-li%E1%BB%81n-th%C3%A2n-cat.11035639.11035660", "https://shopee.vn/%C3%81o-kho%C3%A1c-%C3%81o-cho%C3%A0ng-Vest-cat.11035639.11035665", "https://shopee.vn/%C3%81o-len-Cardigan-cat.11035639.11035672", "https://shopee.vn/Hoodie-v%C3%A0-%C3%81o-n%E1%BB%89-cat.11035639.11035673", "https://shopee.vn/B%E1%BB%99-cat.11035639.11035677", "https://shopee.vn/%C4%90%E1%BB%93-l%C3%B3t-cat.11035639.11035682", "https://shopee.vn/%C4%90%E1%BB%93-ng%E1%BB%A7-cat.11035639.11035692", "https://shopee.vn/%C3%81o-cat.11035639.11035640", "https://shopee.vn/%C4%90%E1%BB%93-t%E1%BA%ADp-cat.11035639.11035730", "https://shopee.vn/%C4%90%E1%BB%93-B%E1%BA%A7u-cat.11035639.11035697", "https://shopee.vn/%C4%90%E1%BB%93-truy%E1%BB%81n-th%E1%BB%91ng-cat.11035639.11035705", "https://shopee.vn/%C4%90%E1%BB%93-h%C3%B3a-trang-cat.11035639.11035711", "https://shopee.vn/V%E1%BA%A3i-cat.11035639.11035713", "https://shopee.vn/V%E1%BB%9B-T%E1%BA%A5t-cat.11035639.11035726", "https://shopee.vn/Kh%C3%A1c-cat.11035639.11035712"],
-        ["https://shopee.vn/M%C3%A1y-T%C3%ADnh-B%C3%A0n-cat.11035954.11035955", "https://shopee.vn/M%C3%A0n-H%C3%ACnh-cat.11035954.11035961", "https://shopee.vn/Linh-Ki%E1%BB%87n-M%C3%A1y-T%C3%ADnh-cat.11035954.11035962", "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-L%C6%B0u-Tr%E1%BB%AF-cat.11035954.11035975", "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-M%E1%BA%A1ng-cat.11035954.11035983", "https://shopee.vn/M%C3%A1y-In-M%C3%A1y-Scan-M%C3%A1y-Chi%E1%BA%BFu-cat.11035954.11035993", "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-M%C3%A1y-T%C3%ADnh-cat.11035954.11036000", "https://shopee.vn/Laptop-cat.11035954.11036015", "https://shopee.vn/Kh%C3%A1c-cat.11035954.11036016", "https://shopee.vn/Gaming-cat.11035954.11036023"],
-        ["https://shopee.vn/B%E1%BB%91t-cat.11035825.11035826", "https://shopee.vn/Gi%C3%A0y-Th%E1%BB%83-Thao-Sneaker-cat.11035825.11035830", "https://shopee.vn/Gi%C3%A0y-%C4%90%E1%BA%BF-B%E1%BA%B1ng-cat.11035825.11035831", "https://shopee.vn/Gi%C3%A0y-Cao-G%C3%B3t-cat.11035825.11035837", "https://shopee.vn/Gi%C3%A0y-%C4%90%E1%BA%BF-Xu%E1%BB%93ng-cat.11035825.11035838", "https://shopee.vn/X%C4%83ng-%C4%91an-V%C3%A0-D%C3%A9p-cat.11035825.11035839", "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Gi%C3%A0y-cat.11035825.11035845", "https://shopee.vn/Gi%C3%A0y-Kh%C3%A1c-cat.11035825.11035852"],
-        ["https://shopee.vn/Vali-cat.11035478.11035479", "https://shopee.vn/T%C3%BAi-du-l%E1%BB%8Bch-cat.11035478.11035487", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-du-l%E1%BB%8Bch-cat.11035478.11035492", "https://shopee.vn/D%E1%BB%A5ng-C%E1%BB%A5-Th%E1%BB…-Thao-D%C3%A3-Ngo%E1%BA%A1i-cat.11035478.11035503", "https://shopee.vn/Gi%C3%A0y-Th%E1%BB%83-Thao-cat.11035478.11035531", "https://shopee.vn/Th%E1%BB%9Di-Trang-Th%E1%BB%83-Thao-D%C3%A3-Ngo%E1%BA%A1i-cat.11035478.11035543", "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Th%E1%B…-Thao-D%C3%A3-Ngo%E1%BA%A1i-cat.11035478.11035553", "https://shopee.vn/Kh%C3%A1c-cat.11035478.11035566"],
-        ["https://shopee.vn/Trang-ph%E1%BB%A5c-b%C3%A9-trai-cat.11036382.11036418", "https://shopee.vn/Trang-ph%E1%BB%A5c-b%C3%A9-g%C3%A1i-cat.11036382.11036438", "https://shopee.vn/Gi%C3%A0y-d%C3%A9p-b%C3%A9-trai-cat.11036382.11036461", "https://shopee.vn/Gi%C3%A0y-d%C3%A9p-b%C3%A9-g%C3%A1i-cat.11036382.11036469", "https://shopee.vn/Kh%C3%A1c-cat.11036382.11036477", "https://shopee.vn/Qu%E1%BA%A7n-%C3%A1o-em-b%C3%A9-cat.11036382.11036383", "https://shopee.vn/Gi%C3%A0y-t%E1%BA%ADp-%C4%91i-T%E1%BA%A5t-s%C6%A1-sinh-cat.11036382.11036396", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-tr%E1%BA%BB-em-cat.11036382.11036397"],
-        ["https://shopee.vn/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-cat.11036030.11036031", "https://shopee.vn/M%C3%A1y-t%C3%ADnh-b%E1%BA%A3ng-cat.11036030.11036041", "https://shopee.vn/Pin-D%E1%BB%B1-Ph%C3%B2ng-cat.11036030.11036048", "https://shopee.vn/Pin-G%E1%BA%AFn-Trong-C%C3%A1p-v…3%A0-B%E1%BB%99-S%E1%BA%A1c-cat.11036030.11036054", "https://shopee.vn/%E1%BB%90p-l%C6%B0ng-bao-da-Mi%E…91i%E1%BB%87n-tho%E1%BA%A1i-cat.11036030.11036060", "https://shopee.vn/B%E1%BA%A3o-v%E1%BB%87-m%C3%A0n-h%C3%ACnh-cat.11036030.11036064", "https://shopee.vn/%C4%90%E1%BA%BF-gi%E1%BB%AF-%C4%…%ADy-Ch%E1%BB%A5p-h%C3%ACnh-cat.11036030.11036074", "https://shopee.vn/Th%E1%BA%BB-nh%E1%BB%9B-cat.11036030.11036083", "https://shopee.vn/Sim-cat.11036030.11036084", "https://shopee.vn/Kh%C3%A1c-cat.11036030.11036091", "https://shopee.vn/%C4%90i%E1%BB%87n-Tho%E1%BA%A1i-B%C3%A0n-cat.11036030.11036097"],
-        ["https://shopee.vn/T%E1%BA%AFm-ch%C4%83m-s%C3%B3c-c%C6%A1-th%E1%BB%83-cat.11036279.11036280", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-tay-ch%C3%A2n-m%C3%B3ng-cat.11036279.11036292", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-t%C3%B3c-cat.11036279.11036297", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-nam-gi%E1%BB%9Bi-cat.11036279.11036304", "https://shopee.vn/N%C6%B0%E1%BB%9Bc-hoa-cat.11036279.11036310", "https://shopee.vn/Trang-%C4%91i%E1%BB%83m-cat.11036279.11036314", "https://shopee.vn/D%E1%BB%A5ng-c%E1%BB%A5-l%C3%A0m-%C4%91%E1%BA%B9p-cat.11036279.11036321", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-da-m%E1%BA%B7t-cat.11036279.11036328", "https://shopee.vn/B%E1%BB%99-s%E1%BA%A3n-ph%E1%BA%…m-l%C3%A0m-%C4%91%E1%BA%B9p-cat.11036279.11036343", "https://shopee.vn/Kh%C3%A1c-cat.11036279.11036344"],
-        ["https://shopee.vn/B%E1%BB%91t-cat.11035801.11035802", "https://shopee.vn/Gi%C3%A0y-Th%E1%BB%83-Thao-Sneakers-cat.11035801.11035807", "https://shopee.vn/Gi%C3%A0y-S%E1%BB%A5c-cat.11035801.11035808", "https://shopee.vn/Gi%C3%A0y-T%C3%A2y-L%C6%B0%E1%BB%9Di-cat.11035801.11035809", "https://shopee.vn/Gi%C3%A0y-Oxfords-Gi%C3%A0y-Bu%E1%BB%99c-D%C3%A2y-cat.11035801.11035810", "https://shopee.vn/X%C4%83ng-%C4%91an-v%C3%A0-D%C3%A9p-cat.11035801.11035811", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-gi%C3%A0y-d%C3%A9p-cat.11035801.11035817", "https://shopee.vn/Kh%C3%A1c-cat.11035801.11035824"],
-        ["https://shopee.vn/%C4%90%E1%BB%93-%C4%83n-v%E1%BA%B7t-cat.11036525.11036532", "https://shopee.vn/%C4%90%E1%BB%93-ch%E1%BA%BF-bi%E1%BA%BFn-s%E1%BA%B5n-cat.11036525.11036526", "https://shopee.vn/Nhu-y%E1%BA%BFu-ph%E1%BA%A9m-cat.11036525.11036544", "https://shopee.vn/Nguy%C3%AAn-li%E1%BB%87u-n%E1%BA%A5u-%C4%83n-cat.11036525.11036552", "https://shopee.vn/%C4%90%E1%BB%93-l%C3%A0m-b%C3%A1nh-cat.11036525.11036562", "https://shopee.vn/S%E1%BB%AFa-tr%E1%BB%A9ng-cat.11036525.11036591", "https://shopee.vn/%C4%90%E1%BB%93-u%E1%BB%91ng-cat.11036525.11036576", "https://shopee.vn/Ng%C5%A9-c%E1%BB%91c-m%E1%BB%A9t-cat.11036525.11036570", "https://shopee.vn/C%C3%A1c-lo%E1%BA%A1i-b%C3%A1nh-cat.11036525.11036611", "https://shopee.vn/%C4%90%E1%BB%93-u%E1%BB%91ng-c%C3%B3-c%E1%BB%93n-cat.11036525.11036616", "https://shopee.vn/B%E1%BB%99-qu%C3%A0-t%E1%BA%B7ng-cat.11036525.11036622", "https://shopee.vn/Th%E1%BB%B1c-ph%E1%BA%A9m-t%C6%B…%C4%91%C3%B4ng-l%E1%BA%A1nh-cat.11036525.11036601", "https://shopee.vn/Kh%C3%A1c-cat.11036525.11036623"],
-        ["https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-m%C3%B4-h%C3%ACnh-cat.11036932.11036933", "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-gi%E1%BA%A3i-tr%C3%AD-cat.11036932.11036939", "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-gi%C3%A1o-d%E1%BB%A5c-cat.11036932.11036946", "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-cho-tr…inh-tr%E1%BA%BB-nh%E1%BB%8F-cat.11036932.11036954", "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-v%E1%B…9ng-ngo%C3%A0i-tr%E1%BB%9Di-cat.11036932.11036960", "https://shopee.vn/B%C3%BAp-b%C3%AA-%C4%90%E1%BB%93…%A1i-nh%E1%BB%93i-b%C3%B4ng-cat.11036932.11036966"],
-        ["https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-du-l%E1%BB%8Bch-cho-b%C3%A9-cat.11036194.11036195", "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-%C4%83n-d%E1%BA%B7m-cho-b%C3%A9-cat.11036194.11036204", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-cho-m%E1%BA%B9-cat.11036194.11036213", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-s%E1%BB%A9c-kh%E1%BB%8Fe-m%E1%BA%B9-cat.11036194.11036217", "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-ph%C3%…c%C6%A1-th%E1%BB%83-b%C3%A9-cat.11036194.11036222", "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-ph%C3%B2ng-ng%E1%BB%A7-cho-b%C3%A9-cat.11036194.11036233", "https://shopee.vn/An-to%C3%A0n-cho-b%C3%A9-cat.11036194.11036240", "https://shopee.vn/Th%E1%BB%B1c-ph%E1%BA%A9m-cho-b%C3%A9-cat.11036194.11036248", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-s%E1%BB%A9c-kh%E1%BB%8Fe-b%C3%A9-cat.11036194.11036253", "https://shopee.vn/T%C3%A3-b%C3%B4-em-b%C3%A9-cat.11036194.11036260", "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-cat.11036194.11036266", "https://shopee.vn/B%E1%BB%99-G%C3%B3i-qu%C3%A0-t%E1%BA%B7ng-cat.11036194.11036277", "https://shopee.vn/Kh%C3%A1c-cat.11036194.11036278", "https://shopee.vn/S%E1%BB%AFa-c%C3%B4ng-th%E1%BB%A9c-tr%C3%AAn-24-th%C3%A1ng-cat.11036194.11059299", "https://shopee.vn/S%E1%BB%AFa-c%C3%B4ng-th%E1%BB%A…-24-th%C3%A1ng-tu%E1%BB%95i-cat.11036194.11059300"],
-        ["https://shopee.vn/M%C3%A1y-%E1%BA%A3nh-M%C3%A1y-quay-phim-cat.11036101.11036102", "https://shopee.vn/Camera-gi%C3%A1m-s%C3%A1t-Camera-h%E1%BB%87-th%E1%BB%91ng-cat.11036101.11036109", "https://shopee.vn/Th%E1%BA%BB-nh%E1%BB%9B-cat.11036101.11036114", "https://shopee.vn/%E1%BB%90ng-k%C3%ADnh-cat.11036101.11036115", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-m%C3%A1y-%E1%BA%A3nh-cat.11036101.11036119", "https://shopee.vn/M%C3%A1y-bay-camera-Ph%E1%BB%A5-ki%E1%BB%87n-cat.11036101.11036129"],
-        ["https://shopee.vn/Ba-L%C3%B4-N%E1%BB%AF-cat.11035761.11035762", "https://shopee.vn/C%E1%BA%B7p-Laptop-cat.11035761.11035763", "https://shopee.vn/V%C3%AD-D%E1%BB%B1-Ti%E1%BB%87c-V%C3%AD-C%E1%BA%A7m-Tay-cat.11035761.11035768", "https://shopee.vn/T%C3%BAi-%C4%90eo-H%C3%B4ng-T%C3%BAi-%C4%90eo-Ng%E1%BB%B1c-cat.11035761.11035769", "https://shopee.vn/T%C3%BAi-Tote-cat.11035761.11035770", "https://shopee.vn/T%C3%BAi-Quai-X%C3%A1ch-cat.11035761.11035771", "https://shopee.vn/T%C3%BAi-%C4%90eo-Ch%C3%A9o-T%C3%BAi-%C4%90eo-Vai-cat.11035761.11035772", "https://shopee.vn/V%C3%AD-B%C3%B3p-N%E1%BB%AF-cat.11035761.11035773", "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-T%C3%BAi-cat.11035761.11035780", "https://shopee.vn/Kh%C3%A1c-cat.11035761.11035787"],
-        ["https://shopee.vn/Xe-%C4%91%E1%BA%A1p-xe-%C4%91i%E1%BB%87n-cat.11036793.11036794", "https://shopee.vn/M%C3%B4-t%C3%B4-xe-m%C3%A1y-cat.11036793.11036804", "https://shopee.vn/Xe-%C3%94-t%C3%B4-cat.11036793.11036811", "https://shopee.vn/M%C5%A9-b%E1%BA%A3o-hi%E1%BB%83m-cat.11036793.11036817", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-xe-m%C3%A1y-cat.11036793.11036824", "https://shopee.vn/Ph%E1%BB%A5-t%C3%B9ng-xe-m%C3%A1y-cat.11036793.11036831", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-xe-m%C3%A1y-cat.11036793.11036839", "https://shopee.vn/Ph%E1%BB%A5-t%C3%B9ng-ph%E1%BB%A…E1%BA%A1p-%C4%91i%E1%BB%87n-cat.11036793.11036846", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-s%E1%BB%ADa-ch%E1%BB%AFa-xe-cat.11036793.11036852", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-%C3%B4-t%C3%B4-cat.11036793.11036858"],
-        ["https://shopee.vn/Gi%E1%BA%B7t-gi%C5%A9-Ch%C4%83m-…C3%B3c-nh%C3%A0-c%E1%BB%ADa-cat.11036624.11036625", "https://shopee.vn/Gi%E1%BA%A5y-v%E1%BB%87-sinh-kh%C4%83n-gi%E1%BA%A5y-cat.11036624.11036634", "https://shopee.vn/V%E1%BB%87-sinh-nh%C3%A0-c%E1%BB%ADa-cat.11036624.11036639", "https://shopee.vn/V%E1%BB%87-sinh-b%C3%A1t-%C4%91%C4%A9a-cat.11036624.11036647", "https://shopee.vn/D%E1%BB%A5ng-c%E1%BB%A5-v%E1%BB%87-sinh-cat.11036624.11036649", "https://shopee.vn/Ch%E1%BA%A5t-kh%E1%BB%AD-m%C3%B9i-l%C3%A0m-th%C6%A1m-cat.11036624.11036654", "https://shopee.vn/Thu%E1%BB%91c-di%E1%BB%87t-c%C3%B4n-tr%C3%B9ng-cat.11036624.11036660", "https://shopee.vn/T%C3%BAi-m%C3%A0ng-b%E1%BB%8Dc-th%E1%BB%B1c-ph%E1%BA%A9m-cat.11036624.11036664", "https://shopee.vn/Bao-b%C3%AC-t%C3%BAi-%C4%91%E1%BB%B1ng-r%C3%A1c-cat.11036624.11036668"],
-        ["https://shopee.vn/Thi%E1%BA%BFt-b%E1%BB%8B-%C4%91eo-th%C3%B4ng-minh-cat.11036132.11036160", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-tivi-cat.11036132.11036167", "https://shopee.vn/M%C3%A1y-Game-Console-cat.11036132.11036172", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-Console-cat.11036132.11036182", "https://shopee.vn/Game-Console-cat.11036132.11036184", "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-T%E1%BB%AD-cat.11036132.11036133", "https://shopee.vn/Loa-cat.11036132.11036135", "https://shopee.vn/Tai-Nghe-cat.11036132.11036143", "https://shopee.vn/Tivi-cat.11036132.11036151", "https://shopee.vn/Tivi-Box-cat.11036132.11036157"],
-        ["https://shopee.vn/Th%E1%BB%B1c-ph%E1%BA%A9m-ch%E1%BB%A9c-n%C4%83ng-cat.11036345.11036346", "https://shopee.vn/V%E1%BA%ADt-t%C6%B0-y-t%E1%BA%BF-cat.11036345.11036352", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-c%C3%A1-nh%C3%A2n-cat.11036345.11036365", "https://shopee.vn/H%E1%BB%97-tr%E1%BB%A3-t%C3%ACnh-d%E1%BB%A5c-cat.11036345.11036375", "https://shopee.vn/Kh%C3%A1c-cat.11036345.11036381"],
-        ["https://shopee.vn/%C4%90%E1%BB%93-gia-d%E1%BB%A5ng-nh%C3%A0-b%E1%BA%BFp-cat.11036971.11036972", "https://shopee.vn/%C4%90%E1%BB%93-gia-d%E1%BB%A5ng-l%E1%BB%9Bn-cat.11036971.11036990", "https://shopee.vn/M%C3%A1y-h%C3%BAt-b%E1%BB%A5i-Th…BB%8B-l%C3%A0m-s%E1%BA%A1ch-cat.11036971.11037000", "https://shopee.vn/Qu%E1%BA%A1t-M%C3%A1y-n%C3%B3ng-l%E1%BA%A1nh-cat.11036971.11037007", "https://shopee.vn/Thi%E1%BA%BFt-b%E1%BB%8B-ch%C4%8…C3%B3c-qu%E1%BA%A7n-%C3%A1o-cat.11036971.11037016", "https://shopee.vn/Kh%C3%A1c-cat.11036971.11037023"],
-        ["https://shopee.vn/%C4%90%C4%A9a-Than-cat.11036863.11036928", "https://shopee.vn/Album-%E1%BA%A2nh-cat.11036863.11036929", "https://shopee.vn/D%E1%BB%A5ng-C%E1%BB%A5-May-V%C3%A1-cat.11036863.11036930", "https://shopee.vn/Kh%C3%A1c-cat.11036863.11036931", "https://shopee.vn/T%E1%BA%A1p-Ch%C3%AD-B%C3%A1o-Gi%E1%BA%A5y-cat.11036863.11036864", "https://shopee.vn/S%C3%A1ch-cat.11036863.11036869", "https://shopee.vn/Kh%C3%A1c-cat.11036863.11036905", "https://shopee.vn/V%C4%83n-Ph%C3%B2ng-Ph%E1%BA%A9m-cat.11036863.11036906", "https://shopee.vn/Qu%C3%A0-L%C6%B0u-Ni%E1%BB%87m-cat.11036863.11036914", "https://shopee.vn/B%C4%83ng-%C4%90%C4%A9a-cat.11036863.11036920", "https://shopee.vn/Nh%E1%BA%A1c-C%E1%BB%A5-Ph%E1%BB%A5-Ki%E1%BB%87n-cat.11036863.11036921"],
-        ["https://shopee.vn/Th%E1%BB%A9c-%C4%83n-cho-th%C3%BA-c%C6%B0ng-cat.11036478.11036479", "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-cho-th%C3%BA-c%C6%B0ng-cat.11036478.11036490", "https://shopee.vn/V%E1%BB%87-sinh-cho-th%C3%BA-c%C6%B0ng-cat.11036478.11036498", "https://shopee.vn/Qu%E1%BA%A7n-%C3%A1o-ph%E1%BB%A5-ki%E1%BB%87n-cat.11036478.11036510", "https://shopee.vn/Ch%C4%83m-s%C3%B3c-s%E1%BB%A9c-kh%E1%BB%8Fe-cat.11036478.11036519", "https://shopee.vn/Kh%C3%A1c-cat.11036478.11036524"]
-    ];
-
-    var headingInnerHTMLs_index = 0;
-
-    for(var i = 0; i < footerDirectoryItems.length; i++) {
-        var thisPartHeadings = document.querySelectorAll(`
-        .footer__directory__item:nth-child(${i+1}) .footer__directory__item__part__heading`);
-        var thisPartItems = document.querySelectorAll(`
-            .footer__directory__item:nth-child(${i+1}) .footer__directory__item__part__item`);
-        
-
-        for(var j = 0; j < thisPartItems.length; j++) {
-            // update href and innerHTML for headings
-            thisPartHeadings[j].innerHTML = footerDirectoryItemPartHeading_innerHTMLs[headingInnerHTMLs_index];
-            thisPartHeadings[j].href = footerDirectoryItemPartHeading_hrefs[headingInnerHTMLs_index];
-
-            // a tag's quantity in each thisPartItems
-            var len = footerDirectoryItemPartLink_innerHTMLs[headingInnerHTMLs_index].length;
-            for(var k = 0; k < len; k++) {
-                // create a node a, add class, href, innerHTML for it 
-                var aTag = document.createElement('a');
-                aTag.classList.add('footer__directory__item__part__link');
-                aTag.href = footerDirectoryItemPartLink_hrefs[headingInnerHTMLs_index][k];
-                aTag.innerHTML = footerDirectoryItemPartLink_innerHTMLs[headingInnerHTMLs_index][k];
-                // add these two properties to open link in new tab
-                aTag.target = "_blank";
-                aTag.rel = "noopener noreferrer";
-
-                // make it thisPartItems[j]'s child
-                thisPartItems[j].appendChild(aTag);
+function updateInDOMFooterTextATags () {
+    fetch("db.json")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) {
+            for(var i = 0; i < footerTextATags.length; i++) {
+                footerTextATags[i].href = datas.footerTextATagsInfo[i].href;
+                footerTextATags[i].innerHTML = datas.footerTextATagsInfo[i].innerHTML;
             }
-
-            // common index for headingsArray 
-            headingInnerHTMLs_index++;
-        }
-    }
+        })
 }
+
+updateInDOMFooterTextATags();
 //#endregion
 
+// -> OK
+//#region updateInDOMFooterDirectoryList
+var footerDirectoryList = document.querySelector('.footer__directory__list');
+
+function updateInDOMFooterDirectoryList () {
+    fetch("db.json")
+        .then(function (response){
+            return response.json();
+        })
+        .then(function(datas) {
+            handleUpdateInDOMFooterDirectoryList(datas.footerDirectoryListInfo);
+        })
+}
+
+function handleUpdateInDOMFooterDirectoryList (footerDirectoryListInfo) {
+    var partItemQuantity = [
+        21, 11, 6, 18, 11, 15, 21, 10, 8, 8, 8, 11, 10, 8, 13, 6, 15, 6, 10, 10, 9, 10, 5, 6, 11, 6
+    ]
+    
+    var liTags = '', thisItemLength = 5, partIndex = 0;
+
+    for(var i = 0; i < footerDirectoryListInfo.length; i++) {
+        thisItemLength = (i == 0) ? 6 : 5;
+        var divTags = '';
+        
+        for(var j = 0; j < thisItemLength; j++) {
+            var aTags = '';
+            for(var k = 0; k < partItemQuantity[partIndex]; k++) {
+                var aTag = `<a class="footer__directory__item__part__item" href="${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].href}" target="_blank" rel="noopener noreferrer">
+                    ${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].innerHTML}
+                </a>`;
+                
+                aTags += aTag;
+            }
+            
+            var divTag = `
+                <div class="footer__directory__item__part">
+                    <a target="_blank" rel="noopener noreferrer" href="${footerDirectoryListInfo[i][j].heading.href}" class="footer__directory__item__part__heading">
+                    ${footerDirectoryListInfo[i][j].heading.innerHTML}</a>
+                    <div class="footer__directory__item__part__list">
+                        ${aTags}
+                    </div>
+                </div>`;
+    
+            divTags += divTag;
+
+            partIndex++;
+        }
+    
+        var liTag = `<li class="footer__directory__item">${divTags}</li>`
+        liTags += liTag;
+    }
+
+    //-> add innerHTML for this element
+    footerDirectoryList.innerHTML = liTags;
+}
+
+updateInDOMFooterDirectoryList();
+//#endregion
 
 // -> OK
 //#region updateInDOMFooterLinkAboutTextCSKH
@@ -4298,7 +4141,6 @@ function updateInDOMFooterLinkAboutTextVeShopee () {
 updateInDOMFooterLinkAboutTextVeShopee();
 //#endregion
 
-
 // -> OK
 //#region updateInDOMFooterLinkAboutSocial
 var footerLinkAboutSocial = document.querySelector('.footer__link__about-social');
@@ -4325,7 +4167,6 @@ function updateInDOMFooterLinkAboutSocial () {
 updateInDOMFooterLinkAboutSocial();
 //#endregion
 
-
 // -> OK
 //#region updateInDOMFooterLinkCopyrightCountryAndAreaList
 var footerLinkCopyrightCountryAndAreaList = 
@@ -4349,7 +4190,6 @@ function updateInDOMFooterLinkCopyrightCountryAndAreaList () {
 
 updateInDOMFooterLinkCopyrightCountryAndAreaList();
 //#endregion
-
 
 // -> OK
 //#region updateInDOMFooterPolicyTermsPartTitle

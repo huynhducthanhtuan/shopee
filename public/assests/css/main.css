@@ -3373,10 +3373,10 @@ width: 13.5rem;
 .footer__directory__item__part__heading:hover {
     color: rgb(238, 77, 45);
 }
-.footer__directory__item__part__item {
+.footer__directory__item__part__list {
     margin-top: 0.4rem;
 }
-.footer__directory__item__part__link {
+.footer__directory__item__part__item {
     text-decoration: none;
     display: inline-block;
     color: rgba(0,0,0,.54);
@@ -3390,10 +3390,10 @@ width: 13.5rem;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.footer__directory__item__part__link:not(:last-child) {
+.footer__directory__item__part__item:not(:last-child) {
     border-right: 1px solid rgba(0,0,0,.54);
 }
-.footer__directory__item__part__link:hover {
+.footer__directory__item__part__item:hover {
     color: rgb(238, 77, 45);
 }
 

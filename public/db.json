@@ -820,6 +820,1688 @@
             "id": 24
         }
     ],
+    "footerTextATagsInfo": [
+        {
+            "id": 1,
+            "href": "https://shopee.sg/",
+            "innerHTML": "Singapore"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.com.my/",
+            "innerHTML": "Malaysia"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.co.id/",
+            "innerHTML": "Indonesia"
+        },
+        {
+            "id": 4,
+            "href": "https://shopee.co.th/",
+            "innerHTML": "Thái Lan"
+        },
+        {
+            "id": 5,
+            "href": "https://shopee.ph/",
+            "innerHTML": "Philipin"
+        },
+        {
+            "id": 6,
+            "href": "https://shopee.tw/",
+            "innerHTML": "Đài Loan"
+        },
+        {
+            "id": 7,
+            "href": "https://shopee.com.br/",
+            "innerHTML": "Brazil"
+        },
+        {
+            "id": 8,
+            "href": "https://shopee.vn/mall/",
+            "innerHTML": "Shopee Mall"
+        },
+        {
+            "id": 9,
+            "href": "https://banhang.shopee.vn/edu/article/231",
+            "innerHTML": "tính năng “Shop tạm nghỉ”"
+        },
+        {
+            "id": 10,
+            "href": "https://banhang.shopee.vn/edu/article/119",
+            "innerHTML": "tạo chương trình khuyến mãi trên Shopee"
+        },
+        {
+            "id": 11,
+            "href": "https://banhang.shopee.vn/edu/article/66",
+            "innerHTML": "phân loại sản phẩm"
+        },
+        {
+            "id": 12,
+            "href": "https://shopee.vn/flash_sale/",
+            "innerHTML": "Shopee flash sale"
+        },
+        {
+            "id": 13,
+            "href": "https://shopee.vn/m/ma-giam-gia",
+            "innerHTML": "mã giảm giá Shopee"
+        },
+        {
+            "id": 14,
+            "href": "https://shopee.vn/m/mien-phi-van-chuyen",
+            "innerHTML": "mã miễn phí vận chuyển toàn quốc"
+        },
+        {
+            "id": 15,
+            "href": "https://shopee.vn/m/4-4",
+            "innerHTML": "Siêu hội mua sắm 4.4"
+        },
+        {
+            "id": 16,
+            "href": "https://shopee.vn/m/99",
+            "innerHTML": "Shopee 9.9 sale"
+        },
+        {
+            "id": 17,
+            "href": "https://shopee.vn/m/1010",
+            "innerHTML": "Shopee 10.10 sale"
+        },
+        {
+            "id": 18,
+            "href": "https://shopee.vn/m/11-11",
+            "innerHTML": "Shopee 11.11 sale"
+        },
+        {
+            "id": 19,
+            "href": "https://shopee.vn/m/12-12",
+            "innerHTML": "Shopee 12.12 sale"
+        },
+        {
+            "id": 20,
+            "href": "https://shopee.vn/m/tet-sieu-sale",
+            "innerHTML": "Shopee Tết Sale"
+        },
+        {
+            "id": 21,
+            "href": "https://shopee.vn/m/shopee-premium",
+            "innerHTML": "Shopee Premium"
+        },
+        {
+            "id": 22,
+            "href": "https://shopee.vn/m/tram-ty-uu-dai",
+            "innerHTML": "hàng hiệu giảm đến 50%"
+        },
+        {
+            "id": 23,
+            "href": "https://shopee.vn/m/kiehls-sale",
+            "innerHTML": "Kiehl's"
+        },
+        {
+            "id": 24,
+            "href": "https://shopee.vn/m/fresh-sale",
+            "innerHTML": "Fresh"
+        },
+        {
+            "id": 25,
+            "href": "https://shopee.vn/m/the-ordinary-sale",
+            "innerHTML": "The Ordinary"
+        },
+        {
+            "id": 26,
+            "href": "https://shopee.vn/m/foreo-sale",
+            "innerHTML": "Foreo"
+        },
+        {
+            "id": 27,
+            "href": "https://shopee.vn/m/transino-sale",
+            "innerHTML": "Transino"
+        },
+        {
+            "id": 28,
+            "href": "https://shopee.vn/m/sk-ii-sale",
+            "innerHTML": "SK-II"
+        },
+        {
+            "id": 29,
+            "href": "https://shopee.vn/m/gopro-sale",
+            "innerHTML": "camera hành trình Gopro"
+        },
+        {
+            "id": 30,
+            "href": "https://shopee.vn/marshall_official_storevn",
+            "innerHTML": "Marshall"
+        },
+        {
+            "id": 31,
+            "href": "https://shopee.vn/m/huion-sale",
+            "innerHTML": "bảng vẽ điện tử Huion"
+        },
+        {
+            "id": 32,
+            "href": "https://shopee.vn/m/dji-sale",
+            "innerHTML": "máy quay DJI Osmo Pocket"
+        },
+        {
+            "id": 33,
+            "href": "https://shopee.vn/m/harman-kardon-sale",
+            "innerHTML": "loa Harman Kardon"
+        },
+        {
+            "id": 34,
+            "href": "https://shopee.vn/m/razer-sale",
+            "innerHTML": "Razer"
+        },
+        {
+            "id": 35,
+            "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.78",
+            "innerHTML": "thời trang nam"
+        },
+        {
+            "id": 36,
+            "href": "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-cat.9607",
+            "innerHTML": "đồng hồ"
+        },
+        {
+            "id": 37,
+            "href": "https://shopee.vn/search?keyword=n%C6%B0%E1%BB%9Bc%20r%E1%BB%ADa%20tay%20kh%C3%B4",
+            "innerHTML": "nước rửa tay khô"
+        },
+        {
+            "id": 38,
+            "href": "https://shopee.vn/search?keyword=kh%E1%BA%A9u%20trang%20n95",
+            "innerHTML": "khẩu trang N95"
+        },
+        {
+            "id": 39,
+            "href": "https://shopee.vn/shopee-coins/",
+            "innerHTML": "Shopee Xu"
+        },
+        {
+            "id": 40,
+            "href": "https://shopee.vn/m/mum-club",
+            "innerHTML": "Shopee Mum's Club"
+        },
+        {
+            "id": 41,
+            "href": "https://shopee.vn/m/beauty-club",
+            "innerHTML": "Shopee Beauty Club"
+        },
+        {
+            "id": 42,
+            "href": "https://shopee.vn/m/book-club",
+            "innerHTML": "Shopee Book Club"
+        }
+    ],
+    "footerDirectoryListInfo": [
+        {
+            "0": {
+                "id": 1,
+                "heading": {
+                    "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567",
+                    "innerHTML": "Thời Trang Nam"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/%C3%81o-Kho%C3%A1c-cat.11035567.11035568",
+                        "innerHTML": "Áo Khoác"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C3%81o-Vest-v%C3%A0-Blazer-cat.11035567.11035572",
+                        "innerHTML": "Áo Vest và Blazer"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C3%81o-Hoodie-%C3%81o-Len-%C3%81o-N%E1%BB%89-cat.11035567.11035578",
+                        "innerHTML": "Áo Hoodie, Áo Len & Áo Nỉ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A7n-Jeans-cat.11035567.11035583",
+                        "innerHTML": "Quần Jeans"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A7n-D%C3%A0i-Qu%E1%BA%A7n-%C3%82u-cat.11035567.11035584",
+                        "innerHTML": "Quần Dài/Quần Âu"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A7n-Short-cat.11035567.11035590",
+                        "innerHTML": "Quần Short"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C3%81o-cat.11035567.11035592",
+                        "innerHTML": "Áo"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C3%81o-Ba-L%E1%BB%97-cat.11035567.11035597",
+                        "innerHTML": "Áo Ba Lỗ"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-L%C3%B3t-cat.11035567.11035598",
+                        "innerHTML": "Đồ Lót"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-Ng%E1%BB%A7-cat.11035567.11035603",
+                        "innerHTML": "Đồ Ngủ"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-B%E1%BB%99-cat.11035567.11035604",
+                        "innerHTML": "Đồ Bộ"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%E1%BB%9B-T%E1%BA%A5t-cat.11035567.11035605",
+                        "innerHTML": "Vớ/Tất"
+                    },
+                    {
+                        "href": "https://shopee.vn/Trang-Ph%E1%BB%A5c-Truy%E1%BB%81n-Th%E1%BB%91ng-cat.11035567.11035606",
+                        "innerHTML": "Trang Phục Truyền Thống"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-H%C3%B3a-Trang-cat.11035567.11035611",
+                        "innerHTML": "Đồ Hóa Trang"
+                    },
+                    {
+                        "href": "https://shopee.vn/Trang-Ph%E1%BB%A5c-Ng%C3%A0nh-Ngh%E1%BB%81-cat.11035567.11035612",
+                        "innerHTML": "Trang Phục Ngành Nghề"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035567.11035613",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/Trang-S%E1%BB%A9c-Nam-cat.11035567.11035614",
+                        "innerHTML": "Trang Sức Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/K%C3%ADnh-M%E1%BA%AFt-Nam-cat.11035567.11035620",
+                        "innerHTML": "Kính Mắt Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/Th%E1%BA%AFt-L%C6%B0ng-Nam-cat.11035567.11035625",
+                        "innerHTML": "Thắt Lưng Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/C%C3%A0-v%E1%BA%A1t-N%C6%A1-c%E1%BB%95-cat.11035567.11035626",
+                        "innerHTML": "Cà vạt & Nơ cổ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Nam-cat.11035567.11035627",
+                        "innerHTML": "Phụ Kiện Nam"
+                    }
+                ]
+            },
+            "1": {
+                "id": 2,
+                "heading": {
+                    "href": "https://shopee.vn/Nh%C3%A0-C%E1%BB%ADa-%C4%90%E1%BB%9Di-S%E1%BB%91ng-cat.11036670",
+                    "innerHTML": "Nhà Cửa & Đời Sống"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83n-Ga-G%E1%BB%91i-N%E1%BB%87m-cat.11036670.11036683",
+                        "innerHTML": "Chăn, Ga, Gối & Nệm"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-n%E1%BB%99i-th%E1%BA%A5t-cat.11036670.11036695",
+                        "innerHTML": "Đồ nội thất"
+                    },
+                    {
+                        "href": "https://shopee.vn/D%E1%BB%A5ng-c%E1%BB%A5-c%E1%BA%A7m-tay-cat.11036670.11036704",
+                        "innerHTML": "Dụng cụ cầm tay"
+                    },
+                    {
+                        "href": "https://shopee.vn/Trang-tr%C3%AD-nh%C3%A0-c%E1%BB%ADa-cat.11036670.11036717",
+                        "innerHTML": "Trang trí nhà cửa"
+                    },
+                    {
+                        "href": "https://shopee.vn/D%E1%BB%A5ng-c%E1%BB%A5-Thi%E1%B…BB%8B-ti%E1%BB%87n-%C3%ADch-cat.11036670.11036732",
+                        "innerHTML": "Dụng cụ & Thiết bị tiện ích"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-nh%C3%…1%BA%BFp-Ph%C3%B2ng-%C4%83n-cat.11036670.11036748",
+                        "innerHTML": "Đồ dùng nhà bếp & Phòng ăn"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%C3%A8n-cat.11036670.11036760",
+                        "innerHTML": "Đèn"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ngo%C3%A0i-tr%E1%BB%9Di-S%C3%A2n-v%C6%B0%E1%BB%9Dn-cat.11036670.11036776",
+                        "innerHTML": "Ngoài trời & Sân vườn"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%E1%BB%A7-%C4%91%E1%BB%B1ng-H%E…BB%99p-l%C6%B0u-tr%E1%BB%AF-cat.11036670.11036783",
+                        "innerHTML": "Tủ đựng & Hộp lưu trữ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036670.11036792",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-ph%C3%B2ng-t%E1%BA%AFm-cat.11036670.11036671",
+                        "innerHTML": "Đồ dùng phòng tắm"
+                    }
+                ]
+            },
+            "2": {
+                "id": 3,
+                "heading": {
+                    "href": "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-cat.11035788",
+                    "innerHTML": "Đồng Hồ"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-Nam-cat.11035788.11035789",
+                        "innerHTML": "Đồng Hồ Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-N%E1%BB%AF-cat.11035788.11035790",
+                        "innerHTML": "Đồng Hồ Nữ"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%E1%BB%99-%C4%90%E1%BB%93ng-H%E…93ng-H%E1%BB%93-C%E1%BA%B7p-cat.11035788.11035791",
+                        "innerHTML": "Bộ Đồng Hồ & Đồng Hồ Cặp"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-Tr%E1%BA%BB-Em-cat.11035788.11035792",
+                        "innerHTML": "Đồng Hồ Trẻ Em"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-%C4%90%E1%BB%93ng-H%E1%BB%93-cat.11035788.11035793",
+                        "innerHTML": "Phụ Kiện Đồng Hồ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035788.11035800",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "3": {
+                "id": 4,
+                "heading": {
+                    "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Trang-S%E1%BB%A9c-N%E1%BB%AF-cat.11035853",
+                    "innerHTML": "Phụ Kiện & Trang Sức Nữ"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Nh%E1%BA%ABn-cat.11035853.11035854",
+                        "innerHTML": "Nhẫn"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%C3%B4ng-tai-cat.11035853.11035855",
+                        "innerHTML": "Bông tai"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C4%83n-cho%C3%A0ng-cat.11035853.11035856",
+                        "innerHTML": "Khăn choàng"
+                    },
+                    {
+                        "href": "https://shopee.vn/G%C4%83ng-tay-cat.11035853.11035857",
+                        "innerHTML": "Găng tay"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-t%C3%B3c-cat.11035853.11035858",
+                        "innerHTML": "Phụ kiện tóc"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%C3%B2ng-tay-L%E1%BA%AFc-tay-cat.11035853.11035865",
+                        "innerHTML": "Vòng tay & Lắc tay"
+                    },
+                    {
+                        "href": "https://shopee.vn/L%E1%BA%AFc-ch%C3%A2n-cat.11035853.11035866",
+                        "innerHTML": "Lắc chân"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C5%A9-cat.11035853.11035867",
+                        "innerHTML": "Mũ"
+                    },
+                    {
+                        "href": "https://shopee.vn/D%C3%A2y-chuy%E1%BB%81n-cat.11035853.11035868",
+                        "innerHTML": "Dây chuyền"
+                    },
+                    {
+                        "href": "https://shopee.vn/K%C3%ADnh-m%E1%BA%AFt-cat.11035853.11035869",
+                        "innerHTML": "Kính mắt"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kim-lo%E1%BA%A1i-qu%C3%BD-cat.11035853.11035874",
+                        "innerHTML": "Kim loại quý"
+                    },
+                    {
+                        "href": "https://shopee.vn/Th%E1%BA%AFt-l%C6%B0ng-cat.11035853.11035880",
+                        "innerHTML": "Thắt lưng"
+                    },
+                    {
+                        "href": "https://shopee.vn/C%C3%A0-v%E1%BA%A1t-N%C6%A1-c%E1%BB%95-cat.11035853.11035881",
+                        "innerHTML": "Cà vạt & Nơ cổ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-th%C3%AAm-cat.11035853.11035882",
+                        "innerHTML": "Phụ kiện thêm"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%E1%BB%99-ph%E1%BB%A5-ki%E1%BB%87n-cat.11035853.11035891",
+                        "innerHTML": "Bộ phụ kiện"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035853.11035892",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%E1%BB%9B-T%E1%BA%A5t-cat.11035853.11035893",
+                        "innerHTML": "Vớ/ Tất"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C3%94-D%C3%B9-cat.11035853.11035897",
+                        "innerHTML": "Ô/ Dù"
+                    }
+                ]
+            },
+            "4": {
+                "id": 5,
+                "heading": {
+                    "href": "https://shopee.vn/Balo-T%C3%BAi-V%C3%AD-Nam-cat.11035741",
+                    "innerHTML": "Balo & Túi Ví Nam"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Ba-L%C3%B4-Nam-cat.11035741.11035742",
+                        "innerHTML": "Ba Lô Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ba-L%C3%B4-Laptop-Nam-cat.11035741.11035743",
+                        "innerHTML": "Ba Lô Laptop Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-C%E1%BA%B7p-%C4%90%E1%BB%B1ng-Laptop-cat.11035741.11035744",
+                        "innerHTML": "Túi & Cặp Đựng Laptop"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-Ch%E1%BB%91ng-S%E1%BB%91c-Laptop-Nam-cat.11035741.11035747",
+                        "innerHTML": "Túi Chống Sốc Laptop Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-Tote-Nam-cat.11035741.11035748",
+                        "innerHTML": "Túi Tote Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/C%E1%BA%B7p-X%C3%A1ch-C%C3%B4ng-S%E1%BB%9F-Nam-cat.11035741.11035749",
+                        "innerHTML": "Cặp Xách Công Sở Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%C3%AD-C%E1%BA%A7m-Tay-Nam-cat.11035741.11035750",
+                        "innerHTML": "Ví Cầm Tay Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-%C4%90eo-H%C3%B4ng-T%C3…i-%C4%90eo-Ng%E1%BB%B1c-Nam-cat.11035741.11035751",
+                        "innerHTML": "Túi Đeo Hông & Túi Đeo Ngực Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-%C4%90eo-Ch%C3%A9o-Nam-cat.11035741.11035752",
+                        "innerHTML": "Túi Đeo Chéo Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%C3%B3p-V%C3%AD-Nam-cat.11035741.11035753",
+                        "innerHTML": "Bóp/Ví Nam"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035741.11035760",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "5": {
+                "id": 6,
+                "heading": {
+                    "href": "https://shopee.vn/Voucher-D%E1%BB%8Bch-V%E1%BB%A5-cat.11035898",
+                    "innerHTML": "Voucher & Dịch Vụ"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Nh%C3%A0-h%C3%A0ng-%C4%82n-u%E1%BB%91ng-cat.11035898.11035905",
+                        "innerHTML": "Nhà hàng & Ăn uống"
+                    },
+                    {
+                        "href": "https://shopee.vn/S%E1%BB%B1-ki%E1%BB%87n-Gi%E1%BA%A3i-tr%C3%AD-cat.11035898.11035899",
+                        "innerHTML": "Sự kiện & Giải trí"
+                    },
+                    {
+                        "href": "https://shopee.vn/N%E1%BA%A1p-ti%E1%BB%81n-t%C3%A0i-kho%E1%BA%A3n-cat.11035898.11035931",
+                        "innerHTML": "Nạp tiền tài khoản"
+                    },
+                    {
+                        "href": "https://shopee.vn/S%E1%BB%A9c-kh%E1%BB%8Fe-L%C3%A0m-%C4%91%E1%BA%B9p-cat.11035898.11035922",
+                        "innerHTML": "Sức khỏe & Làm đẹp"
+                    },
+                    {
+                        "href": "https://shopee.vn/G%E1%BB%8Di-xe-cat.11035898.11035929",
+                        "innerHTML": "Gọi xe"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%B3a-h%E1%BB%8Dc-cat.11035898.11035930",
+                        "innerHTML": "Khóa học"
+                    },
+                    {
+                        "href": "https://shopee.vn/Du-l%E1%BB%8Bch-Kh%C3%A1ch-s%E1%BA%A1n-cat.11035898.11035936",
+                        "innerHTML": "Du lịch & Khách sạn"
+                    },
+                    {
+                        "href": "https://shopee.vn/Mua-s%E1%BA%AFm-cat.11035898.11035909",
+                        "innerHTML": "Mua sắm"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C3%A3-qu%C3%A0-t%E1%BA%B7ng-Shopee-cat.11035898.11035949",
+                        "innerHTML": "Mã quà tặng Shopee"
+                    },
+                    {
+                        "href": "https://shopee.vn/Thanh-to%C3%A1n-h%C3%B3a-%C4%91%C6%A1n-cat.11035898.11035913",
+                        "innerHTML": "Thanh toán hóa đơn"
+                    },
+                    {
+                        "href": "https://shopee.vn/D%E1%BB%8Bch-v%E1%BB%A5-kh%C3%A1c-cat.11035898.11035914",
+                        "innerHTML": "Dịch vụ khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ti%E1%BB%81n-%C4%91i%E1%BB%87n-t%E1%BB%AD-cat.11035898.11035945",
+                        "innerHTML": "Tiền điện tử"
+                    },
+                    {
+                        "href": "https://shopee.vn/Th%E1%BA%BB-game-cat.11035898.11035947",
+                        "innerHTML": "Thẻ game"
+                    },
+                    {
+                        "href": "https://shopee.vn/Streaming-cat.11035898.11035948",
+                        "innerHTML": "Streaming"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035898.11035953",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            }
+        },
+        {
+            "0": {
+                "id": 1,
+                "heading": {
+                    "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-N%E1%BB%AF-cat.11035639",
+                    "innerHTML": "Thời Trang Nữ"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A7n-cat.11035639.11035648",
+                        "innerHTML": "Quần"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A7n-%C4%91%C3%B9i-cat.11035639.11035652",
+                        "innerHTML": "Quần đùi"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C3%A2n-v%C3%A1y-cat.11035639.11035656",
+                        "innerHTML": "Chân váy"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A7n-jeans-cat.11035639.11035657",
+                        "innerHTML": "Quần jeans"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BA%A7m-V%C3%A1y-cat.11035639.11035658",
+                        "innerHTML": "Đầm/Váy"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%C3%A1y-c%C6%B0%E1%BB%9Bi-cat.11035639.11035659",
+                        "innerHTML": "Váy cưới"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-li%E1%BB%81n-th%C3%A2n-cat.11035639.11035660",
+                        "innerHTML": "Đồ liền thân"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C3%81o-kho%C3%A1c-%C3%81o-cho%C3%A0ng-Vest-cat.11035639.11035665",
+                        "innerHTML": "Áo khoác, Áo choàng & Vest"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C3%81o-len-Cardigan-cat.11035639.11035672",
+                        "innerHTML": "Áo len & Cardigan"
+                    },
+                    {
+                        "href": "https://shopee.vn/Hoodie-v%C3%A0-%C3%81o-n%E1%BB%89-cat.11035639.11035673",
+                        "innerHTML": "Hoodie và Áo nỉ"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%E1%BB%99-cat.11035639.11035677",
+                        "innerHTML": "Bộ"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-l%C3%B3t-cat.11035639.11035682",
+                        "innerHTML": "Đồ lót"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-ng%E1%BB%A7-cat.11035639.11035692",
+                        "innerHTML": "Đồ ngủ"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C3%81o-cat.11035639.11035640",
+                        "innerHTML": "Áo"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-t%E1%BA%ADp-cat.11035639.11035730",
+                        "innerHTML": "Đồ tập"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-B%E1%BA%A7u-cat.11035639.11035697",
+                        "innerHTML": "Đồ Bầu"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-truy%E1%BB%81n-th%E1%BB%91ng-cat.11035639.11035705",
+                        "innerHTML": "Đồ truyền thống"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-h%C3%B3a-trang-cat.11035639.11035711",
+                        "innerHTML": "Đồ hóa trang"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%E1%BA%A3i-cat.11035639.11035713",
+                        "innerHTML": "Vải"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%E1%BB%9B-T%E1%BA%A5t-cat.11035639.11035726",
+                        "innerHTML": "Vớ/ Tất"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035639.11035712",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "1": {
+                "id": 2,
+                "heading": {
+                    "href": "https://shopee.vn/M%C3%A1y-T%C3%ADnh-Laptop-cat.11035954",
+                    "innerHTML": "Máy Tính & Laptop"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/M%C3%A1y-T%C3%ADnh-B%C3%A0n-cat.11035954.11035955",
+                        "innerHTML": "Máy Tính Bàn"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C3%A0n-H%C3%ACnh-cat.11035954.11035961",
+                        "innerHTML": "Màn Hình"
+                    },
+                    {
+                        "href": "https://shopee.vn/Linh-Ki%E1%BB%87n-M%C3%A1y-T%C3%ADnh-cat.11035954.11035962",
+                        "innerHTML": "Linh Kiện Máy Tính"
+                    },
+                    {
+                        "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-L%C6%B0u-Tr%E1%BB%AF-cat.11035954.11035975",
+                        "innerHTML": "Thiết Bị Lưu Trữ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-M%E1%BA%A1ng-cat.11035954.11035983",
+                        "innerHTML": "Thiết Bị Mạng"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C3%A1y-In-M%C3%A1y-Scan-M%C3%A1y-Chi%E1%BA%BFu-cat.11035954.11035993",
+                        "innerHTML": "Máy In, Máy Scan & Máy Chiếu"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-M%C3%A1y-T%C3%ADnh-cat.11035954.11036000",
+                        "innerHTML": "Phụ Kiện Máy Tính"
+                    },
+                    {
+                        "href": "https://shopee.vn/Laptop-cat.11035954.11036015",
+                        "innerHTML": "Laptop"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035954.11036016",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gaming-cat.11035954.11036023",
+                        "innerHTML": "Gaming"
+                    }
+                ]
+            },
+            "2": {
+                "id": 3,
+                "heading": {
+                    "href": "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-N%E1%BB%AF-cat.11035825",
+                    "innerHTML": "Giày Dép Nữ"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/B%E1%BB%91t-cat.11035825.11035826",
+                        "innerHTML": "Bốt"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-Th%E1%BB%83-Thao-Sneaker-cat.11035825.11035830",
+                        "innerHTML": "Giày Thể Thao/ Sneaker"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-%C4%90%E1%BA%BF-B%E1%BA%B1ng-cat.11035825.11035831",
+                        "innerHTML": "Giày Đế Bằng"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-Cao-G%C3%B3t-cat.11035825.11035837",
+                        "innerHTML": "Giày Cao Gót"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-%C4%90%E1%BA%BF-Xu%E1%BB%93ng-cat.11035825.11035838",
+                        "innerHTML": "Giày Đế Xuồng"
+                    },
+                    {
+                        "href": "https://shopee.vn/X%C4%83ng-%C4%91an-V%C3%A0-D%C3%A9p-cat.11035825.11035839",
+                        "innerHTML": "Xăng-đan Và Dép"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Gi%C3%A0y-cat.11035825.11035845",
+                        "innerHTML": "Phụ Kiện Giày"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-Kh%C3%A1c-cat.11035825.11035852",
+                        "innerHTML": "Giày Khác"
+                    }
+                ]
+            },
+            "3": {
+                "id": 4,
+                "heading": {
+                    "href": "https://shopee.vn/Th%E1%BB%83-Thao-Du-L%E1%BB%8Bch-cat.11035478",
+                    "innerHTML": "Thể Thao & Du Lịch"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Vali-cat.11035478.11035479",
+                        "innerHTML": "Vali"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-du-l%E1%BB%8Bch-cat.11035478.11035487",
+                        "innerHTML": "Túi du lịch"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-du-l%E1%BB%8Bch-cat.11035478.11035492",
+                        "innerHTML": "Phụ kiện du lịch"
+                    },
+                    {
+                        "href": "https://shopee.vn/D%E1%BB%A5ng-C%E1%BB%A5-Th%E1%BB…-Thao-D%C3%A3-Ngo%E1%BA%A1i-cat.11035478.11035503",
+                        "innerHTML": "Dụng Cụ Thể Thao & Dã Ngoại"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-Th%E1%BB%83-Thao-cat.11035478.11035531",
+                        "innerHTML": "Giày Thể Thao"
+                    },
+                    {
+                        "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Th%E1%BB%83-Thao-D%C3%A3-Ngo%E1%BA%A1i-cat.11035478.11035543",
+                        "innerHTML": "Thời Trang Thể Thao & Dã Ngoại"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Th%E1%B…-Thao-D%C3%A3-Ngo%E1%BA%A1i-cat.11035478.11035553",
+                        "innerHTML": "Phụ Kiện Thể Thao & Dã Ngoại"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035478.11035566",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "4": {
+                "id": 5,
+                "heading": {
+                    "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Tr%E1%BA%BB-Em-cat.11036382",
+                    "innerHTML": "Thời Trang Trẻ Em"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Trang-ph%E1%BB%A5c-b%C3%A9-trai-cat.11036382.11036418",
+                        "innerHTML": "Trang phục bé trai"
+                    },
+                    {
+                        "href": "https://shopee.vn/Trang-ph%E1%BB%A5c-b%C3%A9-g%C3%A1i-cat.11036382.11036438",
+                        "innerHTML": "Trang phục bé gái"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-d%C3%A9p-b%C3%A9-trai-cat.11036382.11036461",
+                        "innerHTML": "Giày dép bé trai"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-d%C3%A9p-b%C3%A9-g%C3%A1i-cat.11036382.11036469",
+                        "innerHTML": "Giày dép bé gái"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036382.11036477",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A7n-%C3%A1o-em-b%C3%A9-cat.11036382.11036383",
+                        "innerHTML": "Quần áo em bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-t%E1%BA%ADp-%C4%91i-T%E1%BA%A5t-s%C6%A1-sinh-cat.11036382.11036396",
+                        "innerHTML": "Giày tập đi & Tất sơ sinh"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-tr%E1%BA%BB-em-cat.11036382.11036397",
+                        "innerHTML": "Phụ kiện trẻ em"
+                    }
+                ]
+            }
+        },
+        {
+            "0": {
+                "id": 1,
+                "heading": {
+                    "href": "https://shopee.vn/%C4%90i%E1%BB%87n-Tho%E1%BA%A1i-Ph%E1%BB%A5-Ki%E1%BB%87n-cat.11036030",
+                    "innerHTML": "Điện Thoại & Phụ Kiện"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/%C4%90i%E1%BB%87n-tho%E1%BA%A1i-cat.11036030.11036031",
+                        "innerHTML": "Điện thoại"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C3%A1y-t%C3%ADnh-b%E1%BA%A3ng-cat.11036030.11036041",
+                        "innerHTML": "Máy tính bảng"
+                    },
+                    {
+                        "href": "https://shopee.vn/Pin-D%E1%BB%B1-Ph%C3%B2ng-cat.11036030.11036048",
+                        "innerHTML": "Pin Dự Phòng"
+                    },
+                    {
+                        "href": "https://shopee.vn/Pin-G%E1%BA%AFn-Trong-C%C3%A1p-v…3%A0-B%E1%BB%99-S%E1%BA%A1c-cat.11036030.11036054",
+                        "innerHTML": "Pin Gắn Trong, Cáp và Bộ Sạc"
+                    },
+                    {
+                        "href": "https://shopee.vn/%E1%BB%90p-l%C6%B0ng-bao-da-Mi%E…91i%E1%BB%87n-tho%E1%BA%A1i-cat.11036030.11036060",
+                        "innerHTML": "Ốp lưng, bao da, Miếng dán điện thoại"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%E1%BA%A3o-v%E1%BB%87-m%C3%A0n-h%C3%ACnh-cat.11036030.11036064",
+                        "innerHTML": "Bảo vệ màn hình"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BA%BF-gi%E1%BB%AF-%C4%…%ADy-Ch%E1%BB%A5p-h%C3%ACnh-cat.11036030.11036074",
+                        "innerHTML": "Đế giữ điện thoại & Gậy Chụp hình"
+                    },
+                    {
+                        "href": "https://shopee.vn/Th%E1%BA%BB-nh%E1%BB%9B-cat.11036030.11036083",
+                        "innerHTML": "Thẻ nhớ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Sim-cat.11036030.11036084",
+                        "innerHTML": "Sim"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036030.11036091",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90i%E1%BB%87n-Tho%E1%BA%A1i-B%C3%A0n-cat.11036030.11036097",
+                        "innerHTML": "Điện Thoại Bàn"
+                    }
+                ]
+            },
+            "1": {
+                "id": 2,
+                "heading": {
+                    "href": "https://shopee.vn/S%E1%BA%AFc-%C4%90%E1%BA%B9p-cat.11036279",
+                    "innerHTML": "Sắc Đẹp"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/T%E1%BA%AFm-ch%C4%83m-s%C3%B3c-c%C6%A1-th%E1%BB%83-cat.11036279.11036280",
+                        "innerHTML": "Tắm & chăm sóc cơ thể"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-tay-ch%C3%A2n-m%C3%B3ng-cat.11036279.11036292",
+                        "innerHTML": "Chăm sóc tay, chân & móng"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-t%C3%B3c-cat.11036279.11036297",
+                        "innerHTML": "Chăm sóc tóc"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-nam-gi%E1%BB%9Bi-cat.11036279.11036304",
+                        "innerHTML": "Chăm sóc nam giới"
+                    },
+                    {
+                        "href": "https://shopee.vn/N%C6%B0%E1%BB%9Bc-hoa-cat.11036279.11036310",
+                        "innerHTML": "Nước hoa"
+                    },
+                    {
+                        "href": "https://shopee.vn/Trang-%C4%91i%E1%BB%83m-cat.11036279.11036314",
+                        "innerHTML": "Trang điểm"
+                    },
+                    {
+                        "href": "https://shopee.vn/D%E1%BB%A5ng-c%E1%BB%A5-l%C3%A0m-%C4%91%E1%BA%B9p-cat.11036279.11036321",
+                        "innerHTML": "Dụng cụ làm đẹp"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-da-m%E1%BA%B7t-cat.11036279.11036328",
+                        "innerHTML": "Chăm sóc da mặt"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%E1%BB%99-s%E1%BA%A3n-ph%E1%BA%…m-l%C3%A0m-%C4%91%E1%BA%B9p-cat.11036279.11036343",
+                        "innerHTML": "Bộ sản phẩm làm đẹp"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036279.11036344",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "2": {
+                "id": 3,
+                "heading": {
+                    "href": "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-Nam-cat.11035801",
+                    "innerHTML": "Giày Dép Nam"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/B%E1%BB%91t-cat.11035801.11035802",
+                        "innerHTML": "Bốt"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-Th%E1%BB%83-Thao-Sneakers-cat.11035801.11035807",
+                        "innerHTML": "Giày Thể Thao/ Sneakers"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-S%E1%BB%A5c-cat.11035801.11035808",
+                        "innerHTML": "Giày Sục"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-T%C3%A2y-L%C6%B0%E1%BB%9Di-cat.11035801.11035809",
+                        "innerHTML": "Giày Tây Lười"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%C3%A0y-Oxfords-Gi%C3%A0y-Bu%E1%BB%99c-D%C3%A2y-cat.11035801.11035810",
+                        "innerHTML": "Giày Oxfords & Giày Buộc Dây"
+                    },
+                    {
+                        "href": "https://shopee.vn/X%C4%83ng-%C4%91an-v%C3%A0-D%C3%A9p-cat.11035801.11035811",
+                        "innerHTML": "Xăng-đan và Dép"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-gi%C3%A0y-d%C3%A9p-cat.11035801.11035817",
+                        "innerHTML": "Phụ kiện giày dép"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035801.11035824",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "3": {
+                "id": 4,
+                "heading": {
+                    "href": "https://shopee.vn/B%C3%A1ch-H%C3%B3a-Online-cat.11036525",
+                    "innerHTML": "Bách Hóa Online"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-%C4%83n-v%E1%BA%B7t-cat.11036525.11036532",
+                        "innerHTML": "Đồ ăn vặt"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-ch%E1%BA%BF-bi%E1%BA%BFn-s%E1%BA%B5n-cat.11036525.11036526",
+                        "innerHTML": "Đồ chế biến sẵn"
+                    },
+                    {
+                        "href": "https://shopee.vn/Nhu-y%E1%BA%BFu-ph%E1%BA%A9m-cat.11036525.11036544",
+                        "innerHTML": "Nhu yếu phẩm"
+                    },
+                    {
+                        "href": "https://shopee.vn/Nguy%C3%AAn-li%E1%BB%87u-n%E1%BA%A5u-%C4%83n-cat.11036525.11036552",
+                        "innerHTML": "Nguyên liệu nấu ăn"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-l%C3%A0m-b%C3%A1nh-cat.11036525.11036562",
+                        "innerHTML": "Đồ làm bánh"
+                    },
+                    {
+                        "href": "https://shopee.vn/S%E1%BB%AFa-tr%E1%BB%A9ng-cat.11036525.11036591",
+                        "innerHTML": "Sữa - trứng"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-u%E1%BB%91ng-cat.11036525.11036576",
+                        "innerHTML": "Đồ uống"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ng%C5%A9-c%E1%BB%91c-m%E1%BB%A9t-cat.11036525.11036570",
+                        "innerHTML": "Ngũ cốc & mứt"
+                    },
+                    {
+                        "href": "https://shopee.vn/C%C3%A1c-lo%E1%BA%A1i-b%C3%A1nh-cat.11036525.11036611",
+                        "innerHTML": "Các loại bánh"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-u%E1%BB%91ng-c%C3%B3-c%E1%BB%93n-cat.11036525.11036616",
+                        "innerHTML": "Đồ uống có cồn"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%E1%BB%99-qu%C3%A0-t%E1%BA%B7ng-cat.11036525.11036622",
+                        "innerHTML": "Bộ quà tặng"
+                    },
+                    {
+                        "href": "https://shopee.vn/Th%E1%BB%B1c-ph%E1%BA%A9m-t%C6%B…%C4%91%C3%B4ng-l%E1%BA%A1nh-cat.11036525.11036601",
+                        "innerHTML": "Thực phẩm tươi sống và thực phẩm đông lạnh"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036525.11036623",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "4": {
+                "id": 5,
+                "heading": {
+                    "href": "https://shopee.vn/%C4%90%E1%BB%93-Ch%C6%A1i-cat.11036932",
+                    "innerHTML": "Đồ Chơi"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-m%C3%B4-h%C3%ACnh-cat.11036932.11036933",
+                        "innerHTML": "Đồ chơi mô hình"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-gi%E1%BA%A3i-tr%C3%AD-cat.11036932.11036939",
+                        "innerHTML": "Đồ chơi giải trí"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-gi%C3%A1o-d%E1%BB%A5c-cat.11036932.11036946",
+                        "innerHTML": "Đồ chơi giáo dục"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-cho-tr…inh-tr%E1%BA%BB-nh%E1%BB%8F-cat.11036932.11036954",
+                        "innerHTML": "Đồ chơi cho trẻ sơ sinh & trẻ nhỏ"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-v%E1%B…9ng-ngo%C3%A0i-tr%E1%BB%9Di-cat.11036932.11036960",
+                        "innerHTML": "Đồ chơi vận động & ngoài trời"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%C3%BAp-b%C3%AA-%C4%90%E1%BB%93…%A1i-nh%E1%BB%93i-b%C3%B4ng-cat.11036932.11036966",
+                        "innerHTML": "Búp bê & Đồ chơi nhồi bông"
+                    }
+                ]
+            }
+        },
+        {
+            "0": {
+                "id": 1,
+                "heading": {
+                    "href": "https://shopee.vn/M%E1%BA%B9-B%C3%A9-cat.11036194",
+                    "innerHTML": "Mẹ & Bé"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-du-l%E1%BB%8Bch-cho-b%C3%A9-cat.11036194.11036195",
+                        "innerHTML": "Đồ dùng du lịch cho bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-%C4%83n-d%E1%BA%B7m-cho-b%C3%A9-cat.11036194.11036204",
+                        "innerHTML": "Đồ dùng ăn dặm cho bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-cho-m%E1%BA%B9-cat.11036194.11036213",
+                        "innerHTML": "Phụ kiện cho mẹ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-s%E1%BB%A9c-kh%E1%BB%8Fe-m%E1%BA%B9-cat.11036194.11036217",
+                        "innerHTML": "Chăm sóc sức khỏe mẹ"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-ph%C3%…c%C6%A1-th%E1%BB%83-b%C3%A9-cat.11036194.11036222",
+                        "innerHTML": "Đồ dùng phòng tắm & Chăm sóc cơ thể bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-d%C3%B9ng-ph%C3%B2ng-ng%E1%BB%A7-cho-b%C3%A9-cat.11036194.11036233",
+                        "innerHTML": "Đồ dùng phòng ngủ cho bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/An-to%C3%A0n-cho-b%C3%A9-cat.11036194.11036240",
+                        "innerHTML": "An toàn cho bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/Th%E1%BB%B1c-ph%E1%BA%A9m-cho-b%C3%A9-cat.11036194.11036248",
+                        "innerHTML": "Thực phẩm cho bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-s%E1%BB%A9c-kh%E1%BB%8Fe-b%C3%A9-cat.11036194.11036253",
+                        "innerHTML": "Chăm sóc sức khỏe bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%A3-b%C3%B4-em-b%C3%A9-cat.11036194.11036260",
+                        "innerHTML": "Tã & bô em bé"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-ch%C6%A1i-cat.11036194.11036266",
+                        "innerHTML": "Đồ chơi"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%E1%BB%99-G%C3%B3i-qu%C3%A0-t%E1%BA%B7ng-cat.11036194.11036277",
+                        "innerHTML": "Bộ & Gói quà tặng"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036194.11036278",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/S%E1%BB%AFa-c%C3%B4ng-th%E1%BB%A9c-tr%C3%AAn-24-th%C3%A1ng-cat.11036194.11059299",
+                        "innerHTML": "Sữa công thức trên 24 tháng"
+                    },
+                    {
+                        "href": "https://shopee.vn/S%E1%BB%AFa-c%C3%B4ng-th%E1%BB%A…-24-th%C3%A1ng-tu%E1%BB%95i-cat.11036194.11059300",
+                        "innerHTML": "Sữa công thức 0-24 tháng tuổi"
+                    }
+                ]
+            },
+            "1": {
+                "id": 2,
+                "heading": {
+                    "href": "https://shopee.vn/M%C3%A1y-%E1%BA%A2nh-M%C3%A1y-Quay-Phim-cat.11036101",
+                    "innerHTML": "Máy Ảnh & Máy Quay Phim"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/M%C3%A1y-%E1%BA%A3nh-M%C3%A1y-quay-phim-cat.11036101.11036102",
+                        "innerHTML": "Máy ảnh - Máy quay phim"
+                    },
+                    {
+                        "href": "https://shopee.vn/Camera-gi%C3%A1m-s%C3%A1t-Camera-h%E1%BB%87-th%E1%BB%91ng-cat.11036101.11036109",
+                        "innerHTML": "Camera giám sát & Camera hệ thống"
+                    },
+                    {
+                        "href": "https://shopee.vn/Th%E1%BA%BB-nh%E1%BB%9B-cat.11036101.11036114",
+                        "innerHTML": "Thẻ nhớ"
+                    },
+                    {
+                        "href": "https://shopee.vn/%E1%BB%90ng-k%C3%ADnh-cat.11036101.11036115",
+                        "innerHTML": "Ống kính"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-m%C3%A1y-%E1%BA%A3nh-cat.11036101.11036119",
+                        "innerHTML": "Phụ kiện máy ảnh"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C3%A1y-bay-camera-Ph%E1%BB%A5-ki%E1%BB%87n-cat.11036101.11036129",
+                        "innerHTML": "Máy bay camera & Phụ kiện"
+                    }
+                ]
+            },
+            "2": {
+                "id": 3,
+                "heading": {
+                    "href": "https://shopee.vn/T%C3%BAi-V%C3%AD-N%E1%BB%AF-cat.11035761",
+                    "innerHTML": "Túi Ví Nữ"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Ba-L%C3%B4-N%E1%BB%AF-cat.11035761.11035762",
+                        "innerHTML": "Ba Lô Nữ"
+                    },
+                    {
+                        "href": "https://shopee.vn/C%E1%BA%B7p-Laptop-cat.11035761.11035763",
+                        "innerHTML": "Cặp Laptop"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%C3%AD-D%E1%BB%B1-Ti%E1%BB%87c-V%C3%AD-C%E1%BA%A7m-Tay-cat.11035761.11035768",
+                        "innerHTML": "Ví Dự Tiệc & Ví Cầm Tay"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-%C4%90eo-H%C3%B4ng-T%C3%BAi-%C4%90eo-Ng%E1%BB%B1c-cat.11035761.11035769",
+                        "innerHTML": "Túi Đeo Hông & Túi Đeo Ngực"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-Tote-cat.11035761.11035770",
+                        "innerHTML": "Túi Tote"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-Quai-X%C3%A1ch-cat.11035761.11035771",
+                        "innerHTML": "Túi Quai Xách"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-%C4%90eo-Ch%C3%A9o-T%C3%BAi-%C4%90eo-Vai-cat.11035761.11035772",
+                        "innerHTML": "Túi Đeo Chéo & Túi Đeo Vai"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%C3%AD-B%C3%B3p-N%E1%BB%AF-cat.11035761.11035773",
+                        "innerHTML": "Ví/Bóp Nữ"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-T%C3%BAi-cat.11035761.11035780",
+                        "innerHTML": "Phụ Kiện Túi"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11035761.11035787",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "3": {
+                "id": 4,
+                "heading": {
+                    "href": "https://shopee.vn/%C3%94-T%C3%B4-Xe-M%C3%A1y-Xe-%C4%90%E1%BA%A1p-cat.11036793",
+                    "innerHTML": "Ô Tô & Xe Máy & Xe Đạp"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Xe-%C4%91%E1%BA%A1p-xe-%C4%91i%E1%BB%87n-cat.11036793.11036794",
+                        "innerHTML": "Xe đạp, xe điện"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C3%B4-t%C3%B4-xe-m%C3%A1y-cat.11036793.11036804",
+                        "innerHTML": "Mô tô, xe máy"
+                    },
+                    {
+                        "href": "https://shopee.vn/Xe-%C3%94-t%C3%B4-cat.11036793.11036811",
+                        "innerHTML": "Xe Ô tô"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C5%A9-b%E1%BA%A3o-hi%E1%BB%83m-cat.11036793.11036817",
+                        "innerHTML": "Mũ bảo hiểm"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-xe-m%C3%A1y-cat.11036793.11036824",
+                        "innerHTML": "Phụ kiện xe máy"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-t%C3%B9ng-xe-m%C3%A1y-cat.11036793.11036831",
+                        "innerHTML": "Phụ tùng xe máy"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-xe-m%C3%A1y-cat.11036793.11036839",
+                        "innerHTML": "Chăm sóc xe máy"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-t%C3%B9ng-ph%E1%BB%A…E1%BA%A1p-%C4%91i%E1%BB%87n-cat.11036793.11036846",
+                        "innerHTML": "Phụ tùng, phụ kiện xe đạp, xe đạp điện"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-s%E1%BB%ADa-ch%E1%BB%AFa-xe-cat.11036793.11036852",
+                        "innerHTML": "Chăm sóc, sửa chữa xe"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-%C3%B4-t%C3%B4-cat.11036793.11036858",
+                        "innerHTML": "Chăm sóc ô tô"
+                    }
+                ]
+            },
+            "4": {
+                "id": 5,
+                "heading": {
+                    "href": "https://shopee.vn/Gi%E1%BA%B7t-Gi%C5%A9-Ch%C4%83m-S%C3%B3c-Nh%C3%A0-C%E1%BB%ADa-cat.11036624",
+                    "innerHTML": "Giặt Giũ & Chăm Sóc Nhà Cửa"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Gi%E1%BA%B7t-gi%C5%A9-Ch%C4%83m-…C3%B3c-nh%C3%A0-c%E1%BB%ADa-cat.11036624.11036625",
+                        "innerHTML": "Giặt giũ & Chăm sóc nhà cửa"
+                    },
+                    {
+                        "href": "https://shopee.vn/Gi%E1%BA%A5y-v%E1%BB%87-sinh-kh%C4%83n-gi%E1%BA%A5y-cat.11036624.11036634",
+                        "innerHTML": "Giấy vệ sinh, khăn giấy"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%E1%BB%87-sinh-nh%C3%A0-c%E1%BB%ADa-cat.11036624.11036639",
+                        "innerHTML": "Vệ sinh nhà cửa"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%E1%BB%87-sinh-b%C3%A1t-%C4%91%C4%A9a-cat.11036624.11036647",
+                        "innerHTML": "Vệ sinh bát đĩa"
+                    },
+                    {
+                        "href": "https://shopee.vn/D%E1%BB%A5ng-c%E1%BB%A5-v%E1%BB%87-sinh-cat.11036624.11036649",
+                        "innerHTML": "Dụng cụ vệ sinh"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%E1%BA%A5t-kh%E1%BB%AD-m%C3%B9i-l%C3%A0m-th%C6%A1m-cat.11036624.11036654",
+                        "innerHTML": "Chất khử mùi, làm thơm"
+                    },
+                    {
+                        "href": "https://shopee.vn/Thu%E1%BB%91c-di%E1%BB%87t-c%C3%B4n-tr%C3%B9ng-cat.11036624.11036660",
+                        "innerHTML": "Thuốc diệt côn trùng"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%C3%BAi-m%C3%A0ng-b%E1%BB%8Dc-th%E1%BB%B1c-ph%E1%BA%A9m-cat.11036624.11036664",
+                        "innerHTML": "Túi, màng bọc thực phẩm"
+                    },
+                    {
+                        "href": "https://shopee.vn/Bao-b%C3%AC-t%C3%BAi-%C4%91%E1%BB%B1ng-r%C3%A1c-cat.11036624.11036668",
+                        "innerHTML": "Bao bì, túi đựng rác"
+                    }
+                ]
+            }
+        },
+        {
+            "0": {
+                "id": 1,
+                "heading": {
+                    "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-T%E1%BB%AD-cat.11036132",
+                    "innerHTML": "Thiết Bị Điện Tử"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Thi%E1%BA%BFt-b%E1%BB%8B-%C4%91eo-th%C3%B4ng-minh-cat.11036132.11036160",
+                        "innerHTML": "Thiết bị đeo thông minh"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-tivi-cat.11036132.11036167",
+                        "innerHTML": "Phụ kiện tivi"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C3%A1y-Game-Console-cat.11036132.11036172",
+                        "innerHTML": "Máy Game Console"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-Console-cat.11036132.11036182",
+                        "innerHTML": "Phụ kiện Console"
+                    },
+                    {
+                        "href": "https://shopee.vn/Game-Console-cat.11036132.11036184",
+                        "innerHTML": "Game Console"
+                    },
+                    {
+                        "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-T%E1%BB%AD-cat.11036132.11036133",
+                        "innerHTML": "Thiết Bị Điện Tử"
+                    },
+                    {
+                        "href": "https://shopee.vn/Loa-cat.11036132.11036135",
+                        "innerHTML": "Loa"
+                    },
+                    {
+                        "href": "https://shopee.vn/Tai-Nghe-cat.11036132.11036143",
+                        "innerHTML": "Tai Nghe"
+                    },
+                    {
+                        "href": "https://shopee.vn/Tivi-cat.11036132.11036151",
+                        "innerHTML": "Tivi"
+                    },
+                    {
+                        "href": "https://shopee.vn/Tivi-Box-cat.11036132.11036157",
+                        "innerHTML": "Tivi Box"
+                    }
+                ]
+            },
+            "1": {
+                "id": 2,
+                "heading": {
+                    "href": "https://shopee.vn/S%E1%BB%A9c-Kh%E1%BB%8Fe-cat.11036345",
+                    "innerHTML": "Sức Khỏe"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Th%E1%BB%B1c-ph%E1%BA%A9m-ch%E1%BB%A9c-n%C4%83ng-cat.11036345.11036346",
+                        "innerHTML": "Thực phẩm chức năng"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%E1%BA%ADt-t%C6%B0-y-t%E1%BA%BF-cat.11036345.11036352",
+                        "innerHTML": "Vật tư y tế"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-c%C3%A1-nh%C3%A2n-cat.11036345.11036365",
+                        "innerHTML": "Chăm sóc cá nhân"
+                    },
+                    {
+                        "href": "https://shopee.vn/H%E1%BB%97-tr%E1%BB%A3-t%C3%ACnh-d%E1%BB%A5c-cat.11036345.11036375",
+                        "innerHTML": "Hỗ trợ tình dục"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036345.11036381",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "2": {
+                "id": 3,
+                "heading": {
+                    "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-Gia-D%E1%BB%A5ng-cat.11036971",
+                    "innerHTML": "Thiết Bị Điện Gia Dụng"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-gia-d%E1%BB%A5ng-nh%C3%A0-b%E1%BA%BFp-cat.11036971.11036972",
+                        "innerHTML": "Đồ gia dụng nhà bếp"
+                    },
+                    {
+                        "href": "https://shopee.vn/%C4%90%E1%BB%93-gia-d%E1%BB%A5ng-l%E1%BB%9Bn-cat.11036971.11036990",
+                        "innerHTML": "Đồ gia dụng lớn"
+                    },
+                    {
+                        "href": "https://shopee.vn/M%C3%A1y-h%C3%BAt-b%E1%BB%A5i-Th…BB%8B-l%C3%A0m-s%E1%BA%A1ch-cat.11036971.11037000",
+                        "innerHTML": "Máy hút bụi & Thiết bị làm sạch"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A1t-M%C3%A1y-n%C3%B3ng-l%E1%BA%A1nh-cat.11036971.11037007",
+                        "innerHTML": "Quạt & Máy nóng lạnh"
+                    },
+                    {
+                        "href": "https://shopee.vn/Thi%E1%BA%BFt-b%E1%BB%8B-ch%C4%8…C3%B3c-qu%E1%BA%A7n-%C3%A1o-cat.11036971.11037016",
+                        "innerHTML": "Thiết bị chăm sóc quần áo"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036971.11037023",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            },
+            "3": {
+                "id": 4,
+                "heading": {
+                    "href": "https://shopee.vn/Nh%C3%A0-S%C3%A1ch-Online-cat.11036863",
+                    "innerHTML": "Nhà Sách Online"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/%C4%90%C4%A9a-Than-cat.11036863.11036928",
+                        "innerHTML": "Đĩa Than"
+                    },
+                    {
+                        "href": "https://shopee.vn/Album-%E1%BA%A2nh-cat.11036863.11036929",
+                        "innerHTML": "Album Ảnh"
+                    },
+                    {
+                        "href": "https://shopee.vn/D%E1%BB%A5ng-C%E1%BB%A5-May-V%C3%A1-cat.11036863.11036930",
+                        "innerHTML": "Dụng Cụ May Vá"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036863.11036931",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/T%E1%BA%A1p-Ch%C3%AD-B%C3%A1o-Gi%E1%BA%A5y-cat.11036863.11036864",
+                        "innerHTML": "Tạp Chí & Báo Giấy"
+                    },
+                    {
+                        "href": "https://shopee.vn/S%C3%A1ch-cat.11036863.11036869",
+                        "innerHTML": "Sách"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036863.11036905",
+                        "innerHTML": "Khác"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%C4%83n-Ph%C3%B2ng-Ph%E1%BA%A9m-cat.11036863.11036906",
+                        "innerHTML": "Văn Phòng Phẩm"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%C3%A0-L%C6%B0u-Ni%E1%BB%87m-cat.11036863.11036914",
+                        "innerHTML": "Quà Lưu Niệm"
+                    },
+                    {
+                        "href": "https://shopee.vn/B%C4%83ng-%C4%90%C4%A9a-cat.11036863.11036920",
+                        "innerHTML": "Băng - Đĩa"
+                    },
+                    {
+                        "href": "https://shopee.vn/Nh%E1%BA%A1c-C%E1%BB%A5-Ph%E1%BB%A5-Ki%E1%BB%87n-cat.11036863.11036921",
+                        "innerHTML": "Nhạc Cụ & Phụ Kiện"
+                    }
+                ]
+            },
+            "4": {
+                "id": 5,
+                "heading": {
+                    "href": "https://shopee.vn/Ch%C4%83m-S%C3%B3c-Th%C3%BA-C%C6%B0ng-cat.11036478",
+                    "innerHTML": "Chăm Sóc Thú Cưng"
+                },
+                "footerDirectoryItemPartListInfo": [
+                    {
+                        "href": "https://shopee.vn/Th%E1%BB%A9c-%C4%83n-cho-th%C3%BA-c%C6%B0ng-cat.11036478.11036479",
+                        "innerHTML": "Thức ăn cho thú cưng"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ph%E1%BB%A5-ki%E1%BB%87n-cho-th%C3%BA-c%C6%B0ng-cat.11036478.11036490",
+                        "innerHTML": "Phụ kiện cho thú cưng"
+                    },
+                    {
+                        "href": "https://shopee.vn/V%E1%BB%87-sinh-cho-th%C3%BA-c%C6%B0ng-cat.11036478.11036498",
+                        "innerHTML": "Vệ sinh cho thú cưng"
+                    },
+                    {
+                        "href": "https://shopee.vn/Qu%E1%BA%A7n-%C3%A1o-ph%E1%BB%A5-ki%E1%BB%87n-cat.11036478.11036510",
+                        "innerHTML": "Quần áo & phụ kiện"
+                    },
+                    {
+                        "href": "https://shopee.vn/Ch%C4%83m-s%C3%B3c-s%E1%BB%A9c-kh%E1%BB%8Fe-cat.11036478.11036519",
+                        "innerHTML": "Chăm sóc sức khỏe"
+                    },
+                    {
+                        "href": "https://shopee.vn/Kh%C3%A1c-cat.11036478.11036524",
+                        "innerHTML": "Khác"
+                    }
+                ]
+            }
+        }
+    ],
+    "footerDirectoryItemPartHeadingsInfo": [
+        {
+            "id": 1,
+            "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Nam-cat.11035567",
+            "innerHTML": "Thời Trang Nam"
+        },
+        {
+            "id": 2,
+            "href": "https://shopee.vn/Nh%C3%A0-C%E1%BB%ADa-%C4%90%E1%BB%9Di-S%E1%BB%91ng-cat.11036670",
+            "innerHTML": "Nhà Cửa & Đời Sống"
+        },
+        {
+            "id": 3,
+            "href": "https://shopee.vn/%C4%90%E1%BB%93ng-H%E1%BB%93-cat.11035788",
+            "innerHTML": "Đồng Hồ"
+        },
+        {
+            "id": 4,
+            "href": "https://shopee.vn/Ph%E1%BB%A5-Ki%E1%BB%87n-Trang-S%E1%BB%A9c-N%E1%BB%AF-cat.11035853",
+            "innerHTML": "Phụ Kiện & Trang Sức Nữ"
+        },
+        {
+            "id": 5,
+            "href": "https://shopee.vn/Balo-T%C3%BAi-V%C3%AD-Nam-cat.11035741",
+            "innerHTML": "Balo & Túi Ví Nam"
+        },
+        {
+            "id": 6,
+            "href": "https://shopee.vn/Voucher-D%E1%BB%8Bch-V%E1%BB%A5-cat.11035898",
+            "innerHTML": "Voucher & Dịch Vụ"
+        },
+        {
+            "id": 7,
+            "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-N%E1%BB%AF-cat.11035639",
+            "innerHTML": "Thời Trang Nữ"
+        },
+        {
+            "id": 8,
+            "href": "https://shopee.vn/M%C3%A1y-T%C3%ADnh-Laptop-cat.11035954",
+            "innerHTML": "Máy Tính & Laptop"
+        },
+        {
+            "id": 9,
+            "href": "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-N%E1%BB%AF-cat.11035825",
+            "innerHTML": "Giày Dép Nữ"
+        },
+        {
+            "id": 10,
+            "href": "https://shopee.vn/Th%E1%BB%83-Thao-Du-L%E1%BB%8Bch-cat.11035478",
+            "innerHTML": "Thể Thao & Du Lịch"
+        },
+        {
+            "id": 11,
+            "href": "https://shopee.vn/Th%E1%BB%9Di-Trang-Tr%E1%BA%BB-Em-cat.11036382",
+            "innerHTML": "Thời Trang Trẻ Em"
+        },
+        {
+            "id": 12,
+            "href": "https://shopee.vn/%C4%90i%E1%BB%87n-Tho%E1%BA%A1i-Ph%E1%BB%A5-Ki%E1%BB%87n-cat.11036030",
+            "innerHTML": "Điện Thoại & Phụ Kiện"
+        },
+        {
+            "id": 13,
+            "href": "https://shopee.vn/S%E1%BA%AFc-%C4%90%E1%BA%B9p-cat.11036279",
+            "innerHTML": "Sắc Đẹp"
+        },
+        {
+            "id": 14,
+            "href": "https://shopee.vn/Gi%C3%A0y-D%C3%A9p-Nam-cat.11035801",
+            "innerHTML": "Giày Dép Nam"
+        },
+        {
+            "id": 15,
+            "href": "https://shopee.vn/B%C3%A1ch-H%C3%B3a-Online-cat.11036525",
+            "innerHTML": "Bách Hóa Online"
+        },
+        {
+            "id": 16,
+            "href": "https://shopee.vn/%C4%90%E1%BB%93-Ch%C6%A1i-cat.11036932",
+            "innerHTML": "Đồ Chơi"
+        },
+        {
+            "id": 17,
+            "href": "https://shopee.vn/M%E1%BA%B9-B%C3%A9-cat.11036194",
+            "innerHTML": "Mẹ & Bé"
+        },
+        {
+            "id": 18,
+            "href": "https://shopee.vn/M%C3%A1y-%E1%BA%A2nh-M%C3%A1y-Quay-Phim-cat.11036101",
+            "innerHTML": "Máy Ảnh & Máy Quay Phim"
+        },
+        {
+            "id": 19,
+            "href": "https://shopee.vn/T%C3%BAi-V%C3%AD-N%E1%BB%AF-cat.11035761",
+            "innerHTML": "Túi Ví Nữ"
+        },
+        {
+            "id": 20,
+            "href": "https://shopee.vn/%C3%94-T%C3%B4-Xe-M%C3%A1y-Xe-%C4%90%E1%BA%A1p-cat.11036793",
+            "innerHTML": "Ô Tô & Xe Máy & Xe Đạp"
+        },
+        {
+            "id": 21,
+            "href": "https://shopee.vn/Gi%E1%BA%B7t-Gi%C5%A9-Ch%C4%83m-S%C3%B3c-Nh%C3%A0-C%E1%BB%ADa-cat.11036624",
+            "innerHTML": "Giặt Giũ & Chăm Sóc Nhà Cửa"
+        },
+        {
+            "id": 22,
+            "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-T%E1%BB%AD-cat.11036132",
+            "innerHTML": "Thiết Bị Điện Tử"
+        },
+        {
+            "id": 23,
+            "href": "https://shopee.vn/S%E1%BB%A9c-Kh%E1%BB%8Fe-cat.11036345",
+            "innerHTML": "Sức Khỏe"
+        },
+        {
+            "id": 24,
+            "href": "https://shopee.vn/Thi%E1%BA%BFt-B%E1%BB%8B-%C4%90i%E1%BB%87n-Gia-D%E1%BB%A5ng-cat.11036971",
+            "innerHTML": "Thiết Bị Điện Gia Dụng"
+        },
+        {
+            "id": 25,
+            "href": "https://shopee.vn/Nh%C3%A0-S%C3%A1ch-Online-cat.11036863",
+            "innerHTML": "Nhà Sách Online"
+        },
+        {
+            "id": 26,
+            "href": "https://shopee.vn/Ch%C4%83m-S%C3%B3c-Th%C3%BA-C%C6%B0ng-cat.11036478",
+            "innerHTML": "Chăm Sóc Thú Cưng"
+        }
+    ],
     "footerLinkAboutTextCSKHInfo": [
         {
             "id": 1,
