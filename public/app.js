@@ -2129,140 +2129,62 @@ shopeeMallMainProductPreviousBtn.addEventListener('click', function(e) {
 //#endregion
 
 
-// -> (TODAY) Cần xử lí --> TO HERE <--
-//#region updateSearchTrendingLinksInDOM
-var searchTrendingLinksObjectInfo = {
-    "href": [
-        [
-            "https://shopee.vn/search?keyword=k%E1%BB%87%20%C4%91%E1%BB%83%20laptop",
-            "https://shopee.vn/search?keyword=gi%C3%A1%20%C4%91%E1%BB%A1%20laptop%2015%206%20inch",
-            "https://shopee.vn/search?keyword=gi%C3%A1%20%C4%91%E1%BB%A1%20laptop%20g%E1%BB%97",
-            "https://shopee.vn/search?keyword=gi%C3%A1%20%C4%91%E1%BB%A1%20macbook%20g%E1%BB%97",
-            "https://shopee.vn/search?keyword=gi%C3%A1%20k%C3%AA%20laptop"
-        ],
-        [
-            "https://shopee.vn/search?keyword=gi%C3%A1%20k%C3%AA%20laptop",
-            "https://shopee.vn/search?keyword=tai-nghe%20bluetooth",
-            "https://shopee.vn/search?keyword=sandal%20n%E1%BB%AF",
-            "https://shopee.vn/search?keyword=gi%C3%A0y-th%E1%BB%83-thao%20n%E1%BB%AF",
-            "https://shopee.vn/search?keyword=balo%20n%E1%BB%AF"
-        ],
-        [
-            "https://shopee.vn/search?keyword=gi%C3%A1%20%C4%91%E1%BB%A1%20laptop%20g%E1%BB%97",
-            "https://shopee.vn/search?keyword=k%C3%AA%20laptop",
-            "https://shopee.vn/search?keyword=gi%C3%A0y%20%C4%91%C3%A1%20b%C3%B3ng%20%C4%91%C3%A1%20banh",
-            "https://shopee.vn/search?keyword=qu%E1%BA%A7n-%C4%91%C3%B9i%20n%E1%BB%AF",
-            "https://shopee.vn/search?keyword=s%C6%A1mi%20n%E1%BB%AF"
-        ]
-    ],
-    "productName": [
-        [
-            "Kệ Để Laptop",
-            "Giá Đỡ Laptop 15 6 Inch",
-            "Giá Đỡ Laptop Gỗ",
-            "Giá Đỡ Macbook Gỗ",
-            "Giá Kê Laptop"
-        ],
-        [
-            "Giá Kê Laptop",
-            "Tai-Nghe Bluetooth",
-            "Sandal Nữ",
-            "Giày-Thể-Thao Nữ",
-            "Balo Nữ"
-        ],
-        [
-            "Giá Đỡ Laptop Gỗ",
-            "Kê Laptop",
-            "giày đá bóng đá banh",
-            "Quần-Đùi Nữ",
-            "SƠMI Nữ"
-        ]
-    ],
-    "productDescription": [
-        [
-            "172k+ sản phẩm",
-            "336k+ sản phẩm",
-            "482k+ sản phẩm",
-            "445k+ sản phẩm",
-            "121k+ sản phẩm"
-        ],
-        [
-            "121k+ sản phẩm",
-            "6k+ sản phẩm",
-            "263k+ sản phẩm",
-            "654k+ sản phẩm",
-            "172k+ sản phẩm"
-        ],
-        [
-            "482k+ sản phẩm",
-            "65k+ sản phẩm",
-            "6k+ sản phẩm",
-            "332k+ sản phẩm",
-            "568k+ sản phẩm"
-        ]
-    ],
-    "imgSrc": [
-        [
-            "https://cf.shopee.vn/file/f82404aaa85578c659628a1c9aa24f5f",
-            "https://cf.shopee.vn/file/b9207e79313ee0be022a2bd5ad43d01a",
-            "https://cf.shopee.vn/file/b6675c985ae196bda8ebbd640ed9c60e",
-            "https://cf.shopee.vn/file/1524bf0beaa7c1d1f65b30b48694fd78",
-            "https://cf.shopee.vn/file/c1572057c97ce6ae4ada300296d45f13"
-        ],
-        [
-            "https://cf.shopee.vn/file/89a11102e53dfe6cf03d7d36ea69ddd7",
-            "https://cf.shopee.vn/file/ffe25b50c0edef17c49bfdf868b4facc",
-            "https://cf.shopee.vn/file/93073101321f322c66260c81cb5b50c7",
-            "https://cf.shopee.vn/file/d83387eea7d3d76bfd3fa638437f8d01",
-            "https://cf.shopee.vn/file/f461a6b775b66c3d1264839ed5a356e5"
-        ],
-        [
-            "https://cf.shopee.vn/file/4adbb5bb3ab835ba2fd95bd501acc18d",
-            "https://cf.shopee.vn/file/89a11102e53dfe6cf03d7d36ea69ddd7",
-            "https://cf.shopee.vn/file/cb7022fca26a920200deee05ca7c7bcd",
-            "https://cf.shopee.vn/file/73970c20f4ce403b5ae1417ff08b5b3e",
-            "https://cf.shopee.vn/file/4122b4ed9be44c32ab8b01bc5df0e20c"
-        ]
-    ]
+// -> OK
+//#region updateInDOMSearchTrendingMainList
+var searchTrendingMainList = document.querySelector('.search-trending__main__list');
+
+function updateInDOMSearchTrendingMainList (listIndex) {
+    fetch("db.json")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function(datas){
+            var aTags = datas.searchTrendingMainListInfo[listIndex].map(function (data) {
+                return `
+                    <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="search-trending__main__item">
+                        <div class="search-trending__main__text">
+                            <span class="search-trending__main__text__name">${data.productName}</span>
+                            <span class="search-trending__main__text__description">${data.productDescription}</span>
+                        </div>
+                        <img src="${data.image}" alt="" class="search-trending__img">
+                    </a>`;
+            })
+            // add innerHTML for this element
+            searchTrendingMainList.innerHTML = aTags.join('');
+        })
 }
 
-function updateSearchTrendingLinksInDOM (listIndex) {
-    var searchTrendingLinks = document.querySelectorAll('.search-trending__link');
-
-    for (var i = 0; i < searchTrendingLinks.length; i++) {
-        // 1. get current specific elements
-        var productName = document.querySelector(`.search-trending__link:nth-child(${i+1}) .search-trending__text__name`);
-        var productDescription = document.querySelector(`.search-trending__link:nth-child(${i+1}) .search-trending__text__description`);
-        var productImg = document.querySelector(`.search-trending__link:nth-child(${i+1}) .search-trending__img`);
-
-        // 2. update attributes, innerHTML for them
-        searchTrendingLinks[i].href = searchTrendingLinksObjectInfo.href[listIndex][i];
-        productName.innerHTML = searchTrendingLinksObjectInfo.productName[listIndex][i];
-        productDescription.innerHTML = searchTrendingLinksObjectInfo.productDescription[listIndex][i];
-        productImg.src = searchTrendingLinksObjectInfo.imgSrc[listIndex][i];
-    }
-}
-
-updateSearchTrendingLinksInDOM(0);
+updateInDOMSearchTrendingMainList(0);
 //#endregion
 
-
+// -> OK
 //#region searchTrendingHeadingViewMoreBtn onclick() 
 var searchTrendingHeadingViewMoreBtn = document.querySelector('.search-trending__heading__view-more-btn');
-var searchTrendingListCurrentIndex = 0;
+var searchTrendingListCurrentIndex = 0, searchTrendingNumberList;
 
-searchTrendingHeadingViewMoreBtn.onclick = function () {
-    var searchTrendingNumberList = searchTrendingLinksObjectInfo.href.length;
+fetch("db.json")
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function(datas){
+        searchTrendingNumberList = datas.searchTrendingMainListInfo.length;
+    })
 
-    if(searchTrendingListCurrentIndex == searchTrendingNumberList-1) {
-        searchTrendingListCurrentIndex = 0;
-        updateSearchTrendingLinksInDOM(0);
-    }
-    else {
-        searchTrendingListCurrentIndex++;
-        updateSearchTrendingLinksInDOM(searchTrendingListCurrentIndex);
-    }
-}
+
+searchTrendingHeadingViewMoreBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    setTimeout(function () {
+        if(searchTrendingListCurrentIndex == searchTrendingNumberList-1) {
+            searchTrendingListCurrentIndex = 0;
+            updateInDOMSearchTrendingMainList(0);
+        }
+        else {
+            searchTrendingListCurrentIndex++;
+            updateInDOMSearchTrendingMainList(searchTrendingListCurrentIndex);
+        }
+    }, 100)
+})
 //#endregion
 
 
@@ -3101,6 +3023,81 @@ for(var i = 0; i < 8; i++) {
         }
     }
 }
+
+
+//--> I'M HERE 
+//todaySuggestionMainTabSuperSale88Info
+// //#region updateInDOMTodaySuggestionMainTabMain
+// var todaySuggestionMainTabMain = document.querySelector('.today-suggestion__main__tab-main');
+
+// function updateInDOMTodaySuggestionMainTabMain () {
+//     fetch("db.json")
+//         .then (function(response) {
+//             return response.json();
+//         })
+//         .then (function(datas) {
+//             handleUpdateInDOMTodaySuggestionMainTabMain(datas.todaySuggestionMainTabMainInfo);
+//         })
+// }
+
+// function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMainInfo) {
+//     var listDivTags = '';
+
+//     for(var i = 0; i < todaySuggestionMainTabMainInfo.length; i++) {
+//         var listDivTag = '', itemDivTags = '', itemDivTag = '';
+
+//         for (var j = 0; j < todaySuggestionMainTabMainInfo[i].length; j++) {
+//             var frameImg = `<img src="${todaySuggestionMainTabMainInfo[i][j].}" class="today-suggestion__main-product__frame-img" alt="">`;
+//             var productSaleOff = `<div class="today-suggestion__main-product__sale-off">
+//                     <img src="./assests/img/container/today-suggestion/left-serrated.png" class="today-suggestion__main-product__sale-off__left-serrated">
+//                     <span class="today-suggestion__main-product__sale-off__text">${todaySuggestionMainTabMainInfo[i][j].}</span>
+//                     <img src="./assests/img/container/today-suggestion/right-serrated.png" class="today-suggestion__main-product__sale-off__right-serrated">
+//                 </div>`;
+//             var favouriteLabel = `
+//                 <div class="today-suggestion__main-product__favourite-label today-suggestion__main-product__favourite-label--yeuthich">
+//                     ${todaySuggestionMainTabMainInfo[i][j].}
+//                 </div>`;
+//             var saleOffLabel = `<div class="today-suggestion__main-product__sale-off-label">
+//                     <span class="today-suggestion__main-product__sale-off-label__percent">${todaySuggestionMainTabMainInfo[i][j].}</span>
+//                     <span class="today-suggestion__main-product__sale-off-label__text">giảm</span>
+//                 </div>`;
+//             var sponsorLabel = '<div class="today-suggestion__main-product__sponsor-label">Tài Trợ</div>';
+            
+
+//             itemDivTag = `
+//                 <div class="today-suggestion__main-item">
+//                     <a target="_blank" rel="noopener noreferrer" href="${todaySuggestionMainTabMainInfo[i][j].}" class="today-suggestion__main-product">
+//                         <div>
+//                             <img alt="" src="${todaySuggestionMainTabMainInfo[i][j].}" class="today-suggestion__main-product__product-img">
+//                             ${frameImage}
+//                             <div class="today-suggestion__main-product__part">
+//                                 <span class="today-suggestion__main-product__name">Áo thun tay lỡ DASN, Áo phông tay lỡ Unisex form rộng Oversize</span>
+//                                 ${productSaleOff}
+//                                 <div class="today-suggestion__main-product__price-and-selled-quantity" style="margin-top: 2.6rem;">
+//                                     <span class="today-suggestion__main-product__price">₫10.000</span>
+//                                     <span class="today-suggestion__main-product__selled-quantity">Đã bán 8,3k</span>
+//                                 </div>
+//                             </div>
+//                             ${favouriteLabel}
+//                             ${saleOffLabel}
+//                             ${sponsorLabel}
+//                             <div class="today-suggestion__main-product__hover-label">Tìm sản phẩm tương tự</div>
+//                         </div>
+//                     </a>
+//                 </div>`;
+//             itemDivTags += itemDivTag;
+//         }
+
+//         listDivTag = `<div class="today-suggestion__main-list">${itemDivTags}</div>`;
+//         listDivTags += listDivTag;
+//     }
+
+//     todaySuggestionMainTabMain.innerHTML = listDivTags;
+// }
+
+// updateInDOMTodaySuggestionMainTabMain();
+//#endregion 
+
 
 //#endregion 1.todaySuggestionMainProductsInfo
 

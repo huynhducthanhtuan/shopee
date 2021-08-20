@@ -2687,7 +2687,7 @@ width: 13.5rem;
     display: none;
 }
 
-.search-trending__link {
+.search-trending__main__item {
     display: flex;
     justify-content: space-between;
     width: 20%;
@@ -2698,17 +2698,17 @@ width: 13.5rem;
     border-right: 1px solid rgba(0,0,0,.05);
 }
 
-.search-trending__link:hover {
+.search-trending__main__item:hover {
     transform: translateY(-1px);
     border-color: rgba(0,0,0,.12);
     box-shadow: 0 0 0.8125rem 0 rgb(0 0 0 / 5%);
 }
 
-.search-trending__text {
+.search-trending__main__text {
     padding: 2rem 1rem 4.3rem 2rem;
 }
 
-.search-trending__text__name {
+.search-trending__main__text__name {
     display: block;
     text-align: left;
     width: 10rem;
@@ -2721,7 +2721,7 @@ width: 13.5rem;
     font-size: 1.4rem;
 }
 
-.search-trending__text__description {
+.search-trending__main__text__description {
     display: block;
     text-align: left;
     width: 10rem;
