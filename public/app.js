@@ -2311,797 +2311,821 @@ topSearchMainPreviousBtn.onclick = function () {
 
 
 // -> (TODAY) Cần xử lí 
-//#region *todaySuggestion
-
 //#region 1.todaySuggestionMainProductsInfo
-var todaySuggestionMainProductsInfo = [
-    {
-        "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-DASN-%C3%81o-ph%C3%B4ng-tay-l%E1%BB%A1-Unisex-form-r%E1%BB%99ng-Oversize-i.409382714.2933520475?adsid=0&campaignid=0&position=0",
-        "productImgSrc": "https://cf.shopee.vn/file/7feb34a7716a838a8cc397ba0ef01c9f_tn",
-        "name": "Áo thun tay lỡ DASN, Áo phông tay lỡ Unisex form rộng Oversize",
-        "price": "₫10.000",
-        "selledQuantity": "Đã bán 8,3k",
-        "frameImgSrc": "https://cf.shopee.vn/file/f80e7a006b875a0f9d5592295c79c29c",
-        "saleOffLabelPercent": "50%",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/%C4%90%E1%BA%A7m-Thi%E1%BA%BFt-K%E1%BA%BF-Lo%E1%BA%A1i-1-V%C3%A1y-N%E1%BB%AF-C%E1%BB%95-S%C6%A1-Mi-Tr%E1%BA%AFng-%C4%90en-C%C3%BAc-C%C3%A0i-Tay-L%E1%BB%A1-%C4%90an-Eo-C%C3%A1-T%C3%ADnh-Ch%E1%BA%A5t-Li%E1%BB%87u-%C4%90%C5%A9i-L%E1%BB%A5a-Cao-C%E1%BA%A5p-Haui-Store-i.448080446.11316712750?adsid=0&campaignid=0&position=2",
-        "productImgSrc": "https://cf.shopee.vn/file/f8a0351590864a8de9075feb2cec8d31_tn",
-        "name": "Đầm Thiết Kế Loại 1, Váy Nữ Cổ Sơ Mi Trắng Đen Cúc Cài, Tay Lỡ Đan Eo Cá Tính, Chất Liệu Đũi Lụa Cao Cấp - Haui Store",
-        "price": "₫132.000",
-        "selledQuantity": "Đã bán 17",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffText": "Giảm ₫15k",
-        "saleOffLabelPercent": "40%",
-        "favouriteLabel": "Mall",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/X%E1%BB%8Bt-Th%C6%A1m-To%C3%A0n-Th%C3%A2n-ShiMang-Body-Mist-50ML-H%C3%A0ng-Ch%C3%ADnh-H%C3%A3ng-i.170733238.4968301712?adsid=0&campaignid=0&position=3",
-        "productImgSrc": "https://cf.shopee.vn/file/2d59adf3a7da9c9be9d34c84ce764017_tn",
-        "name": "Xịt Thơm Toàn Thân ShiMang Body Mist 50ML Hàng Chính Hãng",
-        "price": "₫24.000",
-        "selledQuantity": "Đã bán 4,4k",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffText": "50% Giảm",
-        "saleOffLabelPercent": "50%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/Gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-s%C3%A2n-c%E1%BB%8F-nh%C3%A2n-t%E1%BA%A1o-Predator-T%E1%BA%B7ng-t%E1%BA%A5t-Kh%C3%A2u-%C4%91%E1%BA%BF-100--i.93425556.3458989326?adsid=0&campaignid=0&position=4",
-        "productImgSrc": "https://cf.shopee.vn/file/085d6867259b9350c891be2d3a68e5fd_tn",
-        "name": "Giày đá bóng sân cỏ nhân tạo Predator -Tặng tất -Khâu đế 100%",
-        "price": "₫59.000",
-        "selledQuantity": "Đã bán 1,1k",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffLabelPercent": "50%",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-nam-n%E1%BB%AF-form-r%E1%BB%99ng-Oversize-%C3%A1o-ph%C3%B4ng-tay-l%E1%BB%A1-form-r%E1%BB%99ng-Unisex-%C3%A1o-thun-Maroaret-Cam-i.445072864.10109373763?adsid=0&campaignid=0&position=5",
-        "productImgSrc": "https://cf.shopee.vn/file/4ca84f06cad5819d9ec92135ddc31724_tn",
-        "name": "Áo thun tay lỡ nam nữ form rộng Oversize, áo phông tay lỡ form rộng Unisex, áo thun Maroaret Cam",
-        "price": "₫11.000",
-        "selledQuantity": "Đã bán 152",
-        "saleOffLabelPercent": "45%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-ph%C3%B4ng-unisex-nam-n%E1%BB%AF-form-r%E1%BB%99ng-tay-l%E1%BB%A1-m%E1%BA%B7t-c%C6%B0%E1%BB%9Di-%C4%91%E1%BA%B9p-v%E1%BA%A3i-d%C3%A0y-m%E1%BB%8Bn-i.76875639.7790178910?adsid=0&campaignid=0&position=6",
-        "productImgSrc": "https://cf.shopee.vn/file/050341b33e811ec904f79c32dc61f2e5_tn",
-        "name": "Áo phông unisex nam nữ form rộng tay lỡ mặt cười đẹp vải dày mịn",
-        "price": "₫24.900",
-        "selledQuantity": "Đã bán 3,8k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/B%C3%B4ng-T%E1%BA%A9y-trang-GI%C3%81-S%E1%BB%88-3-l%E1%BB%9Bp-cotton-T%C3%BAi-222-mi%E1%BA%BFng-d%C3%A0y-d%E1%BA%B7n--i.170733238.3158355904?adsid=0&campaignid=0&position=7",
-        "productImgSrc": "https://cf.shopee.vn/file/28042445981b5dddda78ff17bd274a01_tn",
-        "name": "Bông Tẩy trang GIÁ SỈ 3 lớp cotton [Túi 222 miếng dày dặn]",
-        "price": "₫29.000",
-        "selledQuantity": "Đã bán 1,7k",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffText": "50% Giảm",
-        "saleOffLabelPercent": "17%",
-        "favouriteLabel": "Yêu thích+",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/-Video3-Gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-nam-Gi%C3%A0y-b%C3%B3ng-%C4%91%C3%A1-Gi%C3%A0y-%C4%91%C3%A1-banh-s%C3%A2n-c%E1%BB%8F-nh%C3%A2n-t%E1%BA%A1o-X20G-Ghosted-2021-May-kh%C3%A2u-full-%C4%91%E1%BA%BF-i.140115397.9010935037?adsid=0&campaignid=0&position=8",
-        "productImgSrc": "https://cf.shopee.vn/file/8aef395edbc03b6bc4d0d78d5f77e817_tn",
-        "name": "[Video3] - Giày đá bóng nam - Giày bóng đá - Giày đá banh sân cỏ nhân tạo X20G - Ghosted 2021 - May khâu full đế",
-        "price": "₫169.900",
-        "selledQuantity": "Đã bán 578",
-        "saleOffLabelPercent": "39%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C4%90%C3%A8n-ng%E1%BB%A7-h%C3%ACnh-m%E1%BA%B7t-tr%C4%83ng-d%E1%BB%85-th%C6%B0%C6%A1ng-d%C3%A0nh-cho-ph%C3%B2ng-ng%E1%BB%A7-b%C3%A9-g%C3%A1i-i.80205807.9328324276?adsid=0&campaignid=0&position=9",
-        "productImgSrc": "https://cf.shopee.vn/file/191f534ec6fe9ecda44b32a31bb22f23_tn",
-        "name": "Đèn ngủ hình mặt trăng dễ thương dành cho phòng ngủ bé gái",
-        "price": "₫7.500",
-        "selledQuantity": "Đã bán 16,5k",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffLabelPercent": "50%",
-        "favouriteLabel": "Mall",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/Gi%C3%A0y-%C4%90%C3%A1-B%C3%B3ng-s%C3%A2n-c%E1%BB%8F-nh%C3%A2n-t%E1%BA%A1o-X20.1-T%E1%BA%B7ng-T%E1%BA%A5t-KH%C3%82U-%C4%90%E1%BA%BE-100-%C4%91%E1%BA%BF-cao-su-si%C3%AAu-b%E1%BB%81n.-gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-%C4%91%C3%A1-banh-i.112712943.8323300352?adsid=0&campaignid=0&position=10",
-        "productImgSrc": "https://cf.shopee.vn/file/21aa93bed00fb443662b5bab52cb7898_tn",
-        "name": "Giày Đá Bóng sân cỏ nhân tạo X20.1 -Tặng Tất- KHÂU ĐẾ 100% - đế cao su siêu bền. giày đá bóng đá banh",
-        "price": "₫155.000",
-        "selledQuantity": "Đã bán 305",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffText": "50% Giảm",
-        "saleOffLabelPercent": "48%",
-        "favouriteLabel": "Yêu thích+",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/Apple-iPhone-12-Pro-Max-128GB-i.88201679.6360756336?adsid=0&campaignid=0&position=11",
-        "productImgSrc": "https://cf.shopee.vn/file/2dd923298ba0685a2288af4ae443c51c_tn",
-        "name": "Apple iPhone 12 Pro Max 128GB",
-        "price": "₫28.290.000",
-        "selledQuantity": "Đã bán 2,4k",
-        "frameImgSrc": "https://cf.shopee.vn/file/abaee40e5f665e96ce5fde166031c095",
-        "saleOffLabelPercent": "17%",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/1KG-B%C3%81NH-MIX-TUY%E1%BB%82N-CH%E1%BB%8CN-C%C3%81C-V%E1%BB%8A-i.30030553.1386065822?adsid=0&campaignid=0&position=12",
-        "productImgSrc": "https://cf.shopee.vn/file/b9b8fcf30651c4d1295c7937611ca367_tn",
-        "name": "1KG BÁNH MIX TUYỂN CHỌN CÁC VỊ",
-        "price": "₫85.000",
-        "selledQuantity": "Đã bán 3,5k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "30%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-Men-194-Unisex-from-r%E1%BB%99ng-Local-Brand-Ulzzang-v%E1%BA%A3i-coton-cao-c%E1%BA%A5p-d%C3%A0y-d%E1%BA%B7n-co-d%C3%A3n-TR%C6%A0N-i.189967266.3675194051?adsid=0&campaignid=0&position=13",
-        "productImgSrc": "https://cf.shopee.vn/file/3ee87bed025978936943958ab7dbdd89_tn",
-        "name": "Áo thun tay lỡ Men 194 Unisex from rộng Local Brand Ulzzang vải coton cao cấp dày dặn, co dãn - TRƠN",
-        "price": "₫29.000",
-        "selledQuantity": "Đã bán 2,8k",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffLabelPercent": "50%",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/-B1G1-S%E1%BB%AFa-r%E1%BB%ADa-m%E1%BA%B7t-t%E1%BA%A1o-b%E1%BB%8Dt-chi%E1%BA%BFt-xu%E1%BA%A5t-t%C6%A1-t%E1%BA%B1m-tr%E1%BA%AFng-Senka-Perfect-Whip-120g-i.27495213.9972837291?adsid=0&campaignid=0&position=14",
-        "productImgSrc": "https://cf.shopee.vn/file/a488d57be9fe4f2e6534b0a6c97a8803_tn",
-        "name": "[B1G1] Sữa rửa mặt tạo bọt chiết xuất tơ tằm trắng Senka Perfect Whip 120g",
-        "price": "₫99.000",
-        "selledQuantity": "Đã bán 463",
-        "saleOffText": "5% Giảm",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/Qu%E1%BA%A7n-L%C3%B3t-N%E1%BB%AF-L%E1%BB%8Dt-Khe-Sexy-Qu%E1%BA%A7n-L%C3%B3t-Su-Kh%C3%B4ng-Vi%E1%BB%81n-May-M%E1%BA%B7c-%C4%90%E1%BB%93-B%C3%B3-S%C3%A1t-Kh%C3%B4ng-L%E1%BB%99-i.372873321.10808148918?adsid=0&campaignid=0&position=15",
-        "productImgSrc": "https://cf.shopee.vn/file/d00564ede169043c51e7f6caab17462d_tn",
-        "name": "Quần Lót Nữ Lọt Khe Sexy - Quần Lót Su Không Viền May Mặc Đồ Bó Sát Không Lộ",
-        "price": "₫3.600",
-        "selledQuantity": "Đã bán 2,6k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "40%",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/-Gi%C3%A1-t%E1%BB%91t-Gi%C3%A0y-%C4%90%C3%A1-B%C3%B3ng-Nam-ARAFOOTBALL-C%E1%BB%94-CAO-Kh%C3%A2u-%C4%90%E1%BA%BF-i.140115397.6946449800?adsid=0&campaignid=0&position=16",
-        "productImgSrc": "https://cf.shopee.vn/file/a072eb1081669b2f8bca3ed3e5ab618e_tn",
-        "name": "[Giá tốt] Giày Đá Bóng Nam  ARAFOOTBALL CỔ CAO - Khâu Đế",
-        "price": "₫159.900",
-        "selledQuantity": "Đã bán 1k",
-        "saleOffLabelPercent": "43%",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/-R%E1%BA%BB-V%C3%B4-%C4%90%E1%BB%8Bch-%C3%81o-Ph%C3%B4ng-Tr%C6%A1n-D%C3%A1ng-R%E1%BB%99ng-X%E1%BA%BB-V%E1%BA%A1t-Unisex-_-B%E1%BB%90NG-STORE-i.417241850.7984762843?adsid=0&campaignid=0&position=17",
-        "productImgSrc": "https://cf.shopee.vn/file/c02948669a30067a9cb997a1e0e61caa_tn",
-        "name": "[Rẻ Vô Địch] Áo Phông Trơn Dáng Rộng Xẻ Vạt Unisex _ BỐNG STORE",
-        "price": "₫29.999",
-        "selledQuantity": "Đã bán 2,6k",
-        "frameImgSrc": "https://cf.shopee.vn/file/f80e7a006b875a0f9d5592295c79c29c",
-        "saleOffText": "Hoàn 20% xu",
-        "saleOffLabelPercent": "49%",
-        "favouriteLabel": "Mall",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/S%E1%BA%A1c-Laptop-ASUS-19V-3-42A-65W-ch%C3%ADnh-h%C3%A3ng-(-Adapter-Asus-19.5V-3.42A-65W)-T%E1%BA%B7ng-K%C3%A8m-D%C3%A2y-Ngu%E1%BB%93n-i.86070782.1615799037?adsid=0&campaignid=0&position=18",
-        "productImgSrc": "https://cf.shopee.vn/file/ef2427e9f53719dafacd2bf4ccaa9a5b_tn",
-        "name": "Sạc Laptop ASUS 19V - 3,42A - 65W chính hãng ( Adapter Asus 19.5V - 3.42A - 65W) Tặng Kèm Dây Nguồn",
-        "price": "₫99.000",
-        "selledQuantity": "Đã bán 385",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "9%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-thun-unisex-tay-l%E1%BB%A1-nam-n%E1%BB%AF-form-r%E1%BB%99ng-%C3%A1o-ph%C3%B4ng-phong-c%C3%A1ch-SUMMER-basic-tee-A105-i.407726036.11803287586?adsid=0&campaignid=0&position=19",
-        "productImgSrc": "https://cf.shopee.vn/file/a3c3679dc7c9a797997860a64063d2db_tn",
-        "name": "Áo thun unisex tay lỡ nam nữ form rộng ,áo phông phong cách SUMMER basic tee A105",
-        "price": "₫12.000",
-        "selledQuantity": "Đã bán 13,9k",
-        "saleOffLabelPercent": "50%",
-        "favouriteLabel": "Yêu thích+",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/C%E1%BB%99t-T%C3%B3c-Scrunchies-V%E1%BA%A3i-K%E1%BA%BB-Caro-Voan-K%C3%ADnh-M%E1%BB%81m-M%E1%BA%A1i(giao-ng%E1%BA%ABu-nhi%C3%AAn)-i.141451946.7845958855?adsid=0&campaignid=0&position=20",
-        "productImgSrc": "https://cf.shopee.vn/file/fa9a4fe2e6089ade6ded6bb80fd1cbc1_tn",
-        "name": "Cột Tóc Scrunchies Vải Kẻ Caro-Voan Kính Mềm Mại(giao ngẫu nhiên)",
-        "price": "₫1.900",
-        "selledQuantity": "Đã bán 23,7k",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%A1o-ph%C3%B4ng-tay-l%E1%BB%A1-unisex-form-r%E1%BB%99ng-oversize-streetwear-i.445072864.10906530200?adsid=0&campaignid=0&position=21",
-        "productImgSrc": "https://cf.shopee.vn/file/ecdb93c7573c2fc65e0e13f99968d1f1_tn",
-        "name": "áo phông tay lỡ unisex form rộng oversize streetwear",
-        "price": "₫10.000",
-        "selledQuantity": "Đã bán 20,2k",
-        "saleOffLabelPercent": "50%",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/TR%C3%80-S%E1%BB%AEA-TR%C3%82N-CH%C3%82U-HILLWAY-H%C6%AF%C6%A0NG-TRUY%E1%BB%80N-TH%E1%BB%90NG-V%C3%80-H%C6%AF%C6%A0NG-XO%C3%80I-(5ly-x-230g)-i.114518898.6732730625?adsid=0&campaignid=0&position=22",
-        "productImgSrc": "https://cf.shopee.vn/file/0948b53c295100af548e9946dd3ffe3c_tn",
-        "name": "TRÀ SỮA TRÂN CHÂU HILLWAY HƯƠNG TRUYỀN THỐNG VÀ HƯƠNG XOÀI (5ly x 230g)",
-        "price": "₫32.000",
-        "selledQuantity": "Đã bán 4,3k",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-Thun-Tay-L%E1%BB%A1-UNDER-H%C3%A0-N%E1%BB%99i-%C3%81o-Ph%C3%B4ng-Cotton-Nam-N%E1%BB%AF-Unisex-In-H%C3%ACnh-Local-Brand-Streetwear-Oversize-Form-R%E1%BB%99ng-i.382882461.11908219440?adsid=0&campaignid=0&position=23",
-        "productImgSrc": "https://cf.shopee.vn/file/418856ccc95e6743a5ef757f26dbec69_tn",
-        "name": "Áo Thun Tay Lỡ UNDER Hà Nội Áo Phông Cotton Nam Nữ Unisex - In Hình Local Brand Streetwear Oversize Form Rộng",
-        "price": "₫179.000",
-        "selledQuantity": "Đã bán 15,8k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffText": "Giảm ₫20k",
-        "saleOffLabelPercent": "28%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/H%E1%BB%99p-%C4%90%E1%BB%B1ng-S%E1%BA%A3n-Ph%E1%BA%A9m-Qu%E1%BA%A7n-%C3%81o-Local-Brand-UNDER-Streetwear-T%E1%BA%B7ng-k%C3%A8m-G%C3%B3i-qu%C3%A0-t%E1%BA%B7ng-i.382882461.10011978201?adsid=0&campaignid=0&position=24",
-        "productImgSrc": "https://cf.shopee.vn/file/dc4bff9b8519313c0335b285319652b0_tn",
-        "name": "Hộp Đựng Sản Phẩm Quần Áo Local Brand UNDER Streetwear - Tặng kèm Gói quà tặng",
-        "price": "₫15.000",
-        "selledQuantity": "Đã bán 4,4k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffText": "Giảm ₫15k",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/X%E1%BB%91p-d%C3%A1n-t%C6%B0%E1%BB%9Dng-gi%E1%BA%A3-g%E1%BA%A1ch-3D-Kh%E1%BB%95-l%E1%BB%9Bn-70x77cm-i.274028659.7738484257?adsid=0&campaignid=0&position=25",
-        "productImgSrc": "https://cf.shopee.vn/file/9d257a4d64bcd4a9569d3e990c946838_tn",
-        "name": "Xốp dán tường giả gạch 3D - Khổ lớn 70x77cm",
-        "price": "₫1.600",
-        "selledQuantity": "Đã bán 594k",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-thun-Teelab-Premium-Basic-Tee-TS063-i.308542026.6383933390?adsid=0&campaignid=0&position=26",
-        "productImgSrc": "https://cf.shopee.vn/file/298835d047abe03d5995edeb73b59a7e_tn",
-        "name": "Áo thun Teelab Premium Basic Tee TS063",
-        "price": "₫195.000",
-        "selledQuantity": "Đã bán 7,6k",
-        "frameImgSrc": "https://cf.shopee.vn/file/abaee40e5f665e96ce5fde166031c095",
-        "saleOffLabelPercent": "44%",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-thun-nam-n%E1%BB%AF-unisex-tay-l%E1%BB%A1-AD69-Tom-Jerry-%C3%A1o-ph%C3%B4ng-tay-l%E1%BB%A1-unisex-form-r%E1%BB%99ng-oversize-streetwear-i.432363876.6890547841?adsid=0&campaignid=0&position=27",
-        "productImgSrc": "https://cf.shopee.vn/file/fed0a9788a96a0c546f84ebc0a8a4549_tn",
-        "name": "Áo thun nam nữ unisex tay lỡ AD69 Tom&amp;Jerry, áo phông tay lỡ unisex form rộng oversize streetwear",
-        "price": "₫10.000",
-        "selledQuantity": "Đã bán 10,4k",
-        "saleOffLabelPercent": "50%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/-Video3-Gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-nam-Gi%C3%A0y-b%C3%B3ng-%C4%91%C3%A1-Gi%C3%A0y-%C4%91%C3%A1-banh-s%C3%A2n-c%E1%BB%8F-nh%C3%A2n-t%E1%BA%A1o-X20G-Ghosted-2021-May-kh%C3%A2u-full-%C4%91%E1%BA%BF-i.358296186.7383439650?adsid=0&campaignid=0&position=28",
-        "productImgSrc": "https://cf.shopee.vn/file/625ba4cd321b8ffc425f07cd1bd375a8_tn",
-        "name": "[Video3] - Giày đá bóng nam - Giày bóng đá - Giày đá banh sân cỏ nhân tạo X20G - Ghosted 2021 - May khâu full đế",
-        "price": "₫159.900",
-        "selledQuantity": "Đã bán 310",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffLabelPercent": "43%",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/N%E1%BB%93i-chi%C3%AAn-kh%C3%B4ng-d%E1%BA%A7u-dung-t%C3%ADch-5-l%C3%ADt-CAMEL-B%E1%BA%A3o-h%C3%A0nh-6-th%C3%A1ng-i.38308826.7126111008?adsid=0&campaignid=0&position=29",
-        "productImgSrc": "https://cf.shopee.vn/file/af85fa38315b9ddd27af8cd5f7f1f135_tn",
-        "name": "Nồi chiên không dầu dung tích 5 lít CAMEL Bảo hành 6 tháng",
-        "price": "₫600.000",
-        "selledQuantity": "Đã bán 18,7k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "40%",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/B%E1%BB%99-B%C3%A0n-Ph%C3%ADm-Gaming-c%C3%B3-d%C3%A2y-K%C3%A8m-Chu%E1%BB%99t-M%C3%A1y-T%C3%ADnh-Con-B%C3%A1o-C%C3%B3-LED-7-M%C3%A0u-%E1%BA%A4n-T%C6%B0%E1%BB%A3ng-i.93922606.1546899006?adsid=0&campaignid=0&position=30",
-        "productImgSrc": "https://cf.shopee.vn/file/e26394e62abc77979e3870d3e2126a33_tn",
-        "name": "Bộ Bàn Phím Gaming có dây Kèm Chuột Máy Tính Con Báo Có LED 7 Màu Ấn Tượng",
-        "price": "₫39.500",
-        "selledQuantity": "Đã bán 9,6k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "29%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-form-r%E1%BB%99ng-Unisex-Phi-H%C3%A0nh-Gia-%C3%A1o-ph%C3%B4ng-tay-l%E1%BB%A1-Nam-N%E1%BB%AF-AD-67-i.406555736.7591421295?adsid=0&campaignid=0&position=31",
-        "productImgSrc": "https://cf.shopee.vn/file/bb990a64e5245765ff9dbaf22d51f488_tn",
-        "name": "Áo thun tay lỡ form rộng Unisex Phi Hành Gia, áo phông tay lỡ Nam Nữ AD 67",
-        "price": "₫10.000",
-        "selledQuantity": "Đã bán 12,2k",
-        "saleOffLabelPercent": "50%",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/B%C3%A0n-Ch%E1%BA%A3i-%C4%90i%E1%BB%87n-T%E1%BB%B1-%C4%90%E1%BB%99ng-%C4%90%C3%A1nh-R%C4%83ng-5-Ch%E1%BA%BF-%C4%90%E1%BB%99-H%C3%A0ng-N%E1%BB%99i-%C4%90%E1%BB%8Ba-Trung-Cao-C%E1%BA%A5p-i.237253511.10111314561?adsid=0&campaignid=0&position=32",
-        "productImgSrc": "https://cf.shopee.vn/file/13c2f91bbb0e79f91b1bbc4600ca1cc7_tn",
-        "name": "Bàn Chải Điện Tự Động Đánh Răng 5 Chế Độ Hàng Nội Địa Trung Cao Cấp",
-        "price": "₫24.000",
-        "selledQuantity": "Đã bán 6k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "50%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-Kho%C3%A1c-Cardigan-Unisex%E2%9D%A4%EF%B8%8F%C3%81o-Cardigan-SNOPPY-BEMBO-form-r%E1%BB%99ng-Ulzzang-Unisex-Nam-N%E1%BB%AF-(video-th%E1%BA%ADt-100-t%E1%BA%A1i-Shop)-i.345492648.7491654407?adsid=0&campaignid=0&position=33",
-        "productImgSrc": "https://cf.shopee.vn/file/e49cade8a4cbeeb3d6ab2eef4a66323f_tn",
-        "name": "Áo Khoác Cardigan Unisex❤️Áo Cardigan SNOPPY/BEMBO form rộng Ulzzang Unisex Nam/Nữ (video thật 100% tại Shop)",
-        "price": "₫24.900",
-        "selledQuantity": "Đã bán 414",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffLabelPercent": "50%",
-        "favouriteLabel": "Mall",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/Nh%E1%BA%ABn-%C4%91eo-ng%C3%B3n-tay-thi%E1%BA%BFt-k%E1%BA%BF-%C4%91%E1%BB%99c-%C4%91%C3%A1o-th%E1%BB%9Di-trang-cho-n%E1%BB%AF-i.283049275.7945520313?adsid=0&campaignid=0&position=34",
-        "productImgSrc": "https://cf.shopee.vn/file/148a6c483ddc5567b032fbb5d076726d_tn",
-        "name": "Nhẫn đeo ngón tay thiết kế độc đáo thời trang cho nữ",
-        "price": "₫12.000",
-        "selledQuantity": "Đã bán 24,7k",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffLabelPercent": "40%",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-Thun-%C3%81o-Ph%C3%B4ng-Tay-L%E1%BB%A1-From-r%E1%BB%99ng-CD-Unisex-i.120723783.3382586017?adsid=0&campaignid=0&position=35",
-        "productImgSrc": "https://cf.shopee.vn/file/9d810861f34c96320794243a22ff3a1e_tn",
-        "name": "Áo Thun Áo Phông Tay Lỡ From rộng [CD] Unisex",
-        "price": "₫69.000",
-        "selledQuantity": "Đã bán 9k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffText": "10% Giảm",
-        "saleOffLabelPercent": "37%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-gi%C3%A0y-%C4%91%C3%A1-banh-%E2%9A%A1t%E1%BA%B7ng-t%E1%BA%A5t%E2%9A%A1-%C4%91%C3%A3-kh%C3%A2u-%C4%91%E1%BA%BF-100--i.31982992.2761793810?adsid=0&campaignid=0&position=36",
-        "productImgSrc": "https://cf.shopee.vn/file/902b0a469058c27c19a6ba80d908f389_tn",
-        "name": "giày đá bóng,giày đá banh ⚡tặng tất⚡ đã khâu đế 100%",
-        "price": "₫85.000",
-        "selledQuantity": "Đã bán 8,9k",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/K%C3%ADnh-ch%E1%BB%91ng-gi%E1%BB%8Dt-b%E1%BA%AFn-ki%C3%AAm-k%C3%ADnh-ch%E1%BB%91ng-b%E1%BB%87nh-d%E1%BB%8Bch-b%E1%BA%A3o-h%E1%BB%99-lao-%C4%91%E1%BB%99ng-i.79569379.9264503761?adsid=0&campaignid=0&position=37",
-        "productImgSrc": "https://cf.shopee.vn/file/cff37133f5d2bda1783e4d989f0e3fda_tn",
-        "name": "Kính chống giọt bắn kiêm kính chống bệnh dịch, bảo hộ lao động",
-        "price": "₫1.000",
-        "selledQuantity": "Đã bán 7,1k",
-        "favouriteLabel": "Yêu thích",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/File-l%C3%A1-h%E1%BB%8Dc-sinh-A4-Deli-30-40-l%C3%A1-Xanh-d%C6%B0%C6%A1ng-H%E1%BB%93ng-Tr%E1%BA%AFng-1-chi%E1%BA%BFc-72493-72494-i.127805122.4753150087?adsid=0&campaignid=0&position=38",
-        "productImgSrc": "https://cf.shopee.vn/file/aa427f98ab576c7a90485378eea5adbb_tn",
-        "name": "File lá học sinh A4 Deli - 30/40 lá - Xanh dương/Hồng/Trắng - 1 chiếc - 72493 / 72494",
-        "price": "₫45.000",
-        "selledQuantity": "Đã bán 2,5k",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffLabelPercent": "45%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-nam-n%E1%BB%AF-%C3%A1o-ph%C3%B4ng-unisex-form-r%E1%BB%99ng-ch%E1%BA%A5t-cotton-m%C3%A1t-m%E1%BB%8Bn-th%E1%BA%A5m-h%C3%BAt-m%E1%BB%93-h%C3%B4i-in-h%C3%ACnh-SI%C3%8AU-CH%E1%BA%A4T-i.470458733.10312975152?adsid=0&campaignid=0&position=39",
-        "productImgSrc": "https://cf.shopee.vn/file/ea280060bf3e38b56168ce27c3fe50e8_tn",
-        "name": "Áo thun tay lỡ nam nữ, áo phông unisex form rộng chất cotton mát mịn thấm hút mồ hôi in hình SIÊU CHẤT",
-        "price": "₫20.000",
-        "selledQuantity": "Đã bán 480",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "saleOffLabelPercent": "50%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/Tranh-s%E1%BB%91-h%C3%B3a-m%C3%A0u-acrylic-t%C3%B4-theo-m%C3%A3-s%E1%BB%91-tr%C3%AAn-v%E1%BA%A3i-canvas-trang-tr%C3%AD-n%E1%BB%99i-th%E1%BA%A5t-20X20CM-XH123-i.426471934.9044879758?adsid=0&campaignid=0&position=40",
-        "productImgSrc": "https://cf.shopee.vn/file/2693d1906473f9739915726ca3293cfd_tn",
-        "name": "Tranh số hóa màu acrylic tô theo mã số trên vải canvas trang trí nội thất 20X20CM XH123",
-        "price": "₫43.200",
-        "selledQuantity": "Đã bán 417",
-        "saleOffLabelPercent": "40%",
-        "favouriteLabel": "Yêu thích+",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/FREESHIP%E2%9D%A4%EF%B8%8F-B%C3%A1nh-Tr%E1%BB%A9ng-Ch%E1%BA%A3y-Ng%C3%A0n-L%E1%BB%9Bp-%E2%9D%A4%EF%B8%8FDate-m%E1%BB%9Bi-nh%E1%BA%A5t-500-gr-9-chi%E1%BA%BFc-B%C3%A1nh-tr%E1%BB%A9ng-mu%E1%BB%91i-tan-ch%E1%BA%A3y-i.51275889.3160715681?adsid=0&campaignid=0&position=41",
-        "productImgSrc": "https://cf.shopee.vn/file/8448ce6577698ebb416fe46f0b16e505_tn",
-        "name": "FREESHIP❤️ Bánh Trứng Chảy Ngàn Lớp ❤️Date mới nhất [500 gr] [9 chiếc] Bánh trứng muối tan chảy",
-        "price": "₫47.000",
-        "selledQuantity": "Đã bán 2,5k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "43%",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/Th%E1%BA%A3m-L%C3%B4ng-Loang-Tr%E1%BA%A3i-S%C3%A0n-L%C3%B4ng-D%E1%BA%A7y-H%C3%A0ng-%C4%90%E1%BA%B9p-2020-(-K%C3%ADch-Th%C6%B0%E1%BB%9Bc-1m6-x-2m-M%E1%BA%B7t-Sau-Ch%E1%BB%93ng-tr%C6%A1n-tr%C6%B0%E1%BB%A3t)-i.22156385.2656264520?adsid=0&campaignid=0&position=42",
-        "productImgSrc": "https://cf.shopee.vn/file/914969325adae0485cb82fd8734c7b4b_tn",
-        "name": "Thảm Lông Loang Trải Sàn Lông Dầy Hàng Đẹp 2020 ( Kích Thước 1m6 x 2m - Mặt Sau Chồng trơn trượt)",
-        "price": "₫54.000",
-        "selledQuantity": "Đã bán 33,5k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "41%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C4%90%C3%A8n-Led-Tiktok-5m-Mix-DIY-Tr%C3%AAn-50-M%C3%A0u-i.19562457.4133381819?adsid=0&campaignid=0&position=43",
-        "productImgSrc": "https://cf.shopee.vn/file/8e831b015ffce01c72f30730530e716a_tn",
-        "name": "Đèn Led Tiktok 5m Mix DIY Trên 50 Màu",
-        "price": "₫29.000",
-        "selledQuantity": "Đã bán 21,3k",
-        "favouriteLabel": "Yêu thích",
-        "saleOffText": "Giảm ₫5k",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/S%E1%BA%A1c-laptop-Asus-19V-4.47-3.42-2.37-1.75-i.145578395.4525188760?adsid=0&campaignid=0&position=44",
-        "productImgSrc": "https://cf.shopee.vn/file/83a980673d42710c5ad65c9a96e1ce32_tn",
-        "name": "Sạc laptop Asus 19V-4.47/3.42/2.37/1.75",
-        "price": "₫116.620",
-        "selledQuantity": "Đã bán 966",
-        "saleOffText": "Giảm ₫5k",
-        "saleOffLabelPercent": "7%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/X%C3%BAc-x%C3%ADch-x%C3%B4ng-kh%C3%B3i-gi%C3%A1-si%C3%AAu-deal.-1-b%E1%BB%8Bch-10-c%C3%A2y-th%C6%A1m-ngon-ch%E1%BA%A5t-l%C6%B0%E1%BB%A3ng.-Giao-s%E1%BB%89-to%C3%A0n-qu%E1%BB%91c.-giao-l%E1%BA%BB-tp-hcm-i.244653818.4562562640?adsid=0&campaignid=0&position=45",
-        "productImgSrc": "https://cf.shopee.vn/file/0ddde041952e25027974ca55dd5266bc_tn",
-        "name": "Xúc xích xông khói giá siêu deal. 1 bịch 10 cây, thơm ngon chất lượng. Giao sỉ toàn quốc. giao lẻ tp hcm",
-        "price": "₫32.000",
-        "selledQuantity": "Đã bán 2,1k",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "9%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/%C3%81o-Kho%C3%A1c-Hoodie-Tay-B%E1%BB%93ng-In-Ch%E1%BB%AF-N-N%E1%BB%AF-FreeShip-Jacket-c%C3%B3-m%C5%A9-from-r%E1%BB%99ngnhi%E1%BB%81u-i.64457418.9979553620?adsid=0&campaignid=0&position=46",
-        "productImgSrc": "https://cf.shopee.vn/file/77f9fc41c291daeaf044814218e3f216_tn",
-        "name": "Áo Khoác Hoodie Tay Bồng In Chữ N Nữ [FreeShip] Jacket có mũ from rộngnhiều",
-        "price": "₫80.000",
-        "selledQuantity": "Đã bán 53",
-        "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
-        "saleOffLabelPercent": "50%",
-        "sponsorLabel": true
-    },
-    {
-        "productLink": "https://shopee.vn/%E2%9D%A4%EF%B8%8FSI%C3%8AU-PH%E1%BA%A8M-M%C3%99A-H%C3%88%E2%9D%A4%EF%B8%8F%C4%90%E1%BB%93-Ng%E1%BB%A7-sexy-ph%E1%BB%91i-ren-c%E1%BB%B1c-m%C3%A1t-%E1%BA%A3nh-th%E1%BA%ADt--i.94381273.11700127097?adsid=0&campaignid=0&position=1",
-        "productImgSrc": "https://cf.shopee.vn/file/2fe26dee4aa23d68e82d37ea083a0505_tn",
-        "name": "❤️SIÊU PHẨM MÙA HÈ❤️Đồ Ngủ sexy phối ren cực mát[ảnh thật]",
-        "price": "₫44.000",
-        "selledQuantity": "Đã bán 3,9k",
-        "frameImgSrc": "https://cf.shopee.vn/file/f80e7a006b875a0f9d5592295c79c29c",
-        "saleOffLabelPercent": "2%",
-        "sponsorLabel": false
-    },
-    {
-        "productLink": "https://shopee.vn/R%C3%A8m-c%E1%BB%ADa-d%C3%A1n-keo-kh%C3%B4ng-c%E1%BA%A7n-thanh-treo-(nhi%E1%BB%81u-m%E1%BA%ABu-v%C3%A0-size)-i.16948418.5477228869?adsid=0&campaignid=0&position=47",
-        "productImgSrc": "https://cf.shopee.vn/file/5e4090496aaee7a40f01613198410a8d_tn",
-        "name": "Rèm cửa dán keo không cần thanh treo (nhiều mẫu và size)",
-        "price": "₫55.000",
-        "selledQuantity": "Đã bán 9,9k",
-        "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
-        "sponsorLabel": false
-    }
-];
+// var todaySuggestionMainProductsInfo = [
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-DASN-%C3%81o-ph%C3%B4ng-tay-l%E1%BB%A1-Unisex-form-r%E1%BB%99ng-Oversize-i.409382714.2933520475?adsid=0&campaignid=0&position=0",
+//         "productImgSrc": "https://cf.shopee.vn/file/7feb34a7716a838a8cc397ba0ef01c9f_tn",
+//         "name": "Áo thun tay lỡ DASN, Áo phông tay lỡ Unisex form rộng Oversize",
+//         "price": "₫10.000",
+//         "selledQuantity": "Đã bán 8,3k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/f80e7a006b875a0f9d5592295c79c29c",
+//         "saleOffLabelPercent": "50%",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C4%90%E1%BA%A7m-Thi%E1%BA%BFt-K%E1%BA%BF-Lo%E1%BA%A1i-1-V%C3%A1y-N%E1%BB%AF-C%E1%BB%95-S%C6%A1-Mi-Tr%E1%BA%AFng-%C4%90en-C%C3%BAc-C%C3%A0i-Tay-L%E1%BB%A1-%C4%90an-Eo-C%C3%A1-T%C3%ADnh-Ch%E1%BA%A5t-Li%E1%BB%87u-%C4%90%C5%A9i-L%E1%BB%A5a-Cao-C%E1%BA%A5p-Haui-Store-i.448080446.11316712750?adsid=0&campaignid=0&position=2",
+//         "productImgSrc": "https://cf.shopee.vn/file/f8a0351590864a8de9075feb2cec8d31_tn",
+//         "name": "Đầm Thiết Kế Loại 1, Váy Nữ Cổ Sơ Mi Trắng Đen Cúc Cài, Tay Lỡ Đan Eo Cá Tính, Chất Liệu Đũi Lụa Cao Cấp - Haui Store",
+//         "price": "₫132.000",
+//         "selledQuantity": "Đã bán 17",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffText": "Giảm ₫15k",
+//         "saleOffLabelPercent": "40%",
+//         "favouriteLabel": "Mall",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/X%E1%BB%8Bt-Th%C6%A1m-To%C3%A0n-Th%C3%A2n-ShiMang-Body-Mist-50ML-H%C3%A0ng-Ch%C3%ADnh-H%C3%A3ng-i.170733238.4968301712?adsid=0&campaignid=0&position=3",
+//         "productImgSrc": "https://cf.shopee.vn/file/2d59adf3a7da9c9be9d34c84ce764017_tn",
+//         "name": "Xịt Thơm Toàn Thân ShiMang Body Mist 50ML Hàng Chính Hãng",
+//         "price": "₫24.000",
+//         "selledQuantity": "Đã bán 4,4k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffText": "50% Giảm",
+//         "saleOffLabelPercent": "50%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/Gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-s%C3%A2n-c%E1%BB%8F-nh%C3%A2n-t%E1%BA%A1o-Predator-T%E1%BA%B7ng-t%E1%BA%A5t-Kh%C3%A2u-%C4%91%E1%BA%BF-100--i.93425556.3458989326?adsid=0&campaignid=0&position=4",
+//         "productImgSrc": "https://cf.shopee.vn/file/085d6867259b9350c891be2d3a68e5fd_tn",
+//         "name": "Giày đá bóng sân cỏ nhân tạo Predator -Tặng tất -Khâu đế 100%",
+//         "price": "₫59.000",
+//         "selledQuantity": "Đã bán 1,1k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffLabelPercent": "50%",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-nam-n%E1%BB%AF-form-r%E1%BB%99ng-Oversize-%C3%A1o-ph%C3%B4ng-tay-l%E1%BB%A1-form-r%E1%BB%99ng-Unisex-%C3%A1o-thun-Maroaret-Cam-i.445072864.10109373763?adsid=0&campaignid=0&position=5",
+//         "productImgSrc": "https://cf.shopee.vn/file/4ca84f06cad5819d9ec92135ddc31724_tn",
+//         "name": "Áo thun tay lỡ nam nữ form rộng Oversize, áo phông tay lỡ form rộng Unisex, áo thun Maroaret Cam",
+//         "price": "₫11.000",
+//         "selledQuantity": "Đã bán 152",
+//         "saleOffLabelPercent": "45%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-ph%C3%B4ng-unisex-nam-n%E1%BB%AF-form-r%E1%BB%99ng-tay-l%E1%BB%A1-m%E1%BA%B7t-c%C6%B0%E1%BB%9Di-%C4%91%E1%BA%B9p-v%E1%BA%A3i-d%C3%A0y-m%E1%BB%8Bn-i.76875639.7790178910?adsid=0&campaignid=0&position=6",
+//         "productImgSrc": "https://cf.shopee.vn/file/050341b33e811ec904f79c32dc61f2e5_tn",
+//         "name": "Áo phông unisex nam nữ form rộng tay lỡ mặt cười đẹp vải dày mịn",
+//         "price": "₫24.900",
+//         "selledQuantity": "Đã bán 3,8k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/B%C3%B4ng-T%E1%BA%A9y-trang-GI%C3%81-S%E1%BB%88-3-l%E1%BB%9Bp-cotton-T%C3%BAi-222-mi%E1%BA%BFng-d%C3%A0y-d%E1%BA%B7n--i.170733238.3158355904?adsid=0&campaignid=0&position=7",
+//         "productImgSrc": "https://cf.shopee.vn/file/28042445981b5dddda78ff17bd274a01_tn",
+//         "name": "Bông Tẩy trang GIÁ SỈ 3 lớp cotton [Túi 222 miếng dày dặn]",
+//         "price": "₫29.000",
+//         "selledQuantity": "Đã bán 1,7k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffText": "50% Giảm",
+//         "saleOffLabelPercent": "17%",
+//         "favouriteLabel": "Yêu thích+",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/-Video3-Gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-nam-Gi%C3%A0y-b%C3%B3ng-%C4%91%C3%A1-Gi%C3%A0y-%C4%91%C3%A1-banh-s%C3%A2n-c%E1%BB%8F-nh%C3%A2n-t%E1%BA%A1o-X20G-Ghosted-2021-May-kh%C3%A2u-full-%C4%91%E1%BA%BF-i.140115397.9010935037?adsid=0&campaignid=0&position=8",
+//         "productImgSrc": "https://cf.shopee.vn/file/8aef395edbc03b6bc4d0d78d5f77e817_tn",
+//         "name": "[Video3] - Giày đá bóng nam - Giày bóng đá - Giày đá banh sân cỏ nhân tạo X20G - Ghosted 2021 - May khâu full đế",
+//         "price": "₫169.900",
+//         "selledQuantity": "Đã bán 578",
+//         "saleOffLabelPercent": "39%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C4%90%C3%A8n-ng%E1%BB%A7-h%C3%ACnh-m%E1%BA%B7t-tr%C4%83ng-d%E1%BB%85-th%C6%B0%C6%A1ng-d%C3%A0nh-cho-ph%C3%B2ng-ng%E1%BB%A7-b%C3%A9-g%C3%A1i-i.80205807.9328324276?adsid=0&campaignid=0&position=9",
+//         "productImgSrc": "https://cf.shopee.vn/file/191f534ec6fe9ecda44b32a31bb22f23_tn",
+//         "name": "Đèn ngủ hình mặt trăng dễ thương dành cho phòng ngủ bé gái",
+//         "price": "₫7.500",
+//         "selledQuantity": "Đã bán 16,5k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffLabelPercent": "50%",
+//         "favouriteLabel": "Mall",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/Gi%C3%A0y-%C4%90%C3%A1-B%C3%B3ng-s%C3%A2n-c%E1%BB%8F-nh%C3%A2n-t%E1%BA%A1o-X20.1-T%E1%BA%B7ng-T%E1%BA%A5t-KH%C3%82U-%C4%90%E1%BA%BE-100-%C4%91%E1%BA%BF-cao-su-si%C3%AAu-b%E1%BB%81n.-gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-%C4%91%C3%A1-banh-i.112712943.8323300352?adsid=0&campaignid=0&position=10",
+//         "productImgSrc": "https://cf.shopee.vn/file/21aa93bed00fb443662b5bab52cb7898_tn",
+//         "name": "Giày Đá Bóng sân cỏ nhân tạo X20.1 -Tặng Tất- KHÂU ĐẾ 100% - đế cao su siêu bền. giày đá bóng đá banh",
+//         "price": "₫155.000",
+//         "selledQuantity": "Đã bán 305",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffText": "50% Giảm",
+//         "saleOffLabelPercent": "48%",
+//         "favouriteLabel": "Yêu thích+",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/Apple-iPhone-12-Pro-Max-128GB-i.88201679.6360756336?adsid=0&campaignid=0&position=11",
+//         "productImgSrc": "https://cf.shopee.vn/file/2dd923298ba0685a2288af4ae443c51c_tn",
+//         "name": "Apple iPhone 12 Pro Max 128GB",
+//         "price": "₫28.290.000",
+//         "selledQuantity": "Đã bán 2,4k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/abaee40e5f665e96ce5fde166031c095",
+//         "saleOffLabelPercent": "17%",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/1KG-B%C3%81NH-MIX-TUY%E1%BB%82N-CH%E1%BB%8CN-C%C3%81C-V%E1%BB%8A-i.30030553.1386065822?adsid=0&campaignid=0&position=12",
+//         "productImgSrc": "https://cf.shopee.vn/file/b9b8fcf30651c4d1295c7937611ca367_tn",
+//         "name": "1KG BÁNH MIX TUYỂN CHỌN CÁC VỊ",
+//         "price": "₫85.000",
+//         "selledQuantity": "Đã bán 3,5k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "30%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-Men-194-Unisex-from-r%E1%BB%99ng-Local-Brand-Ulzzang-v%E1%BA%A3i-coton-cao-c%E1%BA%A5p-d%C3%A0y-d%E1%BA%B7n-co-d%C3%A3n-TR%C6%A0N-i.189967266.3675194051?adsid=0&campaignid=0&position=13",
+//         "productImgSrc": "https://cf.shopee.vn/file/3ee87bed025978936943958ab7dbdd89_tn",
+//         "name": "Áo thun tay lỡ Men 194 Unisex from rộng Local Brand Ulzzang vải coton cao cấp dày dặn, co dãn - TRƠN",
+//         "price": "₫29.000",
+//         "selledQuantity": "Đã bán 2,8k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffLabelPercent": "50%",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/-B1G1-S%E1%BB%AFa-r%E1%BB%ADa-m%E1%BA%B7t-t%E1%BA%A1o-b%E1%BB%8Dt-chi%E1%BA%BFt-xu%E1%BA%A5t-t%C6%A1-t%E1%BA%B1m-tr%E1%BA%AFng-Senka-Perfect-Whip-120g-i.27495213.9972837291?adsid=0&campaignid=0&position=14",
+//         "productImgSrc": "https://cf.shopee.vn/file/a488d57be9fe4f2e6534b0a6c97a8803_tn",
+//         "name": "[B1G1] Sữa rửa mặt tạo bọt chiết xuất tơ tằm trắng Senka Perfect Whip 120g",
+//         "price": "₫99.000",
+//         "selledQuantity": "Đã bán 463",
+//         "saleOffText": "5% Giảm",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/Qu%E1%BA%A7n-L%C3%B3t-N%E1%BB%AF-L%E1%BB%8Dt-Khe-Sexy-Qu%E1%BA%A7n-L%C3%B3t-Su-Kh%C3%B4ng-Vi%E1%BB%81n-May-M%E1%BA%B7c-%C4%90%E1%BB%93-B%C3%B3-S%C3%A1t-Kh%C3%B4ng-L%E1%BB%99-i.372873321.10808148918?adsid=0&campaignid=0&position=15",
+//         "productImgSrc": "https://cf.shopee.vn/file/d00564ede169043c51e7f6caab17462d_tn",
+//         "name": "Quần Lót Nữ Lọt Khe Sexy - Quần Lót Su Không Viền May Mặc Đồ Bó Sát Không Lộ",
+//         "price": "₫3.600",
+//         "selledQuantity": "Đã bán 2,6k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "40%",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/-Gi%C3%A1-t%E1%BB%91t-Gi%C3%A0y-%C4%90%C3%A1-B%C3%B3ng-Nam-ARAFOOTBALL-C%E1%BB%94-CAO-Kh%C3%A2u-%C4%90%E1%BA%BF-i.140115397.6946449800?adsid=0&campaignid=0&position=16",
+//         "productImgSrc": "https://cf.shopee.vn/file/a072eb1081669b2f8bca3ed3e5ab618e_tn",
+//         "name": "[Giá tốt] Giày Đá Bóng Nam  ARAFOOTBALL CỔ CAO - Khâu Đế",
+//         "price": "₫159.900",
+//         "selledQuantity": "Đã bán 1k",
+//         "saleOffLabelPercent": "43%",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/-R%E1%BA%BB-V%C3%B4-%C4%90%E1%BB%8Bch-%C3%81o-Ph%C3%B4ng-Tr%C6%A1n-D%C3%A1ng-R%E1%BB%99ng-X%E1%BA%BB-V%E1%BA%A1t-Unisex-_-B%E1%BB%90NG-STORE-i.417241850.7984762843?adsid=0&campaignid=0&position=17",
+//         "productImgSrc": "https://cf.shopee.vn/file/c02948669a30067a9cb997a1e0e61caa_tn",
+//         "name": "[Rẻ Vô Địch] Áo Phông Trơn Dáng Rộng Xẻ Vạt Unisex _ BỐNG STORE",
+//         "price": "₫29.999",
+//         "selledQuantity": "Đã bán 2,6k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/f80e7a006b875a0f9d5592295c79c29c",
+//         "saleOffText": "Hoàn 20% xu",
+//         "saleOffLabelPercent": "49%",
+//         "favouriteLabel": "Mall",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/S%E1%BA%A1c-Laptop-ASUS-19V-3-42A-65W-ch%C3%ADnh-h%C3%A3ng-(-Adapter-Asus-19.5V-3.42A-65W)-T%E1%BA%B7ng-K%C3%A8m-D%C3%A2y-Ngu%E1%BB%93n-i.86070782.1615799037?adsid=0&campaignid=0&position=18",
+//         "productImgSrc": "https://cf.shopee.vn/file/ef2427e9f53719dafacd2bf4ccaa9a5b_tn",
+//         "name": "Sạc Laptop ASUS 19V - 3,42A - 65W chính hãng ( Adapter Asus 19.5V - 3.42A - 65W) Tặng Kèm Dây Nguồn",
+//         "price": "₫99.000",
+//         "selledQuantity": "Đã bán 385",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "9%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-thun-unisex-tay-l%E1%BB%A1-nam-n%E1%BB%AF-form-r%E1%BB%99ng-%C3%A1o-ph%C3%B4ng-phong-c%C3%A1ch-SUMMER-basic-tee-A105-i.407726036.11803287586?adsid=0&campaignid=0&position=19",
+//         "productImgSrc": "https://cf.shopee.vn/file/a3c3679dc7c9a797997860a64063d2db_tn",
+//         "name": "Áo thun unisex tay lỡ nam nữ form rộng ,áo phông phong cách SUMMER basic tee A105",
+//         "price": "₫12.000",
+//         "selledQuantity": "Đã bán 13,9k",
+//         "saleOffLabelPercent": "50%",
+//         "favouriteLabel": "Yêu thích+",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/C%E1%BB%99t-T%C3%B3c-Scrunchies-V%E1%BA%A3i-K%E1%BA%BB-Caro-Voan-K%C3%ADnh-M%E1%BB%81m-M%E1%BA%A1i(giao-ng%E1%BA%ABu-nhi%C3%AAn)-i.141451946.7845958855?adsid=0&campaignid=0&position=20",
+//         "productImgSrc": "https://cf.shopee.vn/file/fa9a4fe2e6089ade6ded6bb80fd1cbc1_tn",
+//         "name": "Cột Tóc Scrunchies Vải Kẻ Caro-Voan Kính Mềm Mại(giao ngẫu nhiên)",
+//         "price": "₫1.900",
+//         "selledQuantity": "Đã bán 23,7k",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%A1o-ph%C3%B4ng-tay-l%E1%BB%A1-unisex-form-r%E1%BB%99ng-oversize-streetwear-i.445072864.10906530200?adsid=0&campaignid=0&position=21",
+//         "productImgSrc": "https://cf.shopee.vn/file/ecdb93c7573c2fc65e0e13f99968d1f1_tn",
+//         "name": "áo phông tay lỡ unisex form rộng oversize streetwear",
+//         "price": "₫10.000",
+//         "selledQuantity": "Đã bán 20,2k",
+//         "saleOffLabelPercent": "50%",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/TR%C3%80-S%E1%BB%AEA-TR%C3%82N-CH%C3%82U-HILLWAY-H%C6%AF%C6%A0NG-TRUY%E1%BB%80N-TH%E1%BB%90NG-V%C3%80-H%C6%AF%C6%A0NG-XO%C3%80I-(5ly-x-230g)-i.114518898.6732730625?adsid=0&campaignid=0&position=22",
+//         "productImgSrc": "https://cf.shopee.vn/file/0948b53c295100af548e9946dd3ffe3c_tn",
+//         "name": "TRÀ SỮA TRÂN CHÂU HILLWAY HƯƠNG TRUYỀN THỐNG VÀ HƯƠNG XOÀI (5ly x 230g)",
+//         "price": "₫32.000",
+//         "selledQuantity": "Đã bán 4,3k",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-Thun-Tay-L%E1%BB%A1-UNDER-H%C3%A0-N%E1%BB%99i-%C3%81o-Ph%C3%B4ng-Cotton-Nam-N%E1%BB%AF-Unisex-In-H%C3%ACnh-Local-Brand-Streetwear-Oversize-Form-R%E1%BB%99ng-i.382882461.11908219440?adsid=0&campaignid=0&position=23",
+//         "productImgSrc": "https://cf.shopee.vn/file/418856ccc95e6743a5ef757f26dbec69_tn",
+//         "name": "Áo Thun Tay Lỡ UNDER Hà Nội Áo Phông Cotton Nam Nữ Unisex - In Hình Local Brand Streetwear Oversize Form Rộng",
+//         "price": "₫179.000",
+//         "selledQuantity": "Đã bán 15,8k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffText": "Giảm ₫20k",
+//         "saleOffLabelPercent": "28%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/H%E1%BB%99p-%C4%90%E1%BB%B1ng-S%E1%BA%A3n-Ph%E1%BA%A9m-Qu%E1%BA%A7n-%C3%81o-Local-Brand-UNDER-Streetwear-T%E1%BA%B7ng-k%C3%A8m-G%C3%B3i-qu%C3%A0-t%E1%BA%B7ng-i.382882461.10011978201?adsid=0&campaignid=0&position=24",
+//         "productImgSrc": "https://cf.shopee.vn/file/dc4bff9b8519313c0335b285319652b0_tn",
+//         "name": "Hộp Đựng Sản Phẩm Quần Áo Local Brand UNDER Streetwear - Tặng kèm Gói quà tặng",
+//         "price": "₫15.000",
+//         "selledQuantity": "Đã bán 4,4k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffText": "Giảm ₫15k",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/X%E1%BB%91p-d%C3%A1n-t%C6%B0%E1%BB%9Dng-gi%E1%BA%A3-g%E1%BA%A1ch-3D-Kh%E1%BB%95-l%E1%BB%9Bn-70x77cm-i.274028659.7738484257?adsid=0&campaignid=0&position=25",
+//         "productImgSrc": "https://cf.shopee.vn/file/9d257a4d64bcd4a9569d3e990c946838_tn",
+//         "name": "Xốp dán tường giả gạch 3D - Khổ lớn 70x77cm",
+//         "price": "₫1.600",
+//         "selledQuantity": "Đã bán 594k",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-thun-Teelab-Premium-Basic-Tee-TS063-i.308542026.6383933390?adsid=0&campaignid=0&position=26",
+//         "productImgSrc": "https://cf.shopee.vn/file/298835d047abe03d5995edeb73b59a7e_tn",
+//         "name": "Áo thun Teelab Premium Basic Tee TS063",
+//         "price": "₫195.000",
+//         "selledQuantity": "Đã bán 7,6k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/abaee40e5f665e96ce5fde166031c095",
+//         "saleOffLabelPercent": "44%",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-thun-nam-n%E1%BB%AF-unisex-tay-l%E1%BB%A1-AD69-Tom-Jerry-%C3%A1o-ph%C3%B4ng-tay-l%E1%BB%A1-unisex-form-r%E1%BB%99ng-oversize-streetwear-i.432363876.6890547841?adsid=0&campaignid=0&position=27",
+//         "productImgSrc": "https://cf.shopee.vn/file/fed0a9788a96a0c546f84ebc0a8a4549_tn",
+//         "name": "Áo thun nam nữ unisex tay lỡ AD69 Tom&amp;Jerry, áo phông tay lỡ unisex form rộng oversize streetwear",
+//         "price": "₫10.000",
+//         "selledQuantity": "Đã bán 10,4k",
+//         "saleOffLabelPercent": "50%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/-Video3-Gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-nam-Gi%C3%A0y-b%C3%B3ng-%C4%91%C3%A1-Gi%C3%A0y-%C4%91%C3%A1-banh-s%C3%A2n-c%E1%BB%8F-nh%C3%A2n-t%E1%BA%A1o-X20G-Ghosted-2021-May-kh%C3%A2u-full-%C4%91%E1%BA%BF-i.358296186.7383439650?adsid=0&campaignid=0&position=28",
+//         "productImgSrc": "https://cf.shopee.vn/file/625ba4cd321b8ffc425f07cd1bd375a8_tn",
+//         "name": "[Video3] - Giày đá bóng nam - Giày bóng đá - Giày đá banh sân cỏ nhân tạo X20G - Ghosted 2021 - May khâu full đế",
+//         "price": "₫159.900",
+//         "selledQuantity": "Đã bán 310",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffLabelPercent": "43%",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/N%E1%BB%93i-chi%C3%AAn-kh%C3%B4ng-d%E1%BA%A7u-dung-t%C3%ADch-5-l%C3%ADt-CAMEL-B%E1%BA%A3o-h%C3%A0nh-6-th%C3%A1ng-i.38308826.7126111008?adsid=0&campaignid=0&position=29",
+//         "productImgSrc": "https://cf.shopee.vn/file/af85fa38315b9ddd27af8cd5f7f1f135_tn",
+//         "name": "Nồi chiên không dầu dung tích 5 lít CAMEL Bảo hành 6 tháng",
+//         "price": "₫600.000",
+//         "selledQuantity": "Đã bán 18,7k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "40%",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/B%E1%BB%99-B%C3%A0n-Ph%C3%ADm-Gaming-c%C3%B3-d%C3%A2y-K%C3%A8m-Chu%E1%BB%99t-M%C3%A1y-T%C3%ADnh-Con-B%C3%A1o-C%C3%B3-LED-7-M%C3%A0u-%E1%BA%A4n-T%C6%B0%E1%BB%A3ng-i.93922606.1546899006?adsid=0&campaignid=0&position=30",
+//         "productImgSrc": "https://cf.shopee.vn/file/e26394e62abc77979e3870d3e2126a33_tn",
+//         "name": "Bộ Bàn Phím Gaming có dây Kèm Chuột Máy Tính Con Báo Có LED 7 Màu Ấn Tượng",
+//         "price": "₫39.500",
+//         "selledQuantity": "Đã bán 9,6k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "29%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-form-r%E1%BB%99ng-Unisex-Phi-H%C3%A0nh-Gia-%C3%A1o-ph%C3%B4ng-tay-l%E1%BB%A1-Nam-N%E1%BB%AF-AD-67-i.406555736.7591421295?adsid=0&campaignid=0&position=31",
+//         "productImgSrc": "https://cf.shopee.vn/file/bb990a64e5245765ff9dbaf22d51f488_tn",
+//         "name": "Áo thun tay lỡ form rộng Unisex Phi Hành Gia, áo phông tay lỡ Nam Nữ AD 67",
+//         "price": "₫10.000",
+//         "selledQuantity": "Đã bán 12,2k",
+//         "saleOffLabelPercent": "50%",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/B%C3%A0n-Ch%E1%BA%A3i-%C4%90i%E1%BB%87n-T%E1%BB%B1-%C4%90%E1%BB%99ng-%C4%90%C3%A1nh-R%C4%83ng-5-Ch%E1%BA%BF-%C4%90%E1%BB%99-H%C3%A0ng-N%E1%BB%99i-%C4%90%E1%BB%8Ba-Trung-Cao-C%E1%BA%A5p-i.237253511.10111314561?adsid=0&campaignid=0&position=32",
+//         "productImgSrc": "https://cf.shopee.vn/file/13c2f91bbb0e79f91b1bbc4600ca1cc7_tn",
+//         "name": "Bàn Chải Điện Tự Động Đánh Răng 5 Chế Độ Hàng Nội Địa Trung Cao Cấp",
+//         "price": "₫24.000",
+//         "selledQuantity": "Đã bán 6k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "50%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-Kho%C3%A1c-Cardigan-Unisex%E2%9D%A4%EF%B8%8F%C3%81o-Cardigan-SNOPPY-BEMBO-form-r%E1%BB%99ng-Ulzzang-Unisex-Nam-N%E1%BB%AF-(video-th%E1%BA%ADt-100-t%E1%BA%A1i-Shop)-i.345492648.7491654407?adsid=0&campaignid=0&position=33",
+//         "productImgSrc": "https://cf.shopee.vn/file/e49cade8a4cbeeb3d6ab2eef4a66323f_tn",
+//         "name": "Áo Khoác Cardigan Unisex❤️Áo Cardigan SNOPPY/BEMBO form rộng Ulzzang Unisex Nam/Nữ (video thật 100% tại Shop)",
+//         "price": "₫24.900",
+//         "selledQuantity": "Đã bán 414",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffLabelPercent": "50%",
+//         "favouriteLabel": "Mall",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/Nh%E1%BA%ABn-%C4%91eo-ng%C3%B3n-tay-thi%E1%BA%BFt-k%E1%BA%BF-%C4%91%E1%BB%99c-%C4%91%C3%A1o-th%E1%BB%9Di-trang-cho-n%E1%BB%AF-i.283049275.7945520313?adsid=0&campaignid=0&position=34",
+//         "productImgSrc": "https://cf.shopee.vn/file/148a6c483ddc5567b032fbb5d076726d_tn",
+//         "name": "Nhẫn đeo ngón tay thiết kế độc đáo thời trang cho nữ",
+//         "price": "₫12.000",
+//         "selledQuantity": "Đã bán 24,7k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffLabelPercent": "40%",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-Thun-%C3%81o-Ph%C3%B4ng-Tay-L%E1%BB%A1-From-r%E1%BB%99ng-CD-Unisex-i.120723783.3382586017?adsid=0&campaignid=0&position=35",
+//         "productImgSrc": "https://cf.shopee.vn/file/9d810861f34c96320794243a22ff3a1e_tn",
+//         "name": "Áo Thun Áo Phông Tay Lỡ From rộng [CD] Unisex",
+//         "price": "₫69.000",
+//         "selledQuantity": "Đã bán 9k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffText": "10% Giảm",
+//         "saleOffLabelPercent": "37%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/gi%C3%A0y-%C4%91%C3%A1-b%C3%B3ng-gi%C3%A0y-%C4%91%C3%A1-banh-%E2%9A%A1t%E1%BA%B7ng-t%E1%BA%A5t%E2%9A%A1-%C4%91%C3%A3-kh%C3%A2u-%C4%91%E1%BA%BF-100--i.31982992.2761793810?adsid=0&campaignid=0&position=36",
+//         "productImgSrc": "https://cf.shopee.vn/file/902b0a469058c27c19a6ba80d908f389_tn",
+//         "name": "giày đá bóng,giày đá banh ⚡tặng tất⚡ đã khâu đế 100%",
+//         "price": "₫85.000",
+//         "selledQuantity": "Đã bán 8,9k",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/K%C3%ADnh-ch%E1%BB%91ng-gi%E1%BB%8Dt-b%E1%BA%AFn-ki%C3%AAm-k%C3%ADnh-ch%E1%BB%91ng-b%E1%BB%87nh-d%E1%BB%8Bch-b%E1%BA%A3o-h%E1%BB%99-lao-%C4%91%E1%BB%99ng-i.79569379.9264503761?adsid=0&campaignid=0&position=37",
+//         "productImgSrc": "https://cf.shopee.vn/file/cff37133f5d2bda1783e4d989f0e3fda_tn",
+//         "name": "Kính chống giọt bắn kiêm kính chống bệnh dịch, bảo hộ lao động",
+//         "price": "₫1.000",
+//         "selledQuantity": "Đã bán 7,1k",
+//         "favouriteLabel": "Yêu thích",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/File-l%C3%A1-h%E1%BB%8Dc-sinh-A4-Deli-30-40-l%C3%A1-Xanh-d%C6%B0%C6%A1ng-H%E1%BB%93ng-Tr%E1%BA%AFng-1-chi%E1%BA%BFc-72493-72494-i.127805122.4753150087?adsid=0&campaignid=0&position=38",
+//         "productImgSrc": "https://cf.shopee.vn/file/aa427f98ab576c7a90485378eea5adbb_tn",
+//         "name": "File lá học sinh A4 Deli - 30/40 lá - Xanh dương/Hồng/Trắng - 1 chiếc - 72493 / 72494",
+//         "price": "₫45.000",
+//         "selledQuantity": "Đã bán 2,5k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffLabelPercent": "45%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-thun-tay-l%E1%BB%A1-nam-n%E1%BB%AF-%C3%A1o-ph%C3%B4ng-unisex-form-r%E1%BB%99ng-ch%E1%BA%A5t-cotton-m%C3%A1t-m%E1%BB%8Bn-th%E1%BA%A5m-h%C3%BAt-m%E1%BB%93-h%C3%B4i-in-h%C3%ACnh-SI%C3%8AU-CH%E1%BA%A4T-i.470458733.10312975152?adsid=0&campaignid=0&position=39",
+//         "productImgSrc": "https://cf.shopee.vn/file/ea280060bf3e38b56168ce27c3fe50e8_tn",
+//         "name": "Áo thun tay lỡ nam nữ, áo phông unisex form rộng chất cotton mát mịn thấm hút mồ hôi in hình SIÊU CHẤT",
+//         "price": "₫20.000",
+//         "selledQuantity": "Đã bán 480",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "saleOffLabelPercent": "50%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/Tranh-s%E1%BB%91-h%C3%B3a-m%C3%A0u-acrylic-t%C3%B4-theo-m%C3%A3-s%E1%BB%91-tr%C3%AAn-v%E1%BA%A3i-canvas-trang-tr%C3%AD-n%E1%BB%99i-th%E1%BA%A5t-20X20CM-XH123-i.426471934.9044879758?adsid=0&campaignid=0&position=40",
+//         "productImgSrc": "https://cf.shopee.vn/file/2693d1906473f9739915726ca3293cfd_tn",
+//         "name": "Tranh số hóa màu acrylic tô theo mã số trên vải canvas trang trí nội thất 20X20CM XH123",
+//         "price": "₫43.200",
+//         "selledQuantity": "Đã bán 417",
+//         "saleOffLabelPercent": "40%",
+//         "favouriteLabel": "Yêu thích+",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/FREESHIP%E2%9D%A4%EF%B8%8F-B%C3%A1nh-Tr%E1%BB%A9ng-Ch%E1%BA%A3y-Ng%C3%A0n-L%E1%BB%9Bp-%E2%9D%A4%EF%B8%8FDate-m%E1%BB%9Bi-nh%E1%BA%A5t-500-gr-9-chi%E1%BA%BFc-B%C3%A1nh-tr%E1%BB%A9ng-mu%E1%BB%91i-tan-ch%E1%BA%A3y-i.51275889.3160715681?adsid=0&campaignid=0&position=41",
+//         "productImgSrc": "https://cf.shopee.vn/file/8448ce6577698ebb416fe46f0b16e505_tn",
+//         "name": "FREESHIP❤️ Bánh Trứng Chảy Ngàn Lớp ❤️Date mới nhất [500 gr] [9 chiếc] Bánh trứng muối tan chảy",
+//         "price": "₫47.000",
+//         "selledQuantity": "Đã bán 2,5k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "43%",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/Th%E1%BA%A3m-L%C3%B4ng-Loang-Tr%E1%BA%A3i-S%C3%A0n-L%C3%B4ng-D%E1%BA%A7y-H%C3%A0ng-%C4%90%E1%BA%B9p-2020-(-K%C3%ADch-Th%C6%B0%E1%BB%9Bc-1m6-x-2m-M%E1%BA%B7t-Sau-Ch%E1%BB%93ng-tr%C6%A1n-tr%C6%B0%E1%BB%A3t)-i.22156385.2656264520?adsid=0&campaignid=0&position=42",
+//         "productImgSrc": "https://cf.shopee.vn/file/914969325adae0485cb82fd8734c7b4b_tn",
+//         "name": "Thảm Lông Loang Trải Sàn Lông Dầy Hàng Đẹp 2020 ( Kích Thước 1m6 x 2m - Mặt Sau Chồng trơn trượt)",
+//         "price": "₫54.000",
+//         "selledQuantity": "Đã bán 33,5k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "41%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C4%90%C3%A8n-Led-Tiktok-5m-Mix-DIY-Tr%C3%AAn-50-M%C3%A0u-i.19562457.4133381819?adsid=0&campaignid=0&position=43",
+//         "productImgSrc": "https://cf.shopee.vn/file/8e831b015ffce01c72f30730530e716a_tn",
+//         "name": "Đèn Led Tiktok 5m Mix DIY Trên 50 Màu",
+//         "price": "₫29.000",
+//         "selledQuantity": "Đã bán 21,3k",
+//         "favouriteLabel": "Yêu thích",
+//         "saleOffText": "Giảm ₫5k",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/S%E1%BA%A1c-laptop-Asus-19V-4.47-3.42-2.37-1.75-i.145578395.4525188760?adsid=0&campaignid=0&position=44",
+//         "productImgSrc": "https://cf.shopee.vn/file/83a980673d42710c5ad65c9a96e1ce32_tn",
+//         "name": "Sạc laptop Asus 19V-4.47/3.42/2.37/1.75",
+//         "price": "₫116.620",
+//         "selledQuantity": "Đã bán 966",
+//         "saleOffText": "Giảm ₫5k",
+//         "saleOffLabelPercent": "7%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/X%C3%BAc-x%C3%ADch-x%C3%B4ng-kh%C3%B3i-gi%C3%A1-si%C3%AAu-deal.-1-b%E1%BB%8Bch-10-c%C3%A2y-th%C6%A1m-ngon-ch%E1%BA%A5t-l%C6%B0%E1%BB%A3ng.-Giao-s%E1%BB%89-to%C3%A0n-qu%E1%BB%91c.-giao-l%E1%BA%BB-tp-hcm-i.244653818.4562562640?adsid=0&campaignid=0&position=45",
+//         "productImgSrc": "https://cf.shopee.vn/file/0ddde041952e25027974ca55dd5266bc_tn",
+//         "name": "Xúc xích xông khói giá siêu deal. 1 bịch 10 cây, thơm ngon chất lượng. Giao sỉ toàn quốc. giao lẻ tp hcm",
+//         "price": "₫32.000",
+//         "selledQuantity": "Đã bán 2,1k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "9%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%C3%81o-Kho%C3%A1c-Hoodie-Tay-B%E1%BB%93ng-In-Ch%E1%BB%AF-N-N%E1%BB%AF-FreeShip-Jacket-c%C3%B3-m%C5%A9-from-r%E1%BB%99ngnhi%E1%BB%81u-i.64457418.9979553620?adsid=0&campaignid=0&position=46",
+//         "productImgSrc": "https://cf.shopee.vn/file/77f9fc41c291daeaf044814218e3f216_tn",
+//         "name": "Áo Khoác Hoodie Tay Bồng In Chữ N Nữ [FreeShip] Jacket có mũ from rộngnhiều",
+//         "price": "₫80.000",
+//         "selledQuantity": "Đã bán 53",
+//         "frameImgSrc": "https://cf.shopee.vn/file/a6ebecdf7761f13314a8f089a24d5497",
+//         "saleOffLabelPercent": "50%",
+//         "sponsorLabel": true
+//     },
+//     {
+//         "productLink": "https://shopee.vn/%E2%9D%A4%EF%B8%8FSI%C3%8AU-PH%E1%BA%A8M-M%C3%99A-H%C3%88%E2%9D%A4%EF%B8%8F%C4%90%E1%BB%93-Ng%E1%BB%A7-sexy-ph%E1%BB%91i-ren-c%E1%BB%B1c-m%C3%A1t-%E1%BA%A3nh-th%E1%BA%ADt--i.94381273.11700127097?adsid=0&campaignid=0&position=1",
+//         "productImgSrc": "https://cf.shopee.vn/file/2fe26dee4aa23d68e82d37ea083a0505_tn",
+//         "name": "❤️SIÊU PHẨM MÙA HÈ❤️Đồ Ngủ sexy phối ren cực mát[ảnh thật]",
+//         "price": "₫44.000",
+//         "selledQuantity": "Đã bán 3,9k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/f80e7a006b875a0f9d5592295c79c29c",
+//         "saleOffLabelPercent": "2%",
+//         "sponsorLabel": false
+//     },
+//     {
+//         "productLink": "https://shopee.vn/R%C3%A8m-c%E1%BB%ADa-d%C3%A1n-keo-kh%C3%B4ng-c%E1%BA%A7n-thanh-treo-(nhi%E1%BB%81u-m%E1%BA%ABu-v%C3%A0-size)-i.16948418.5477228869?adsid=0&campaignid=0&position=47",
+//         "productImgSrc": "https://cf.shopee.vn/file/5e4090496aaee7a40f01613198410a8d_tn",
+//         "name": "Rèm cửa dán keo không cần thanh treo (nhiều mẫu và size)",
+//         "price": "₫55.000",
+//         "selledQuantity": "Đã bán 9,9k",
+//         "frameImgSrc": "https://cf.shopee.vn/file/2e79cc840b4862b7b107b7440bc7a60e",
+//         "sponsorLabel": false
+//     }
+// ];
 
-/* HTML EXECUTIVE */
-var todaySuggestionMainProductIndex = 0;
-for(var i = 0; i < 8; i++) {
-    for (var j = 0; j < 6; j++) { 
-        //#region 1.Add href for todaySuggestionMainProduct
-        var todaySuggestionMainProduct = document.querySelector(`.today-suggestion__main__tab-main 
-            .today-suggestion__main-list:nth-child(${i+1}) .today-suggestion__main-item:nth-child(${j+1}) > a`);
-        todaySuggestionMainProduct.href = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].productLink;    
-        //#endregion
+// /* HTML EXECUTIVE */
+// var todaySuggestionMainProductIndex = 0;
+// for(var i = 0; i < 8; i++) {
+//     for (var j = 0; j < 6; j++) { 
+//         //#region 1.Add href for todaySuggestionMainProduct
+//         var todaySuggestionMainProduct = document.querySelector(`.today-suggestion__main__tab-main 
+//             .today-suggestion__main-list:nth-child(${i+1}) .today-suggestion__main-item:nth-child(${j+1}) > a`);
+//         todaySuggestionMainProduct.href = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].productLink;    
+//         //#endregion
 
-        //#region 2.Create nodes, add attributes, innerHTML inside <div></div> tag
-        var productImg = document.createElement('img');
-        productImg.alt = '';
-        productImg.src = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].productImgSrc;
-        productImg.classList.add('today-suggestion__main-product__product-img');
+//         //#region 2.Create nodes, add attributes, innerHTML inside <div></div> tag
+//         var productImg = document.createElement('img');
+//         productImg.alt = '';
+//         productImg.src = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].productImgSrc;
+//         productImg.classList.add('today-suggestion__main-product__product-img');
 
-        var frameImg = document.createElement('img');
-        frameImg.classList.add('today-suggestion__main-product__frame-img');
-        frameImg.alt = '';
-        // --> check *sự có mặt*
-        if(todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].frameImgSrc) {
-            frameImg.src = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].frameImgSrc;
-        } else {
-            frameImg = undefined;
-        }
-
-        var productPart = document.createElement('div');
-        productPart.classList.add('today-suggestion__main-product__part');
-
-        var productName = document.createElement('span');
-        productName.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].name;
-        productName.classList.add('today-suggestion__main-product__name');
-
-        var saleOff = document.createElement('div');
-        saleOff.classList.add('today-suggestion__main-product__sale-off');
-
-        var saleOffLeftSerrated = document.createElement('img');
-        saleOffLeftSerrated.src = "./assests/img/container/today-suggestion/left-serrated.png";
-        saleOffLeftSerrated.classList.add('today-suggestion__main-product__sale-off__left-serrated');
-
-        var saleOffText = document.createElement('span');
-        saleOffText.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].saleOffText;
-        saleOffText.classList.add('today-suggestion__main-product__sale-off__text');
-
-        var saleOffRightSerrated = document.createElement('img');
-        saleOffRightSerrated.src = "./assests/img/container/today-suggestion/right-serrated.png";
-        saleOffRightSerrated.classList.add('today-suggestion__main-product__sale-off__right-serrated');
-                
-        // --> check *sự có mặt*
-        if(! todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].saleOffText) {
-            saleOff = undefined;
-        }
-
-
-        var priceAndSelledQuantity = document.createElement('div');
-        priceAndSelledQuantity.classList.add('today-suggestion__main-product__price-and-selled-quantity');
-
-        var price = document.createElement('span');
-        price.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].price;
-        price.classList.add('today-suggestion__main-product__price');
-
-        var selledQuantity = document.createElement('span');
-        selledQuantity.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].selledQuantity;
-        selledQuantity.classList.add('today-suggestion__main-product__selled-quantity');
-
-        var favouriteLabel = document.createElement('div');
-        var favouriteLabelImg = undefined;
-        favouriteLabel.classList.add('today-suggestion__main-product__favourite-label');
-
-        // --> check *sự có mặt*
-        if(todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].favouriteLabel) {
-            var favouriteLabelData = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].favouriteLabel;
-            
-            if(favouriteLabelData == 'Yêu thích') {
-                favouriteLabel.classList.add('today-suggestion__main-product__favourite-label--yeuthich');
-                favouriteLabel.innerHTML = 'Yêu thích';
-            } 
-            else {
-                if (favouriteLabelData == 'Yêu thích+') {
-                    favouriteLabel.classList.add('today-suggestion__main-product__favourite-label--yeuthichplus');
-                    favouriteLabelImg = document.createElement('img');
-                    favouriteLabelImg.src = './assests/img/container/today-suggestion/yeuthichplus.png';
-                } 
-                else {
-                    if (favouriteLabelData == 'Mall') {
-                        favouriteLabel.classList.add('today-suggestion__main-product__favourite-label--mall');
-                        favouriteLabelImg = document.createElement('img');
-                        favouriteLabelImg.src = './assests/img/container/today-suggestion/mall.png';
-                    }  
-                }
-            }
-        }
-        else {
-            favouriteLabel = undefined;
-        }
-
-        
-        var saleOffLabel = document.createElement('div');
-        saleOffLabel.classList.add('today-suggestion__main-product__sale-off-label');
-        
-        var saleOffLabelPercent = document.createElement('span');
-        saleOffLabelPercent.classList.add('today-suggestion__main-product__sale-off-label__percent');
-        // --> check *sự có mặt*
-        if(todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].saleOffLabelPercent) {
-            saleOffLabelPercent.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].saleOffLabelPercent;
-        } else {
-            saleOffLabel = undefined;
-        }
-
-        var saleOffLabelText = document.createElement('span');
-        saleOffLabelText.innerHTML = 'giảm';
-        saleOffLabelText.classList.add('today-suggestion__main-product__sale-off-label__text');
-
-        
-        var sponsorLabel = document.createElement('div');
-        sponsorLabel.innerHTML = 'Tài Trợ';
-        sponsorLabel.classList.add('today-suggestion__main-product__sponsor-label');
-        // --> check *sự có mặt*
-        if(! todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].sponsorLabel) {
-            sponsorLabel = undefined;
-        }
-
-    
-        var hoverLabel = document.createElement('div');
-        hoverLabel.innerHTML = 'Tìm sản phẩm tương tự';
-        hoverLabel.classList.add('today-suggestion__main-product__hover-label');
-        //#endregion
-        
-        //#region 3.Append suitable child for above tags 
-        priceAndSelledQuantity.appendChild(price);
-        priceAndSelledQuantity.appendChild(selledQuantity); 
-
-        productPart.appendChild(productName);
-
-        if(saleOff) {
-            saleOff.appendChild(saleOffLeftSerrated);
-            saleOff.appendChild(saleOffText);
-            saleOff.appendChild(saleOffRightSerrated);
-            productPart.appendChild(saleOff);
-        }
-
-        productPart.appendChild(priceAndSelledQuantity);
-
-        if(favouriteLabelImg) {
-            favouriteLabel.appendChild(favouriteLabelImg);
-        }
-
-        if(saleOffLabel) {
-            saleOffLabel.appendChild(saleOffLabelPercent);
-            saleOffLabel.appendChild(saleOffLabelText);
-        }
-        //#endregion
-
-        //#region 4.Get <div></div> tag and append child to it 
-        var div = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
-            .today-suggestion__main-item:nth-child(${j+1}) > a > div`);
-            
-        div.appendChild(productImg);
-
-        if(frameImg) {
-            div.appendChild(frameImg);
-        }
-
-        div.appendChild(productPart);
-
-        if(favouriteLabel) {
-            div.appendChild(favouriteLabel);
-        }
-
-        if(saleOffLabel) {
-            div.appendChild(saleOffLabel);
-        }
-        
-        if(sponsorLabel) {
-            div.appendChild(sponsorLabel);
-        }
-
-        div.appendChild(hoverLabel);
-        //#endregion
-
-        /* 5.Increase the Array of Objects's index */
-        todaySuggestionMainProductIndex++;
-    }
-}
-
-
-/* CSS EXECUTIVE */
-for(var i = 0; i < 8; i++) {
-    var check = false;
-    var items = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
-        .today-suggestion__main-item .today-suggestion__main-product__sale-off`);
-    check = (items.length >= 1);
-
-    var list = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1})`);
-    var items = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) .today-suggestion__main-item`);
-    var products = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) .today-suggestion__main-product`);
-
-    if (check) {
-        list.style.height = '29.8rem';
-        for(var j = 0; j < items.length; j++) {
-            items[j].style.height = '29.8rem';
-            products[j].style.height = '28.8rem';
-
-            var saleOff = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
-                .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__sale-off`);
-            if(saleOff == null) {
-                var priceAndSelledQuantity = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
-                    .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__price-and-selled-quantity`);
-                priceAndSelledQuantity.style.marginTop = '2.6rem';
-            }
-        }
-    } 
-    else {
-        list.style.height = '27.7rem';
-        for(var j = 0; j < items.length; j++) {
-            items[j].style.height = '27.7rem';
-            products[j].style.height = '26.7rem';
-        }
-    }
-}
-
-
-//--> I'M HERE 
-//todaySuggestionMainTabSuperSale88Info
-// //#region updateInDOMTodaySuggestionMainTabMain
-// var todaySuggestionMainTabMain = document.querySelector('.today-suggestion__main__tab-main');
-
-// function updateInDOMTodaySuggestionMainTabMain () {
-//     fetch("db.json")
-//         .then (function(response) {
-//             return response.json();
-//         })
-//         .then (function(datas) {
-//             handleUpdateInDOMTodaySuggestionMainTabMain(datas.todaySuggestionMainTabMainInfo);
-//         })
-// }
-
-// function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMainInfo) {
-//     var listDivTags = '';
-
-//     for(var i = 0; i < todaySuggestionMainTabMainInfo.length; i++) {
-//         var listDivTag = '', itemDivTags = '', itemDivTag = '';
-
-//         for (var j = 0; j < todaySuggestionMainTabMainInfo[i].length; j++) {
-//             var frameImg = `<img src="${todaySuggestionMainTabMainInfo[i][j].}" class="today-suggestion__main-product__frame-img" alt="">`;
-//             var productSaleOff = `<div class="today-suggestion__main-product__sale-off">
-//                     <img src="./assests/img/container/today-suggestion/left-serrated.png" class="today-suggestion__main-product__sale-off__left-serrated">
-//                     <span class="today-suggestion__main-product__sale-off__text">${todaySuggestionMainTabMainInfo[i][j].}</span>
-//                     <img src="./assests/img/container/today-suggestion/right-serrated.png" class="today-suggestion__main-product__sale-off__right-serrated">
-//                 </div>`;
-//             var favouriteLabel = `
-//                 <div class="today-suggestion__main-product__favourite-label today-suggestion__main-product__favourite-label--yeuthich">
-//                     ${todaySuggestionMainTabMainInfo[i][j].}
-//                 </div>`;
-//             var saleOffLabel = `<div class="today-suggestion__main-product__sale-off-label">
-//                     <span class="today-suggestion__main-product__sale-off-label__percent">${todaySuggestionMainTabMainInfo[i][j].}</span>
-//                     <span class="today-suggestion__main-product__sale-off-label__text">giảm</span>
-//                 </div>`;
-//             var sponsorLabel = '<div class="today-suggestion__main-product__sponsor-label">Tài Trợ</div>';
-            
-
-//             itemDivTag = `
-//                 <div class="today-suggestion__main-item">
-//                     <a target="_blank" rel="noopener noreferrer" href="${todaySuggestionMainTabMainInfo[i][j].}" class="today-suggestion__main-product">
-//                         <div>
-//                             <img alt="" src="${todaySuggestionMainTabMainInfo[i][j].}" class="today-suggestion__main-product__product-img">
-//                             ${frameImage}
-//                             <div class="today-suggestion__main-product__part">
-//                                 <span class="today-suggestion__main-product__name">Áo thun tay lỡ DASN, Áo phông tay lỡ Unisex form rộng Oversize</span>
-//                                 ${productSaleOff}
-//                                 <div class="today-suggestion__main-product__price-and-selled-quantity" style="margin-top: 2.6rem;">
-//                                     <span class="today-suggestion__main-product__price">₫10.000</span>
-//                                     <span class="today-suggestion__main-product__selled-quantity">Đã bán 8,3k</span>
-//                                 </div>
-//                             </div>
-//                             ${favouriteLabel}
-//                             ${saleOffLabel}
-//                             ${sponsorLabel}
-//                             <div class="today-suggestion__main-product__hover-label">Tìm sản phẩm tương tự</div>
-//                         </div>
-//                     </a>
-//                 </div>`;
-//             itemDivTags += itemDivTag;
+//         var frameImg = document.createElement('img');
+//         frameImg.classList.add('today-suggestion__main-product__frame-img');
+//         frameImg.alt = '';
+//         // --> check *sự có mặt*
+//         if(todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].frameImgSrc) {
+//             frameImg.src = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].frameImgSrc;
+//         } else {
+//             frameImg = undefined;
 //         }
 
-//         listDivTag = `<div class="today-suggestion__main-list">${itemDivTags}</div>`;
-//         listDivTags += listDivTag;
+//         var productPart = document.createElement('div');
+//         productPart.classList.add('today-suggestion__main-product__part');
+
+//         var productName = document.createElement('span');
+//         productName.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].name;
+//         productName.classList.add('today-suggestion__main-product__name');
+
+//         var saleOff = document.createElement('div');
+//         saleOff.classList.add('today-suggestion__main-product__sale-off');
+
+//         var saleOffLeftSerrated = document.createElement('img');
+//         saleOffLeftSerrated.src = "./assests/img/container/today-suggestion/left-serrated.png";
+//         saleOffLeftSerrated.classList.add('today-suggestion__main-product__sale-off__left-serrated');
+
+//         var saleOffText = document.createElement('span');
+//         saleOffText.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].saleOffText;
+//         saleOffText.classList.add('today-suggestion__main-product__sale-off__text');
+
+//         var saleOffRightSerrated = document.createElement('img');
+//         saleOffRightSerrated.src = "./assests/img/container/today-suggestion/right-serrated.png";
+//         saleOffRightSerrated.classList.add('today-suggestion__main-product__sale-off__right-serrated');
+                
+//         // --> check *sự có mặt*
+//         if(! todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].saleOffText) {
+//             saleOff = undefined;
+//         }
+
+
+//         var priceAndSelledQuantity = document.createElement('div');
+//         priceAndSelledQuantity.classList.add('today-suggestion__main-product__price-and-selled-quantity');
+
+//         var price = document.createElement('span');
+//         price.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].price;
+//         price.classList.add('today-suggestion__main-product__price');
+
+//         var selledQuantity = document.createElement('span');
+//         selledQuantity.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].selledQuantity;
+//         selledQuantity.classList.add('today-suggestion__main-product__selled-quantity');
+
+//         var favouriteLabel = document.createElement('div');
+//         var favouriteLabelImg = undefined;
+//         favouriteLabel.classList.add('today-suggestion__main-product__favourite-label');
+
+//         // --> check *sự có mặt*
+//         if(todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].favouriteLabel) {
+//             var favouriteLabelData = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].favouriteLabel;
+            
+//             if(favouriteLabelData == 'Yêu thích') {
+//                 favouriteLabel.classList.add('today-suggestion__main-product__favourite-label--yeuthich');
+//                 favouriteLabel.innerHTML = 'Yêu thích';
+//             } 
+//             else {
+//                 if (favouriteLabelData == 'Yêu thích+') {
+//                     favouriteLabel.classList.add('today-suggestion__main-product__favourite-label--yeuthichplus');
+//                     favouriteLabelImg = document.createElement('img');
+//                     favouriteLabelImg.src = './assests/img/container/today-suggestion/yeuthichplus.png';
+//                 } 
+//                 else {
+//                     if (favouriteLabelData == 'Mall') {
+//                         favouriteLabel.classList.add('today-suggestion__main-product__favourite-label--mall');
+//                         favouriteLabelImg = document.createElement('img');
+//                         favouriteLabelImg.src = './assests/img/container/today-suggestion/mall.png';
+//                     }  
+//                 }
+//             }
+//         }
+//         else {
+//             favouriteLabel = undefined;
+//         }
+
+        
+//         var saleOffLabel = document.createElement('div');
+//         saleOffLabel.classList.add('today-suggestion__main-product__sale-off-label');
+        
+//         var saleOffLabelPercent = document.createElement('span');
+//         saleOffLabelPercent.classList.add('today-suggestion__main-product__sale-off-label__percent');
+//         // --> check *sự có mặt*
+//         if(todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].saleOffLabelPercent) {
+//             saleOffLabelPercent.innerHTML = todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].saleOffLabelPercent;
+//         } else {
+//             saleOffLabel = undefined;
+//         }
+
+//         var saleOffLabelText = document.createElement('span');
+//         saleOffLabelText.innerHTML = 'giảm';
+//         saleOffLabelText.classList.add('today-suggestion__main-product__sale-off-label__text');
+
+        
+//         var sponsorLabel = document.createElement('div');
+//         sponsorLabel.innerHTML = 'Tài Trợ';
+//         sponsorLabel.classList.add('today-suggestion__main-product__sponsor-label');
+//         // --> check *sự có mặt*
+//         if(! todaySuggestionMainProductsInfo[todaySuggestionMainProductIndex].sponsorLabel) {
+//             sponsorLabel = undefined;
+//         }
+
+    
+//         var hoverLabel = document.createElement('div');
+//         hoverLabel.innerHTML = 'Tìm sản phẩm tương tự';
+//         hoverLabel.classList.add('today-suggestion__main-product__hover-label');
+//         //#endregion
+        
+//         //#region 3.Append suitable child for above tags 
+//         priceAndSelledQuantity.appendChild(price);
+//         priceAndSelledQuantity.appendChild(selledQuantity); 
+
+//         productPart.appendChild(productName);
+
+//         if(saleOff) {
+//             saleOff.appendChild(saleOffLeftSerrated);
+//             saleOff.appendChild(saleOffText);
+//             saleOff.appendChild(saleOffRightSerrated);
+//             productPart.appendChild(saleOff);
+//         }
+
+//         productPart.appendChild(priceAndSelledQuantity);
+
+//         if(favouriteLabelImg) {
+//             favouriteLabel.appendChild(favouriteLabelImg);
+//         }
+
+//         if(saleOffLabel) {
+//             saleOffLabel.appendChild(saleOffLabelPercent);
+//             saleOffLabel.appendChild(saleOffLabelText);
+//         }
+//         //#endregion
+
+//         //#region 4.Get <div></div> tag and append child to it 
+//         var div = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+//             .today-suggestion__main-item:nth-child(${j+1}) > a > div`);
+            
+//         div.appendChild(productImg);
+
+//         if(frameImg) {
+//             div.appendChild(frameImg);
+//         }
+
+//         div.appendChild(productPart);
+
+//         if(favouriteLabel) {
+//             div.appendChild(favouriteLabel);
+//         }
+
+//         if(saleOffLabel) {
+//             div.appendChild(saleOffLabel);
+//         }
+        
+//         if(sponsorLabel) {
+//             div.appendChild(sponsorLabel);
+//         }
+
+//         div.appendChild(hoverLabel);
+//         //#endregion
+
+//         /* 5.Increase the Array of Objects's index */
+//         todaySuggestionMainProductIndex++;
 //     }
-
-//     todaySuggestionMainTabMain.innerHTML = listDivTags;
 // }
+//#endregion
 
-// updateInDOMTodaySuggestionMainTabMain();
+
+//--> (LOOKS OK)
+//#region updateInDOMTodaySuggestionMainTabMain
+var todaySuggestionMainTabMain = document.querySelector('.today-suggestion__main__tab-main');
+
+function updateInDOMTodaySuggestionMainTabMain () {
+    fetch("db.json")
+        .then (function(response) {
+            return response.json();
+        })
+        .then (function(datas) {
+            handleUpdateInDOMTodaySuggestionMainTabMain(datas.todaySuggestionMainTabMainInfo);
+        })
+}
+
+function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMainInfo) {
+    var listDivTags = '';
+
+    for(var i = 0; i < todaySuggestionMainTabMainInfo.length; i++) {
+        var listDivTag = '', itemDivTags = '', itemDivTag = '';
+
+        for (var j = 0; j < todaySuggestionMainTabMainInfo[i].length; j++) {
+            var frameImage = (todaySuggestionMainTabMainInfo[i][j].frameImage) ?
+                `<img src="${todaySuggestionMainTabMainInfo[i][j].frameImage}" class="today-suggestion__main-product__frame-img" alt="">`
+                : "";
+            
+            var productSaleOff = (todaySuggestionMainTabMainInfo[i][j].saleOffText) ?
+                `<div class="today-suggestion__main-product__sale-off">
+                    <img src="./assests/img/container/today-suggestion/left-serrated.png" class="today-suggestion__main-product__sale-off__left-serrated">
+                    <span class="today-suggestion__main-product__sale-off__text">${todaySuggestionMainTabMainInfo[i][j].saleOffText}</span>
+                    <img src="./assests/img/container/today-suggestion/right-serrated.png" class="today-suggestion__main-product__sale-off__right-serrated">
+                </div>`
+                : "";
+
+            var favouriteLabel = "";
+            if (todaySuggestionMainTabMainInfo[i][j].favouriteLabel) {
+                var favouriteLabelActiveClass = (todaySuggestionMainTabMainInfo[i][j].favouriteLabel == 'Yêu thích') ?
+                    'today-suggestion__main-product__favourite-label--yeuthich' :
+                    (todaySuggestionMainTabMainInfo[i][j].favouriteLabel == 'Yêu thích+') ?
+                    'today-suggestion__main-product__favourite-label--yeuthichplus' : 
+                    'today-suggestion__main-product__favourite-label--mall';
+
+                favouriteLabel = 
+                    `<div class="today-suggestion__main-product__favourite-label ${favouriteLabelActiveClass}">
+                        ${todaySuggestionMainTabMainInfo[i][j].favouriteLabel}
+                    </div>`;
+            }
+ 
+            var saleOffLabel = (todaySuggestionMainTabMainInfo[i][j].saleOffLabelPercent) ?
+                `<div class="today-suggestion__main-product__sale-off-label">
+                    <span class="today-suggestion__main-product__sale-off-label__percent">${todaySuggestionMainTabMainInfo[i][j].saleOffLabelPercent}</span>
+                    <span class="today-suggestion__main-product__sale-off-label__text">giảm</span>
+                </div>`
+                : "";
+
+            var sponsorLabel = (todaySuggestionMainTabMainInfo[i][j].sponsorLabel) ?
+                '<div class="today-suggestion__main-product__sponsor-label">Tài Trợ</div>'
+                : "";
+
+
+            itemDivTag = `
+                <div class="today-suggestion__main-item">
+                    <a target="_blank" rel="noopener noreferrer" href="${todaySuggestionMainTabMainInfo[i][j].productLink}" class="today-suggestion__main-product">
+                        <div>
+                            <img alt="" src="${todaySuggestionMainTabMainInfo[i][j].productImage}" class="today-suggestion__main-product__product-img">
+                            ${frameImage}
+                            <div class="today-suggestion__main-product__part">
+                                <span class="today-suggestion__main-product__name">Áo thun tay lỡ DASN, Áo phông tay lỡ Unisex form rộng Oversize</span>
+                                ${productSaleOff}
+                                <div class="today-suggestion__main-product__price-and-selled-quantity" style="margin-top: 2.6rem;">
+                                    <span class="today-suggestion__main-product__price">${todaySuggestionMainTabMainInfo[i][j].price}</span>
+                                    <span class="today-suggestion__main-product__selled-quantity">${todaySuggestionMainTabMainInfo[i][j].selledQuantity}</span>
+                                </div>
+                            </div>
+                            ${favouriteLabel}
+                            ${saleOffLabel}
+                            ${sponsorLabel}
+                            <div class="today-suggestion__main-product__hover-label">Tìm sản phẩm tương tự</div>
+                        </div>
+                    </a>
+                </div>`;
+            itemDivTags += itemDivTag;
+        }
+
+        listDivTag = `<div class="today-suggestion__main-list">${itemDivTags}</div>`;
+        listDivTags += listDivTag;
+    }
+
+    todaySuggestionMainTabMain.innerHTML = listDivTags;
+}
+
+updateInDOMTodaySuggestionMainTabMain();
 //#endregion 
 
 
-//#endregion 1.todaySuggestionMainProductsInfo
+//--->I'M HERE - BUGS
+/* CSS EXECUTIVE */
+// for(var i = 0; i < 8; i++) {
+//     var check = false;
+//     var items = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+//     .today-suggestion__main-item .today-suggestion__main-product__sale-off`);
+//     check = (items.length >= 1);
+
+//     var list = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1})`);
+//     var items = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) .today-suggestion__main-item`);
+//     var products = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) .today-suggestion__main-product`);
+    
+//     if (check) {
+//         list.style.height = '29.8rem';
+//         for(var j = 0; j < items.length; j++) {
+//             items[j].style.height = '29.8rem';
+//             products[j].style.height = '28.8rem';
+            
+//             var saleOff = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+//             .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__sale-off`);
+//             if(saleOff == null) {
+//                 var priceAndSelledQuantity = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+//                     .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__price-and-selled-quantity`);
+//                     priceAndSelledQuantity.style.marginTop = '2.6rem';
+//                 }
+//         }
+//     } 
+//     else {
+//         list.style.height = '27.7rem';
+//         for(var j = 0; j < items.length; j++) {
+//             items[j].style.height = '27.7rem';
+//             products[j].style.height = '26.7rem';
+//         }
+//     }
+// }
+
+//#endregion 
 
 
+
+
+
+//-> Cần xử lí
+//todaySuggestionMainTabSuperSale88Info
 //#region 2.todaySuggestionMainSuperSaleProductsInfo
 var todaySuggestionMainSuperSaleProductsInfo = [
     {
