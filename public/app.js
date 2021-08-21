@@ -1235,7 +1235,7 @@ updateInDOMHeaderSearchHistoryList();
 //#endregion
 
 //--> (1) Cần xử lí (logic -> len) 
-// //#region (f) Work with API
+//#region (f) Work with API
 // function deleteObj (url, id) {
 //     fetch(`${url}/${id}`, {
 //         method: 'DELETE',
@@ -1266,194 +1266,177 @@ updateInDOMHeaderSearchHistoryList();
 //         console.log(err);
 //     })
 // }
-// //#endregion
-//#region 
-// var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
-
-// // Chưa xử lí
-// // // #region (f) removeHeaderSearchHistoryItemInDOM
-// // function removeHeaderSearchHistoryItemInDOM () {
-// //     var headerSearchHistoryItems = document.querySelectorAll('.header__search-history-item');
-
-// //     for(var i = 1; i < headerSearchHistoryItems.length; i++) {
-// //         headerSearchHistoryItems[i].parentNode.removeChild(headerSearchHistoryItems[i]);
-// //     }
-// // }
-// // //#endregion
-
-// // Chưa xử lí
-// // //#region (f) updateHeaderSearchHistoryItemLinksInfo
-// // function updateHeaderSearchHistoryItemLinksInfo (innerHTML, href) {
-// //     var length = headerSearchHistoryItemLinksInfo.length;
-// //     if (length == 10) {
-// //         //-> insert element at first position of array -> (PUT method)
-// //         // headerSearchHistoryItemLinksInfo.unshift({
-// //         //     innerHTML, 
-// //         //     href
-// //         // });
-
-// //         //-> remove last element & remove, updateHeaderSearchHistoryItemInDOM
-// //         // headerSearchHistoryItemLinksInfo.pop();
-// //         // removeHeaderSearchHistoryItemInDOM();
-// //         // updateHeaderSearchHistoryItemInDOM();
-// //     } 
-// //     else {
-// //         //-> insert element at first position of array
-// //         // headerSearchHistoryItemLinksInfo.unshift({
-// //         //     innerHTML,
-// //         //     href
-// //         // });
-// //     }
-// // }
-// // //#endregion
-
-// //#region (f) removeHeaderSearchHistoryItemLinksHover
-// function removeHeaderSearchHistoryItemLinksHover () {
-//     headerSearchHistoryItemLinks.forEach(function (a) {
-//         if (a.classList.contains('header__search-history-item__link--hover')) {
-//             a.classList.remove('header__search-history-item__link--hover');
-//         }
-//     });
-// }
-// //#endregion
-
-
-// //#region headerSearchFrameInput onclick(), onblur()
-// headerSearchFrameInput.onclick = function () {
-//     headerSearchHistory.style.display = 'block';
-// }
-
-// headerSearchFrameInput.onblur = function () {
-//     // return default search option index
-//     headerSearchHistoryItemIndex = 0;
-
-//     //-> removeHeaderSearchHistoryItemLinksHover();
-
-//     setTimeout(function() {
-//         headerSearchHistory.style.display = 'none';
-//     }, 200);
-// }
-// //#endregion
-
-
-// //#region headerSearchFrameBtn onclick() 
-// headerSearchFrameBtn.addEventListener('click', function(e) {
-    
-//     if(headerSearchFrameInput.value != '') {
-//         var innerHTML = headerSearchFrameInput.value;
-//         var href = `https://shopee.vn/search?keyword=` + `${innerHTML}`;
-
-//         // optional
-//         headerSearchFrameBtn.href = href;
-
-//         // BUGS...RUN OK BUT NEED JSON JS HANDLE
-//         /*
-//         updateHeaderSearchHistoryItemLinksInfo(innerHTML, href);
-//         removeHeaderSearchHistoryItemInDOM();
-//         updateHeaderSearchHistoryItemInDOM();
-//         console.log(headerSearchHistoryItemLinksInfo)
-//         */
-//     }   
-
-//     // setTimeout
-// });
-// //#endregion
-
-
-// //#region headerSearchFrameInput onkeydown()
-// headerSearchFrameInput.addEventListener('keydown', function(e) {
-//     switch (e.keyCode) {
-//         // 'Enter'
-//         case 13: {
-//             e.preventDefault();
-
-//             if (headerSearchFrameInput.value == '') {
-//                 //open search page 'with default option' new tab
-//                 window.open(
-//                     `${headerSearchFrameBtn.href}`,
-//                     '_blank'  
-//                 );
-//             }
-//             else {
-//                 //open search page 'with keyword' in new tab
-//                 window.open(
-//                     `https://shopee.vn/search?keyword=` + `${headerSearchFrameInput.value}`,
-//                     '_blank'  
-//                 );
-//             }
-//             break;
-//         }
-
-//         // 'page up'
-//         case 38: {
-//             // 1. set next index
-//             var headerSearchHistoryItemLength = 
-//                 document.querySelectorAll(`.header__search-history-item`).length;
-
-//             // if initial position (in input) or when being active first element
-//             if (headerSearchHistoryItemIndex == 0 || headerSearchHistoryItemIndex == 1) {
-//                 headerSearchHistoryItemIndex = headerSearchHistoryItemLength;
-//             } else {
-//                 headerSearchHistoryItemIndex--;
-//             }
-
-//             // 2.add class .header__search-history-item__link--hover on next element
-//             removeHeaderSearchHistoryItemLinksHover();
-//             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
-
-//             // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
-//             var headerSearchHistoryItemCurrent = document.querySelector(`
-//                 .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
-//             headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
-
-//             break;
-//         }
-
-//         // 'page down'
-//         case 40: {
-//             // 1. set next index
-//             var headerSearchHistoryItemLength = 
-//                 document.querySelectorAll(`.header__search-history-item`).length;
-
-//             // when being active last element
-//             if (headerSearchHistoryItemIndex == headerSearchHistoryItemLength) {
-//                 headerSearchHistoryItemIndex = 1;
-//             } else {
-//                 headerSearchHistoryItemIndex++;
-//             }
-
-//             // 2. add class .header__search-history-item__link--hover on next element
-//             removeHeaderSearchHistoryItemLinksHover();
-//             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
-
-//             // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
-//             var headerSearchHistoryItemCurrent = document.querySelector(`
-//                 .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
-//             headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
-
-//             break;
-//         }
-//     }
-// });
-// //#endregion
-
-
-// //#region headerSearchHistoryItemLink onmouseover(), onmouseout()
-// for(var i = 0; i < headerSearchHistoryItemLinks.length; i++) {
-//     headerSearchHistoryItemLinks[i].addEventListener('mouseover', function () {
-//         // off all
-//         removeHeaderSearchHistoryItemLinksHover();
-//         // on only it
-//         this.classList.add('header__search-history-item__link--hover');
-//     });
-
-//     headerSearchHistoryItemLinks[i].addEventListener('mouseleave', function () {
-//         // off only it
-//         this.classList.remove('header__search-history-item__link--hover');
-//     });
-// }
-// //#endregion
 //#endregion
+
+//#region 
+var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
+
+//--> Chưa xử lí
+//#region (f) removeHeaderSearchHistoryItemInDOM
+// function removeHeaderSearchHistoryItemInDOM () {
+//     var headerSearchHistoryItems = document.querySelectorAll('.header__search-history-item');
+//     for(var i = 1; i < headerSearchHistoryItems.length; i++) {
+//         headerSearchHistoryItems[i].parentNode.removeChild(headerSearchHistoryItems[i]);
+//     }
+// }
+// //#endregion
+
+//--> Chưa xử lí
+// //#region (f) updateHeaderSearchHistoryItemLinksInfo
+// function updateHeaderSearchHistoryItemLinksInfo (innerHTML, href) {
+//     var length = headerSearchHistoryItemLinksInfo.length;
+//     if (length == 10) {
+//         //-> insert element at first position of array -> (PUT method)
+//         // headerSearchHistoryItemLinksInfo.unshift({
+//         //     innerHTML, 
+//         //     href
+//         // });
+
+//         //-> remove last element & remove, updateHeaderSearchHistoryItemInDOM
+//         // headerSearchHistoryItemLinksInfo.pop();
+//         // removeHeaderSearchHistoryItemInDOM();
+//         // updateHeaderSearchHistoryItemInDOM();
+//     } 
+//     else {
+//         //-> insert element at first position of array
+//         // headerSearchHistoryItemLinksInfo.unshift({
+//         //     innerHTML,
+//         //     href
+//         // });
+//     }
+// }
+//#endregion
+
+//-> OK
+//#region (f) removeHeaderSearchHistoryItemLinksHover
+function removeHeaderSearchHistoryItemLinksHover () {
+    headerSearchHistoryItemLinks.forEach(function (a) {
+        if (a.classList.contains('header__search-history-item__link--hover')) {
+            a.classList.remove('header__search-history-item__link--hover');
+        }
+    });
+}
+//#endregion
+
+//#region headerSearchFrameInput onclick(), onblur()
+headerSearchFrameInput.onclick = function () {
+    headerSearchHistory.style.display = 'block';
+}
+
+headerSearchFrameInput.onblur = function () {
+    // return default search option index
+    headerSearchHistoryItemIndex = 0;
+
+    removeHeaderSearchHistoryItemLinksHover();
+
+    setTimeout(function() {
+        headerSearchHistory.style.display = 'none';
+    }, 200);
+}
+//#endregion
+
+//#region headerSearchFrameBtn onclick() 
+headerSearchFrameBtn.addEventListener('click', function(e) {
+    
+    if(headerSearchFrameInput.value != '') {
+        var innerHTML = headerSearchFrameInput.value;
+        var href = `https://shopee.vn/search?keyword=` + `${innerHTML}`;
+
+        // optional
+        headerSearchFrameBtn.href = href;
+
+        // BUGS...RUN OK BUT NEED JSON JS HANDLE
+        /*
+        updateHeaderSearchHistoryItemLinksInfo(innerHTML, href);
+        removeHeaderSearchHistoryItemInDOM();
+        updateHeaderSearchHistoryItemInDOM();
+        console.log(headerSearchHistoryItemLinksInfo)
+        */
+    }   
+});
+//#endregion
+
+//-> OK
+//#region headerSearchFrameInput onkeydown()
+headerSearchFrameInput.addEventListener('keydown', function(e) {
+    switch (e.code) {
+        case 'Enter': {
+            e.preventDefault();
+            if (headerSearchFrameInput.value == '') {
+                //open search page 'with default option' new tab
+                window.open(`${headerSearchFrameBtn.href}`, '_blank');
+            }
+            else {
+                //open search page 'with keyword' in new tab
+                window.open(`https://shopee.vn/search?keyword=` + `${headerSearchFrameInput.value}`, '_blank');
+            }
+            break;
+        }
+        case 'ArrowUp': {
+            // 1. set next index
+            var headerSearchHistoryItemLength = 
+                document.querySelectorAll(`.header__search-history-item`).length;
+
+            // if initial position (in input) or when being active first element
+            if (headerSearchHistoryItemIndex == 0 || headerSearchHistoryItemIndex == 1) {
+                headerSearchHistoryItemIndex = headerSearchHistoryItemLength;
+            } else {
+                headerSearchHistoryItemIndex--;
+            }
+
+            // 2.add class .header__search-history-item__link--hover on next element
+            removeHeaderSearchHistoryItemLinksHover();
+            headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
+
+            // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
+            var headerSearchHistoryItemCurrent = document.querySelector(`
+                .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
+            headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
+
+            break;
+        }
+        case 'ArrowDown': {
+            // 1. set next index
+            var headerSearchHistoryItemLength = 
+                document.querySelectorAll(`.header__search-history-item`).length;
+
+            // when being active last element
+            if (headerSearchHistoryItemIndex == headerSearchHistoryItemLength) {
+                headerSearchHistoryItemIndex = 1;
+            } else {
+                headerSearchHistoryItemIndex++;
+            }
+
+            // 2. add class .header__search-history-item__link--hover on next element
+            removeHeaderSearchHistoryItemLinksHover();
+            headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
+
+            // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
+            var headerSearchHistoryItemCurrent = document.querySelector(`
+                .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
+            headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
+
+            break;
+        }
+    }
+});
+//#endregion
+
+//-> OK
+//#region headerSearchHistoryItemLink onmouseover(), onmouseout()
+for(var i = 0; i < headerSearchHistoryItemLinks.length; i++) {
+    headerSearchHistoryItemLinks[i].addEventListener('mouseover', function () {
+        removeHeaderSearchHistoryItemLinksHover();
+        headerSearchHistoryItemLinks[i].classList.add('header__search-history-item__link--hover');
+    });
+
+    headerSearchHistoryItemLinks[i].addEventListener('mouseleave', function () {
+        headerSearchHistoryItemLinks[i].classList.remove('header__search-history-item__link--hover');
+    });
+}
+//#endregion
+//#endregion
+
 
 //--> OK
 //#region updateInDOMHeaderSearchHistoryKeywordsList
@@ -1812,23 +1795,23 @@ function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
             '<div class="flash-sale__main__percent-bar--hot"></div>' : '';
         
         aTags += `
-        <a target="_blank" rel="noopener noreferrer" href="${flashSaleMainListInfo[i].href}" class="flash-sale__main__link">
-            <img src="${flashSaleMainListInfo[i].bubbleImage}" alt="" class="flash-sale__main__bubble-img">
-            <img src="${flashSaleMainListInfo[i].frameImage}" alt="" class="flash-sale__main__frame-img">
-            <span class="flash-sale__main__price">${flashSaleMainListInfo[i].price}</span>
-            <div class="flash-sale__main__percent-bar">
-                <div class="flash-sale__main__percent-bar__text">
-                    <span class="flash-sale__main__percent-bar__selled-status">${flashSaleMainListInfo[i].selledStatus}</span>
+            <a target="_blank" rel="noopener noreferrer" href="${flashSaleMainListInfo[i].href}" class="flash-sale__main__link">
+                <img src="${flashSaleMainListInfo[i].bubbleImage}" alt="" class="flash-sale__main__bubble-img">
+                <img src="${flashSaleMainListInfo[i].frameImage}" alt="" class="flash-sale__main__frame-img">
+                <span class="flash-sale__main__price">${flashSaleMainListInfo[i].price}</span>
+                <div class="flash-sale__main__percent-bar">
+                    <div class="flash-sale__main__percent-bar__text">
+                        <span class="flash-sale__main__percent-bar__selled-status">${flashSaleMainListInfo[i].selledStatus}</span>
+                    </div>
+                    <div class="flash-sale__main__percent-bar__total-part"></div>
+                    <div class="flash-sale__main__percent-bar__selled-part" style="width: ${flashSaleMainListInfo[i].selledPartWidthPercent}%;"></div>
+                    ${flashSaleMainPercentBarHot}
                 </div>
-                <div class="flash-sale__main__percent-bar__total-part"></div>
-                <div class="flash-sale__main__percent-bar__selled-part" style="width: ${flashSaleMainListInfo[i].selledPartWidthPercent}%;"></div>
-                ${flashSaleMainPercentBarHot}
-            </div>
-            <div class="flash-sale__main__sale-off-label">
-                <span class="flash-sale__main__sale-off-label__percent">${flashSaleMainListInfo[i].saleOffPercent}</span>
-                <span class="flash-sale__main__sale-off-label__text">GIẢM</span>                                                                            
-            </div>
-        </a>`
+                <div class="flash-sale__main__sale-off-label">
+                    <span class="flash-sale__main__sale-off-label__percent">${flashSaleMainListInfo[i].saleOffPercent}</span>
+                    <span class="flash-sale__main__sale-off-label__text">GIẢM</span>                                                                            
+                </div>
+            </a>`;
     }
 
     // add innerHTML for this element
@@ -1918,70 +1901,68 @@ function updateInDOMFlashSalePart () {
 updateInDOMFlashSalePart();
 //#endregion
 
-//--> (2) Cần xử lí (logic -> len)
-//#region shopeeMallMainMotion, shopeeMallMainMotionQueueItems -> motion
+//--> OK
+//#region updateInDOMShopeeMallMainMotionLinkAndQueueItems
 var shopeeMallMainMotion = document.querySelector('.shopee-mall__main__motion');
 var shopeeMallMainMotionLink = document.querySelector('.shopee-mall__main__motion__link');
-var shopeeMallMainMotionImg = document.querySelector('.shopee-mall__main__motion__img');
+var shopeeMallMainMotionImage = document.querySelector('.shopee-mall__main__motion__img');
 var shopeeMallMainMotionQueueItems = document.querySelectorAll('.shopee-mall__main__motion__queue-item');
 
-var shopeeMallMainMotionLinkInfo = {
-    href: [
-        "https://shopee.vn/m/vando-official",
-        "https://shopee.vn/m/dettol-official",
-        "https://shopee.vn/m/gumacsbd-0821-main",
-        "https://shopee.vn/unicharm_officialstore"
-    ],
-    imgSrc: [
-        "https://cf.shopee.vn/file/1b3b999b50c93f0668098d8b9987dd42",
-        "https://cf.shopee.vn/file/eb4d0122c34964ff391ec9978507bdca",
-        "https://cf.shopee.vn/file/f4624a332a49cbd1f73b04007b77fea8",
-        "https://cf.shopee.vn/file/db6395330ffd1cbf1b46f7daf56df2f6"
-    ]
+function updateInDOMShopeeMallMainMotionLinkAndQueueItems () {
+    fetch("db.json")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (datas) {
+            handleShopeeMallMainMotionLinkAndQueueItems (datas.shopeeMallMainMotionLinkInfo);
+        })
 }
 
-if (true) {
+function handleShopeeMallMainMotionLinkAndQueueItems (shopeeMallMainMotionLinkInfo) {
     var currentIndex = 0;
     var queueLength = shopeeMallMainMotionQueueItems.length;
-
+    
     for(var shopeeMallMainMotionQueueItem of shopeeMallMainMotionQueueItems) {
-        shopeeMallMainMotionQueueItem.onclick = function () {
-            // get parent's queue
+        shopeeMallMainMotionQueueItem.addEventListener('click', function(e) {
+            e.preventDefault();
+
             var parent = this.parentNode;
             // get this's index in parent's queue
             var index = Array.prototype.indexOf.call(parent.children, this);
-
-            // update shopee-mall__main__motion__queue-item--current
+    
+            // update current item
             shopeeMallMainMotionQueueItems[currentIndex].classList.remove('shopee-mall__main__motion__queue-item--current');
             shopeeMallMainMotionQueueItems[index].classList.add('shopee-mall__main__motion__queue-item--current');
             
-            // update img, href
-            shopeeMallMainMotionLink.href = shopeeMallMainMotionLinkInfo.href[index];
-            shopeeMallMainMotionImg.src = shopeeMallMainMotionLinkInfo.imgSrc[index];
-
+            // update src, href
+            shopeeMallMainMotionLink.href = shopeeMallMainMotionLinkInfo[index].href;
+            shopeeMallMainMotionImage.src = shopeeMallMainMotionLinkInfo[index].image;
+    
             // update currentIndex
             currentIndex = index;
-        }
+        })
     }
-
+    
     setInterval (function () {
         if(currentIndex < queueLength-1) {
             shopeeMallMainMotionQueueItems[currentIndex].classList.remove('shopee-mall__main__motion__queue-item--current');
-            shopeeMallMainMotionQueueItems[currentIndex+1].classList.add('shopee-mall__main__motion__queue-item--current');
+            shopeeMallMainMotionQueueItems[currentIndex + 1].classList.add('shopee-mall__main__motion__queue-item--current');
             currentIndex++;
         } else {
-            shopeeMallMainMotionQueueItems[queueLength-1].classList.remove('shopee-mall__main__motion__queue-item--current');
+            shopeeMallMainMotionQueueItems[queueLength - 1].classList.remove('shopee-mall__main__motion__queue-item--current');
             shopeeMallMainMotionQueueItems[0].classList.add('shopee-mall__main__motion__queue-item--current');
             currentIndex = 0;
         }
         
-        shopeeMallMainMotionLink.href = shopeeMallMainMotionLinkInfo.href[currentIndex];
-        shopeeMallMainMotionImg.src = shopeeMallMainMotionLinkInfo.imgSrc[currentIndex];
+        // update src, href
+        shopeeMallMainMotionLink.href = shopeeMallMainMotionLinkInfo[currentIndex].href;
+        shopeeMallMainMotionImage.src = shopeeMallMainMotionLinkInfo[currentIndex].image;
     }, 5000);
 }
+
+updateInDOMShopeeMallMainMotionLinkAndQueueItems();
 //#endregion
 
-// -> OK
 //#region updateInDOMShopeeMallHeadingText
 var shopeeMallHeadingText = document.querySelector('.shopee-mall__heading__text');
 
