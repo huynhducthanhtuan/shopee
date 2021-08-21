@@ -3196,7 +3196,7 @@ width: 13.5rem;
     top: 100%;
     left: 0;
 }
-.today-suggestion__main-product__favourite-label--yeuthichplus > img {
+.today-suggestion__main-product__favourite-label--yeuthichplus__img {
     display: block;
     width: 5.5rem;
     height: 1.2rem;
@@ -3220,7 +3220,7 @@ width: 13.5rem;
     top: 100%;
     left: 0;
 }
-.today-suggestion__main-product__favourite-label--mall > img {
+.today-suggestion__main-product__favourite-label--mall__img {
     display: block;
     width: 2rem;
     height: 0.8rem;

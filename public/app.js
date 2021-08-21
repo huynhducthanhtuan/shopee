@@ -3021,17 +3021,29 @@ function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMain
                 </div>`
                 : "";
 
-            var favouriteLabel = "";
+            var favouriteLabel = "", favouriteLabelActiveClass = "", favouriteLabelInnerHTML = "";
             if (todaySuggestionMainTabMainInfo[i][j].favouriteLabel) {
-                var favouriteLabelActiveClass = (todaySuggestionMainTabMainInfo[i][j].favouriteLabel == 'Yêu thích') ?
-                    'today-suggestion__main-product__favourite-label--yeuthich' :
-                    (todaySuggestionMainTabMainInfo[i][j].favouriteLabel == 'Yêu thích+') ?
-                    'today-suggestion__main-product__favourite-label--yeuthichplus' : 
-                    'today-suggestion__main-product__favourite-label--mall';
+                if (todaySuggestionMainTabMainInfo[i][j].favouriteLabel == 'Yêu thích') {
+                    favouriteLabelActiveClass = 'today-suggestion__main-product__favourite-label--yeuthich';
+                    favouriteLabelInnerHTML = "Yêu thích";
+                }
+                else {
+                    if (todaySuggestionMainTabMainInfo[i][j].favouriteLabel == 'Yêu thích+') {
+                        favouriteLabelActiveClass = 'today-suggestion__main-product__favourite-label--yeuthichplus';
+                        favouriteLabelInnerHTML = 
+                            '<img src="./assests/img/container/today-suggestion/yeuthichplus.png" alt="" class="today-suggestion__main-product__favourite-label--yeuthichplus__img">';
+                        
+                    }
+                    else {
+                        favouriteLabelActiveClass = 'today-suggestion__main-product__favourite-label--mall';
+                        favouriteLabelInnerHTML = 
+                            '<img src="./assests/img/container/today-suggestion/mall.png" alt="" class="today-suggestion__main-product__favourite-label--mall__img">';
+                    }
+                }
 
                 favouriteLabel = 
                     `<div class="today-suggestion__main-product__favourite-label ${favouriteLabelActiveClass}">
-                        ${todaySuggestionMainTabMainInfo[i][j].favouriteLabel}
+                        ${favouriteLabelInnerHTML}
                     </div>`;
             }
  
@@ -3054,7 +3066,7 @@ function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMain
                             <img alt="" src="${todaySuggestionMainTabMainInfo[i][j].productImage}" class="today-suggestion__main-product__product-img">
                             ${frameImage}
                             <div class="today-suggestion__main-product__part">
-                                <span class="today-suggestion__main-product__name">Áo thun tay lỡ DASN, Áo phông tay lỡ Unisex form rộng Oversize</span>
+                                <span class="today-suggestion__main-product__name">${todaySuggestionMainTabMainInfo[i][j].name}</span>
                                 ${productSaleOff}
                                 <div class="today-suggestion__main-product__price-and-selled-quantity" style="margin-top: 2.6rem;">
                                     <span class="today-suggestion__main-product__price">${todaySuggestionMainTabMainInfo[i][j].price}</span>
@@ -3084,40 +3096,46 @@ updateInDOMTodaySuggestionMainTabMain();
 
 //--->I'M HERE - BUGS
 /* CSS EXECUTIVE */
-// for(var i = 0; i < 8; i++) {
-//     var check = false;
-//     var items = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
-//     .today-suggestion__main-item .today-suggestion__main-product__sale-off`);
-//     check = (items.length >= 1);
-
-//     var list = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1})`);
-//     var items = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) .today-suggestion__main-item`);
-//     var products = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) .today-suggestion__main-product`);
+function handleCSSTodaySuggestionMainTabMain () {
+    for(var i = 0; i < 8; i++) {
+        var check = (document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+            .today-suggestion__main-product__sale-off`).length  >=  1);
     
-//     if (check) {
-//         list.style.height = '29.8rem';
-//         for(var j = 0; j < items.length; j++) {
-//             items[j].style.height = '29.8rem';
-//             products[j].style.height = '28.8rem';
-            
-//             var saleOff = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
-//             .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__sale-off`);
-//             if(saleOff == null) {
-//                 var priceAndSelledQuantity = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
-//                     .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__price-and-selled-quantity`);
-//                     priceAndSelledQuantity.style.marginTop = '2.6rem';
-//                 }
-//         }
-//     } 
-//     else {
-//         list.style.height = '27.7rem';
-//         for(var j = 0; j < items.length; j++) {
-//             items[j].style.height = '27.7rem';
-//             products[j].style.height = '26.7rem';
-//         }
-//     }
-// }
+        var list = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1})`);
+        var items = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+            .today-suggestion__main-item`);
+        var products = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+            .today-suggestion__main-product`);
+        
+        if (check) {
+            list.style.height = '29.8rem';
+            for(var j = 0; j < items.length; j++) {
+                items[j].style.height = '29.8rem';
+                products[j].style.height = '28.8rem';
+                
+                var saleOff = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+                    .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__sale-off`);
+    
+                if(saleOff == null) {
+                    var priceAndSelledQuantity = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+                        .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__price-and-selled-quantity`);
+                    priceAndSelledQuantity.style.marginTop = '2.6rem';
+                }
+            }
+        } 
+        else {
+            list.style.height = '27.7rem';
+            for(var j = 0; j < items.length; j++) {
+                items[j].style.height = '27.7rem';
+                products[j].style.height = '26.7rem';
+            }
+        }
+    }
+}
 
+setTimeout(function () {
+    handleCSSTodaySuggestionMainTabMain();
+}, 200)
 //#endregion 
 
 
@@ -3839,6 +3857,8 @@ for(var i = 0; i < 10; i++) {
         var favouriteLabel = document.createElement('div');
         var favouriteLabelImg = undefined;
         favouriteLabel.classList.add('today-suggestion__main-product__favourite-label');
+
+        
 
         // --> check *sự có mặt*
         if(todaySuggestionMainSuperSaleProductsInfo[todaySuggestionMainSuperSaleProductsInfoIndex].favouriteLabel) {
