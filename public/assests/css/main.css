@@ -1514,6 +1514,10 @@ width: 13.5rem;
     width: 12rem;
     height: 2.4rem;
 }
+.header__search-history-item__link:hover {
+    background-color: rgba(0,0,0,0.06)!important;
+}
+
 .header__search-history-item__link--hover {
     background-color: rgba(0,0,0,0.06)!important;
 }

@@ -1205,114 +1205,144 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
 
 /* B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...*/
 
+// --> OK
 //#region headerSearchFrameInput, headerSearchHistory - variable declaration
 var headerSearchFrameInput = document.querySelector('.header__search-frame__input');
 var headerSearchHistory = document.querySelector('.header__search-history');
 var headerSearchFrameBtn = document.querySelector('.header__search-frame__btn');
 var headerSearchHistoryList = document.querySelector('.header__search-history-list');
+var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
 var headerSearchHistoryItemIndex = 0;
-var headerSearchHistoryItemLinksInfoLength;
+var headerSearchHistoryListInfoAPI = "https://shopee-hdttuan.web.app/headerSearchHistoryListInfo.json";
+var headerSearchHistoryListInfoAPIFirstObiectId = 1;
 //#endregion
 
-// --> OK
 //#region updateInDOMHeaderSearchHistoryList
-function updateInDOMHeaderSearchHistoryList () {
-    fetch("db.json")
+function updateInDOMHeaderSearchHistoryList (url) {
+    var options = {
+        method: 'GET', 
+        mode: 'cors',
+        cache: 'no-cache', 
+        credentials: 'same-origin', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer'
+    }
+
+    fetch(url, options)
         .then(function (response) {
             return response.json();
         })
         .then(function (datas) {
-            var liTags = datas.headerSearchHistoryListInfo.map(function (data) {
+            var liTags = datas.map(function (data) {
                 return `<li class="header__search-history-item">
                             <a class="header__search-history-item__link" href="${data.href}" target="_blank" rel="noopener noreferrer">${data.innerHTML}</a>
                         </li>`
             });
-            headerSearchHistoryList.innerHTML += liTags.join('');
+
+            var defaultLiTag = `<li class="header__search-history-item header__search-history-item--default">
+                    <a target="_blank" rel="noopener noreferrer" href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
+                        Deal hot kèm 2 mã freeship
+                        <img src="./assests/img/header/header__search/Dealquocte.png" alt=""  class="header__search-history-item__link__dtth31k-img">
+                    </a>
+                </li>`;
+
+            headerSearchHistoryList.innerHTML = defaultLiTag + liTags.join('');
         })
 }
 
-updateInDOMHeaderSearchHistoryList();
+updateInDOMHeaderSearchHistoryList(headerSearchHistoryListInfoAPI);
 //#endregion
 
 //--> (1) Cần xử lí (logic -> len) 
 //#region (f) Work with API
-// function deleteObj (url, id) {
-//     fetch(`${url}/${id}`, {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .catch(function(err) {
-//         console.log(err);
-//     })
-// }
+function deleteObjInAPI (url, id) {
+    var options = {
+        method: 'DELETE', 
+        mode: 'cors',
+        cache: 'no-cache', 
+        credentials: 'same-origin', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer'
+    }
 
-// function createObj (url, data) {
-//     fetch(url, {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     })
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .catch(function(err) {
-//         console.log(err);
-//     })
-// }
+    fetch(`${url}/${id}`, options)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) {
+            console.log(datas);
+        })
+        .catch(function(err) {
+            console.log(err);
+        })
+}
+
+function createObjInAPI (url, data) {
+    var options = {
+        method: 'POST', 
+        mode: 'cors',
+        cache: 'no-cache', 
+        credentials: 'same-origin', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        redirect: 'follow', 
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data) 
+    }
+
+    fetch(url, options)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas){
+            console.log(datas)
+        })
+        .catch(function(err) {
+            console.log(err);
+        })
+}
 //#endregion
 
-//#region 
-var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
 
 //--> Chưa xử lí
-//#region (f) removeHeaderSearchHistoryItemInDOM
-// function removeHeaderSearchHistoryItemInDOM () {
-//     var headerSearchHistoryItems = document.querySelectorAll('.header__search-history-item');
-//     for(var i = 1; i < headerSearchHistoryItems.length; i++) {
-//         headerSearchHistoryItems[i].parentNode.removeChild(headerSearchHistoryItems[i]);
-//     }
-// }
-// //#endregion
+//#region (f) updateHeaderSearchHistoryItemLinksInfo
+function addAndUpdateAPI (data) {
+    var length = 3;
+    if (length == 10) {
+        // 0,1,2,3,4,5,6,7,8,9
+        // DELETE(id = 1) POST(id = 10)
+        deleteObjInAPI(headerSearchHistoryListInfoAPI, headerSearchHistoryListInfoAPIFirstObiectId);
+        createObjInAPI(headerSearchHistoryListInfoAPI, data);
 
-//--> Chưa xử lí
-// //#region (f) updateHeaderSearchHistoryItemLinksInfo
-// function updateHeaderSearchHistoryItemLinksInfo (innerHTML, href) {
-//     var length = headerSearchHistoryItemLinksInfo.length;
-//     if (length == 10) {
-//         //-> insert element at first position of array -> (PUT method)
-//         // headerSearchHistoryItemLinksInfo.unshift({
-//         //     innerHTML, 
-//         //     href
-//         // });
+        // id++;
+        headerSearchHistoryListInfoAPIFirstObiectId++;
+    } 
+    else {
+        // 0,1,2,3,4
+        // PUT (id = 5)
+        createObjInAPI(headerSearchHistoryListInfoAPI, data);
 
-//         //-> remove last element & remove, updateHeaderSearchHistoryItemInDOM
-//         // headerSearchHistoryItemLinksInfo.pop();
-//         // removeHeaderSearchHistoryItemInDOM();
-//         // updateHeaderSearchHistoryItemInDOM();
-//     } 
-//     else {
-//         //-> insert element at first position of array
-//         // headerSearchHistoryItemLinksInfo.unshift({
-//         //     innerHTML,
-//         //     href
-//         // });
-//     }
-// }
+        // id++;
+        headerSearchHistoryListInfoAPIFirstObiectId++;
+    }
+}
 //#endregion
+
+
 
 //-> OK
 //#region (f) removeHeaderSearchHistoryItemLinksHover
 function removeHeaderSearchHistoryItemLinksHover () {
-    headerSearchHistoryItemLinks.forEach(function (a) {
-        if (a.classList.contains('header__search-history-item__link--hover')) {
-            a.classList.remove('header__search-history-item__link--hover');
+    headerSearchHistoryItemLinks.forEach(function (headerSearchHistoryItemLink) {
+        if (headerSearchHistoryItemLink.classList.contains('header__search-history-item__link--hover')) {
+            headerSearchHistoryItemLink.classList.remove('header__search-history-item__link--hover');
         }
     });
 }
@@ -1324,9 +1354,8 @@ headerSearchFrameInput.onclick = function () {
 }
 
 headerSearchFrameInput.onblur = function () {
-    // return default search option index
+    // return default search option index, remove hover on all of item
     headerSearchHistoryItemIndex = 0;
-
     removeHeaderSearchHistoryItemLinksHover();
 
     setTimeout(function() {
@@ -1335,56 +1364,30 @@ headerSearchFrameInput.onblur = function () {
 }
 //#endregion
 
-//#region headerSearchFrameBtn onclick() 
-headerSearchFrameBtn.addEventListener('click', function(e) {
-    
-    if(headerSearchFrameInput.value != '') {
-        var innerHTML = headerSearchFrameInput.value;
-        var href = `https://shopee.vn/search?keyword=` + `${innerHTML}`;
-
-        // optional
-        headerSearchFrameBtn.href = href;
-
-        // BUGS...RUN OK BUT NEED JSON JS HANDLE
-        /*
-        updateHeaderSearchHistoryItemLinksInfo(innerHTML, href);
-        removeHeaderSearchHistoryItemInDOM();
-        updateHeaderSearchHistoryItemInDOM();
-        console.log(headerSearchHistoryItemLinksInfo)
-        */
-    }   
-});
-//#endregion
-
-//-> OK
 //#region headerSearchFrameInput onkeydown()
 headerSearchFrameInput.addEventListener('keydown', function(e) {
+    // update nodelist headerSearchHistoryItemLinks
+    headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
+
     switch (e.code) {
         case 'Enter': {
             e.preventDefault();
-            if (headerSearchFrameInput.value == '') {
-                //open search page 'with default option' new tab
-                window.open(`${headerSearchFrameBtn.href}`, '_blank');
-            }
-            else {
-                //open search page 'with keyword' in new tab
-                window.open(`https://shopee.vn/search?keyword=` + `${headerSearchFrameInput.value}`, '_blank');
-            }
+            headerSearchFrameBtn.click();
             break;
         }
         case 'ArrowUp': {
-            // 1. set next index
-            var headerSearchHistoryItemLength = 
-                document.querySelectorAll(`.header__search-history-item`).length;
+            // 1. update headerSearchHistoryItemLength
+            var headerSearchHistoryItemLength = headerSearchHistoryItemLinks.length;
 
-            // if initial position (in input) or when being active first element
+            // 2. set next index: 
+            // if initial position (in input) or being active on first element
             if (headerSearchHistoryItemIndex == 0 || headerSearchHistoryItemIndex == 1) {
                 headerSearchHistoryItemIndex = headerSearchHistoryItemLength;
             } else {
                 headerSearchHistoryItemIndex--;
             }
 
-            // 2.add class .header__search-history-item__link--hover on next element
+            // 2. add class hover on next element
             removeHeaderSearchHistoryItemLinksHover();
             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
 
@@ -1396,18 +1399,18 @@ headerSearchFrameInput.addEventListener('keydown', function(e) {
             break;
         }
         case 'ArrowDown': {
-            // 1. set next index
-            var headerSearchHistoryItemLength = 
-                document.querySelectorAll(`.header__search-history-item`).length;
+            // 1. update headerSearchHistoryItemLength
+            var headerSearchHistoryItemLength = headerSearchHistoryItemLinks.length;
 
-            // when being active last element
+            // 2. set next index: 
+            // when being active on last element
             if (headerSearchHistoryItemIndex == headerSearchHistoryItemLength) {
                 headerSearchHistoryItemIndex = 1;
             } else {
                 headerSearchHistoryItemIndex++;
             }
 
-            // 2. add class .header__search-history-item__link--hover on next element
+            // 2. add class hover on next element
             removeHeaderSearchHistoryItemLinksHover();
             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
 
@@ -1422,19 +1425,46 @@ headerSearchFrameInput.addEventListener('keydown', function(e) {
 });
 //#endregion
 
-//-> OK
-//#region headerSearchHistoryItemLink onmouseover(), onmouseout()
-for(var i = 0; i < headerSearchHistoryItemLinks.length; i++) {
-    headerSearchHistoryItemLinks[i].addEventListener('mouseover', function () {
-        removeHeaderSearchHistoryItemLinksHover();
-        headerSearchHistoryItemLinks[i].classList.add('header__search-history-item__link--hover');
-    });
 
-    headerSearchHistoryItemLinks[i].addEventListener('mouseleave', function () {
-        headerSearchHistoryItemLinks[i].classList.remove('header__search-history-item__link--hover');
-    });
-}
+//#region headerSearchFrameBtn onclick() 
+headerSearchFrameBtn.addEventListener('click', function(e) {
+    
+    if (headerSearchFrameInput.value != '') {
+        var innerHTML = headerSearchFrameInput.value;
+        var href = `https://shopee.vn/search?keyword=${innerHTML}`;
+        console.log(href, innerHTML);
+        var data = {
+            href: href, 
+            innerHTML: innerHTML
+        };
+
+        // RUN OK BUT NEED JSON JS HANDLE
+        addAndUpdateAPI(data);
+        updateInDOMHeaderSearchHistoryList(headerSearchHistoryListInfoAPI);
+
+        // update headerSearchFrameBtn.href
+        headerSearchFrameBtn.href = href;
+    }   
+
+    // -> no need handle, it will take the default action
+});
 //#endregion
+
+
+//-> Ko cần
+//#region headerSearchHistoryItemLink onmouseover(), onmouseout()
+// for(var i = 0; i < headerSearchHistoryItemLinks.length; i++) {
+//     headerSearchHistoryItemLinks[i].addEventListener('mouseover', function () {
+//         removeHeaderSearchHistoryItemLinksHover();
+//         headerSearchHistoryItemLinks[i].classList.add('header__search-history-item__link--hover');
+//     });
+
+//     headerSearchHistoryItemLinks[i].addEventListener('mouseleave', function () {
+//         headerSearchHistoryItemLinks[i].classList.remove('header__search-history-item__link--hover');
+//     });
+// }
+// //#endregion
+
 //#endregion
 
 
