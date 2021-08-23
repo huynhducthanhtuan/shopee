@@ -12,20 +12,6 @@
 // alert(hello());
 //#endregion
 
-//#region TEST: call API
-// var len = 0;
-// fetch("db.json")
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .then(function(data) {
-//         // len = data.directoryMainItemLinksInfo.length;
-//         console.log(data);
-//     });
-// setTimeout(function () {
-//     console.log(len)
-// }, 1000)
-//#endregion
 
 
 /* A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS) */
@@ -1217,127 +1203,124 @@ var headerSearchHistoryListInfoAPI = "https://shopee-hdttuan.web.app/headerSearc
 var headerSearchHistoryListInfoAPIFirstObiectId = 1;
 //#endregion
 
-//#region updateInDOMHeaderSearchHistoryList
-function updateInDOMHeaderSearchHistoryList (url) {
-    var options = {
-        method: 'GET', 
-        mode: 'cors',
-        cache: 'no-cache', 
-        credentials: 'same-origin', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow', 
-        referrerPolicy: 'no-referrer'
-    }
 
-    fetch(url, options)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (datas) {
-            var liTags = datas.map(function (data) {
-                return `<li class="header__search-history-item">
-                            <a class="header__search-history-item__link" href="${data.href}" target="_blank" rel="noopener noreferrer">${data.innerHTML}</a>
-                        </li>`
-            });
+// //#region Logic ok but need an auth API to handle 
+// //#region updateInDOMHeaderSearchHistoryList
+// function updateInDOMHeaderSearchHistoryList (url) {
+//     var options = {
+//         method: 'GET', 
+//         mode: 'cors',
+//         cache: 'no-cache', 
+//         credentials: 'same-origin', 
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         redirect: 'follow', 
+//         referrerPolicy: 'no-referrer'
+//     }
 
-            var defaultLiTag = `<li class="header__search-history-item header__search-history-item--default">
-                    <a target="_blank" rel="noopener noreferrer" href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
-                        Deal hot kèm 2 mã freeship
-                        <img src="./assests/img/header/header__search/Dealquocte.png" alt=""  class="header__search-history-item__link__dtth31k-img">
-                    </a>
-                </li>`;
+//     fetch(url, options)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         .then(function (datas) {
+//             var liTags = datas.map(function (data) {
+//                 return `<li class="header__search-history-item">
+//                             <a class="header__search-history-item__link" href="${data.href}" target="_blank" rel="noopener noreferrer">${data.innerHTML}</a>
+//                         </li>`
+//             });
 
-            headerSearchHistoryList.innerHTML = defaultLiTag + liTags.join('');
-        })
-}
+//             var defaultLiTag = `<li class="header__search-history-item header__search-history-item--default">
+//                     <a target="_blank" rel="noopener noreferrer" href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
+//                         Deal hot kèm 2 mã freeship
+//                         <img src="./assests/img/header/header__search/Dealquocte.png" alt=""  class="header__search-history-item__link__dtth31k-img">
+//                     </a>
+//                 </li>`;
 
-updateInDOMHeaderSearchHistoryList(headerSearchHistoryListInfoAPI);
-//#endregion
+//             headerSearchHistoryList.innerHTML = defaultLiTag + liTags.join('');
+//         })
+// }
 
-//--> (1) Cần xử lí (logic -> len) 
-//#region (f) Work with API
-function deleteObjInAPI (url, id) {
-    var options = {
-        method: 'DELETE', 
-        mode: 'cors',
-        cache: 'no-cache', 
-        credentials: 'same-origin', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow', 
-        referrerPolicy: 'no-referrer'
-    }
+// updateInDOMHeaderSearchHistoryList(headerSearchHistoryListInfoAPI);
+// //#endregion
 
-    fetch(`${url}/${id}`, options)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
-            console.log(datas);
-        })
-        .catch(function(err) {
-            console.log(err);
-        })
-}
+// //#region (f) Work with API
+// function deleteObjInAPI (url, id) {
+//     var options = {
+//         method: 'DELETE', 
+//         mode: 'cors',
+//         cache: 'no-cache', 
+//         credentials: 'same-origin', 
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         redirect: 'follow', 
+//         referrerPolicy: 'no-referrer'
+//     }
 
-function createObjInAPI (url, data) {
-    var options = {
-        method: 'POST', 
-        mode: 'cors',
-        cache: 'no-cache', 
-        credentials: 'same-origin', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        redirect: 'follow', 
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data) 
-    }
+//     fetch(`${url}/${id}`, options)
+//         .then(function(response) {
+//             return response.json();
+//         })
+//         .then(function(datas) {
+//             console.log(datas);
+//         })
+//         .catch(function(err) {
+//             console.log(err);
+//         })
+// }
 
-    fetch(url, options)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas){
-            console.log(datas)
-        })
-        .catch(function(err) {
-            console.log(err);
-        })
-}
-//#endregion
+// function createObjInAPI (url, data) {
+//     var options = {
+//         method: 'POST', 
+//         mode: 'cors',
+//         cache: 'no-cache', 
+//         credentials: 'same-origin', 
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         redirect: 'follow', 
+//         referrerPolicy: 'no-referrer',
+//         body: JSON.stringify(data) 
+//     }
 
+//     fetch(url, options)
+//         .then(function(response) {
+//             return response.json();
+//         })
+//         .then(function(datas){
+//             console.log(datas)
+//         })
+//         .catch(function(err) {
+//             console.log(err);
+//         })
+// }
+// //#endregion
 
-//--> Chưa xử lí
-//#region (f) updateHeaderSearchHistoryItemLinksInfo
-function addAndUpdateAPI (data) {
-    var length = 3;
-    if (length == 10) {
-        // 0,1,2,3,4,5,6,7,8,9
-        // DELETE(id = 1) POST(id = 10)
-        deleteObjInAPI(headerSearchHistoryListInfoAPI, headerSearchHistoryListInfoAPIFirstObiectId);
-        createObjInAPI(headerSearchHistoryListInfoAPI, data);
+// //#region (f) updateHeaderSearchHistoryItemLinksInfo
+// function addAndUpdateAPI (data) {
+//     var length = 3;
+//     if (length == 10) {
+//         // 0,1,2,3,4,5,6,7,8,9
+//         // DELETE(id = 1) POST(id = 10)
+//         deleteObjInAPI(headerSearchHistoryListInfoAPI, headerSearchHistoryListInfoAPIFirstObiectId);
+//         createObjInAPI(headerSearchHistoryListInfoAPI, data);
 
-        // id++;
-        headerSearchHistoryListInfoAPIFirstObiectId++;
-    } 
-    else {
-        // 0,1,2,3,4
-        // PUT (id = 5)
-        createObjInAPI(headerSearchHistoryListInfoAPI, data);
+//         // id++;
+//         headerSearchHistoryListInfoAPIFirstObiectId++;
+//     } 
+//     else {
+//         // 0,1,2,3,4
+//         // PUT (id = 5)
+//         createObjInAPI(headerSearchHistoryListInfoAPI, data);
 
-        // id++;
-        headerSearchHistoryListInfoAPIFirstObiectId++;
-    }
-}
-//#endregion
+//         // id++;
+//         headerSearchHistoryListInfoAPIFirstObiectId++;
+//     }
+// }
+// //#endregion
+// //#endregion
 
-
-
-//-> OK
 //#region (f) removeHeaderSearchHistoryItemLinksHover
 function removeHeaderSearchHistoryItemLinksHover () {
     headerSearchHistoryItemLinks.forEach(function (headerSearchHistoryItemLink) {
@@ -1425,22 +1408,20 @@ headerSearchFrameInput.addEventListener('keydown', function(e) {
 });
 //#endregion
 
-
 //#region headerSearchFrameBtn onclick() 
 headerSearchFrameBtn.addEventListener('click', function(e) {
     
     if (headerSearchFrameInput.value != '') {
         var innerHTML = headerSearchFrameInput.value;
         var href = `https://shopee.vn/search?keyword=${innerHTML}`;
-        console.log(href, innerHTML);
+
+        /* RUN OK BUT NEED AUTH API
         var data = {
             href: href, 
             innerHTML: innerHTML
         };
-
-        // RUN OK BUT NEED JSON JS HANDLE
         addAndUpdateAPI(data);
-        updateInDOMHeaderSearchHistoryList(headerSearchHistoryListInfoAPI);
+        updateInDOMHeaderSearchHistoryList(headerSearchHistoryListInfoAPI); */
 
         // update headerSearchFrameBtn.href
         headerSearchFrameBtn.href = href;
@@ -1448,23 +1429,6 @@ headerSearchFrameBtn.addEventListener('click', function(e) {
 
     // -> no need handle, it will take the default action
 });
-//#endregion
-
-
-//-> Ko cần
-//#region headerSearchHistoryItemLink onmouseover(), onmouseout()
-// for(var i = 0; i < headerSearchHistoryItemLinks.length; i++) {
-//     headerSearchHistoryItemLinks[i].addEventListener('mouseover', function () {
-//         removeHeaderSearchHistoryItemLinksHover();
-//         headerSearchHistoryItemLinks[i].classList.add('header__search-history-item__link--hover');
-//     });
-
-//     headerSearchHistoryItemLinks[i].addEventListener('mouseleave', function () {
-//         headerSearchHistoryItemLinks[i].classList.remove('header__search-history-item__link--hover');
-//     });
-// }
-// //#endregion
-
 //#endregion
 
 
