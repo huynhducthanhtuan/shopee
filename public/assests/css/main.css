@@ -2975,13 +2975,6 @@ width: 13.5rem;
 }
 
 
-/* animation loading */
-.today-suggestion__main__loading {
-    display: flex;
-    justify-content: center;
-    margin-top: 4rem;
-}
-
 /* part1 */
 .today-suggestion__main__tab-main {
     display: block;

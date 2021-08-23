@@ -13,9 +13,6 @@
 //#endregion
 
 
-
-/* A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS) */
-
 //#region OBJECTS DECLARATION
 //#region 1. Best Common
 var html = document.querySelector('html');
@@ -126,15 +123,18 @@ var headerUserAccount = document.querySelector('.header__user-account');
 
 //#region 5. Motion Parts
 var motionPartSubBanner = document.querySelector('.motion-part__sub-banner');
+var motionPartChat = document.querySelector('.motion-part__chat');
+
 var giftBanner = document.querySelector('.gift-banner');
 var giftBannerPopup = document.querySelector('.gift-banner__popup');
 var giftBannerPopupCloseBtn = document.querySelector('.gift-banner__popup__close-btn');
-var motionPartChat = document.querySelector('.motion-part__chat');
+
 var pageLoadBanner = document.querySelector('.page-load-banner');
 var pageLoadBannerCloseBtn = document.querySelector('.page-load-banner__close-btn');
 //#endregion
 //#endregion
 
+/* A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS) */
 
 //#region (f) loadInitialWebsite
 function loadInitialWebsite () {
@@ -350,13 +350,22 @@ function unsetRegisterPageConfirmationStepLineActive (nthChild) {
 }
 //#endregion
 
-
-var confirmationCodes = [
-    '871622', '675620', '990873', '022722', '223334', 
-    '345722', '454612', '231179', '529960', '104682'
-];
+//#region getAndUpdateConfirmationCodes
+var confirmationCodes = [];
 var currentConfirmationCode;
 
+function getAndUpdateConfirmationCodes () {
+    fetch("db.json")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(datas) {
+            confirmationCodes = datas.confirmationCodes;
+        })
+}
+
+getAndUpdateConfirmationCodes();
+//#endregion
 
 var checkValidPhoneNumberRegister = false;
 
@@ -425,7 +434,6 @@ registerPageContentFormInput.addEventListener('keydown', function (e) {
     }, 0);
 });
 
-
 registerPageContentFormNextBtn.addEventListener('mouseover', function (e) {
     if (e.target.style.cursor == 'pointer') {
         e.target.style.opacity = '0.92';
@@ -443,7 +451,6 @@ registerPageContentFormNextBtn.addEventListener('mouseleave', function (e) {
         e.preventDefault();
     }
 });
-
 
 registerPageContentFormNextBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -479,6 +486,7 @@ registerPageContentFormNextBtn.addEventListener('click', function(e) {
             registerPageConfirmationFirstFormContentConfirmBtn.style.opacity = '0.7';
             registerPageConfirmationFirstFormContentConfirmBtn.style.cursor = 'not-allowed';
 
+            // random confirmation code
             setTimeout(function () {
                 currentConfirmationCode = confirmationCodes[Math.floor(Math.random() * confirmationCodes.length)];
                 alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
@@ -503,6 +511,26 @@ registerPageContentFormNextBtn.addEventListener('mousedown', function(e) {
     }
 });
     
+// Related actions
+registerPageContentFormAskForLoginBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    setTimeout(function() {
+        loadLoginPage();
+        window.scrollTo(0, 0);
+    }, 200)
+});
+
+registerPageConfirmationFirstFormContentHelpResendBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    registerPageConfirmationFirstFormContentInput.value = '';
+
+    // random confirmation code
+    setTimeout(function () {
+        currentConfirmationCode = confirmationCodes[Math.floor(Math.random() * confirmationCodes.length)];
+        alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
+    }, 1000);
+});
+
 //#region *Not handle these buttons, just preventDefault 
 registerPageContentFormFacebookBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -513,24 +541,8 @@ registerPageContentFormGoogleBtn.addEventListener('click', function(e) {
 registerPageContentFormAppleBtn.addEventListener('click', function(e) {
     e.preventDefault();
 });
-registerPageContentFormAskForLoginBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    setTimeout(function() {
-        loadLoginPage();
-        window.scrollTo(0, 0);
-    }, 200)
-});
 registerPageConfirmationFirstFormContentHelpOtherWayBtn.addEventListener('click', function(e) {
     e.preventDefault();
-});
-registerPageConfirmationFirstFormContentHelpResendBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    registerPageConfirmationFirstFormContentInput.value = '';
-    setTimeout(function () {
-        // random
-        currentConfirmationCode = confirmationCodes[Math.floor(Math.random() * confirmationCodes.length)];
-        alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
-    }, 1000);
 });
 //#endregion
 
@@ -641,7 +653,7 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseleave'
 
 
 //#region ---> 2ND CONFIRMATION
-// set for mouseover-mouseleave action
+// set for mouseover - mouseleave action
 registerPageConfirmationSecondFormContentRegisterBtn.style.cursor = 'pointer';
 
 registerPageConfirmationSecondFormContentInputStatusBtn.addEventListener('click', function(e) {
@@ -856,10 +868,6 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', functi
 });
 
 // #endregion
-
-
-//#region ---> 3RD CONFIRMATION
-//#endregion
 
 //#endregion I. REGISTER PAGE
 
@@ -1188,10 +1196,9 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
 
 
 
-
 /* B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...*/
 
-// --> OK
+//--> I'M HERE
 //#region headerSearchFrameInput, headerSearchHistory - variable declaration
 var headerSearchFrameInput = document.querySelector('.header__search-frame__input');
 var headerSearchHistory = document.querySelector('.header__search-history');
@@ -1202,7 +1209,6 @@ var headerSearchHistoryItemIndex = 0;
 var headerSearchHistoryListInfoAPI = "https://shopee-hdttuan.web.app/headerSearchHistoryListInfo.json";
 var headerSearchHistoryListInfoAPIFirstObiectId = 1;
 //#endregion
-
 
 // //#region Logic ok but need an auth API to handle 
 // //#region updateInDOMHeaderSearchHistoryList
@@ -1432,7 +1438,6 @@ headerSearchFrameBtn.addEventListener('click', function(e) {
 //#endregion
 
 
-//--> OK
 //#region updateInDOMHeaderSearchHistoryKeywordsList
 var headerSearchHistoryKeywordsList = document.querySelector('.header__search-history-keywords-list');
 
@@ -1453,7 +1458,7 @@ function updateInDOMHeaderSearchHistoryKeywordsList () {
 updateInDOMHeaderSearchHistoryKeywordsList ();
 //#endregion
 
-//--> OK
+
 //#region updateInDOMHeaderNotificationPopupWhenLoggedInList
 var headerNotificationPopupWhenLoggedInList = 
     document.querySelector('.header__notification__popup--when-logged-in__list');
@@ -1590,7 +1595,7 @@ if (true) {
 
 //#endregion
 
-//--> OK
+
 //#region updateInDOMSliderFavouriteSelections
 var sliderFavouriteSelections = document.querySelector('.slider__favourite-selections');
 
@@ -1614,7 +1619,7 @@ function updateInDOMSliderFavouriteSelections () {
 updateInDOMSliderFavouriteSelections();
 //#endregion
 
-//--> OK
+
 //#region updateInDOMOutstandingHotSellingProducts
 var outstandingHotSellingProducts = document.querySelector('.outstanding__hot-selling-products');
 
@@ -1707,7 +1712,7 @@ function handleUpdateInDOMOutstandingHotBrands (datas) {
 updateInDOMOutstandingHotBrands();
 //#endregion
 
-//--> OK
+
 //#region updateInDOMDirectoryMainList
 var directoryMainList = document.querySelector('.directory__main__list');
 
@@ -1738,7 +1743,7 @@ function updateInDOMDirectoryMainList () {
 updateInDOMDirectoryMainList();
 //#endregion
 
-//#region directory__main__btn onclick() 
+//#region directoryMainBtns onclick() 
 var directoryMainList = document.querySelector('.directory__main__list');
 var directoryMainNextBtn = document.querySelector('.directory__main__next-btn');
 var directoryMainPreviousBtn = document.querySelector('.directory__main__previous-btn');
@@ -1766,7 +1771,7 @@ directoryMainPreviousBtn.addEventListener('click', function(e) {
 });
 //#endregion
 
-//--> OK 
+ 
 //#region updateInDOMFlashSaleMainList
 var flashSaleMainList = document.querySelectorAll('.flash-sale__main__list');
 
@@ -1872,7 +1877,6 @@ flashSaleMainPreviousBtn.addEventListener('click', function(e) {
 });
 //#endregion
 
-// -> OK
 //#region updateInDOMFlashSalePart
 var underFlashSalePart = document.querySelector('.under-flash-sale__part');
 
@@ -1895,7 +1899,7 @@ function updateInDOMFlashSalePart () {
 updateInDOMFlashSalePart();
 //#endregion
 
-//--> OK
+
 //#region updateInDOMShopeeMallMainMotionLinkAndQueueItems
 var shopeeMallMainMotion = document.querySelector('.shopee-mall__main__motion');
 var shopeeMallMainMotionLink = document.querySelector('.shopee-mall__main__motion__link');
@@ -2091,7 +2095,7 @@ shopeeMallMainProductPreviousBtn.addEventListener('click', function(e) {
 });
 //#endregion
 
-// -> OK
+
 //#region updateInDOMSearchTrendingMainList
 var searchTrendingMainList = document.querySelector('.search-trending__main__list');
 
@@ -2148,7 +2152,7 @@ searchTrendingHeadingViewMoreBtn.addEventListener('click', function(e) {
 })
 //#endregion
 
-// -> OK
+
 //#region updateInDOMTopSearchMainList
 var topSearchMainList = document.querySelector('.top-search__main__list');
 
@@ -2268,7 +2272,7 @@ topSearchMainPreviousBtn.onclick = function () {
 }
 //#endregion
 
-//--> OK
+
 //#region updateInDOMTodaySuggestionMainTabMain
 var todaySuggestionMainTabMain = document.querySelector('.today-suggestion__main__tab-main');
 
@@ -2417,7 +2421,6 @@ setTimeout(function () {
 }, 2000)
 //#endregion 
 
-//--> OK
 //#region updateInDOMTodaySuggestionMainTabSuperSale88
 var todaySuggestionMainTabSuperSale88 = document.querySelector('.today-suggestion__main__tab-super-sale-8-8');
 
@@ -2565,7 +2568,6 @@ setTimeout(function () {
 }, 2000)
 //#endregion 
 
-//--> OK
 //#region todaySuggestionHeadings onclick()
 var todaySuggestion = document.querySelector('.today-suggestion');
 var todaySuggestionHeadingTabMain = document.querySelector('.today-suggestion__heading-tab-main');
@@ -2611,12 +2613,7 @@ todaySuggestionHeadingTabSuperSale88.addEventListener('click', function() {
 
 //#endregion
 
-// -> (3) Cần xử lí (ẩn hiện & animation)
-//#region todaySuggestionMainLoading...
-var todaySuggestionMainLoading = document.querySelector('.today-suggestion__main__loading');
-//#endregion
 
-// -> OK
 //#region updateInDOMFooterTextATags
 var footerTextATags = document.querySelectorAll('.footer__text a');
 
@@ -2636,7 +2633,6 @@ function updateInDOMFooterTextATags () {
 updateInDOMFooterTextATags();
 //#endregion
 
-// -> OK
 //#region updateInDOMFooterDirectoryList
 var footerDirectoryList = document.querySelector('.footer__directory__list');
 
@@ -2696,7 +2692,7 @@ function handleUpdateInDOMFooterDirectoryList (footerDirectoryListInfo) {
 updateInDOMFooterDirectoryList();
 //#endregion
 
-// -> OK
+
 //#region updateInDOMFooterLinkAboutTextCSKH
 var footerLinkAboutTextCSKH = document.querySelector('.footer__link__about-text-CSKH');
 
@@ -2743,7 +2739,7 @@ function updateInDOMFooterLinkAboutTextVeShopee () {
 updateInDOMFooterLinkAboutTextVeShopee();
 //#endregion
 
-// -> OK
+
 //#region updateInDOMFooterLinkAboutSocial
 var footerLinkAboutSocial = document.querySelector('.footer__link__about-social');
 
@@ -2792,7 +2788,7 @@ function updateInDOMFooterLinkCopyrightCountryAndAreaList () {
 updateInDOMFooterLinkCopyrightCountryAndAreaList();
 //#endregion
 
-// -> OK
+
 //#region updateInDOMFooterPolicyTermsPartTitle
 var footerPolicyTermsPartTitle = document.querySelector('.footer__policy-terms__part__title')
 
@@ -2856,7 +2852,7 @@ function updateInDOMFooterPolicyTermsPartCompanyInfo() {
 updateInDOMFooterPolicyTermsPartCompanyInfo();
 //#endregion
 
-//--> OK
+
 //#region motionPartChatPopupMainSearchAndOptionsPopupNthChilds onclick()
 var motionPartChatPopupMainSearchAndOptionsPopupNthChild1 = 
     document.querySelector('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(1)');
