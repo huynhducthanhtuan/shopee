@@ -1,16 +1,19 @@
-//#region BUGS: prevent reload when click back chrome button
-// window.onpopstate = function(event) {
-//     alert("pop");
-// };
-// // history.pushState(null, null, document.URL);
-// //    window.addEventListener('popstate', function () {
-// //    history.pushState(null, null, document.URL);
-// // });
+//#region BUGS: prevent reload when click back-forward chrome button
+// window.addEventListener('pageshow', function(event) {
+//     if (event.persisted) {
+//         alert('This page was restored from the bfcache.');
+//     } else {
+//         alert('This page was loaded normally.');
+//     }
+// });
 
-// history.scrollRestoration;
-// history.pushState;
-// alert(hello());
-//#endregion
+// window.addEventListener('pagehide', function(event) {
+//     if (event.persisted == true) {
+//         alert('This page *might* be entering the bfcache.');
+//     } else {
+//         alert('This page will unload normally and be discarded.');
+//     }
+// });
 
 
 //#region OBJECTS DECLARATION
@@ -105,6 +108,8 @@ var loginPageContentFormOtherWaysGoogle = document.querySelector('.login-page__c
 var loginPageContentFormOtherWaysApple = document.querySelector('.login-page__content-form__other-ways__apple');
 var loginPageContentFormAskForRegisterRegisterBtn = document.querySelector('.login-page__content-form__ask-for-register__register-btn');
 
+var checkValidPhoneNumberLogin = false;
+var checkValidPasswordLogin = false;
 //#endregion
 
 //#region 4. Header
@@ -142,6 +147,7 @@ function loadInitialWebsite () {
     registerPage.style.display = 'none';
     loginPage.style.display = 'none';
     headerNotificationLink.removeAttribute('href');
+    headerNotificationLink.style.cursor = 'default';
     headerNotificationQuantity.style.display = 'none';
     headerNotificationPopupWhenLoggedIn.style.display = 'none';
     headerUserAccount.style.display = 'none';
@@ -175,18 +181,21 @@ function loadInitialWebsiteNoModal () {
     registerPage.style.display = 'none';
     loginPage.style.display = 'none';
     headerNotificationLink.removeAttribute('href');
+    headerNotificationLink.style.cursor = 'default';
     headerNotificationQuantity.style.display = 'none';
     headerNotificationPopupWhenLoggedIn.style.display = 'none';
     headerUserAccount.style.display = 'none';
     motionPartChat.style.display = 'none';
     
-    body.style.overflow = 'visible';
+    body.style.overflow = 'visible!important';
     app.style.position = 'absolute';
     content.style.position = 'relative';
     content.style.top = '0';
 
     app.style.display = 'block';
     header.style.display = 'block';
+    headerRegister.style.display = 'block';
+    headerLogin.style.display = 'block';
     container.style.display = 'block';
     footer.style.display = 'block';
     footerText.style.display = 'block';
@@ -616,6 +625,7 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('click', fun
 
                 registerPageConfirmationFirstForm.style.display = 'none';
                 registerPageConfirmationSecondForm.style.display = 'block';
+                registerPageConfirmationSecondFormContentInput.value = "Wa.3n.en,mr6@YwT";
                 registerPageConfirmationFirstForm.style.height = "49.4rem";
                 registerPageConfirmationFirstFormContentNotifyError.style.display = 'none';
                 registerPageConfirmationFirstFormContentInput.value = '';
@@ -653,6 +663,10 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseleave'
 
 
 //#region ---> 2ND CONFIRMATION
+
+// set default value for this input
+registerPageConfirmationSecondFormContentInput.value = "Wa.3n.en,mr6@YwT";
+
 // set for mouseover - mouseleave action
 registerPageConfirmationSecondFormContentRegisterBtn.style.cursor = 'pointer';
 
@@ -795,13 +809,7 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', f
             clearInterval(countdownInterval);
 
             setTimeout(function() {
-                loadInitialWebsite();
-                modal.style.display = 'none';
-                app.style.position = 'absolute';
-                content.style.position = 'relative';
-                content.style.top = '0';
-                pageLoadBanner.style.display = 'none';
-                giftBannerPopup.style.display = 'none';
+                loadInitialWebsiteNoModal();
             }, 1000);
         });
 
@@ -828,14 +836,7 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', f
                 registerPageConfirmationThirdFormContentSecondNotifySecondsNumber.innerHTML = currentSecond--;
 
                 if (currentSecond == 0) {
-                    // --> BUGS
-                    loadInitialWebsite();
-                    modal.style.display = 'none';
-                    app.style.position = 'absolute';
-                    content.style.position = 'relative';
-                    content.style.top = '0';
-                    pageLoadBanner.style.display = 'none';
-                    giftBannerPopup.style.display = 'none';
+                    loadInitialWebsiteNoModal();
 
                     // stop setInterval()
                     clearInterval(countdownInterval);
@@ -888,6 +889,24 @@ function loadLoginPage () {
         pageLoadBanner.style.display = 'none';
         giftBannerPopup.style.display = 'none';
 
+        // hide notify error and inputs's errors
+        loginPageContentFormNotifyError.style.display = 'none';
+        loginPageContentFormFirstInputPartInvalid.style.display = 'none';
+        loginPageContentFormFirstInput.classList.remove('login-page__content-form__first-input--invalid');
+        loginPageContentFormSecondInputPartInvalid.style.display = 'none';
+        loginPageContentFormSecondInput.classList.remove('login-page__content-form__second-input--invalid');
+        loginPageContentFormSecondInputMain.classList.remove('login-page__content-form__second-input-main--invalid');
+
+        // set dault value in two inputs
+        loginPageContentFormFirstInput.value = '';
+        loginPageContentFormSecondInput.value = '';
+
+        // set false for two inputs and not-allowed login button
+        checkValidPhoneNumberLogin = false;
+        checkValidPasswordLogin = false;
+        loginPageContentFormLoginBtn.style.opacity = '0.7';
+        loginPageContentFormLoginBtn.style.cursor = 'not-allowed';
+
         setTimeout(function () {
             window.scrollTo(0, 0);
         }, 200);
@@ -904,6 +923,7 @@ function loginSuccess () {
         headerLinksBecomeAShopeeSeller.style.display = 'none';
         headerNotificationPopupWhenNotLogin.style.display = 'none';
         headerNotificationLink.href = 'https://shopee.vn/user/notifications/order';
+        headerNotificationLink.style.cursor = 'pointer';
         headerRegister.style.display = 'none';
         headerLogin.style.display = 'none';
         giftBanner.style.display = 'none';
@@ -934,12 +954,14 @@ function loginSuccess () {
 } 
 
 //#region click to Login / Logout / Register
-headerLogoutBtn.onclick = function () {
-    window.location.reload(false);
-}
-
 headerLoginBtn.addEventListener('click', loadLoginPage);
 headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', loadLoginPage);
+
+headerLogoutBtn.onclick = function () {
+    setTimeout(function() {
+        loadInitialWebsiteNoModal();
+    }, 1000);
+}
 
 loginPageContentFormAskForRegisterRegisterBtn.addEventListener('click', function (e) {
     e.preventDefault();
@@ -970,8 +992,6 @@ loginPageContentFormOtherWaysApple.addEventListener('click', function(e) {
 //#endregion
 
 
-var checkValidPhoneNumberLogin = false;
-var checkValidPasswordLogin = true;
 
 loginPageContentFormFirstInput.addEventListener('keydown', function (e) {
     if (e.code == 'Enter') {
@@ -1232,12 +1252,12 @@ var headerSearchHistoryListInfoAPIFirstObiectId = 1;
 //         .then(function (datas) {
 //             var liTags = datas.map(function (data) {
 //                 return `<li class="header__search-history-item">
-//                             <a class="header__search-history-item__link" href="${data.href}" target="_blank" rel="noopener noreferrer">${data.innerHTML}</a>
+//                             <a class="header__search-history-item__link" href="${data.href}">${data.innerHTML}</a>
 //                         </li>`
 //             });
 
 //             var defaultLiTag = `<li class="header__search-history-item header__search-history-item--default">
-//                     <a target="_blank" rel="noopener noreferrer" href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
+//                     <a href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
 //                         Deal hot kèm 2 mã freeship
 //                         <img src="./assests/img/header/header__search/Dealquocte.png" alt=""  class="header__search-history-item__link__dtth31k-img">
 //                     </a>
@@ -1448,7 +1468,7 @@ function updateInDOMHeaderSearchHistoryKeywordsList () {
         })
         .then(function(datas) {
             var aTags = datas.headerSearchHistoryKeywordsListInfo.map(function (data) {
-                return `<a target="_blank" rel="noopener noreferrer" class="header__search-history-keywords-item" 
+                return `<a class="header__search-history-keywords-item" 
                     href="${data.href}">${data.innerHTML}</a>`;
             });
             headerSearchHistoryKeywordsList.innerHTML = aTags.join('');
@@ -1472,7 +1492,7 @@ function updateInDOMHeaderNotificationPopupWhenLoggedInList () {
             var liTags = datas.headerNotificationPopupWhenLoggedInListInfo.map(function (data) {
                 return `
                     <li class="header__notification__popup--when-logged-in__item">
-                        <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="header__notification__popup--when-logged-in__link">
+                        <a href="${data.href}" class="header__notification__popup--when-logged-in__link">
                             <div class="header__notification__popup--when-logged-in__item__img">
                                 <img src="${data.itemImage}" alt="">
                             </div>
@@ -1607,7 +1627,7 @@ function updateInDOMSliderFavouriteSelections () {
         .then(function(datas) {
             var aTags = datas.sliderFavouriteSelectionsInfo.map(function (data) {
                 return `
-                    <a class="slider__favourite-selections__link" href="${data.href}" target="_blank" rel="noopener noreferrer">
+                    <a class="slider__favourite-selections__link" href="${data.href}">
                         <img class="slider__favourite-selections__link-img" src="${data.image}">
                         <h4 class="slider__favourite-selections__link-text">${data.text}</h4>
                     </a>`;
@@ -1639,13 +1659,13 @@ function handleUpdateInDOMOutstandingHotSellingProducts (datas) {
             <h4 class="outstanding__hot-selling-products__info__heading">
                 ${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.heading}
             </h4>
-            <a target="_blank" rel="noopener noreferrer" href="${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.href}" class="outstanding__hot-selling-products__info__view-more-btn">
+            <a href="${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.href}" class="outstanding__hot-selling-products__info__view-more-btn">
                 Xem thêm <i class="fas fa-chevron-right"></i>
             </a>
         </div>`;
 
     var aTags = datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsListInfo.map(function (data) {
-        return `<a target="_blank" rel="noopener noreferrer" href="${data.href}" class="outstanding__hot-selling-products__item">
+        return `<a href="${data.href}" class="outstanding__hot-selling-products__item">
             <img src="${data.image}" alt="" class="outstanding__hot-selling-products__img">
             <span class="outstanding__hot-selling-products__price">${data.price}</span>
             <div class="outstanding__hot-selling-products__sale-off-label">
@@ -1685,14 +1705,14 @@ function handleUpdateInDOMOutstandingHotBrands (datas) {
             <h4 class="outstanding__hot-brands__info__heading">
                 ${datas.outstandingHotBrandsInfo.outstandingHotBrandsInfoInfo.heading}
             </h4>
-            <a target="_blank" rel="noopener noreferrer" href="${datas.outstandingHotBrandsInfo.outstandingHotBrandsInfoInfo.href}" class="outstanding__hot-brands__info__view-more-btn">
+            <a href="${datas.outstandingHotBrandsInfo.outstandingHotBrandsInfoInfo.href}" class="outstanding__hot-brands__info__view-more-btn">
                 Xem thêm <i class="fas fa-chevron-right"></i>
             </a>
         </div>`;
 
     var aTags = datas.outstandingHotBrandsInfo.outstandingHotBrandsListInfo.map(function (data) {
         return `
-            <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="outstanding__hot-brands__item">
+            <a href="${data.href}" class="outstanding__hot-brands__item">
                 <img src="${data.image}" alt="" class="outstanding__hot-brands__img">
                 <div class="">
                     <img src="${data.subImage}" alt="" class="outstanding__hot-brands__sub-img">
@@ -1726,11 +1746,11 @@ function updateInDOMDirectoryMainList () {
             for(var i = 0; i < datas.directoryMainItemListInfo.length; i+=2) {
                 liTags += `
                     <li class="directory__main__item">
-                        <a target="_blank" rel="noopener noreferrer" href="${datas.directoryMainItemListInfo[i].href}" class="directory__main__item__link">
+                        <a href="${datas.directoryMainItemListInfo[i].href}" class="directory__main__item__link">
                             <img src="${datas.directoryMainItemListInfo[i].itemImage}" alt="" class="directory__main__item__img">
                             <span class="directory__main__item__title">${datas.directoryMainItemListInfo[i].itemTitle}</span>
                         </a>
-                        <a target="_blank" rel="noopener noreferrer" href="${datas.directoryMainItemListInfo[i+1].href}" class="directory__main__item__link">
+                        <a href="${datas.directoryMainItemListInfo[i+1].href}" class="directory__main__item__link">
                             <img src="${datas.directoryMainItemListInfo[i+1].itemImage}" alt="" class="directory__main__item__img">
                             <span class="directory__main__item__title">${datas.directoryMainItemListInfo[i+1].itemTitle}</span>
                         </a>
@@ -1794,7 +1814,7 @@ function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
             '<div class="flash-sale__main__percent-bar--hot"></div>' : '';
         
         aTags += `
-            <a target="_blank" rel="noopener noreferrer" href="${flashSaleMainListInfo[i].href}" class="flash-sale__main__link">
+            <a href="${flashSaleMainListInfo[i].href}" class="flash-sale__main__link">
                 <img src="${flashSaleMainListInfo[i].bubbleImage}" alt="" class="flash-sale__main__bubble-img">
                 <img src="${flashSaleMainListInfo[i].frameImage}" alt="" class="flash-sale__main__frame-img">
                 <span class="flash-sale__main__price">${flashSaleMainListInfo[i].price}</span>
@@ -1887,7 +1907,7 @@ function updateInDOMFlashSalePart () {
         })
         .then(function(datas) {
             var aTags = datas.underFlashSalePartInfo.map(function(data) {
-                return `<a target="_blank" rel="noopener noreferrer" href="${data.href}" class="under-flash-sale__link">
+                return `<a href="${data.href}" class="under-flash-sale__link">
                     <img src="${data.image}" alt="" class="under-flash-sale__img">   
                 </a>`;
             });
@@ -2003,11 +2023,11 @@ function handleUpdateInDOMShopeeMallMainProductList (shopeeMallMainProductListIn
     for (i = 0; i < shopeeMallMainProductListInfo.length - 1; i += 2) {
         liTags += `
             <li class="shopee-mall__main__product-item">
-                <a target="_blank" rel="noopener noreferrer" href="${shopeeMallMainProductListInfo[i].href}" class="shopee-mall__main__product-item__link">
+                <a href="${shopeeMallMainProductListInfo[i].href}" class="shopee-mall__main__product-item__link">
                     <img src="${shopeeMallMainProductListInfo[i].image}" alt="" class="shopee-mall__main__product-item__link__img">
                     <span class="shopee-mall__main__product-item__link__text">${shopeeMallMainProductListInfo[i].text}</span>
                 </a>
-                <a target="_blank" rel="noopener noreferrer" href="${shopeeMallMainProductListInfo[i+1].href}" class="shopee-mall__main__product-item__link">
+                <a href="${shopeeMallMainProductListInfo[i+1].href}" class="shopee-mall__main__product-item__link">
                     <img src="${shopeeMallMainProductListInfo[i+1].image}" alt="" class="shopee-mall__main__product-item__link__img">
                     <span class="shopee-mall__main__product-item__link__text">${shopeeMallMainProductListInfo[i+1].text}</span>
                 </a>
@@ -2017,12 +2037,12 @@ function handleUpdateInDOMShopeeMallMainProductList (shopeeMallMainProductListIn
     // special case: the last li element
     liTags += `
         <li class="shopee-mall__main__product-item">
-            <a target="_blank" rel="noopener noreferrer" href="${shopeeMallMainProductListInfo[i].href}" class="shopee-mall__main__product-item__link">
+            <a href="${shopeeMallMainProductListInfo[i].href}" class="shopee-mall__main__product-item__link">
                 <img src="${shopeeMallMainProductListInfo[i].image}" alt="" class="shopee-mall__main__product-item__link__img">
                 <span class="shopee-mall__main__product-item__link__text">${shopeeMallMainProductListInfo[i].text}</span>
             </a>
             <div class="shopee-mall__main__product-item__link__exception">
-                <a target="_blank" rel="noopener noreferrer" href="https://shopee.vn/mall" class="shopee-mall__heading__view-all-btn">
+                <a href="https://shopee.vn/mall" class="shopee-mall__heading__view-all-btn">
                     Xem tất cả
                     <div>
                         <i class="fas fa-chevron-right"></i>
@@ -2107,7 +2127,7 @@ function updateInDOMSearchTrendingMainList (listIndex) {
         .then(function(datas){
             var aTags = datas.searchTrendingMainListInfo[listIndex].map(function (data) {
                 return `
-                    <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="search-trending__main__item">
+                    <a href="${data.href}" class="search-trending__main__item">
                         <div class="search-trending__main__text">
                             <span class="search-trending__main__text__name">${data.productName}</span>
                             <span class="search-trending__main__text__description">${data.productDescription}</span>
@@ -2170,7 +2190,7 @@ function handleUpdateInDOMTopSearchMainList (topSearchMainListInfo) {
     var aTags = '';
     
     var theFirstATag = `
-        <a target="_blank" rel="noopener noreferrer" href="${topSearchMainListInfo[0].href}" class="top-search__main__link">
+        <a href="${topSearchMainListInfo[0].href}" class="top-search__main__link">
             <div class="top-search__main__product">
                 <img src="${topSearchMainListInfo[0].productImage}" alt="" class="top-search__main__product__img">
                 <img src="./assests/img/container/top-search/top-label.png" alt="" class="top-search__main__product__top-label-img">
@@ -2182,7 +2202,7 @@ function handleUpdateInDOMTopSearchMainList (topSearchMainListInfo) {
 
     for (var i = 1; i < topSearchMainListInfo.length; i++) {
         aTags += `
-            <a target="_blank" rel="noopener noreferrer" href="${topSearchMainListInfo[i].href}" class="top-search__main__link">
+            <a href="${topSearchMainListInfo[i].href}" class="top-search__main__link">
                 <div class="top-search__main__product">
                     <img src="${topSearchMainListInfo[i].productImage}" alt="" class="top-search__main__product__img">
                     <img src="./assests/img/container/top-search/top-label.png" alt="" class="top-search__main__product__top-label-img">
@@ -2345,7 +2365,7 @@ function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMain
 
             itemDivTag = `
                 <div class="today-suggestion__main-item">
-                    <a target="_blank" rel="noopener noreferrer" href="${todaySuggestionMainTabMainInfo[i][j].productLink}" class="today-suggestion__main-product">
+                    <a href="${todaySuggestionMainTabMainInfo[i][j].productLink}" class="today-suggestion__main-product">
                         <div>
                             <img alt="" src="${todaySuggestionMainTabMainInfo[i][j].productImage}" class="today-suggestion__main-product__product-img">
                             ${frameImage}
@@ -2492,7 +2512,7 @@ function handleUpdateInDOMTodaySuggestionMainTabSuperSale88 (todaySuggestionMain
 
             itemDivTag = `
                 <div class="today-suggestion__main-item">
-                    <a target="_blank" rel="noopener noreferrer" href="${todaySuggestionMainTabSuperSale88Info[i][j].productLink}" class="today-suggestion__main-product">
+                    <a href="${todaySuggestionMainTabSuperSale88Info[i][j].productLink}" class="today-suggestion__main-product">
                         <div>
                             <img alt="" src="${todaySuggestionMainTabSuperSale88Info[i][j].productImage}" class="today-suggestion__main-product__product-img">
                             ${frameImage}
@@ -2660,7 +2680,7 @@ function handleUpdateInDOMFooterDirectoryList (footerDirectoryListInfo) {
         for(var j = 0; j < thisItemLength; j++) {
             var aTags = '';
             for(var k = 0; k < partItemQuantity[partIndex]; k++) {
-                var aTag = `<a class="footer__directory__item__part__item" href="${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].href}" target="_blank" rel="noopener noreferrer">
+                var aTag = `<a class="footer__directory__item__part__item" href="${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].href}">
                     ${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].innerHTML}
                 </a>`;
                 
@@ -2669,7 +2689,7 @@ function handleUpdateInDOMFooterDirectoryList (footerDirectoryListInfo) {
             
             var divTag = `
                 <div class="footer__directory__item__part">
-                    <a target="_blank" rel="noopener noreferrer" href="${footerDirectoryListInfo[i][j].heading.href}" class="footer__directory__item__part__heading">
+                    <a href="${footerDirectoryListInfo[i][j].heading.href}" class="footer__directory__item__part__heading">
                     ${footerDirectoryListInfo[i][j].heading.innerHTML}</a>
                     <div class="footer__directory__item__part__list">
                         ${aTags}
@@ -2705,7 +2725,7 @@ function updateInDOMFooterLinkAboutTextCSKH () {
             var divTags = datas.footerLinkAboutTextCSKHInfo.map(function(data) {
                 return `
                     <div>
-                        <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="footer__link__about-text-CSKH__link">${data.innerHTML}</a>
+                        <a href="${data.href}" class="footer__link__about-text-CSKH__link">${data.innerHTML}</a>
                     </div>`
             })
             // add innerHTML for this element
@@ -2728,7 +2748,7 @@ function updateInDOMFooterLinkAboutTextVeShopee () {
             var divTags = datas.footerLinkAboutTextVeShopeeInfo.map(function(data) {
                 return `
                     <div>
-                        <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="footer__link__about-text-VeShopee__link">${data.innerHTML}</a>
+                        <a href="${data.href}" class="footer__link__about-text-VeShopee__link">${data.innerHTML}</a>
                     </div>`
             })
             // add innerHTML for this element
@@ -2777,7 +2797,7 @@ function updateInDOMFooterLinkCopyrightCountryAndAreaList () {
         .then(function(datas){
             var aTags = datas.footerLinkCopyrightCountryAndAreaListInfo.map(function(data) {
                 return `
-                    <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="footer__link__copyright__country-and-area__link">${data.innerHTML}</a>`;
+                    <a href="${data.href}" class="footer__link__copyright__country-and-area__link">${data.innerHTML}</a>`;
             })
 
             // add innerHTML for this element
@@ -2801,7 +2821,7 @@ function updateInDOMFooterPolicyTermsPartTitle () {
             var divTags = datas.footerPolicyTermsPartTitleInfo.map(function (data) {
                 return `
                     <div class="footer__policy-terms__part__title__part">
-                        <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="footer__policy-terms__part__title__link">${data.innerHTML}</a>
+                        <a href="${data.href}" class="footer__policy-terms__part__title__link">${data.innerHTML}</a>
                     </div>`;
             })
             footerPolicyTermsPartTitle.innerHTML = divTags.join('');
