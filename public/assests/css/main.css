@@ -2941,6 +2941,7 @@ width: 13.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 .today-suggestion__heading-tab-main > span {
     display: block;
@@ -2956,6 +2957,7 @@ width: 13.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .today-suggestion__heading-tab-super-sale-8-8 > img {
     display: block;
@@ -3896,7 +3898,7 @@ width: 13.5rem;
 
 /* MODAL */
 #modal {
-    display: block;
+    display: none;
     z-index: 20;
     overflow: visible;
     position: fixed;
@@ -3919,7 +3921,7 @@ width: 13.5rem;
 
 /* 1.PAGE-LOAD-BANNER */
 .page-load-banner {
-    display: block;
+    display: none;
 }
 .page-load-banner__close-btn > i {
     color: #fff;
@@ -4023,7 +4025,7 @@ width: 13.5rem;
     height: 100%;
 }
 .gift-banner__popup__main-right-part__qr-img {
-display: block;
+    display: block;
     width: 16rem;
     height: 16rem;
 }

@@ -1,21 +1,3 @@
-//#region BUGS: prevent reload when click back-forward chrome button
-// window.addEventListener('pageshow', function(event) {
-//     if (event.persisted) {
-//         alert('This page was restored from the bfcache.');
-//     } else {
-//         alert('This page was loaded normally.');
-//     }
-// });
-
-// window.addEventListener('pagehide', function(event) {
-//     if (event.persisted == true) {
-//         alert('This page *might* be entering the bfcache.');
-//     } else {
-//         alert('This page will unload normally and be discarded.');
-//     }
-// });
-
-
 //#region OBJECTS DECLARATION
 //#region 1. Best Common
 var html = document.querySelector('html');
@@ -30,6 +12,7 @@ var footerText = document.querySelector('.footer__text');
 var footerDirectory = document.querySelector('.footer__directory');
 var modal = document.getElementById('modal');
 var headerShopeeLogo = document.querySelector('.header__shopee-logo');
+var initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
 //#endregion
 
 //#region 2. Register Page
@@ -120,6 +103,7 @@ var headerNotificationPopupWhenNotLogin = document.querySelector('.header__notif
 var headerNotificationPopupWhenNotLoginRegisterBtn = document.querySelector('.header__notification__popup--when-not-login__register-btn');
 var headerNotificationQuantity = document.querySelector('.header__notification__quantity');
 var headerNotificationPopupWhenLoggedIn = document.querySelector('.header__notification__popup--when-logged-in');
+var headerCartLink = document.querySelector('.header__cart__link');
 
 var headerRegister = document.querySelector('.header__register');
 var headerLogin = document.querySelector('.header__login');
@@ -139,45 +123,11 @@ var pageLoadBannerCloseBtn = document.querySelector('.page-load-banner__close-bt
 //#endregion
 //#endregion
 
+
 /* A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS) */
 
-//#region (f) loadInitialWebsite
-function loadInitialWebsite () {
-    window.scrollTo(0, 0);
-    registerPage.style.display = 'none';
-    loginPage.style.display = 'none';
-    headerNotificationLink.removeAttribute('href');
-    headerNotificationLink.style.cursor = 'default';
-    headerNotificationQuantity.style.display = 'none';
-    headerNotificationPopupWhenLoggedIn.style.display = 'none';
-    headerUserAccount.style.display = 'none';
-    motionPartChat.style.display = 'none';
-    
-    app.style.display = 'block';
-    header.style.display = 'block';
-    container.style.display = 'block';
-    footer.style.display = 'block';
-    footerText.style.display = 'block';
-    footerDirectory.style.display = 'block';
-
-    modal.style.display = 'block';
-    body.style.overflow = 'hidden';
-    app.style.position = 'fixed';
-    app.style.top = '0';
-    app.style.left = '0';
-    app.style.right = '0';
-    app.style.bottom = '0';
-
-    pageLoadBanner.style.display = 'block';
-    giftBannerPopup.style.display = 'none';
-}
-
-loadInitialWebsite();
-//#endregion
-
-//#region (f) loadInitialWebsiteNoModal
+//#region loadInitialWebsiteNoModal
 function loadInitialWebsiteNoModal () {
-    window.scrollTo(0, 0);
     registerPage.style.display = 'none';
     loginPage.style.display = 'none';
     headerNotificationLink.removeAttribute('href');
@@ -185,12 +135,17 @@ function loadInitialWebsiteNoModal () {
     headerNotificationQuantity.style.display = 'none';
     headerNotificationPopupWhenLoggedIn.style.display = 'none';
     headerUserAccount.style.display = 'none';
+    headerCartLink.removeAttribute('href');
+    headerCartLink.style.cursor = 'default';
     motionPartChat.style.display = 'none';
     
     body.style.overflow = 'visible!important';
+    modal.style.display = 'none';
+    pageLoadBanner.style.display = 'none';
+    giftBannerPopup.style.display = 'none';
     app.style.position = 'absolute';
     content.style.position = 'relative';
-    content.style.top = '0';
+    content.style.top = 0;
 
     app.style.display = 'block';
     header.style.display = 'block';
@@ -200,25 +155,28 @@ function loadInitialWebsiteNoModal () {
     footer.style.display = 'block';
     footerText.style.display = 'block';
     footerDirectory.style.display = 'block';
+
+    window.scrollTo(0, initialWebsiteOffsetHeight);
 }
 
-// At registerPage/loginPage, click Shopee logo -> back initial page (no modal, no reload)
+loadInitialWebsiteNoModal();
+//#endregion
+
+//#region At registerPage/loginPage, click Shopee logo -> back initial page (no modal, no reload)
 loginPageHeaderShopeeLink.addEventListener('click', function(e) {
     e.preventDefault();
     setTimeout(function() {
         loadInitialWebsiteNoModal();
-    }, 500)
+    }, 200)
 });
 
 registerPageHeaderShopeeLink.addEventListener('click', function(e) {
     e.preventDefault();
     setTimeout(function() {
         loadInitialWebsiteNoModal();
-    }, 500)
+    }, 200)
 });
-
 //#endregion 
-
 
 //#region gift-banner onclick()
 giftBanner.addEventListener('click', function() {
@@ -280,14 +238,23 @@ function loadRegisterPage () {
         pageLoadBanner.style.display = 'none';
         giftBannerPopup.style.display = 'none';
 
-        setTimeout(function () {
-            window.scrollTo(0, 0);
-        },200);
+        window.scrollTo(0, 0);
     }, 500);
 }
 
-headerRegisterBtn.addEventListener('click', loadRegisterPage);
-headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', loadRegisterPage);
+headerRegisterBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    // get current website offsetHeight
+    initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+    loadRegisterPage();
+});
+
+headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    // get current website offsetHeight
+    initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+    loadRegisterPage();
+});
 //#endregion
 
 
@@ -872,7 +839,6 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', functi
 
 //#endregion I. REGISTER PAGE
 
-
 //#region II. LOGIN PAGE
 function loadLoginPage () {
     setTimeout(function () {
@@ -907,16 +873,12 @@ function loadLoginPage () {
         loginPageContentFormLoginBtn.style.opacity = '0.7';
         loginPageContentFormLoginBtn.style.cursor = 'not-allowed';
 
-        setTimeout(function () {
-            window.scrollTo(0, 0);
-        }, 200);
+        window.scrollTo(0, 0);
     }, 500);
 }
 
 function loginSuccess () {
     setTimeout(function () {
-        window.scrollTo(0, 0);
-    
         // Disabled
         registerPage.style.display = 'none';
         loginPage.style.display = 'none';
@@ -926,6 +888,8 @@ function loginSuccess () {
         headerNotificationLink.style.cursor = 'pointer';
         headerRegister.style.display = 'none';
         headerLogin.style.display = 'none';
+        headerCartLink.href = 'https://shopee.vn/cart';
+        headerCartLink.style.cursor = 'pointer';
         giftBanner.style.display = 'none';
     
         // Visible
@@ -945,17 +909,24 @@ function loginSuccess () {
         content.style.position = 'relative';
         content.style.top = '0';
 
-        // if click Shopee logo
-        headerShopeeLogo.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo(0, 0);
-        })
+        window.scrollTo(0, 0);
     }, 1000);
 } 
 
 //#region click to Login / Logout / Register
-headerLoginBtn.addEventListener('click', loadLoginPage);
-headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', loadLoginPage);
+headerLoginBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    // get current website offsetHeight
+    initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+    loadLoginPage();
+});
+
+headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    // get current website offsetHeight
+    initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+    loadLoginPage();
+});
 
 headerLogoutBtn.onclick = function () {
     setTimeout(function() {
@@ -1218,7 +1189,6 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
 
 /* B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...*/
 
-//--> I'M HERE
 //#region headerSearchFrameInput, headerSearchHistory - variable declaration
 var headerSearchFrameInput = document.querySelector('.header__search-frame__input');
 var headerSearchHistory = document.querySelector('.header__search-history');
@@ -1230,6 +1200,7 @@ var headerSearchHistoryListInfoAPI = "https://shopee-hdttuan.web.app/headerSearc
 var headerSearchHistoryListInfoAPIFirstObiectId = 1;
 //#endregion
 
+//--> ADVANCED FEATURE (BUGS)
 // //#region Logic ok but need an auth API to handle 
 // //#region updateInDOMHeaderSearchHistoryList
 // function updateInDOMHeaderSearchHistoryList (url) {
@@ -2599,36 +2570,40 @@ var todaySuggestionMainTabSuperSale88 = document.querySelector('.today-suggestio
 
 
 todaySuggestionHeadingTabMain.addEventListener('click', function() {
-    if(todaySuggestionHeadingTabSuperSale88.classList.contains('today-suggestion__heading-tab--active')) {
-        todaySuggestionHeadingTabSuperSale88.classList.remove('today-suggestion__heading-tab--active');
-    }   
-    if(! this.classList.contains('today-suggestion__heading-tab--active')) {
-        this.classList.add('today-suggestion__heading-tab--active');
-    }
-
-    todaySuggestionMainTabSuperSale88.style.display = 'none';
-    todaySuggestionMainTabMain.style.display = 'block';
-    todaySuggestion.style.height = '254rem';
-    todaySuggestionMainViewAllBtn.href = 'https://shopee.vn/daily_discover?pageNumber=2';
-
-    window.scrollTo(0, todaySuggestion.offsetTop);
+    setTimeout(function () {
+        if(todaySuggestionHeadingTabSuperSale88.classList.contains('today-suggestion__heading-tab--active')) {
+            todaySuggestionHeadingTabSuperSale88.classList.remove('today-suggestion__heading-tab--active');
+        }   
+        if(! todaySuggestionHeadingTabMain.classList.contains('today-suggestion__heading-tab--active')) {
+            todaySuggestionHeadingTabMain.classList.add('today-suggestion__heading-tab--active');
+        }
+    
+        todaySuggestionMainTabSuperSale88.style.display = 'none';
+        todaySuggestionMainTabMain.style.display = 'block';
+        todaySuggestion.style.height = '254rem';
+        todaySuggestionMainViewAllBtn.href = 'https://shopee.vn/daily_discover?pageNumber=2';
+    
+        window.scrollTo(0, todaySuggestion.offsetTop);
+    }, 200);
 });
 
 
 todaySuggestionHeadingTabSuperSale88.addEventListener('click', function() {
-    if(todaySuggestionHeadingTabMain.classList.contains('today-suggestion__heading-tab--active')) {
-        todaySuggestionHeadingTabMain.classList.remove('today-suggestion__heading-tab--active');
-    }   
-    if(! this.classList.contains('today-suggestion__heading-tab--active')) {
-        this.classList.add('today-suggestion__heading-tab--active');
-    }
-
-    todaySuggestionMainTabMain.style.display = 'none';
-    todaySuggestionMainTabSuperSale88.style.display = 'block';
-    todaySuggestion.style.height = '318rem';
-    todaySuggestionMainViewAllBtn.href = 'https://shopee.vn/double_eleven_big_sale/2';
-
-    window.scrollTo(0, todaySuggestion.offsetTop);
+    setTimeout(function () {
+        if(todaySuggestionHeadingTabMain.classList.contains('today-suggestion__heading-tab--active')) {
+            todaySuggestionHeadingTabMain.classList.remove('today-suggestion__heading-tab--active');
+        }   
+        if(! todaySuggestionHeadingTabSuperSale88.classList.contains('today-suggestion__heading-tab--active')) {
+            todaySuggestionHeadingTabSuperSale88.classList.add('today-suggestion__heading-tab--active');
+        }
+    
+        todaySuggestionMainTabMain.style.display = 'none';
+        todaySuggestionMainTabSuperSale88.style.display = 'block';
+        todaySuggestion.style.height = '318rem';
+        todaySuggestionMainViewAllBtn.href = 'https://shopee.vn/double_eleven_big_sale/2';
+    
+        window.scrollTo(0, todaySuggestion.offsetTop);
+    }, 200);
 });
 
 //#endregion

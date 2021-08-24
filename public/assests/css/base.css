@@ -21,7 +21,7 @@ html {
     line-height: 1.6rem;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
 }
 
 body {

@@ -553,17 +553,17 @@
   "shopeeMallHeadingTextInfo": [
     {
       "id": 1,
-      "image": "http://127.0.0.1:5500/public/assests/img/container/shopee-mall/heading/back.png",
+      "image": "./assests/img/container/shopee-mall/heading/back.png",
       "title": "7 ngày miễn phí trả hàng"
     },
     {
       "id": 2,
-      "image": "http://127.0.0.1:5500/public/assests/img/container/shopee-mall/heading/quality.png",
+      "image": "./assests/img/container/shopee-mall/heading/quality.png",
       "title": "Hàng chính hãng 100%"
     },
     {
       "id": 3,
-      "image": "http://127.0.0.1:5500/public/assests/img/container/shopee-mall/heading/shipping.png",
+      "image": "./assests/img/container/shopee-mall/heading/shipping.png",
       "title": "Miễn phí vận chuyển"
     }
   ],
