@@ -247,6 +247,11 @@ headerRegisterBtn.addEventListener('click', function(e) {
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadRegisterPage();
+    
+    // set auto select for this input
+    setTimeout(function () {
+        registerPageContentFormInput.focus();
+    }, 500)
 });
 
 headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', function(e) {
@@ -254,6 +259,11 @@ headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', functio
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadRegisterPage();
+
+    // set auto select for this input
+    setTimeout(function () {
+        registerPageContentFormInput.focus();
+    }, 500)
 });
 //#endregion
 
@@ -467,6 +477,11 @@ registerPageContentFormNextBtn.addEventListener('click', function(e) {
                 currentConfirmationCode = confirmationCodes[Math.floor(Math.random() * confirmationCodes.length)];
                 alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
             }, 800);
+
+            // set auto select for this input
+            setTimeout(function () {
+                registerPageConfirmationFirstFormContentInput.focus();
+            }, 500)
         }, 500);
 
 
@@ -492,6 +507,12 @@ registerPageContentFormAskForLoginBtn.addEventListener('click', function(e) {
     e.preventDefault();
     setTimeout(function() {
         loadLoginPage();
+
+        // set auto select for this input
+        setTimeout(function () {
+            loginPageContentFormFirstInput.focus();
+        }, 500)
+
         window.scrollTo(0, 0);
     }, 200)
 });
@@ -505,6 +526,11 @@ registerPageConfirmationFirstFormContentHelpResendBtn.addEventListener('click', 
         currentConfirmationCode = confirmationCodes[Math.floor(Math.random() * confirmationCodes.length)];
         alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
     }, 1000);
+
+    // set auto select for this input
+    setTimeout(function () {
+        registerPageConfirmationFirstFormContentInput.focus();
+    }, 500)
 });
 
 //#region *Not handle these buttons, just preventDefault 
@@ -833,6 +859,11 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', functi
 
     registerPageConfirmationFirstFormContentConfirmBtn.style.opacity = '0.7';
     registerPageConfirmationFirstFormContentConfirmBtn.style.cursor = 'not-allowed';
+
+    // set auto select for this input
+    setTimeout(function () {
+        registerPageConfirmationFirstFormContentInput.focus();
+    }, 500)
 });
 
 // #endregion
@@ -919,6 +950,11 @@ headerLoginBtn.addEventListener('click', function(e) {
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadLoginPage();
+
+    // set auto select for this input
+    setTimeout(function () {
+        loginPageContentFormFirstInput.focus();
+    }, 500)
 });
 
 headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', function(e) {
@@ -926,6 +962,11 @@ headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', function(e
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadLoginPage();
+
+    // set auto select for this input
+    setTimeout(function () {
+        loginPageContentFormFirstInput.focus();
+    }, 500)
 });
 
 headerLogoutBtn.onclick = function () {
@@ -938,6 +979,12 @@ loginPageContentFormAskForRegisterRegisterBtn.addEventListener('click', function
     e.preventDefault();
     setTimeout(function () {
         loadRegisterPage();
+
+        // set auto select for this input
+        setTimeout(function () {
+            registerPageContentFormInput.focus();
+        }, 500)
+
         window.scrollTo(0, 0);
     }, 200);
 })
