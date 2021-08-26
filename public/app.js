@@ -180,10 +180,13 @@ registerPageHeaderShopeeLink.addEventListener('click', function(e) {
 
 //#region gift-banner onclick()
 giftBanner.addEventListener('click', function() {
-    modal.style.display = 'block';
-    giftBannerPopup.style.display = 'block';
-    // prevent scrolling
-    body.style.overflow = 'hidden';
+    setTimeout(function(){
+        modal.style.display = 'block';
+        giftBannerPopup.style.display = 'block';
+
+        // prevent scrolling
+        body.style.overflow = 'hidden';
+    }, 100)
 });
 //#endregion
   

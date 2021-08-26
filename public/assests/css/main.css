@@ -990,7 +990,7 @@ width: 13.5rem;
 /* I.HEADER */
 #header {
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: #f94f2f;
     padding: 0.8rem 3.4rem 1rem 3rem;
     position: fixed;
     top: 0;
@@ -1018,12 +1018,12 @@ width: 13.5rem;
 .header__links > div > a,
 .header__notify-and-account > div > a {
     text-decoration: none;
-    color: var(--white-color);
+    color: #fff;
     font-size: 1.3rem;
 }
 
 .header__links span {
-    color: var(--white-color);
+    color: #fff;
     font-size: 1.3rem;
     margin: 0 7px;
 }
@@ -1061,7 +1061,7 @@ width: 13.5rem;
     top: calc(100% + .625rem);
     left: 0.8rem;
     z-index: 1;
-    background-color: var(--white-color);
+    background-color: #fff;
     border-radius: 2px;
     border: 1px solid rgba(255,255,255,0.8);
     box-shadow: 0 0 10px rgb(0 0 0 / 20%);
@@ -1131,8 +1131,8 @@ width: 13.5rem;
 }
 .header__notification__quantity {
     border-radius: 44%;
-    background-color: var(--white-color);
-    color: var(--primary-color);
+    background-color: #fff;
+    color: #f94f2f;
     padding: 0px 6px;
     position: absolute;
     top: -4px;
@@ -1143,7 +1143,7 @@ width: 13.5rem;
 .header__notification__popup {
     max-height: 51.5rem;
     width: 40.2rem;
-    background-color: var(--white-color);
+    background-color: #fff;
     position: absolute;
     top: calc(100% + 10px);
     right: 0;
@@ -1285,8 +1285,8 @@ width: 13.5rem;
     font-size: 1.4rem;
     text-align: center;
     text-decoration: none;
-    color: var(--text-color);
-    background-color: var(--white-color);
+    color: rgba(0, 0, 0, 0.8);
+    background-color: #fff;
 }
 
 .header__support__link-icon {
@@ -1341,7 +1341,7 @@ width: 13.5rem;
 }
 
 .header__user-account__popup {
-    background-color: var(--white-color);
+    background-color: #fff;
     color: rgba(0,0,0,0.8);
     width: 15rem;
     position: absolute;
@@ -1437,7 +1437,7 @@ width: 13.5rem;
 .header__shopee-logo svg {
     width: 162px;
     height: 50px;
-    fill: var(--white-color);
+    fill: #fff;
 }
 
 .header__main-search {
@@ -1458,7 +1458,7 @@ width: 13.5rem;
     font-size: 1.4rem;
 }
 .header__search-frame__btn {
-    background-color: var(--primary-color);
+    background-color: #f94f2f;
     padding: 0.867rem 2.3rem;
     position: absolute;
     top: 3px;
@@ -1471,11 +1471,11 @@ width: 13.5rem;
 }
 .header__search-frame__btn i {
     font-size: 1.4rem;
-    color: var(--white-color);
+    color: #fff;
 }
 
 .header__search-history {
-    background-color: var(--white-color);
+    background-color: #fff;
     width: 76.7rem;
     font-size: 1.4rem;
     box-shadow: 0 1px 4px 0 rgb(0 0 0 / 26%); /* searching... */
@@ -1549,7 +1549,7 @@ width: 13.5rem;
 .header__cart__link {
     display: block;
     font-size: 2.2rem;
-    color: var(--white-color);
+    color: #fff;
     text-decoration: none;
     padding: 10px 4px;
 }
@@ -1561,7 +1561,7 @@ width: 13.5rem;
 .header__cart-popup {
     width: 40.2rem;
     min-height: 26.2rem;
-    background-color: var(--white-color);
+    background-color: #fff;
     position: absolute;
     top: calc(100%);
     right: -4px;
@@ -1588,7 +1588,7 @@ width: 13.5rem;
     content: "";
     border-style: solid;
     border-width: 11px 13px;
-    border-color: transparent transparent var(--white-color) transparent;
+    border-color: transparent transparent #fff transparent;
     position: absolute;
     top: -21px;
     right: 7px;
@@ -1613,7 +1613,7 @@ width: 13.5rem;
     display: block;
     text-align: center;
     font-size: 1.4rem;
-    color: var(--text-color);
+    color: rgba(0, 0, 0, 0.8);
     margin-top: 20px;
 }
 
