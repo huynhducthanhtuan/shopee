@@ -1,125 +1,129 @@
 //#region OBJECTS DECLARATION
+
+const $ = document.querySelector.bind(document);
+const $$ = document.querySelectorAll.bind(document);
+
 //#region 1. Best Common
-var html = document.querySelector('html');
-var body = document.querySelector('body');
-var app = document.getElementById('app');
-var registerPage = document.getElementById('register-page');
-var loginPage = document.getElementById('login-page');
-var header = document.getElementById('header');
-var container = document.getElementById('container');
-var content = document.getElementById('content');
-var footerText = document.querySelector('.footer__text');
-var footerDirectory = document.querySelector('.footer__directory');
-var modal = document.getElementById('modal');
-var headerShopeeLogo = document.querySelector('.header__shopee-logo');
+var html = $('html');
+var body = $('body');
+var app = $('#app');
+var registerPage = $('#register-page');
+var loginPage = $('#login-page');
+var header = $('#header');
+var container = $('#container');
+var content = $('#content');
+var footerText = $('.footer__text');
+var footerDirectory = $('.footer__directory');
+var modal = $('#modal');
+var headerShopeeLogo = $('.header__shopee-logo');
 var initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
 //#endregion
 
 //#region 2. Register Page
-var headerRegisterBtn = document.querySelector('.header__register__btn');
-var registerPageHeader = document.querySelector('.register-page__header');
-var registerPageContent = document.querySelector('.register-page__content');
-var registerPageHeaderShopeeLink = document.querySelector('.register-page__header-shopee__link');
+var headerRegisterBtn = $('.header__register__btn');
+var registerPageHeader = $('.register-page__header');
+var registerPageContent = $('.register-page__content');
+var registerPageHeaderShopeeLink = $('.register-page__header-shopee__link');
 
-var registerPageContentFormInput = document.querySelector('.register-page__content-form__input');
-var registerPageContentFormInputTextInvalidPhoneNumber = document.querySelector('.register-page__content-form__input-text--invalid-phone-number');
-var registerPageContentFormInputIconValidPhoneNumber = document.querySelector('.register-page__content-form__input-icon--valid-phone-number');
-var registerPageContentFormNextBtn = document.querySelector('.register-page__content-form__next-btn');
-var registerPageContentFormFacebookBtn = document.querySelector('.register-page__content-form__other-ways__facebook');
-var registerPageContentFormGoogleBtn = document.querySelector('.register-page__content-form__other-ways__google');
-var registerPageContentFormAppleBtn = document.querySelector('.register-page__content-form__other-ways__apple');
-var registerPageContentFormAskForLoginBtn = document.querySelector('.register-page__content-form__ask-for-login__login-btn');
+var registerPageContentFormInput = $('.register-page__content-form__input');
+var registerPageContentFormInputTextInvalidPhoneNumber = $('.register-page__content-form__input-text--invalid-phone-number');
+var registerPageContentFormInputIconValidPhoneNumber = $('.register-page__content-form__input-icon--valid-phone-number');
+var registerPageContentFormNextBtn = $('.register-page__content-form__next-btn');
+var registerPageContentFormFacebookBtn = $('.register-page__content-form__other-ways__facebook');
+var registerPageContentFormGoogleBtn = $('.register-page__content-form__other-ways__google');
+var registerPageContentFormAppleBtn = $('.register-page__content-form__other-ways__apple');
+var registerPageContentFormAskForLoginBtn = $('.register-page__content-form__ask-for-login__login-btn');
 
-var registerPageConfirmation = document.querySelector('.register-page__confirmation');
-var registerPageConfirmationFirstForm = document.querySelector('.register-page__confirmation__first-form');
-var registerPageConfirmationSecondForm = document.querySelector('.register-page__confirmation__second-form');
-var registerPageConfirmationThirdForm = document.querySelector('.register-page__confirmation__third-form');
+var registerPageConfirmation = $('.register-page__confirmation');
+var registerPageConfirmationFirstForm = $('.register-page__confirmation__first-form');
+var registerPageConfirmationSecondForm = $('.register-page__confirmation__second-form');
+var registerPageConfirmationThirdForm = $('.register-page__confirmation__third-form');
 
-var registerPageConfirmationFirstFormHeaderText = document.querySelector('.register-page__confirmation__first-form__header__text');
-var registerPageConfirmationFirstFormHeaderBackBtn = document.querySelector('.register-page__confirmation__first-form__header__back-btn');
-var registerPageConfirmationFirstFormContent = document.querySelector('.register-page__confirmation__first-form__content');
-var registerPageConfirmationFirstFormContentUserPhoneNumber = document.querySelector('.register-page__confirmation__first-form__content__user-phone-number');
-var registerPageConfirmationFirstFormContentInput = document.querySelector('.register-page__confirmation__first-form__content__input');
-var registerPageConfirmationFirstFormContentHelpResendBtn = document.querySelector('.register-page__confirmation__first-form__content__help-resend-btn');
-var registerPageConfirmationFirstFormContentHelpOtherWayBtn = document.querySelector('.register-page__confirmation__first-form__content__help-other-way-btn');
-var registerPageConfirmationFirstFormContentConfirmBtn = document.querySelector('.register-page__confirmation__first-form__content__confirm-btn');
-var registerPageConfirmationFirstFormContentNotifyError = document.querySelector('.register-page__confirmation__first-form__content__notify-error');
+var registerPageConfirmationFirstFormHeaderText = $('.register-page__confirmation__first-form__header__text');
+var registerPageConfirmationFirstFormHeaderBackBtn = $('.register-page__confirmation__first-form__header__back-btn');
+var registerPageConfirmationFirstFormContent = $('.register-page__confirmation__first-form__content');
+var registerPageConfirmationFirstFormContentUserPhoneNumber = $('.register-page__confirmation__first-form__content__user-phone-number');
+var registerPageConfirmationFirstFormContentInput = $('.register-page__confirmation__first-form__content__input');
+var registerPageConfirmationFirstFormContentHelpResendBtn = $('.register-page__confirmation__first-form__content__help-resend-btn');
+var registerPageConfirmationFirstFormContentHelpOtherWayBtn = $('.register-page__confirmation__first-form__content__help-other-way-btn');
+var registerPageConfirmationFirstFormContentConfirmBtn = $('.register-page__confirmation__first-form__content__confirm-btn');
+var registerPageConfirmationFirstFormContentNotifyError = $('.register-page__confirmation__first-form__content__notify-error');
 
 
-var registerPageConfirmationSecondFormContent = document.querySelector('.register-page__confirmation__second-form__content');
-var registerPageConfirmationSecondFormHeaderBackBtn = document.querySelector('.register-page__confirmation__second-form__header__back-btn');
-var registerPageConfirmationSecondFormContentInput = document.querySelector('.register-page__confirmation__second-form__content__input');
-var registerPageConfirmationSecondFormContentInputStatusBtn = document.querySelector('.register-page__confirmation__second-form__content__input-status-btn');
-var registerPageConfirmationSecondFormContentInputStatusBtnShowing = document.querySelector('.register-page__confirmation__second-form__content__input-status-btn__showing');
-var registerPageConfirmationSecondFormContentInputStatusBtnHiding = document.querySelector('.register-page__confirmation__second-form__content__input-status-btn__hiding');
-var registerPageConfirmationSecondFormContentRegisterBtn = document.querySelector('.register-page__confirmation__second-form__content__register-btn');
-var registerPageConfirmationSecondFormContentInputPart = document.querySelector('.register-page__confirmation__second-form__content__input-part');
+var registerPageConfirmationSecondFormContent = $('.register-page__confirmation__second-form__content');
+var registerPageConfirmationSecondFormHeaderBackBtn = $('.register-page__confirmation__second-form__header__back-btn');
+var registerPageConfirmationSecondFormContentInput = $('.register-page__confirmation__second-form__content__input');
+var registerPageConfirmationSecondFormContentInputStatusBtn = $('.register-page__confirmation__second-form__content__input-status-btn');
+var registerPageConfirmationSecondFormContentInputStatusBtnShowing = $('.register-page__confirmation__second-form__content__input-status-btn__showing');
+var registerPageConfirmationSecondFormContentInputStatusBtnHiding = $('.register-page__confirmation__second-form__content__input-status-btn__hiding');
+var registerPageConfirmationSecondFormContentRegisterBtn = $('.register-page__confirmation__second-form__content__register-btn');
+var registerPageConfirmationSecondFormContentInputPart = $('.register-page__confirmation__second-form__content__input-part');
 
-var registerPageConfirmationThirdFormContentFirstNotifyUserPhoneNumber = document.querySelector('.register-page__confirmation__third-form__content-first-notify__user-phone-number');
-var registerPageConfirmationThirdFormContentSecondNotifySecondsNumber = document.querySelector('.register-page__confirmation__third-form__content-second-notify__seconds-number');
-var registerPageConfirmationThirdFormContentBackToShopeeBtn = document.querySelector('.register-page__confirmation__third-form__content-back-to-shopee-btn');
+var registerPageConfirmationThirdFormContentFirstNotifyUserPhoneNumber = $('.register-page__confirmation__third-form__content-first-notify__user-phone-number');
+var registerPageConfirmationThirdFormContentSecondNotifySecondsNumber = $('.register-page__confirmation__third-form__content-second-notify__seconds-number');
+var registerPageConfirmationThirdFormContentBackToShopeeBtn = $('.register-page__confirmation__third-form__content-back-to-shopee-btn');
 
 //#endregion
 
 //#region 3. Login Page
-var headerLoginBtn = document.querySelector('.header__login__btn');
-var headerNotificationPopupWhenNotLoginLoginBtn = document.querySelector('.header__notification__popup--when-not-login__login-btn');
-var headerLogoutBtn = document.querySelector('.header__logout-btn');
-var loginPageHeaderShopeeLink = document.querySelector('.login-page__header-shopee__link');
+var headerLoginBtn = $('.header__login__btn');
+var headerNotificationPopupWhenNotLoginLoginBtn = $('.header__notification__popup--when-not-login__login-btn');
+var headerLogoutBtn = $('.header__logout-btn');
+var loginPageHeaderShopeeLink = $('.login-page__header-shopee__link');
 
-var loginPageContentForm = document.querySelector('.login-page__content-form');
-var loginPageContentFormNotifyError = document.querySelector('.login-page__content-form__notify-error');
-var loginPageContentFormFirstInput = document.querySelector('.login-page__content-form__first-input');
-var loginPageContentFormFirstInputPartInvalid = document.querySelector('.login-page__content-form__first-input-part--invalid');
-var loginPageContentFormFirstInputInvalid = document.querySelector('.login-page__content-form__first-input--invalid');
+var loginPageContentForm = $('.login-page__content-form');
+var loginPageContentFormNotifyError = $('.login-page__content-form__notify-error');
+var loginPageContentFormFirstInput = $('.login-page__content-form__first-input');
+var loginPageContentFormFirstInputPartInvalid = $('.login-page__content-form__first-input-part--invalid');
+var loginPageContentFormFirstInputInvalid = $('.login-page__content-form__first-input--invalid');
 
 
-var loginPageContentFormSecondInputMain = document.querySelector('.login-page__content-form__second-input-main');
-var loginPageContentFormSecondInput = document.querySelector('.login-page__content-form__second-input');
-var loginPageContentFormSecondInputPartInvalid = document.querySelector('.login-page__content-form__second-input-part--invalid');
-var loginPageContentFormSecondInputInvalid = document.querySelector('.login-page__content-form__second-input--invalid');
-var loginPageContentFormLoginBtn = document.querySelector('.login-page__content-form__login-btn');
+var loginPageContentFormSecondInputMain = $('.login-page__content-form__second-input-main');
+var loginPageContentFormSecondInput = $('.login-page__content-form__second-input');
+var loginPageContentFormSecondInputPartInvalid = $('.login-page__content-form__second-input-part--invalid');
+var loginPageContentFormSecondInputInvalid = $('.login-page__content-form__second-input--invalid');
+var loginPageContentFormLoginBtn = $('.login-page__content-form__login-btn');
 
-var loginPageContentFormSecondInputStatusBtn = document.querySelector('.login-page__content-form__second-input-status-btn');
-var loginPageContentFormSecondInputStatusBtnShowing = document.querySelector('.login-page__content-form__second-input-status-btn__showing');
-var loginPageContentFormSecondInputStatusBtnHiding = document.querySelector('.login-page__content-form__second-input-status-btn__hiding');
+var loginPageContentFormSecondInputStatusBtn = $('.login-page__content-form__second-input-status-btn');
+var loginPageContentFormSecondInputStatusBtnShowing = $('.login-page__content-form__second-input-status-btn__showing');
+var loginPageContentFormSecondInputStatusBtnHiding = $('.login-page__content-form__second-input-status-btn__hiding');
 
-var loginPageContentFormUnderLoginBtnForgetPasswordBtn = document.querySelector('.login-page__content-form__under-login-btn__forget-password-btn');
-var loginPageContentFormUnderLoginBtnLoginWithSMS = document.querySelector('.login-page__content-form__under-login-btn__login-with-sms');
-var loginPageContentFormOtherWaysFacebook = document.querySelector('.login-page__content-form__other-ways__facebook');
-var loginPageContentFormOtherWaysGoogle = document.querySelector('.login-page__content-form__other-ways__google');
-var loginPageContentFormOtherWaysApple = document.querySelector('.login-page__content-form__other-ways__apple');
-var loginPageContentFormAskForRegisterRegisterBtn = document.querySelector('.login-page__content-form__ask-for-register__register-btn');
+var loginPageContentFormUnderLoginBtnForgetPasswordBtn = $('.login-page__content-form__under-login-btn__forget-password-btn');
+var loginPageContentFormUnderLoginBtnLoginWithSMS = $('.login-page__content-form__under-login-btn__login-with-sms');
+var loginPageContentFormOtherWaysFacebook = $('.login-page__content-form__other-ways__facebook');
+var loginPageContentFormOtherWaysGoogle = $('.login-page__content-form__other-ways__google');
+var loginPageContentFormOtherWaysApple = $('.login-page__content-form__other-ways__apple');
+var loginPageContentFormAskForRegisterRegisterBtn = $('.login-page__content-form__ask-for-register__register-btn');
 
 var checkValidPhoneNumberLogin = false;
 var checkValidPasswordLogin = false;
 //#endregion
 
 //#region 4. Header
-var headerLinksBecomeAShopeeSeller = document.querySelector('.header__links-become-a-shopee-seller');
+var headerLinksBecomeAShopeeSeller = $('.header__links-become-a-shopee-seller');
 
-var headerNotificationLink = document.querySelector('.header__notification__link');
-var headerNotificationPopupWhenNotLogin = document.querySelector('.header__notification__popup--when-not-login');
-var headerNotificationPopupWhenNotLoginRegisterBtn = document.querySelector('.header__notification__popup--when-not-login__register-btn');
-var headerNotificationQuantity = document.querySelector('.header__notification__quantity');
-var headerNotificationPopupWhenLoggedIn = document.querySelector('.header__notification__popup--when-logged-in');
-var headerCartLink = document.querySelector('.header__cart__link');
+var headerNotificationLink = $('.header__notification__link');
+var headerNotificationPopupWhenNotLogin = $('.header__notification__popup--when-not-login');
+var headerNotificationPopupWhenNotLoginRegisterBtn = $('.header__notification__popup--when-not-login__register-btn');
+var headerNotificationQuantity = $('.header__notification__quantity');
+var headerNotificationPopupWhenLoggedIn = $('.header__notification__popup--when-logged-in');
+var headerCartLink = $('.header__cart__link');
 
-var headerRegister = document.querySelector('.header__register');
-var headerLogin = document.querySelector('.header__login');
-var headerUserAccount = document.querySelector('.header__user-account');
+var headerRegister = $('.header__register');
+var headerLogin = $('.header__login');
+var headerUserAccount = $('.header__user-account');
 //#endregion
 
 //#region 5. Motion Parts
-var motionPartSubBanner = document.querySelector('.motion-part__sub-banner');
-var motionPartChat = document.querySelector('.motion-part__chat');
+var motionPartSubBanner = $('.motion-part__sub-banner');
+var motionPartChat = $('.motion-part__chat');
 
-var giftBanner = document.querySelector('.gift-banner');
-var giftBannerPopup = document.querySelector('.gift-banner__popup');
-var giftBannerPopupCloseBtn = document.querySelector('.gift-banner__popup__close-btn');
+var giftBanner = $('.gift-banner');
+var giftBannerPopup = $('.gift-banner__popup');
+var giftBannerPopupCloseBtn = $('.gift-banner__popup__close-btn');
 
-var pageLoadBanner = document.querySelector('.page-load-banner');
-var pageLoadBannerCloseBtn = document.querySelector('.page-load-banner__close-btn');
+var pageLoadBanner = $('.page-load-banner');
+var pageLoadBannerCloseBtn = $('.page-load-banner__close-btn');
 //#endregion
 //#endregion
 
@@ -276,7 +280,7 @@ headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', functio
 //#region (f) set - unset RegisterPageConfirmationStepItemActive
 function setRegisterPageConfirmationStepItemActive (nthChild) {
     var registerPageConfirmationStepItem = 
-        document.querySelector(`.register-page__confirmation__step-item:nth-child(${nthChild})`);
+        $(`.register-page__confirmation__step-item:nth-child(${nthChild})`);
 
     // div.register-page__confirmation__step-item-number
     registerPageConfirmationStepItem.children[0].style.backgroundColor = '#6c0';
@@ -294,7 +298,7 @@ function setRegisterPageConfirmationStepItemActive (nthChild) {
 
 function unsetRegisterPageConfirmationStepItemActive (nthChild) {
     var registerPageConfirmationStepItem = 
-        document.querySelector(`.register-page__confirmation__step-item:nth-child(${nthChild})`);
+        $(`.register-page__confirmation__step-item:nth-child(${nthChild})`);
 
     // div.register-page__confirmation__step-item-number
     registerPageConfirmationStepItem.children[0].style.backgroundColor = '#fff';
@@ -314,11 +318,11 @@ function unsetRegisterPageConfirmationStepItemActive (nthChild) {
 //#region (f) set - unset RegisterPageConfirmationStepLineActive
 function setRegisterPageConfirmationStepLineActive (nthChild) {
     var registerPageConfirmationStepLine = 
-        document.querySelector(`.register-page__confirmation__step-line:nth-child(${nthChild})`);
+        $(`.register-page__confirmation__step-line:nth-child(${nthChild})`);
         
-    var registerPageConfirmationStepLineLine = document.querySelector(`
+    var registerPageConfirmationStepLineLine = $(`
         .register-page__confirmation__step-line:nth-child(${nthChild}) > .register-page__confirmation__step-line__line`);
-    var registerPageConfirmationStepLineIcon = document.querySelector(`
+    var registerPageConfirmationStepLineIcon = $(`
         .register-page__confirmation__step-line:nth-child(${nthChild}) > .register-page__confirmation__step-line__icon`);
 
     registerPageConfirmationStepLineLine.style.backgroundColor = "rgb(102, 204, 0)";
@@ -327,11 +331,11 @@ function setRegisterPageConfirmationStepLineActive (nthChild) {
 
 function unsetRegisterPageConfirmationStepLineActive (nthChild) {
     var registerPageConfirmationStepLine = 
-        document.querySelector(`.register-page__confirmation__step-line:nth-child(${nthChild})`);
+        $(`.register-page__confirmation__step-line:nth-child(${nthChild})`);
 
-    var registerPageConfirmationStepLineLine = document.querySelector(`
+    var registerPageConfirmationStepLineLine = $(`
         .register-page__confirmation__step-line:nth-child(${nthChild}) > .register-page__confirmation__step-line__line`);
-    var registerPageConfirmationStepLineIcon = document.querySelector(`
+    var registerPageConfirmationStepLineIcon = $(`
         .register-page__confirmation__step-line:nth-child(${nthChild}) > .register-page__confirmation__step-line__icon`);
 
     registerPageConfirmationStepLineLine.style.backgroundColor = "rgba(0,0,0,.26)";
@@ -720,15 +724,15 @@ registerPageConfirmationSecondFormContentInput.addEventListener('keydown', funct
     
             for (var i = 0; i < checkArray.length; i++) {
                 var registerPageConfirmationSecondFormContentCheckText = 
-                    document.querySelector(`.${registerPageConfirmationSecondFormContentChecksClassName[i]}
+                    $(`.${registerPageConfirmationSecondFormContentChecksClassName[i]}
                     > .register-page__confirmation__second-form__content__check-text`);
     
                 var registerPageConfirmationSecondFormContentCheckCorrectIcon = 
-                    document.querySelector(`.${registerPageConfirmationSecondFormContentChecksClassName[i]}
+                    $(`.${registerPageConfirmationSecondFormContentChecksClassName[i]}
                     > .register-page__confirmation__second-form__content__check-correct-icon`);
     
                 var registerPageConfirmationSecondFormContentCheckWrongIcon = 
-                    document.querySelector(`.${registerPageConfirmationSecondFormContentChecksClassName[i]}
+                    $(`.${registerPageConfirmationSecondFormContentChecksClassName[i]}
                     > .register-page__confirmation__second-form__content__check-wrong-icon`);
     
     
@@ -1240,11 +1244,11 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
 /* B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...*/
 
 //#region headerSearchFrameInput, headerSearchHistory - variable declaration
-var headerSearchFrameInput = document.querySelector('.header__search-frame__input');
-var headerSearchHistory = document.querySelector('.header__search-history');
-var headerSearchFrameBtn = document.querySelector('.header__search-frame__btn');
-var headerSearchHistoryList = document.querySelector('.header__search-history-list');
-var headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
+var headerSearchFrameInput = $('.header__search-frame__input');
+var headerSearchHistory = $('.header__search-history');
+var headerSearchFrameBtn = $('.header__search-frame__btn');
+var headerSearchHistoryList = $('.header__search-history-list');
+var headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
 var headerSearchHistoryItemIndex = 0;
 var headerSearchHistoryListInfoAPI = "https://shopee-hdttuan.web.app/headerSearchHistoryListInfo.json";
 var headerSearchHistoryListInfoAPIFirstObiectId = 1;
@@ -1397,7 +1401,7 @@ headerSearchFrameInput.onblur = function () {
 //#region headerSearchFrameInput onkeydown()
 headerSearchFrameInput.addEventListener('keydown', function(e) {
     // update nodelist headerSearchHistoryItemLinks
-    headerSearchHistoryItemLinks = document.querySelectorAll('.header__search-history-item__link');
+    headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
 
     switch (e.code) {
         case 'Enter': {
@@ -1422,7 +1426,7 @@ headerSearchFrameInput.addEventListener('keydown', function(e) {
             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
 
             // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
-            var headerSearchHistoryItemCurrent = document.querySelector(`
+            var headerSearchHistoryItemCurrent = $(`
                 .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
             headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
 
@@ -1445,7 +1449,7 @@ headerSearchFrameInput.addEventListener('keydown', function(e) {
             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
 
             // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
-            var headerSearchHistoryItemCurrent = document.querySelector(`
+            var headerSearchHistoryItemCurrent = $(`
                 .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
             headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
 
@@ -1480,7 +1484,7 @@ headerSearchFrameBtn.addEventListener('click', function(e) {
 
 
 //#region updateInDOMHeaderSearchHistoryKeywordsList
-var headerSearchHistoryKeywordsList = document.querySelector('.header__search-history-keywords-list');
+var headerSearchHistoryKeywordsList = $('.header__search-history-keywords-list');
 
 function updateInDOMHeaderSearchHistoryKeywordsList () {
     fetch("db.json") 
@@ -1502,7 +1506,7 @@ updateInDOMHeaderSearchHistoryKeywordsList ();
 
 //#region updateInDOMHeaderNotificationPopupWhenLoggedInList
 var headerNotificationPopupWhenLoggedInList = 
-    document.querySelector('.header__notification__popup--when-logged-in__list');
+    $('.header__notification__popup--when-logged-in__list');
 
 function updateInDOMHeaderNotificationPopupWhenLoggedInList () {
     fetch("db.json") 
@@ -1532,7 +1536,7 @@ updateInDOMHeaderNotificationPopupWhenLoggedInList();
 //#endregion
 
 //#region header__notification, header__notification__quantity onmouseleave()
-var headerNotification = document.querySelector('.header__notification');
+var headerNotification = $('.header__notification');
 
 headerNotification.onmouseleave = function () {
     headerNotificationQuantity.style.display = 'none';
@@ -1540,12 +1544,12 @@ headerNotification.onmouseleave = function () {
 //#endregion
 
 //#region slider__main__motion-part (img & queue motion; button onclick())
-var sliderMainMotionPart = document.querySelector('.slider__main__motion-part');
-var sliderMainMotionPartLink = document.querySelector('.slider__main__motion-part__link');
-var sliderMainMotionPartImg = document.querySelector('.slider__main__motion-part__img');
-var sliderMainMotionPartQueueItems = document.querySelectorAll('.slider__main__motion-part__queue-item');
-var sliderMainMotionPartPreviousBtn = document.querySelector('.slider__main__motion-part__previous-btn');
-var sliderMainMotionPartNextBtn = document.querySelector('.slider__main__motion-part__next-btn');
+var sliderMainMotionPart = $('.slider__main__motion-part');
+var sliderMainMotionPartLink = $('.slider__main__motion-part__link');
+var sliderMainMotionPartImg = $('.slider__main__motion-part__img');
+var sliderMainMotionPartQueueItems = $$('.slider__main__motion-part__queue-item');
+var sliderMainMotionPartPreviousBtn = $('.slider__main__motion-part__previous-btn');
+var sliderMainMotionPartNextBtn = $('.slider__main__motion-part__next-btn');
 var sliderMainMotionPartQueueItemCurrentIndex = 0;
 
 var sliderMainMotionPartImg__hrefs = [
@@ -1638,7 +1642,7 @@ if (true) {
 
 
 //#region updateInDOMSliderFavouriteSelections
-var sliderFavouriteSelections = document.querySelector('.slider__favourite-selections');
+var sliderFavouriteSelections = $('.slider__favourite-selections');
 
 function updateInDOMSliderFavouriteSelections () {
     fetch("db.json") 
@@ -1662,7 +1666,7 @@ updateInDOMSliderFavouriteSelections();
 
 
 //#region updateInDOMOutstandingHotSellingProducts
-var outstandingHotSellingProducts = document.querySelector('.outstanding__hot-selling-products');
+var outstandingHotSellingProducts = $('.outstanding__hot-selling-products');
 
 function updateInDOMOutstandingHotSellingProducts () {
     fetch("db.json") 
@@ -1708,7 +1712,7 @@ updateInDOMOutstandingHotSellingProducts();
 //#endregion 
 
 //#region updateInDOMOutstandingHotBrands
-var outstandingHotBrands = document.querySelector('.outstanding__hot-brands');
+var outstandingHotBrands = $('.outstanding__hot-brands');
 
 function updateInDOMOutstandingHotBrands () {
     fetch("db.json") 
@@ -1755,7 +1759,7 @@ updateInDOMOutstandingHotBrands();
 
 
 //#region updateInDOMDirectoryMainList
-var directoryMainList = document.querySelector('.directory__main__list');
+var directoryMainList = $('.directory__main__list');
 
 function updateInDOMDirectoryMainList () {
     fetch("db.json") 
@@ -1785,9 +1789,9 @@ updateInDOMDirectoryMainList();
 //#endregion
 
 //#region directoryMainBtns onclick() 
-var directoryMainList = document.querySelector('.directory__main__list');
-var directoryMainNextBtn = document.querySelector('.directory__main__next-btn');
-var directoryMainPreviousBtn = document.querySelector('.directory__main__previous-btn');
+var directoryMainList = $('.directory__main__list');
+var directoryMainNextBtn = $('.directory__main__next-btn');
+var directoryMainPreviousBtn = $('.directory__main__previous-btn');
 
 directoryMainNextBtn.addEventListener('click', function(e) {
     setTimeout(function () {
@@ -1814,7 +1818,7 @@ directoryMainPreviousBtn.addEventListener('click', function(e) {
 
  
 //#region updateInDOMFlashSaleMainList
-var flashSaleMainList = document.querySelectorAll('.flash-sale__main__list');
+var flashSaleMainList = $$('.flash-sale__main__list');
 
 function updateInDOMFlashSaleMainList () {
     fetch("db.json")
@@ -1862,9 +1866,9 @@ updateInDOMFlashSaleMainList();
 //#endregion
 
 //#region flashSaleMainBtn onclick() 
-var flashSaleMainNextBtn = document.querySelector('.flash-sale__main__next-btn');
-var flashSaleMainPreviousBtn = document.querySelector('.flash-sale__main__previous-btn');
-var flashSaleMainList = document.querySelector('.flash-sale__main__list');
+var flashSaleMainNextBtn = $('.flash-sale__main__next-btn');
+var flashSaleMainPreviousBtn = $('.flash-sale__main__previous-btn');
+var flashSaleMainList = $('.flash-sale__main__list');
 var flashSaleMainListCurrentIndex = 1;   
 
 flashSaleMainNextBtn.addEventListener('click', function(e) {
@@ -1919,7 +1923,7 @@ flashSaleMainPreviousBtn.addEventListener('click', function(e) {
 //#endregion
 
 //#region updateInDOMFlashSalePart
-var underFlashSalePart = document.querySelector('.under-flash-sale__part');
+var underFlashSalePart = $('.under-flash-sale__part');
 
 function updateInDOMFlashSalePart () {
     fetch("db.json") 
@@ -1942,10 +1946,10 @@ updateInDOMFlashSalePart();
 
 
 //#region updateInDOMShopeeMallMainMotionLinkAndQueueItems
-var shopeeMallMainMotion = document.querySelector('.shopee-mall__main__motion');
-var shopeeMallMainMotionLink = document.querySelector('.shopee-mall__main__motion__link');
-var shopeeMallMainMotionImage = document.querySelector('.shopee-mall__main__motion__img');
-var shopeeMallMainMotionQueueItems = document.querySelectorAll('.shopee-mall__main__motion__queue-item');
+var shopeeMallMainMotion = $('.shopee-mall__main__motion');
+var shopeeMallMainMotionLink = $('.shopee-mall__main__motion__link');
+var shopeeMallMainMotionImage = $('.shopee-mall__main__motion__img');
+var shopeeMallMainMotionQueueItems = $$('.shopee-mall__main__motion__queue-item');
 
 function updateInDOMShopeeMallMainMotionLinkAndQueueItems () {
     fetch("db.json")
@@ -2003,7 +2007,7 @@ updateInDOMShopeeMallMainMotionLinkAndQueueItems();
 //#endregion
 
 //#region updateInDOMShopeeMallHeadingText
-var shopeeMallHeadingText = document.querySelector('.shopee-mall__heading__text');
+var shopeeMallHeadingText = $('.shopee-mall__heading__text');
 
 function updateInDOMShopeeMallHeadingText () {
     fetch("db.json") 
@@ -2027,7 +2031,7 @@ updateInDOMShopeeMallHeadingText();
 //#endregion
 
 //#region updateInDOMShopeeMallMainProductList
-var shopeeMallMainProductList = document.querySelector('.shopee-mall__main__product-list');
+var shopeeMallMainProductList = $('.shopee-mall__main__product-list');
 
 function updateInDOMShopeeMallMainProductList () {
     fetch("db.json") 
@@ -2080,9 +2084,9 @@ updateInDOMShopeeMallMainProductList();
 //#endregion
 
 //#region shopeeMallMainProductBtn onclick() 
-var shopeeMallMainProductNextBtn = document.querySelector('.shopee-mall__main__product__next-btn');
-var shopeeMallMainProductPreviousBtn = document.querySelector('.shopee-mall__main__product__previous-btn');
-var shopeeMallMainProductList = document.querySelector('.shopee-mall__main__product-list');
+var shopeeMallMainProductNextBtn = $('.shopee-mall__main__product__next-btn');
+var shopeeMallMainProductPreviousBtn = $('.shopee-mall__main__product__previous-btn');
+var shopeeMallMainProductList = $('.shopee-mall__main__product-list');
 var shopeeMallMainProductListCurrentIndex = 1;   
 
 shopeeMallMainProductNextBtn.addEventListener('click', function(e) {
@@ -2138,7 +2142,7 @@ shopeeMallMainProductPreviousBtn.addEventListener('click', function(e) {
 
 
 //#region updateInDOMSearchTrendingMainList
-var searchTrendingMainList = document.querySelector('.search-trending__main__list');
+var searchTrendingMainList = $('.search-trending__main__list');
 
 function updateInDOMSearchTrendingMainList (listIndex) {
     fetch("db.json")
@@ -2165,7 +2169,7 @@ updateInDOMSearchTrendingMainList(0);
 //#endregion
 
 //#region searchTrendingHeadingViewMoreBtn onclick() 
-var searchTrendingHeadingViewMoreBtn = document.querySelector('.search-trending__heading__view-more-btn');
+var searchTrendingHeadingViewMoreBtn = $('.search-trending__heading__view-more-btn');
 var searchTrendingListCurrentIndex = 0, searchTrendingNumberList;
 
 fetch("db.json")
@@ -2195,7 +2199,7 @@ searchTrendingHeadingViewMoreBtn.addEventListener('click', function(e) {
 
 
 //#region updateInDOMTopSearchMainList
-var topSearchMainList = document.querySelector('.top-search__main__list');
+var topSearchMainList = $('.top-search__main__list');
 
 function updateInDOMTopSearchMainList () {
     fetch("db.json")
@@ -2245,10 +2249,10 @@ updateInDOMTopSearchMainList();
 //#endregion
 
 //#region topSearchMainBtns onclick() 
-var topSearchMainList = document.querySelector('.top-search__main__list');
+var topSearchMainList = $('.top-search__main__list');
 var topSearchMainListCurrentIndex = 1;   
-var topSearchMainNextBtn = document.querySelector('.top-search__main__next-btn');
-var topSearchMainPreviousBtn = document.querySelector('.top-search__main__previous-btn');
+var topSearchMainNextBtn = $('.top-search__main__next-btn');
+var topSearchMainPreviousBtn = $('.top-search__main__previous-btn');
 
 topSearchMainNextBtn.onclick = function () {
     if(topSearchMainListCurrentIndex == 1) {
@@ -2315,7 +2319,7 @@ topSearchMainPreviousBtn.onclick = function () {
 
 
 //#region updateInDOMTodaySuggestionMainTabMain
-var todaySuggestionMainTabMain = document.querySelector('.today-suggestion__main__tab-main');
+var todaySuggestionMainTabMain = $('.today-suggestion__main__tab-main');
 
 function updateInDOMTodaySuggestionMainTabMain () {
     fetch("db.json")
@@ -2422,13 +2426,13 @@ updateInDOMTodaySuggestionMainTabMain();
 function handleCSSTodaySuggestionMainTabMain () {
 
     for(var i = 0; i < 8; i++) {
-        var check = (document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+        var check = ($$(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
             .today-suggestion__main-product__sale-off`).length  >=  1);
     
-        var list = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1})`);
-        var items = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+        var list = $(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1})`);
+        var items = $$(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
             .today-suggestion__main-item`);
-        var products = document.querySelectorAll(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+        var products = $$(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
             .today-suggestion__main-product`);
         
         if (check) {
@@ -2437,11 +2441,11 @@ function handleCSSTodaySuggestionMainTabMain () {
                 items[j].style.height = '29.8rem';
                 products[j].style.height = '28.8rem';
                 
-                var saleOff = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+                var saleOff = $(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
                     .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__sale-off`);
     
                 if(saleOff == null) {
-                    var priceAndSelledQuantity = document.querySelector(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
+                    var priceAndSelledQuantity = $(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
                         .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__price-and-selled-quantity`);
                     priceAndSelledQuantity.style.marginTop = '2.6rem';
                 }
@@ -2463,7 +2467,7 @@ setTimeout(function () {
 //#endregion 
 
 //#region updateInDOMTodaySuggestionMainTabSuperSale88
-var todaySuggestionMainTabSuperSale88 = document.querySelector('.today-suggestion__main__tab-super-sale-8-8');
+var todaySuggestionMainTabSuperSale88 = $('.today-suggestion__main__tab-super-sale-8-8');
 
 function updateInDOMTodaySuggestionMainTabSuperSale88 () {
     fetch("db.json")
@@ -2569,13 +2573,13 @@ updateInDOMTodaySuggestionMainTabSuperSale88();
 function handleCSSTodaySuggestionMainTabSuperSale88 () {
 
     for(var i = 0; i < 8; i++) {
-        var check = (document.querySelectorAll(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
+        var check = ($$(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
             .today-suggestion__main-product__sale-off`).length  >=  1);
     
-        var list = document.querySelector(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1})`);
-        var items = document.querySelectorAll(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
+        var list = $(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1})`);
+        var items = $$(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
             .today-suggestion__main-item`);
-        var products = document.querySelectorAll(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
+        var products = $$(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
             .today-suggestion__main-product`);
         
         if (check) {
@@ -2584,11 +2588,11 @@ function handleCSSTodaySuggestionMainTabSuperSale88 () {
                 items[j].style.height = '29.8rem';
                 products[j].style.height = '28.8rem';
                 
-                var saleOff = document.querySelector(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
+                var saleOff = $(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
                     .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__sale-off`);
     
                 if(saleOff == null) {
-                    var priceAndSelledQuantity = document.querySelector(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
+                    var priceAndSelledQuantity = $(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
                         .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__price-and-selled-quantity`);
                     priceAndSelledQuantity.style.marginTop = '2.6rem';
                 }
@@ -2610,13 +2614,13 @@ setTimeout(function () {
 //#endregion 
 
 //#region todaySuggestionHeadings onclick()
-var todaySuggestion = document.querySelector('.today-suggestion');
-var todaySuggestionHeadingTabMain = document.querySelector('.today-suggestion__heading-tab-main');
-var todaySuggestionHeadingTabSuperSale88 = document.querySelector('.today-suggestion__heading-tab-super-sale-8-8');
-var todaySuggestionMainViewAllBtn = document.querySelector('.today-suggestion__main__view-all-btn');
-var todaySuggestionMain = document.querySelector('.today-suggestion__main');
-var todaySuggestionMainTabMain = document.querySelector('.today-suggestion__main__tab-main');
-var todaySuggestionMainTabSuperSale88 = document.querySelector('.today-suggestion__main__tab-super-sale-8-8');
+var todaySuggestion = $('.today-suggestion');
+var todaySuggestionHeadingTabMain = $('.today-suggestion__heading-tab-main');
+var todaySuggestionHeadingTabSuperSale88 = $('.today-suggestion__heading-tab-super-sale-8-8');
+var todaySuggestionMainViewAllBtn = $('.today-suggestion__main__view-all-btn');
+var todaySuggestionMain = $('.today-suggestion__main');
+var todaySuggestionMainTabMain = $('.today-suggestion__main__tab-main');
+var todaySuggestionMainTabSuperSale88 = $('.today-suggestion__main__tab-super-sale-8-8');
 
 
 todaySuggestionHeadingTabMain.addEventListener('click', function() {
@@ -2660,7 +2664,7 @@ todaySuggestionHeadingTabSuperSale88.addEventListener('click', function() {
 
 
 //#region updateInDOMFooterTextATags
-var footerTextATags = document.querySelectorAll('.footer__text a');
+var footerTextATags = $$('.footer__text a');
 
 function updateInDOMFooterTextATags () {
     fetch("db.json")
@@ -2679,7 +2683,7 @@ updateInDOMFooterTextATags();
 //#endregion
 
 //#region updateInDOMFooterDirectoryList
-var footerDirectoryList = document.querySelector('.footer__directory__list');
+var footerDirectoryList = $('.footer__directory__list');
 
 function updateInDOMFooterDirectoryList () {
     fetch("db.json")
@@ -2739,7 +2743,7 @@ updateInDOMFooterDirectoryList();
 
 
 //#region updateInDOMFooterLinkAboutTextCSKH
-var footerLinkAboutTextCSKH = document.querySelector('.footer__link__about-text-CSKH');
+var footerLinkAboutTextCSKH = $('.footer__link__about-text-CSKH');
 
 function updateInDOMFooterLinkAboutTextCSKH () {
     fetch("db.json")
@@ -2762,7 +2766,7 @@ updateInDOMFooterLinkAboutTextCSKH();
 //#endregion
 
 //#region updateInDOMFooterLinkAboutTextVeShopee
-var footerLinkAboutTextVeShopee = document.querySelector('.footer__link__about-text-VeShopee');
+var footerLinkAboutTextVeShopee = $('.footer__link__about-text-VeShopee');
 
 function updateInDOMFooterLinkAboutTextVeShopee () {
     fetch("db.json")
@@ -2786,7 +2790,7 @@ updateInDOMFooterLinkAboutTextVeShopee();
 
 
 //#region updateInDOMFooterLinkAboutSocial
-var footerLinkAboutSocial = document.querySelector('.footer__link__about-social');
+var footerLinkAboutSocial = $('.footer__link__about-social');
 
 function updateInDOMFooterLinkAboutSocial () {
     fetch("db.json")
@@ -2812,7 +2816,7 @@ updateInDOMFooterLinkAboutSocial();
 
 //#region updateInDOMFooterLinkCopyrightCountryAndAreaList
 var footerLinkCopyrightCountryAndAreaList = 
-    document.querySelector('.footer__link__copyright__country-and-area__list');
+    $('.footer__link__copyright__country-and-area__list');
 
 function updateInDOMFooterLinkCopyrightCountryAndAreaList () {
     fetch("db.json")
@@ -2835,7 +2839,7 @@ updateInDOMFooterLinkCopyrightCountryAndAreaList();
 
 
 //#region updateInDOMFooterPolicyTermsPartTitle
-var footerPolicyTermsPartTitle = document.querySelector('.footer__policy-terms__part__title')
+var footerPolicyTermsPartTitle = $('.footer__policy-terms__part__title')
 
 function updateInDOMFooterPolicyTermsPartTitle () {
     fetch("db.json")
@@ -2857,7 +2861,7 @@ updateInDOMFooterPolicyTermsPartTitle();
 //#endregion
 
 //#region updateInDOMFooterPolicyTermsPartCertificate
-var footerPolicyTermsPartCertificate = document.querySelector('.footer__policy-terms__part__certificate')
+var footerPolicyTermsPartCertificate = $('.footer__policy-terms__part__certificate')
 
 function updateInDOMFooterPolicyTermsPartCertificate () {
     fetch("db.json")
@@ -2879,7 +2883,7 @@ updateInDOMFooterPolicyTermsPartCertificate();
 //#endregion
 
 //#region updateInDOMFooterPolicyTermsPartCompanyInfo
-var footerPolicyTermsPartCompanyInfo = document.querySelector('.footer__policy-terms__part__company-info');
+var footerPolicyTermsPartCompanyInfo = $('.footer__policy-terms__part__company-info');
 
 function updateInDOMFooterPolicyTermsPartCompanyInfo() {
     fetch("db.json")
@@ -2900,19 +2904,19 @@ updateInDOMFooterPolicyTermsPartCompanyInfo();
 
 //#region motionPartChatPopupMainSearchAndOptionsPopupNthChilds onclick()
 var motionPartChatPopupMainSearchAndOptionsPopupNthChild1 = 
-    document.querySelector('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(1)');
+    $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(1)');
 var motionPartChatPopupMainSearchAndOptionsPopupNthChild2 = 
-    document.querySelector('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(2)');
+    $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(2)');
 var motionPartChatPopupMainSearchAndOptionsPopupNthChild3 = 
-    document.querySelector('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(3)');
+    $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(3)');
 var motionPartChatPopupMainContent_all = 
-    document.querySelector('.motion-part__chat__popup__main__content--all');
+    $('.motion-part__chat__popup__main__content--all');
 var motionPartChatPopupMainContent_unread = 
-    document.querySelector('.motion-part__chat__popup__main__content--unread');
+    $('.motion-part__chat__popup__main__content--unread');
 var motionPartChatPopupMainContent_pinned = 
-    document.querySelector('.motion-part__chat__popup__main__content--pinned');
+    $('.motion-part__chat__popup__main__content--pinned');
 var motionPartChatPopupMainSearchAndOptionsText = 
-    document.querySelector('.motion-part__chat__popup__main__search-and-options__text');
+    $('.motion-part__chat__popup__main__search-and-options__text');
 
 
 motionPartChatPopupMainContent_unread.style.display = 'none';
@@ -2942,11 +2946,11 @@ motionPartChatPopupMainSearchAndOptionsPopupNthChild3.onclick = function () {
 
 //#region motionPartChatPopupMainSearchAndOptionsInput (click, blur)
 var motionPartChatPopupMainSearchAndOptionsInput = 
-    document.querySelector('.motion-part__chat__popup__main__search-and-options > input');
+    $('.motion-part__chat__popup__main__search-and-options > input');
 var motionPartChatPopupMainSearchAndOptionsPart = 
-    document.querySelector('.motion-part__chat__popup__main__search-and-options__part');
+    $('.motion-part__chat__popup__main__search-and-options__part');
 var motionPartChatPopupMainSearchAndOptionsPopup = 
-    document.querySelector('.motion-part__chat__popup__main__search-and-options__popup');
+    $('.motion-part__chat__popup__main__search-and-options__popup');
 
 motionPartChatPopupMainSearchAndOptionsInput.onclick = function () {
     motionPartChatPopupMainSearchAndOptionsPart.style.display = 'none';
@@ -2972,9 +2976,9 @@ motionPartChatPopupMainSearchAndOptionsPart.onclick =  function () {
 //#endregion
 
 //#region motionPartChatMain, motionPartChatPopupHeader_hidePopupBtn onclick()
-var motionPartChatMain = document.querySelector('.motion-part__chat__main');
-var motionPartChatPopup = document.querySelector('.motion-part__chat__popup');
-var motionPartChatPopupHeader_hidePopupBtn = document.querySelector('.motion-part__chat__popup__header__right-icons > svg:nth-child(3)');
+var motionPartChatMain = $('.motion-part__chat__main');
+var motionPartChatPopup = $('.motion-part__chat__popup');
+var motionPartChatPopupHeader_hidePopupBtn = $('.motion-part__chat__popup__header__right-icons > svg:nth-child(3)');
 
 motionPartChatMain.onclick = function () {
     this.style.display = 'none';
@@ -2987,10 +2991,10 @@ motionPartChatPopupHeader_hidePopupBtn.onclick = function () {
 //#endregion
 
 //#region motionPartChatPopupHeader_iconWhenNormal,...Expanded onclick()
-var motionPartChatPopup = document.querySelector('.motion-part__chat__popup');
-var motionPartChatPopupExpanded = document.querySelector('.motion-part__chat__popup__expanded');
-var motionPartChatPopupHeader_iconWhenNormal = document.querySelector('.motion-part__chat__popup__header__icon--when-normal');
-var motionPartChatPopupHeader_iconWhenExpanded = document.querySelector('.motion-part__chat__popup__header__icon--when-expanded');
+var motionPartChatPopup = $('.motion-part__chat__popup');
+var motionPartChatPopupExpanded = $('.motion-part__chat__popup__expanded');
+var motionPartChatPopupHeader_iconWhenNormal = $('.motion-part__chat__popup__header__icon--when-normal');
+var motionPartChatPopupHeader_iconWhenExpanded = $('.motion-part__chat__popup__header__icon--when-expanded');
 
 
 motionPartChatPopupHeader_iconWhenNormal.onclick = function () {
