@@ -4,6 +4,7 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const SHOPEE_LOCALSTORAGE_KEY = 'HDTTUAN1';
+var headerSearchHistoryListInfo = [];
 
 var html = $('html');
 var body = $('body');
@@ -130,7 +131,6 @@ var pageLoadBannerCloseBtn = $('.page-load-banner__close-btn');
 
 
 //#region SETTING CONFIG
-
 // get localStorage object
 var systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) || {};
 
@@ -151,8 +151,15 @@ function initialSettingConfig() {
 
     if (systemConfig.firstVisitTime) {
         if (systemConfig.firstVisitTime.day != todayDate.day) {
+            console.log('true')
+            // return empty array
+            headerSearchHistoryListInfo = [];
+
             // delete all data in localStorage
             localStorage.clear();
+
+            // update variable systemConfig
+            systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) || {};
             
             // set config new date
             setConfig('firstVisitTime', todayDate);
@@ -174,7 +181,6 @@ function initialSettingConfig() {
 
 initialSettingConfig();
 //#endregion SETTING CONFIG
-
 
 
 //#region A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS)
@@ -242,7 +248,7 @@ giftBanner.addEventListener('click', function() {
     }, 100)
 });
 //#endregion
-  
+    
 //#region modal onclick() 
 modal.onclick = function (e) {
     setTimeout(function () {
@@ -1183,6 +1189,7 @@ loginPageContentFormSecondInput.addEventListener('keydown', function (e) {
             if (checkValidPasswordLogin == false) {
                 e.preventDefault();
                 //show error
+
                 loginPageContentFormSecondInputPartInvalid.style.display = 'block';
                 loginPageContentFormSecondInput.classList.add('login-page__content-form__second-input--invalid');
                 loginPageContentFormSecondInputMain.classList.add('login-page__content-form__second-input-main--invalid');
@@ -1288,11 +1295,11 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
 });
 //#endregion II. LOGIN PAGE
 
-//#endregion A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS)
+//#endregion
 
 
 //#region B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...
-
+    
 //#region headerSearchFrameInput, headerSearchHistory - variable declaration
 var headerSearchFrameInput = $('.header__search-frame__input');
 var headerSearchHistory = $('.header__search-history');
@@ -1300,7 +1307,6 @@ var headerSearchFrameBtn = $('.header__search-frame__btn');
 var headerSearchHistoryList = $('.header__search-history-list');
 var headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
 var headerSearchHistoryItemIndex = 0;
-var headerSearchHistoryListInfo = [];
 //#endregion
 
 //#region update headerSearchHistoryListInfo -> updateInDOMHeaderSearchHistoryList
@@ -1328,22 +1334,29 @@ function updateInDOMHeaderSearchHistoryList () {
 function addAndUpdateHeaderSearchHistoryListInfo (data) {
     var length = systemConfig.headerSearchHistoryListInfo.length;
 
-    if (length == 10) {
-        // delete the last element from array
-        headerSearchHistoryListInfo.pop();
-
-        // add new element to the first order of array
-        headerSearchHistoryListInfo.unshift(data);
-
-        // update headerSearchHistoryListInfo into localStorage
-        setConfig('headerSearchHistoryListInfo', headerSearchHistoryListInfo);
-    } 
-    else {
-        // add new element to the first order of array
-        headerSearchHistoryListInfo.unshift(data);
-
-        // update headerSearchHistoryListInfo into localStorage
-        setConfig('headerSearchHistoryListInfo', headerSearchHistoryListInfo);
+    var checkDuplication = headerSearchHistoryListInfo.some(function (item) {
+        return (item.innerHTML == data.innerHTML);
+    });
+    
+    // if new item no match with items in old array
+    if (! checkDuplication) {
+        if (length == 10) {
+            // delete the last element from array
+            headerSearchHistoryListInfo.pop();
+    
+            // add new element to the first order of array
+            headerSearchHistoryListInfo.unshift(data);
+    
+            // update headerSearchHistoryListInfo into localStorage
+            setConfig('headerSearchHistoryListInfo', headerSearchHistoryListInfo);
+        } 
+        else {
+            // add new element to the first order of array
+            headerSearchHistoryListInfo.unshift(data);
+    
+            // update headerSearchHistoryListInfo into localStorage
+            setConfig('headerSearchHistoryListInfo', headerSearchHistoryListInfo);
+        }
     }
 }
 
@@ -1440,8 +1453,6 @@ headerSearchFrameInput.addEventListener('keydown', function(e) {
 
 //#region headerSearchFrameBtn onclick() 
 headerSearchFrameBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    
     if (headerSearchFrameInput.value != '') {
         var innerHTML = headerSearchFrameInput.value;
         var href = `https://shopee.vn/search?keyword=${innerHTML}`;
@@ -1795,7 +1806,7 @@ directoryMainPreviousBtn.addEventListener('click', function(e) {
 });
 //#endregion
 
- 
+
 //#region updateInDOMFlashSaleMainList
 var flashSaleMainList = $$('.flash-sale__main__list');
 
@@ -2354,7 +2365,7 @@ function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMain
                         ${favouriteLabelInnerHTML}
                     </div>`;
             }
- 
+
             var saleOffLabel = (todaySuggestionMainTabMainInfo[i][j].saleOffLabelPercent) ?
                 `<div class="today-suggestion__main-product__sale-off-label">
                     <span class="today-suggestion__main-product__sale-off-label__percent">${todaySuggestionMainTabMainInfo[i][j].saleOffLabelPercent}</span>
@@ -2501,7 +2512,7 @@ function handleUpdateInDOMTodaySuggestionMainTabSuperSale88 (todaySuggestionMain
                         ${favouriteLabelInnerHTML}
                     </div>`;
             }
- 
+
             var saleOffLabel = (todaySuggestionMainTabSuperSale88Info[i][j].saleOffLabelPercent) ?
                 `<div class="today-suggestion__main-product__sale-off-label">
                     <span class="today-suggestion__main-product__sale-off-label__percent">${todaySuggestionMainTabSuperSale88Info[i][j].saleOffLabelPercent}</span>
@@ -2991,4 +3002,4 @@ motionPartChatPopupHeader_iconWhenExpanded.onclick = function () {
 }
 //#endregion
 
-//#endregion B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...
+//#endregion 
