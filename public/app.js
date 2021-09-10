@@ -1,9 +1,10 @@
 //#region OBJECTS DECLARATION
 
+//#region 1. Best Common
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
+const SHOPEE_LOCALSTORAGE_KEY = 'HDTTUAN1';
 
-//#region 1. Best Common
 var html = $('html');
 var body = $('body');
 var app = $('#app');
@@ -62,7 +63,6 @@ var registerPageConfirmationSecondFormContentInputPart = $('.register-page__conf
 var registerPageConfirmationThirdFormContentFirstNotifyUserPhoneNumber = $('.register-page__confirmation__third-form__content-first-notify__user-phone-number');
 var registerPageConfirmationThirdFormContentSecondNotifySecondsNumber = $('.register-page__confirmation__third-form__content-second-notify__seconds-number');
 var registerPageConfirmationThirdFormContentBackToShopeeBtn = $('.register-page__confirmation__third-form__content-back-to-shopee-btn');
-
 //#endregion
 
 //#region 3. Login Page
@@ -125,10 +125,59 @@ var giftBannerPopupCloseBtn = $('.gift-banner__popup__close-btn');
 var pageLoadBanner = $('.page-load-banner');
 var pageLoadBannerCloseBtn = $('.page-load-banner__close-btn');
 //#endregion
+
 //#endregion
 
 
-/* A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS) */
+//#region SETTING CONFIG
+
+// get localStorage object
+var systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) || {};
+
+function setConfig (key, value) {
+    systemConfig[key] = value;
+    localStorage.setItem(SHOPEE_LOCALSTORAGE_KEY, JSON.stringify(systemConfig));
+}
+
+function initialSettingConfig() {
+    var date = new Date();
+    var todayDate = {
+        day: date.getDate(),
+        month: date.getMonth() + 1,
+        year: date.getFullYear(),
+        hour: date.getHours(),
+        minute: date.getMinutes()
+    }
+
+    if (systemConfig.firstVisitTime) {
+        if (systemConfig.firstVisitTime.day != todayDate.day) {
+            // delete all data in localStorage
+            localStorage.clear();
+            
+            // set config new date
+            setConfig('firstVisitTime', todayDate);
+        }
+    } 
+    else {
+        setConfig('firstVisitTime', todayDate);
+    }
+
+
+    if (! systemConfig.isLoggedIn) {
+        setConfig('isLoggedIn', false);
+    }
+
+    if (! systemConfig.headerSearchHistoryListInfo) {
+        setConfig('headerSearchHistoryListInfo', []);
+    }
+}
+
+initialSettingConfig();
+//#endregion SETTING CONFIG
+
+
+
+//#region A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS)
 
 //#region loadInitialWebsiteNoModal
 function loadInitialWebsiteNoModal () {
@@ -1239,9 +1288,10 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
 });
 //#endregion II. LOGIN PAGE
 
+//#endregion A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS)
 
 
-/* B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...*/
+//#region B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...
 
 //#region headerSearchFrameInput, headerSearchHistory - variable declaration
 var headerSearchFrameInput = $('.header__search-frame__input');
@@ -1250,127 +1300,56 @@ var headerSearchFrameBtn = $('.header__search-frame__btn');
 var headerSearchHistoryList = $('.header__search-history-list');
 var headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
 var headerSearchHistoryItemIndex = 0;
-var headerSearchHistoryListInfoAPI = "https://shopee-hdttuan.web.app/headerSearchHistoryListInfo.json";
-var headerSearchHistoryListInfoAPIFirstObiectId = 1;
+var headerSearchHistoryListInfo = [];
 //#endregion
 
-//--> ADVANCED FEATURE (BUGS)
-// //#region Logic ok but need an auth API to handle 
-// //#region updateInDOMHeaderSearchHistoryList
-// function updateInDOMHeaderSearchHistoryList (url) {
-//     var options = {
-//         method: 'GET', 
-//         mode: 'cors',
-//         cache: 'no-cache', 
-//         credentials: 'same-origin', 
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         redirect: 'follow', 
-//         referrerPolicy: 'no-referrer'
-//     }
+//#region update headerSearchHistoryListInfo -> updateInDOMHeaderSearchHistoryList
+function updateInDOMHeaderSearchHistoryList () {
+    var defaultHeaderSearchHistoryItem = `<li class="header__search-history-item header__search-history-item--default">
+        <a href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
+            Deal hot kèm 2 mã freeship
+            <img src="./assests/img/header/header__search/Dealquocte.png" alt=""  class="header__search-history-item__link__dtth31k-img">
+        </a>
+    </li>`;
 
-//     fetch(url, options)
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         .then(function (datas) {
-//             var liTags = datas.map(function (data) {
-//                 return `<li class="header__search-history-item">
-//                             <a class="header__search-history-item__link" href="${data.href}">${data.innerHTML}</a>
-//                         </li>`
-//             });
+    headerSearchHistoryList.innerHTML = '';
 
-//             var defaultLiTag = `<li class="header__search-history-item header__search-history-item--default">
-//                     <a href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
-//                         Deal hot kèm 2 mã freeship
-//                         <img src="./assests/img/header/header__search/Dealquocte.png" alt=""  class="header__search-history-item__link__dtth31k-img">
-//                     </a>
-//                 </li>`;
+    var headerSearchHistoryItems = headerSearchHistoryListInfo.map(function (headerSearchHistoryListItem) {
+        var liTag = `<li class="header__search-history-item">
+            <a href="${headerSearchHistoryListItem.href}" class="header__search-history-item__link">${headerSearchHistoryListItem.innerHTML}</a>
+        </li>`;
 
-//             headerSearchHistoryList.innerHTML = defaultLiTag + liTags.join('');
-//         })
-// }
+        return liTag;
+    });
 
-// updateInDOMHeaderSearchHistoryList(headerSearchHistoryListInfoAPI);
-// //#endregion
+    headerSearchHistoryList.innerHTML = defaultHeaderSearchHistoryItem + headerSearchHistoryItems.join('');
+}
 
-// //#region (f) Work with API
-// function deleteObjInAPI (url, id) {
-//     var options = {
-//         method: 'DELETE', 
-//         mode: 'cors',
-//         cache: 'no-cache', 
-//         credentials: 'same-origin', 
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         redirect: 'follow', 
-//         referrerPolicy: 'no-referrer'
-//     }
+function addAndUpdateHeaderSearchHistoryListInfo (data) {
+    var length = systemConfig.headerSearchHistoryListInfo.length;
 
-//     fetch(`${url}/${id}`, options)
-//         .then(function(response) {
-//             return response.json();
-//         })
-//         .then(function(datas) {
-//             console.log(datas);
-//         })
-//         .catch(function(err) {
-//             console.log(err);
-//         })
-// }
+    if (length == 10) {
+        // delete the last element from array
+        headerSearchHistoryListInfo.pop();
 
-// function createObjInAPI (url, data) {
-//     var options = {
-//         method: 'POST', 
-//         mode: 'cors',
-//         cache: 'no-cache', 
-//         credentials: 'same-origin', 
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         redirect: 'follow', 
-//         referrerPolicy: 'no-referrer',
-//         body: JSON.stringify(data) 
-//     }
+        // add new element to the first order of array
+        headerSearchHistoryListInfo.unshift(data);
 
-//     fetch(url, options)
-//         .then(function(response) {
-//             return response.json();
-//         })
-//         .then(function(datas){
-//             console.log(datas)
-//         })
-//         .catch(function(err) {
-//             console.log(err);
-//         })
-// }
-// //#endregion
+        // update headerSearchHistoryListInfo into localStorage
+        setConfig('headerSearchHistoryListInfo', headerSearchHistoryListInfo);
+    } 
+    else {
+        // add new element to the first order of array
+        headerSearchHistoryListInfo.unshift(data);
 
-// //#region (f) updateHeaderSearchHistoryItemLinksInfo
-// function addAndUpdateAPI (data) {
-//     var length = 3;
-//     if (length == 10) {
-//         // 0,1,2,3,4,5,6,7,8,9
-//         // DELETE(id = 1) POST(id = 10)
-//         deleteObjInAPI(headerSearchHistoryListInfoAPI, headerSearchHistoryListInfoAPIFirstObiectId);
-//         createObjInAPI(headerSearchHistoryListInfoAPI, data);
+        // update headerSearchHistoryListInfo into localStorage
+        setConfig('headerSearchHistoryListInfo', headerSearchHistoryListInfo);
+    }
+}
 
-//         // id++;
-//         headerSearchHistoryListInfoAPIFirstObiectId++;
-//     } 
-//     else {
-//         // 0,1,2,3,4
-//         // PUT (id = 5)
-//         createObjInAPI(headerSearchHistoryListInfoAPI, data);
-
-//         // id++;
-//         headerSearchHistoryListInfoAPIFirstObiectId++;
-//     }
-// }
-// //#endregion
-// //#endregion
+headerSearchHistoryListInfo = systemConfig.headerSearchHistoryListInfo;
+updateInDOMHeaderSearchHistoryList();
+//#endregion
 
 //#region (f) removeHeaderSearchHistoryItemLinksHover
 function removeHeaderSearchHistoryItemLinksHover () {
@@ -1461,27 +1440,27 @@ headerSearchFrameInput.addEventListener('keydown', function(e) {
 
 //#region headerSearchFrameBtn onclick() 
 headerSearchFrameBtn.addEventListener('click', function(e) {
+    e.preventDefault();
     
     if (headerSearchFrameInput.value != '') {
         var innerHTML = headerSearchFrameInput.value;
         var href = `https://shopee.vn/search?keyword=${innerHTML}`;
 
-        /* RUN OK BUT NEED AUTH API
         var data = {
             href: href, 
             innerHTML: innerHTML
         };
-        addAndUpdateAPI(data);
-        updateInDOMHeaderSearchHistoryList(headerSearchHistoryListInfoAPI); */
 
-        // update headerSearchFrameBtn.href
+        // update array headerSearchHistoryListInfo
+        addAndUpdateHeaderSearchHistoryListInfo(data);
+        // update in DOM
+        updateInDOMHeaderSearchHistoryList();
+        
+        // update headerSearchFrameBtn.href and take the default action (go new page)
         headerSearchFrameBtn.href = href;
     }   
-
-    // -> no need handle, it will take the default action
 });
 //#endregion
-
 
 //#region updateInDOMHeaderSearchHistoryKeywordsList
 var headerSearchHistoryKeywordsList = $('.header__search-history-keywords-list');
@@ -1542,6 +1521,7 @@ headerNotification.onmouseleave = function () {
     headerNotificationQuantity.style.display = 'none';
 }
 //#endregion
+
 
 //#region slider__main__motion-part (img & queue motion; button onclick())
 var sliderMainMotionPart = $('.slider__main__motion-part');
@@ -1639,7 +1619,6 @@ if (true) {
 }
 
 //#endregion
-
 
 //#region updateInDOMSliderFavouriteSelections
 var sliderFavouriteSelections = $('.slider__favourite-selections');
@@ -3011,3 +2990,5 @@ motionPartChatPopupHeader_iconWhenExpanded.onclick = function () {
     motionPartChatPopupExpanded.style.display = 'none';
 }
 //#endregion
+
+//#endregion B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...
