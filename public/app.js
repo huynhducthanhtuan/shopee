@@ -131,27 +131,33 @@ var pageLoadBannerCloseBtn = $('.page-load-banner__close-btn');
 
 
 //#region SETTING CONFIG
+
 // get localStorage object
 var systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) || {};
 
+// add each key: value into localStorage object
 function setConfig (key, value) {
     systemConfig[key] = value;
     localStorage.setItem(SHOPEE_LOCALSTORAGE_KEY, JSON.stringify(systemConfig));
 }
 
-function initialSettingConfig() {
+function handleSettingInitialConfig () {
+    // get current time exactly
     var date = new Date();
     var todayDate = {
         day: date.getDate(),
         month: date.getMonth() + 1,
         year: date.getFullYear(),
         hour: date.getHours(),
-        minute: date.getMinutes()
+        minute: date.getMinutes(),
+        second: date.getSeconds()
     }
 
+    // if this key already exists in localStorage
     if (systemConfig.firstVisitTime) {
+
+        // auto delete all data in localStorage after one day
         if (systemConfig.firstVisitTime.day != todayDate.day) {
-            console.log('true')
             // return empty array
             headerSearchHistoryListInfo = [];
 
@@ -166,26 +172,34 @@ function initialSettingConfig() {
         }
     } 
     else {
+        // set default value if this key doesn't exist in localStorage
         setConfig('firstVisitTime', todayDate);
     }
 
-
-    if (! systemConfig.isLoggedIn) {
-        setConfig('isLoggedIn', false);
-    }
-
+    // set default value if this key doesn't exist in localStorage
     if (! systemConfig.headerSearchHistoryListInfo) {
         setConfig('headerSearchHistoryListInfo', []);
     }
+    if (! systemConfig.isLoggedIn) {
+        setConfig('isLoggedIn', false);
+    }
+    if (! systemConfig.userAccount) {
+        setConfig('userAccount', {});
+    }
+    
+
+    // update array headerSearchHistoryListInfo from localStorage
+    headerSearchHistoryListInfo = systemConfig.headerSearchHistoryListInfo;
+
+    // update in DOM element headerSearchHistoryList
+    updateInDOMHeaderSearchHistoryList();
 }
-
-initialSettingConfig();
-//#endregion SETTING CONFIG
+//#endregion
 
 
-//#region A. WEBSITE WHEN NOT LOGIN (INITIAL STATUS)
+//#region WEBSITE WHEN NOT LOGIN (INITIAL STATUS)
 
-//#region loadInitialWebsiteNoModal
+//#region (f) loadInitialWebsiteNoModal
 function loadInitialWebsiteNoModal () {
     registerPage.style.display = 'none';
     loginPage.style.display = 'none';
@@ -217,11 +231,9 @@ function loadInitialWebsiteNoModal () {
 
     window.scrollTo(0, initialWebsiteOffsetHeight);
 }
-
-loadInitialWebsiteNoModal();
 //#endregion
 
-//#region At registerPage/loginPage, click Shopee logo -> back initial page (no modal, no reload)
+//#region At registerPage/loginPage, click Shopee logo to back initial page (no modal, no reload)
 loginPageHeaderShopeeLink.addEventListener('click', function(e) {
     e.preventDefault();
     setTimeout(function() {
@@ -289,6 +301,7 @@ function loadRegisterPage () {
         registerPageContent.style.display = 'block';
         registerPageConfirmation.style.display = 'none';
 
+        // other parts
         loginPage.style.display = 'none';
         header.style.display = 'none';
         container.style.display = 'none';
@@ -300,12 +313,27 @@ function loadRegisterPage () {
         pageLoadBanner.style.display = 'none';
         giftBannerPopup.style.display = 'none';
 
+        
+        // set dault value in this input
+        registerPageContentFormInput.value = '';
+
+        // hide notify error and inputs's errors
+        registerPageContentFormInput.classList.remove('register-page__content-form__input--invalid-phone-number');
+        registerPageContentFormInputTextInvalidPhoneNumber.style.display = 'none';
+        registerPageContentFormInputIconValidPhoneNumber.style.display = 'none';
+
+        // set not-allowed this button
+        registerPageContentFormNextBtn.style.opacity = '0.7';
+        registerPageContentFormNextBtn.style.cursor = 'not-allowed'
+
+
         window.scrollTo(0, 0);
     }, 500);
 }
 
 headerRegisterBtn.addEventListener('click', function(e) {
     e.preventDefault();
+
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadRegisterPage();
@@ -318,6 +346,7 @@ headerRegisterBtn.addEventListener('click', function(e) {
 
 headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', function(e) {
     e.preventDefault();
+
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadRegisterPage();
@@ -329,8 +358,7 @@ headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', functio
 });
 //#endregion
 
-
-//#region ---> CONTENT
+//#region ---> CONTENT PART
 
 //#region (f) set - unset RegisterPageConfirmationStepItemActive
 function setRegisterPageConfirmationStepItemActive (nthChild) {
@@ -612,7 +640,6 @@ registerPageConfirmationFirstFormContentHelpOtherWayBtn.addEventListener('click'
 
 //#endregion
 
-
 //#region ---> 1ST CONFIRMATION
 
 registerPageConfirmationFirstFormHeaderBackBtn.addEventListener('click', function (e) {
@@ -716,7 +743,6 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseleave'
 
 //#endregion
 
-
 //#region ---> 2ND CONFIRMATION
 
 // set default value for this input
@@ -745,6 +771,7 @@ registerPageConfirmationSecondFormContentInputStatusBtn.addEventListener('click'
 // Because default value ('Wa.3n.en,mr6@YwT') is true
 var checkForRegisterPageConfirmationFormContentThirdStep = true;
 
+//#region EventListener
 registerPageConfirmationSecondFormContentInput.addEventListener('keydown', function (e) {
     var check1 = false, check2 = false, check3 = false;
     
@@ -856,6 +883,13 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', f
     var countdownInterval;
 
     if (checkForRegisterPageConfirmationFormContentThirdStep == true) {
+        // -> Add the account user just registered to localStorage
+        var userAccount = {
+            phoneNumber: registerPageContentFormInput.value,
+            password: registerPageConfirmationSecondFormContentInput.value
+        }
+        setConfig('userAccount', userAccount);
+
 
         registerPageConfirmationThirdFormContentBackToShopeeBtn.addEventListener("click", function(e) {
             e.preventDefault();
@@ -906,6 +940,7 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', f
 
 registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', function (e) {
     e.preventDefault();
+
     // set-unset registerPageConfirmationStepItemActive, registerPageConfirmationStepLineActive
     setRegisterPageConfirmationStepItemActive(1);
     unsetRegisterPageConfirmationStepLineActive(2);
@@ -927,12 +962,15 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', functi
         registerPageConfirmationFirstFormContentInput.focus();
     }, 500)
 });
+// #endregion
 
 // #endregion
 
-//#endregion I. REGISTER PAGE
+//#endregion
 
 //#region II. LOGIN PAGE
+
+//#region (f) loadLoginPage, loginSuccess
 function loadLoginPage () {
     setTimeout(function () {
         loginPage.style.display = 'block';
@@ -971,44 +1009,44 @@ function loadLoginPage () {
 }
 
 function loginSuccess () {
-    setTimeout(function () {
-        // Disabled
-        registerPage.style.display = 'none';
-        loginPage.style.display = 'none';
-        headerLinksBecomeAShopeeSeller.style.display = 'none';
-        headerNotificationPopupWhenNotLogin.style.display = 'none';
-        headerNotificationLink.href = 'https://shopee.vn/user/notifications/order';
-        headerNotificationLink.style.cursor = 'pointer';
-        headerRegister.style.display = 'none';
-        headerLogin.style.display = 'none';
-        headerCartLink.href = 'https://shopee.vn/cart';
-        headerCartLink.style.cursor = 'pointer';
-        giftBanner.style.display = 'none';
-    
-        // Visible
-        header.style.display = 'block';
-        container.style.display = 'block';
-        footerText.style.display = 'block';
-        footerDirectory.style.display = 'block';
-        headerNotificationQuantity.style.display = 'block';
-        headerNotificationPopupWhenLoggedIn.style.display = 'block';
-        headerUserAccount.style.display = 'block';
-        motionPartChat.style.display = 'block';
-        motionPartSubBanner.style.display = 'block';
+    // Disabled
+    registerPage.style.display = 'none';
+    loginPage.style.display = 'none';
+    headerLinksBecomeAShopeeSeller.style.display = 'none';
+    headerNotificationPopupWhenNotLogin.style.display = 'none';
+    headerNotificationLink.href = 'https://shopee.vn/user/notifications/order';
+    headerNotificationLink.style.cursor = 'pointer';
+    headerRegister.style.display = 'none';
+    headerLogin.style.display = 'none';
+    headerCartLink.href = 'https://shopee.vn/cart';
+    headerCartLink.style.cursor = 'pointer';
+    giftBanner.style.display = 'none';
 
-        // modal, body
-        body.style.overflow = 'visible';
-        app.style.position = 'absolute';
-        content.style.position = 'relative';
-        content.style.top = '0';
+    // Visible
+    header.style.display = 'block';
+    container.style.display = 'block';
+    footerText.style.display = 'block';
+    footerDirectory.style.display = 'block';
+    headerNotificationQuantity.style.display = 'block';
+    headerNotificationPopupWhenLoggedIn.style.display = 'block';
+    headerUserAccount.style.display = 'block';
+    motionPartChat.style.display = 'block';
+    motionPartSubBanner.style.display = 'block';
 
-        window.scrollTo(0, 0);
-    }, 1000);
+    // modal, body
+    body.style.overflow = 'visible';
+    app.style.position = 'absolute';
+    content.style.position = 'relative';
+    content.style.top = '0';
+
+    window.scrollTo(0, 0);
 } 
+//#endregion
 
 //#region click to Login / Logout / Register
 headerLoginBtn.addEventListener('click', function(e) {
     e.preventDefault();
+
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadLoginPage();
@@ -1033,6 +1071,7 @@ headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', function(e
 
 headerLogoutBtn.onclick = function () {
     setTimeout(function() {
+        setConfig('isLoggedIn', false);
         loadInitialWebsiteNoModal();
     }, 1000);
 }
@@ -1052,7 +1091,6 @@ loginPageContentFormAskForRegisterRegisterBtn.addEventListener('click', function
 })
 //#endregion click to Login / Logout / Register
 
-
 //#region *Not handle these buttons, just preventDefault
 loginPageContentFormUnderLoginBtnForgetPasswordBtn.addEventListener('click', function(e) {
     e.preventDefault();
@@ -1071,8 +1109,7 @@ loginPageContentFormOtherWaysApple.addEventListener('click', function(e) {
 });
 //#endregion
 
-
-
+//#region EventListener
 loginPageContentFormFirstInput.addEventListener('keydown', function (e) {
     if (e.code == 'Enter') {
         e.preventDefault();
@@ -1217,7 +1254,6 @@ loginPageContentFormSecondInput.addEventListener('keydown', function (e) {
     }, 0);
 });
 
-
 loginPageContentFormSecondInputStatusBtn.addEventListener('click', function(e) {
     e.preventDefault();
 
@@ -1244,13 +1280,15 @@ loginPageContentFormLoginBtn.addEventListener('click', function(e) {
         var currentPhoneNumberInputValue = loginPageContentFormFirstInput.value;
         loginPageContentFormFirstInput.value = `(+84) ${currentPhoneNumberInputValue.slice(-9)}`;
 
-        if (loginPageContentFormFirstInput.value == registerPageContentFormInput.value
-            && loginPageContentFormSecondInput.value == registerPageConfirmationSecondFormContentInput.value) {
+        // check from localStorage
+        if (loginPageContentFormFirstInput.value == systemConfig.userAccount.phoneNumber
+            && loginPageContentFormSecondInput.value == systemConfig.userAccount.password) {
             
             loginPageContentForm.style.height = '48.2rem';
             loginPageContentFormNotifyError.style.display = 'none';
 
             setTimeout(function () {
+                setConfig('isLoggedIn', true);
                 loginSuccess();
             }, 1000);
         }
@@ -1266,7 +1304,6 @@ loginPageContentFormLoginBtn.addEventListener('click', function(e) {
     }
 });
 
-
 loginPageContentFormLoginBtn.addEventListener('mousedown', function(e) {
     e.preventDefault();
     if (checkValidPhoneNumberLogin && checkValidPasswordLogin) {
@@ -1274,7 +1311,6 @@ loginPageContentFormLoginBtn.addEventListener('mousedown', function(e) {
         loginPageContentFormFirstInput.value = `(+84) ${currentPhoneNumberInputValue.slice(-9)}`;
     }
 });
-
 
 loginPageContentFormLoginBtn.addEventListener('mouseover', function (e) {
     if (e.target.style.cursor == 'pointer') {
@@ -1293,12 +1329,13 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
         e.preventDefault();
     }
 });
-//#endregion II. LOGIN PAGE
+//#endregion
+//#endregion
 
 //#endregion
 
 
-//#region B. WEBSITE WHEN LOGGED IN --> UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...
+//#region WEBSITE WHEN LOGGED IN (UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...)
     
 //#region headerSearchFrameInput, headerSearchHistory - variable declaration
 var headerSearchFrameInput = $('.header__search-frame__input');
@@ -1360,7 +1397,6 @@ function addAndUpdateHeaderSearchHistoryListInfo (data) {
     }
 }
 
-headerSearchHistoryListInfo = systemConfig.headerSearchHistoryListInfo;
 updateInDOMHeaderSearchHistoryList();
 //#endregion
 
@@ -3003,3 +3039,17 @@ motionPartChatPopupHeader_iconWhenExpanded.onclick = function () {
 //#endregion
 
 //#endregion 
+
+
+//#region START WEBSITE
+
+handleSettingInitialConfig();
+
+// Check for load initial page or page when logged in
+if (! systemConfig.isLoggedIn) {
+    loadInitialWebsiteNoModal();
+} 
+else {
+    loginSuccess();
+}
+//#endregion
