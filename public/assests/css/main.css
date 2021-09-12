@@ -1336,7 +1336,7 @@ width: 13.5rem;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.header__user-account__link > span {
+.header__user-account__username {
     font-size: 1.4rem;  
 }
 
