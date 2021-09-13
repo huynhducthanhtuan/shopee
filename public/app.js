@@ -1290,7 +1290,7 @@ loginPageContentFormLoginBtn.addEventListener('click', function(e) {
             setTimeout(function () {
                 setConfig('isLoggedIn', true);
                 loginSuccess();
-            }, 1000);
+            }, 1500);
         }
         else {
             setTimeout(function () {
@@ -3053,3 +3053,5 @@ else {
     loginSuccess();
 }
 //#endregion
+
+
