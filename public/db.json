@@ -82,6 +82,56 @@
       "itemDescription": "Vô vàn deal hot từ 29K, 59K Mặt hàng đa dạng cho\n    bạn chọn lựa. Vào săn ngay!"
     }
   ],
+  "sliderMainMotionPartLinkInfo": [
+    {
+        "href": "https://shopee.vn/m/freeship-xtra",
+        "image": "./assests/img/container/slider/slider__main/motion_1.png"
+    },
+    {
+        "href": "https://shopee.vn/m/8-8",
+        "image": "./assests/img/container/slider/slider__main/motion_2.png"
+    },
+    {
+        "href": "https://shopee.vn/m/khung-gio-san-sale",
+        "image": "./assests/img/container/slider/slider__main/motion_3.png"
+    },
+    {
+        "href": "https://shopee.vn/provence",
+        "image": "./assests/img/container/slider/slider__main/motion_4.png"
+    },
+    {
+        "href": "https://shopee.vn/uu-dai-aptamil",
+        "image": "./assests/img/container/slider/slider__main/motion_5.png"
+    },
+    {
+        "href": "https://shopee.vn/m/o-nha-khong-kho-co-shopee-lo",
+        "image": "./assests/img/container/slider/slider__main/motion_6.png"
+    },
+    {
+        "href": "https://shopee.vn/m/sieu-sale-nganh-hang",
+        "image": "./assests/img/container/slider/slider__main/motion_7.png"
+    },
+    {
+        "href": "https://shopee.vn/m/sieu-sale-fmcg",
+        "image": "./assests/img/container/slider/slider__main/motion_8.png"
+    },
+    {
+        "href": "https://shopee.vn/m/mkbdaily-fmcg",
+        "image": "./assests/img/container/slider/slider__main/motion_9.png"
+    },
+    {
+        "href": "https://shopee.vn/m/mua-hang-nhan-xu",
+        "image": "./assests/img/container/slider/slider__main/motion_10.png"
+    },
+    {
+        "href": "https://shopee.vn/m/thoi-trang-mang-xa-hoi-2807",
+        "image": "./assests/img/container/slider/slider__main/motion_11.png"
+    },
+    {
+        "href": "https://shopee.vn/m/mum-club",
+        "image": "./assests/img/container/slider/slider__main/motion_12.png"
+    }
+  ],
   "sliderFavouriteSelectionsInfo": [
     {
       "id": 1,

@@ -1,4 +1,4 @@
-//#region OBJECTS DECLARATION
+//#region VARIABLES, OBJECTS DECLARATION
 
 //#region 1. Best Common
 const $ = document.querySelector.bind(document);
@@ -133,7 +133,7 @@ var pageLoadBannerCloseBtn = $('.page-load-banner__close-btn');
 //#region SETTING CONFIG
 
 // get localStorage object
-var systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) || {};
+var systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) ?? {};
 
 // add each key: value into localStorage object
 function setConfig (key, value) {
@@ -142,23 +142,15 @@ function setConfig (key, value) {
 }
 
 function handleSettingInitialConfig () {
-    // get current time exactly
-    var date = new Date();
-    var todayDate = {
-        day: date.getDate(),
-        month: date.getMonth() + 1,
-        year: date.getFullYear(),
-        hour: date.getHours(),
-        minute: date.getMinutes(),
-        second: date.getSeconds()
-    }
+    // get today day
+    var todayDay = (new Date()).getDate();
 
     // if this key already exists in localStorage
-    if (systemConfig.firstVisitTime) {
+    if (systemConfig.lastVisitDay) {
 
         // auto delete all data in localStorage after one day
-        if (systemConfig.firstVisitTime.day != todayDate.day) {
-            // return empty array
+        if (systemConfig.lastVisitDay != todayDay) {
+
             headerSearchHistoryListInfo = [];
 
             // delete all data in localStorage
@@ -167,13 +159,13 @@ function handleSettingInitialConfig () {
             // update variable systemConfig
             systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) || {};
             
-            // set config new date
-            setConfig('firstVisitTime', todayDate);
+            // set new date for lastVisitDay
+            setConfig('lastVisitDay', todayDay);
         }
     } 
     else {
-        // set default value if this key doesn't exist in localStorage
-        setConfig('firstVisitTime', todayDate);
+        // set default value
+        setConfig('lastVisitDay', todayDay);
     }
 
     // set default value if this key doesn't exist in localStorage
@@ -190,14 +182,13 @@ function handleSettingInitialConfig () {
 
     // update array headerSearchHistoryListInfo from localStorage
     headerSearchHistoryListInfo = systemConfig.headerSearchHistoryListInfo;
-
-    // update in DOM element headerSearchHistoryList
+    
     updateInDOMHeaderSearchHistoryList();
 }
 //#endregion
 
 
-//#region WEBSITE WHEN NOT LOGIN (INITIAL STATUS)
+//#region INITIAL WEBSITE, REGISTER PAGE, LOGIN PAGE
 
 //#region (f) loadInitialWebsiteNoModal
 function loadInitialWebsiteNoModal () {
@@ -233,25 +224,28 @@ function loadInitialWebsiteNoModal () {
 }
 //#endregion
 
-//#region At registerPage/loginPage, click Shopee logo to back initial page (no modal, no reload)
-loginPageHeaderShopeeLink.addEventListener('click', function(e) {
+//#region At registerPage/loginPage, click Shopee logo to back initial page (no reload)
+loginPageHeaderShopeeLink.addEventListener('click', (e) => {
     e.preventDefault();
-    setTimeout(function() {
+
+    setTimeout(() => {
         loadInitialWebsiteNoModal();
     }, 200)
 });
 
-registerPageHeaderShopeeLink.addEventListener('click', function(e) {
+registerPageHeaderShopeeLink.addEventListener('click', (e) => {
     e.preventDefault();
-    setTimeout(function() {
+
+    setTimeout(() => {
         loadInitialWebsiteNoModal();
     }, 200)
 });
 //#endregion 
 
 //#region gift-banner onclick()
-giftBanner.addEventListener('click', function() {
-    setTimeout(function(){
+giftBanner.addEventListener('click', () =>  {
+
+    setTimeout(() => {
         modal.style.display = 'block';
         giftBannerPopup.style.display = 'block';
 
@@ -262,8 +256,8 @@ giftBanner.addEventListener('click', function() {
 //#endregion
     
 //#region modal onclick() 
-modal.onclick = function (e) {
-    setTimeout(function () {
+modal.onclick = (e) => {
+    setTimeout(() => {
         body.style.overflow = 'visible';
         modal.style.display = 'none';
         app.style.position = 'absolute';
@@ -281,11 +275,11 @@ modal.onclick = function (e) {
 //#endregion   
 
 //#region giftBannerPopup, giftBannerPopupCloseBtn onclick()
-giftBannerPopup.onclick = function (e) {
+giftBannerPopup.onclick = (e) => {
     e.stopPropagation();
 }
 
-giftBannerPopupCloseBtn.onclick = function (e) {
+giftBannerPopupCloseBtn.onclick = (e) => {
     e.stopPropagation();
     modal.click();
 }
@@ -294,9 +288,9 @@ giftBannerPopupCloseBtn.onclick = function (e) {
 
 //#region I. REGISTER PAGE 
 
-//#region Click to to REGISTER PAGE
+//#region Click to go to REGISTER PAGE
 function loadRegisterPage () {
-    setTimeout(function () {
+    setTimeout(() => {
         registerPage.style.display = 'block';
         registerPageContent.style.display = 'block';
         registerPageConfirmation.style.display = 'none';
@@ -326,33 +320,32 @@ function loadRegisterPage () {
         registerPageContentFormNextBtn.style.opacity = '0.7';
         registerPageContentFormNextBtn.style.cursor = 'not-allowed'
 
-
         window.scrollTo(0, 0);
     }, 500);
 }
 
-headerRegisterBtn.addEventListener('click', function(e) {
+headerRegisterBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadRegisterPage();
     
-    // set auto select for this input
-    setTimeout(function () {
+    // set auto focus for this input
+    setTimeout(() => {
         registerPageContentFormInput.focus();
     }, 500)
 });
 
-headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', function(e) {
+headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadRegisterPage();
 
-    // set auto select for this input
-    setTimeout(function () {
+    // set auto focus for this input
+    setTimeout(() => {
         registerPageContentFormInput.focus();
     }, 500)
 });
@@ -445,15 +438,17 @@ getAndUpdateConfirmationCodes();
 
 var checkValidPhoneNumberRegister = false;
 
-registerPageContentFormInput.addEventListener('keydown', function (e) {
+registerPageContentFormInput.addEventListener('keydown', (e) => {
     if (e.code == 'Enter') {
         e.preventDefault();
     }
 
-    setTimeout(function() {
-        // If enter other keys except 'Enter'
+    setTimeout(() => {
+        
         if (e.code != 'Enter') {
+
             if (e.target.value.length == 10) { 
+
                 // 1.check value[0] = 0 && value[1] != 0 ??
                 var checkFirstAndSecondLetter = (
                     e.target.value[0].charCodeAt() == 48
@@ -462,7 +457,8 @@ registerPageContentFormInput.addEventListener('keydown', function (e) {
                 ); 
     
                 // 2.check value[2] -> value[9] all is a integer character in range 0-9 ??
-                checkValidPhoneNumberRegister = e.target.value.slice(2).split('').every(function (a) {
+                var newPhoneNumber = e.target.value.slice(2).split('');
+                checkValidPhoneNumberRegister = newPhoneNumber.every((a) => {
                     return (a.match(/[0-9]/g) && a.match(/[0-9]/g).length == 1);
                 })
 
@@ -497,7 +493,7 @@ registerPageContentFormInput.addEventListener('keydown', function (e) {
             }
         }
         else {
-            if (checkValidPhoneNumberRegister == false) {
+            if (! checkValidPhoneNumberRegister) {
                 // show error
                 registerPageContentFormInput.classList.add('register-page__content-form__input--invalid-phone-number');
                 registerPageContentFormInputTextInvalidPhoneNumber.style.display = 'block';
@@ -510,7 +506,7 @@ registerPageContentFormInput.addEventListener('keydown', function (e) {
     }, 0);
 });
 
-registerPageContentFormNextBtn.addEventListener('mouseover', function (e) {
+registerPageContentFormNextBtn.addEventListener('mouseover', (e) => {
     if (e.target.style.cursor == 'pointer') {
         e.target.style.opacity = '0.92';
     }
@@ -519,7 +515,7 @@ registerPageContentFormNextBtn.addEventListener('mouseover', function (e) {
     }
 });
 
-registerPageContentFormNextBtn.addEventListener('mouseleave', function (e) {
+registerPageContentFormNextBtn.addEventListener('mouseleave', (e) => {
     if (e.target.style.cursor == 'pointer') {
         e.target.style.opacity = '1';
     }
@@ -528,15 +524,15 @@ registerPageContentFormNextBtn.addEventListener('mouseleave', function (e) {
     }
 });
 
-registerPageContentFormNextBtn.addEventListener('click', function(e) {
+registerPageContentFormNextBtn.addEventListener('click', (e) => {
     e.preventDefault();
     
-    if (checkValidPhoneNumberRegister == true) {
+    if (checkValidPhoneNumberRegister) {
         // Event mousedown 
         var currentInputValue = registerPageContentFormInput.value;
         registerPageContentFormInput.value = `(+84) ${currentInputValue.slice(-9)}`;
 
-        setTimeout(function () {
+        setTimeout(() => {
             registerPageContent.style.display = 'none';
             registerPageConfirmation.style.display = 'flex';
 
@@ -563,19 +559,20 @@ registerPageContentFormNextBtn.addEventListener('click', function(e) {
             registerPageConfirmationFirstFormContentConfirmBtn.style.cursor = 'not-allowed';
 
             // random confirmation code
-            setTimeout(function () {
+            setTimeout(() => {
                 currentConfirmationCode = confirmationCodes[Math.floor(Math.random() * confirmationCodes.length)];
                 alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
             }, 800);
 
-            // set auto select for this input
-            setTimeout(function () {
+            // set auto focus for this input
+            setTimeout(() => {
                 registerPageConfirmationFirstFormContentInput.focus();
             }, 500)
+            
         }, 500);
 
 
-        setTimeout(function () {
+        setTimeout(() => {
             window.scrollTo(0, 0);
         }, 200)
     }
@@ -584,22 +581,23 @@ registerPageContentFormNextBtn.addEventListener('click', function(e) {
     }
 });
 
-registerPageContentFormNextBtn.addEventListener('mousedown', function(e) {
+registerPageContentFormNextBtn.addEventListener('mousedown', (e) => {
     e.preventDefault();
-    if (checkValidPhoneNumberRegister == true) {
+
+    if (checkValidPhoneNumberRegister) {
         var currentInputValue = registerPageContentFormInput.value;
         registerPageContentFormInput.value = `(+84) ${currentInputValue.slice(-9)}`;
     }
 });
     
 // Related actions
-registerPageContentFormAskForLoginBtn.addEventListener('click', function(e) {
+registerPageContentFormAskForLoginBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    setTimeout(function() {
+    setTimeout(() => {
         loadLoginPage();
 
-        // set auto select for this input
-        setTimeout(function () {
+        // set auto focus for this input
+        setTimeout(() => {
             loginPageContentFormFirstInput.focus();
         }, 500)
 
@@ -607,18 +605,18 @@ registerPageContentFormAskForLoginBtn.addEventListener('click', function(e) {
     }, 200)
 });
 
-registerPageConfirmationFirstFormContentHelpResendBtn.addEventListener('click', function(e) {
+registerPageConfirmationFirstFormContentHelpResendBtn.addEventListener('click', (e) => {
     e.preventDefault();
     registerPageConfirmationFirstFormContentInput.value = '';
 
     // random confirmation code
-    setTimeout(function () {
+    setTimeout(() => {
         currentConfirmationCode = confirmationCodes[Math.floor(Math.random() * confirmationCodes.length)];
         alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
     }, 1000);
 
-    // set auto select for this input
-    setTimeout(function () {
+    // set auto focus for this input
+    setTimeout(() => {
         registerPageConfirmationFirstFormContentInput.focus();
     }, 500)
 });
@@ -642,7 +640,7 @@ registerPageConfirmationFirstFormContentHelpOtherWayBtn.addEventListener('click'
 
 //#region ---> 1ST CONFIRMATION
 
-registerPageConfirmationFirstFormHeaderBackBtn.addEventListener('click', function (e) {
+registerPageConfirmationFirstFormHeaderBackBtn.addEventListener('click', (e) => {
     e.preventDefault()
 
     loadRegisterPage();
@@ -655,21 +653,20 @@ registerPageConfirmationFirstFormHeaderBackBtn.addEventListener('click', functio
     unsetRegisterPageConfirmationStepLineActive(4);
     unsetRegisterPageConfirmationStepItemActive(5);
 
-    setTimeout(function () {
+    setTimeout(() => {
         window.scrollTo(0, 0);
     },200)
 });
 
-registerPageConfirmationFirstFormContentInput.addEventListener('keydown', function (e) {
-    // if enter 'Enter'
-    if (e.keyCode == 13) {
+registerPageConfirmationFirstFormContentInput.addEventListener('keydown', (e) => {
+
+    if (e.code == "Enter") {
         e.preventDefault();
     }
 
-    setTimeout(function () {
+    setTimeout(() => {
         if (e.target.value.length == 6) {
-            // if enter 'Enter'
-            if (e.keyCode == 13) {
+            if (e.code == "Enter") {
                 registerPageConfirmationFirstFormContentConfirmBtn.click();
             }
 
@@ -678,8 +675,7 @@ registerPageConfirmationFirstFormContentInput.addEventListener('keydown', functi
             registerPageConfirmationFirstFormContentConfirmBtn.style.cursor = 'pointer';
         }
         else {
-            // if enter 'Enter'
-            if (e.keyCode == 13) {
+            if (e.code == "Enter") {
                 e.preventDefault();
             }
 
@@ -692,12 +688,14 @@ registerPageConfirmationFirstFormContentInput.addEventListener('keydown', functi
 
 
 //#region Check for next step
-registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('click', function(e) {
+registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    setTimeout(function() {
+    setTimeout(() => {
         if (registerPageConfirmationFirstFormContentInput.value.length == 6) {
+
             if (registerPageConfirmationFirstFormContentInput.value == currentConfirmationCode) {
+
                 // set-unset registerPageConfirmationStepItemActive, registerPageConfirmationStepLineActive
                 setRegisterPageConfirmationStepItemActive(1);
                 setRegisterPageConfirmationStepLineActive(2);
@@ -723,7 +721,7 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('click', fun
 //#endregion
 
 
-registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseover', function (e) {
+registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseover', (e) => {
     if (e.target.style.cursor == 'pointer') {
         e.target.style.opacity = '0.92';
     }
@@ -732,7 +730,7 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseover',
     }
 });
 
-registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseleave', function (e) {
+registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseleave', (e) => {
     if (e.target.style.cursor == 'pointer') {
         e.target.style.opacity = '1';
     }
@@ -751,7 +749,7 @@ registerPageConfirmationSecondFormContentInput.value = "Wa.3n.en,mr6@YwT";
 // set for mouseover - mouseleave action
 registerPageConfirmationSecondFormContentRegisterBtn.style.cursor = 'pointer';
 
-registerPageConfirmationSecondFormContentInputStatusBtn.addEventListener('click', function(e) {
+registerPageConfirmationSecondFormContentInputStatusBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     if (registerPageConfirmationSecondFormContentInput.type == 'text') {
@@ -768,27 +766,28 @@ registerPageConfirmationSecondFormContentInputStatusBtn.addEventListener('click'
     }   
 });
 
-// Because default value ('Wa.3n.en,mr6@YwT') is true
+// Because default value ('Wa.3n.en,mr6@YwT') is true, so...
 var checkForRegisterPageConfirmationFormContentThirdStep = true;
 
-//#region EventListener
-registerPageConfirmationSecondFormContentInput.addEventListener('keydown', function (e) {
+//#region EventListeners
+registerPageConfirmationSecondFormContentInput.addEventListener('keydown', (e) => {
     var check1 = false, check2 = false, check3 = false;
     
     if (e.code == 'Enter') {
         e.preventDefault();
     }
 
-    setTimeout(function() {
-        // If enter 'Enter'
+    setTimeout(() => {
+        
         if (e.code != 'Enter') {
+
             // 1.Check if each character is 'lowercase character' ?
-            check1 = e.target.value.split('').some(function (a) {
+            check1 = e.target.value.split('').some((a) => {
                 return (a.match(/[a-z]/g) && a.match(/[a-z]/g).length == 1);
             });
     
             // 2.Check if each character is 'uppercase character' ?
-            check2 = e.target.value.split('').some(function (a) {
+            check2 = e.target.value.split('').some((a) => {
                 return (a.match(/[A-Z]/g) && a.match(/[A-Z]/g).length == 1);
             });
             
@@ -859,30 +858,23 @@ registerPageConfirmationSecondFormContentInput.addEventListener('keydown', funct
 });
 
 
-registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('mouseover', function (e) {
-    if (e.target.style.cursor == 'pointer') {
-        e.target.style.opacity = '0.92';
-    }
-    else {
-        e.preventDefault();
-    }
+registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('mouseover', (e) => {
+    (e.target.style.cursor == 'pointer') ? e.target.style.opacity = '0.92' 
+        : e.preventDefault();
 });
 
-registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('mouseleave', function (e) {
-    if (e.target.style.cursor == 'pointer') {
-        e.target.style.opacity = '1';
-    }
-    else {
-        e.preventDefault();
-    }
+registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('mouseleave', (e) => {
+    (e.target.style.cursor == 'pointer') ? e.target.style.opacity = '1'
+        : e.preventDefault();
 });
 
 
-registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', function(e) {
+registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', (e) => {
     e.preventDefault();
     var countdownInterval;
 
     if (checkForRegisterPageConfirmationFormContentThirdStep == true) {
+
         // -> Add the account user just registered to localStorage
         var userAccount = {
             phoneNumber: registerPageContentFormInput.value,
@@ -891,18 +883,18 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', f
         setConfig('userAccount', userAccount);
 
 
-        registerPageConfirmationThirdFormContentBackToShopeeBtn.addEventListener("click", function(e) {
+        registerPageConfirmationThirdFormContentBackToShopeeBtn.addEventListener("click", (e) => {
             e.preventDefault();
 
             // stop setInterval()
             clearInterval(countdownInterval);
 
-            setTimeout(function() {
+            setTimeout(() => {
                 loadInitialWebsiteNoModal();
             }, 1000);
         });
 
-        setTimeout(function () {
+        setTimeout(() => {
             // set-unset registerPageConfirmationStepItemActive, registerPageConfirmationStepLineActive
             setRegisterPageConfirmationStepItemActive(1);
             setRegisterPageConfirmationStepLineActive(2);
@@ -921,7 +913,7 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', f
             registerPageConfirmationThirdFormContentSecondNotifySecondsNumber.innerHTML = currentSecond;
 
             // Countdown
-            countdownInterval = setInterval(function() {
+            countdownInterval = setInterval(() => {
                 registerPageConfirmationThirdFormContentSecondNotifySecondsNumber.innerHTML = currentSecond--;
 
                 if (currentSecond == 0) {
@@ -938,7 +930,7 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', f
     }
 });
 
-registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', function (e) {
+registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     // set-unset registerPageConfirmationStepItemActive, registerPageConfirmationStepLineActive
@@ -957,8 +949,8 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', functi
     registerPageConfirmationFirstFormContentConfirmBtn.style.opacity = '0.7';
     registerPageConfirmationFirstFormContentConfirmBtn.style.cursor = 'not-allowed';
 
-    // set auto select for this input
-    setTimeout(function () {
+    // set auto focus for this input
+    setTimeout(() => {
         registerPageConfirmationFirstFormContentInput.focus();
     }, 500)
 });
@@ -972,7 +964,7 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', functi
 
 //#region (f) loadLoginPage, loginSuccess
 function loadLoginPage () {
-    setTimeout(function () {
+    setTimeout(() => {
         loginPage.style.display = 'block';
         registerPage.style.display = 'none';
 
@@ -1044,45 +1036,45 @@ function loginSuccess () {
 //#endregion
 
 //#region click to Login / Logout / Register
-headerLoginBtn.addEventListener('click', function(e) {
+headerLoginBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadLoginPage();
 
-    // set auto select for this input
-    setTimeout(function () {
+    // set auto focus for this input
+    setTimeout(() => {
         loginPageContentFormFirstInput.focus();
     }, 500)
 });
 
-headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', function(e) {
+headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', (e) => {
     e.preventDefault();
     // get current website offsetHeight
     initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadLoginPage();
 
-    // set auto select for this input
-    setTimeout(function () {
+    // set auto focus for this input
+    setTimeout(() => {
         loginPageContentFormFirstInput.focus();
     }, 500)
 });
 
-headerLogoutBtn.onclick = function () {
-    setTimeout(function() {
+headerLogoutBtn.onclick = () => {
+    setTimeout(() => {
         setConfig('isLoggedIn', false);
         loadInitialWebsiteNoModal();
     }, 1000);
 }
 
-loginPageContentFormAskForRegisterRegisterBtn.addEventListener('click', function (e) {
+loginPageContentFormAskForRegisterRegisterBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    setTimeout(function () {
+    setTimeout(() => {
         loadRegisterPage();
 
-        // set auto select for this input
-        setTimeout(function () {
+        // set auto focus for this input
+        setTimeout(() => {
             registerPageContentFormInput.focus();
         }, 500)
 
@@ -1091,33 +1083,17 @@ loginPageContentFormAskForRegisterRegisterBtn.addEventListener('click', function
 })
 //#endregion click to Login / Logout / Register
 
-//#region *Not handle these buttons, just preventDefault
-loginPageContentFormUnderLoginBtnForgetPasswordBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-});
-loginPageContentFormUnderLoginBtnLoginWithSMS.addEventListener('click', function(e) {
-    e.preventDefault();
-});
-loginPageContentFormOtherWaysFacebook.addEventListener('click', function(e) {
-    e.preventDefault();
-});
-loginPageContentFormOtherWaysGoogle.addEventListener('click', function(e) {
-    e.preventDefault();
-});
-loginPageContentFormOtherWaysApple.addEventListener('click', function(e) {
-    e.preventDefault();
-});
-//#endregion
-
-//#region EventListener
-loginPageContentFormFirstInput.addEventListener('keydown', function (e) {
+//#region EventListeners
+loginPageContentFormFirstInput.addEventListener('keydown', (e) => {
     if (e.code == 'Enter') {
         e.preventDefault();
     }
 
-    setTimeout(function () {
+    setTimeout(() => {
         if (e.code != 'Enter') {
+
             if (e.target.value.length == 10) { 
+
                 // 1.check value[0] = 0 && value[1] != 0 ??
                 var checkFirstAndSecondLetter = (
                     e.target.value[0].charCodeAt() == 48
@@ -1126,16 +1102,19 @@ loginPageContentFormFirstInput.addEventListener('keydown', function (e) {
                 ); 
     
                 // 2.check value[2] -> value[9] all is a integer character in range 0-9 ??
-                checkValidPhoneNumberLogin = e.target.value.slice(2).split('').every(function (a) {
+                var newPhoneNumber = e.target.value.slice(2).split('');
+                checkValidPhoneNumberLogin = newPhoneNumber.every((a) => {
                     return (a.match(/[0-9]/g) && a.match(/[0-9]/g).length == 1);
                 })
 
                 // 3.checkValidPhoneNumberLogin value
                 if (checkFirstAndSecondLetter && checkValidPhoneNumberLogin) {
                     checkValidPhoneNumberLogin = true;
+
                     // hide error
                     loginPageContentFormFirstInputPartInvalid.style.display = 'none';
                     loginPageContentFormFirstInput.classList.remove('login-page__content-form__first-input--invalid');
+
                     if (checkValidPasswordLogin) {
                         // allowed button
                         loginPageContentFormLoginBtn.style.opacity = '1';
@@ -1144,9 +1123,11 @@ loginPageContentFormFirstInput.addEventListener('keydown', function (e) {
                 } 
                 else {
                     checkValidPhoneNumberLogin = false;
+
                     // show error
                     loginPageContentFormFirstInputPartInvalid.style.display = 'block';
                     loginPageContentFormFirstInput.classList.add('login-page__content-form__first-input--invalid');
+
                     // not-allowed button
                     loginPageContentFormLoginBtn.style.opacity = '0.7';
                     loginPageContentFormLoginBtn.style.cursor = 'not-allowed';
@@ -1154,20 +1135,24 @@ loginPageContentFormFirstInput.addEventListener('keydown', function (e) {
             } 
             else {
                 checkValidPhoneNumberLogin = false;
+
                 // show error
                 loginPageContentFormFirstInputPartInvalid.style.display = 'block';
                 loginPageContentFormFirstInput.classList.add('login-page__content-form__first-input--invalid');
+
                 // not-allowed button
                 loginPageContentFormLoginBtn.style.opacity = '0.7';
                 loginPageContentFormLoginBtn.style.cursor = 'not-allowed';
             }
         }
         else {
-            if (checkValidPhoneNumberLogin == false) {
+            if (! checkValidPhoneNumberLogin) {
                 e.preventDefault();
+
                 // show error
                 loginPageContentFormFirstInputPartInvalid.style.display = 'block';
                 loginPageContentFormFirstInput.classList.add('login-page__content-form__first-input--invalid');
+
                 // not-allowed button
                 loginPageContentFormLoginBtn.style.opacity = '0.7';
                 loginPageContentFormLoginBtn.style.cursor = 'not-allowed';
@@ -1192,19 +1177,21 @@ loginPageContentFormFirstInput.addEventListener('keydown', function (e) {
     }, 0);
 })
 
-loginPageContentFormSecondInput.addEventListener('keydown', function (e) {
+loginPageContentFormSecondInput.addEventListener('keydown', (e) => {
     if (e.code == 'Enter') {
         e.preventDefault();
     }
 
-    setTimeout(function() {
+    setTimeout(() => {
         if (e.code != 'Enter') {
             if (e.target.value.length >= 8 && e.target.value.length <= 16) {
                 checkValidPasswordLogin = true;
+
                 //hide error
                 loginPageContentFormSecondInputPartInvalid.style.display = 'none';
                 loginPageContentFormSecondInput.classList.remove('login-page__content-form__second-input--invalid');
                 loginPageContentFormSecondInputMain.classList.remove('login-page__content-form__second-input-main--invalid');
+
                 if (checkValidPhoneNumberLogin) {
                     // allowed button
                     loginPageContentFormLoginBtn.style.opacity = '1';
@@ -1213,23 +1200,26 @@ loginPageContentFormSecondInput.addEventListener('keydown', function (e) {
             }
             else {
                 checkValidPasswordLogin = false;
+
                 //show error
                 loginPageContentFormSecondInputPartInvalid.style.display = 'block';
                 loginPageContentFormSecondInput.classList.add('login-page__content-form__second-input--invalid');
                 loginPageContentFormSecondInputMain.classList.add('login-page__content-form__second-input-main--invalid');
+
                 // not-allowed button
                 loginPageContentFormLoginBtn.style.opacity = '0.7';
                 loginPageContentFormLoginBtn.style.cursor = 'not-allowed';
             }
         }
         else {
-            if (checkValidPasswordLogin == false) {
+            if (! checkValidPasswordLogin) {
                 e.preventDefault();
+                
                 //show error
-
                 loginPageContentFormSecondInputPartInvalid.style.display = 'block';
                 loginPageContentFormSecondInput.classList.add('login-page__content-form__second-input--invalid');
                 loginPageContentFormSecondInputMain.classList.add('login-page__content-form__second-input-main--invalid');
+
                 // not-allowed button
                 loginPageContentFormLoginBtn.style.opacity = '0.7';
                 loginPageContentFormLoginBtn.style.cursor = 'not-allowed';
@@ -1254,7 +1244,7 @@ loginPageContentFormSecondInput.addEventListener('keydown', function (e) {
     }, 0);
 });
 
-loginPageContentFormSecondInputStatusBtn.addEventListener('click', function(e) {
+loginPageContentFormSecondInputStatusBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     if (loginPageContentFormSecondInput.type == 'text') {
@@ -1272,7 +1262,7 @@ loginPageContentFormSecondInputStatusBtn.addEventListener('click', function(e) {
 });
 
 
-loginPageContentFormLoginBtn.addEventListener('click', function(e) {
+loginPageContentFormLoginBtn.addEventListener('click', (e) => {
     e.preventDefault();
     
     if (checkValidPhoneNumberLogin && checkValidPasswordLogin) {
@@ -1287,24 +1277,21 @@ loginPageContentFormLoginBtn.addEventListener('click', function(e) {
             loginPageContentForm.style.height = '48.2rem';
             loginPageContentFormNotifyError.style.display = 'none';
 
-            setTimeout(function () {
+            setTimeout(() => {
                 setConfig('isLoggedIn', true);
                 loginSuccess();
             }, 1500);
         }
         else {
-            setTimeout(function () {
+            setTimeout(() => {
                 loginPageContentForm.style.height = '55.3rem';
                 loginPageContentFormNotifyError.style.display = 'flex';
             }, 500);
         }
     }
-    else {
-        e.preventDefault();
-    }
 });
 
-loginPageContentFormLoginBtn.addEventListener('mousedown', function(e) {
+loginPageContentFormLoginBtn.addEventListener('mousedown', (e) => {
     e.preventDefault();
     if (checkValidPhoneNumberLogin && checkValidPasswordLogin) {
         var currentPhoneNumberInputValue = loginPageContentFormFirstInput.value;
@@ -1312,30 +1299,41 @@ loginPageContentFormLoginBtn.addEventListener('mousedown', function(e) {
     }
 });
 
-loginPageContentFormLoginBtn.addEventListener('mouseover', function (e) {
-    if (e.target.style.cursor == 'pointer') {
-        e.target.style.opacity = '0.92';
-    }
-    else {
-        e.preventDefault();
-    }
+loginPageContentFormLoginBtn.addEventListener('mouseover', (e) => {
+    (e.target.style.cursor == 'pointer') ? e.target.style.opacity = '0.92'
+        : e.preventDefault();
 });
 
-loginPageContentFormLoginBtn.addEventListener('mouseleave', function (e) {
-    if (e.target.style.cursor == 'pointer') {
-        e.target.style.opacity = '1';
-    }
-    else {
-        e.preventDefault();
-    }
+loginPageContentFormLoginBtn.addEventListener('mouseleave', (e) => {
+    (e.target.style.cursor == 'pointer') ? e.target.style.opacity = '1'
+        : e.preventDefault();
 });
 //#endregion
+
+//#region *Not handle these buttons, just preventDefault them
+loginPageContentFormUnderLoginBtnForgetPasswordBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+loginPageContentFormUnderLoginBtnLoginWithSMS.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+loginPageContentFormOtherWaysFacebook.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+loginPageContentFormOtherWaysGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+loginPageContentFormOtherWaysApple.addEventListener('click', (e) => {
+    e.preventDefault();
+});
 //#endregion
 
 //#endregion
 
+//#endregion
 
-//#region WEBSITE WHEN LOGGED IN (UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION, ...)
+
+//#region HANDLE DATA, UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION,...
     
 //#region headerSearchFrameInput, headerSearchHistory - variable declaration
 var headerSearchFrameInput = $('.header__search-frame__input');
@@ -1357,7 +1355,7 @@ function updateInDOMHeaderSearchHistoryList () {
 
     headerSearchHistoryList.innerHTML = '';
 
-    var headerSearchHistoryItems = headerSearchHistoryListInfo.map(function (headerSearchHistoryListItem) {
+    var headerSearchHistoryItems = headerSearchHistoryListInfo.map((headerSearchHistoryListItem) => {
         var liTag = `<li class="header__search-history-item">
             <a href="${headerSearchHistoryListItem.href}" class="header__search-history-item__link">${headerSearchHistoryListItem.innerHTML}</a>
         </li>`;
@@ -1371,12 +1369,13 @@ function updateInDOMHeaderSearchHistoryList () {
 function addAndUpdateHeaderSearchHistoryListInfo (data) {
     var length = systemConfig.headerSearchHistoryListInfo.length;
 
-    var checkDuplication = headerSearchHistoryListInfo.some(function (item) {
+    var checkDuplication = headerSearchHistoryListInfo.some((item) => {
         return (item.innerHTML == data.innerHTML);
     });
     
     // if new item no match with items in old array
     if (! checkDuplication) {
+        
         if (length == 10) {
             // delete the last element from array
             headerSearchHistoryListInfo.pop();
@@ -1402,7 +1401,8 @@ updateInDOMHeaderSearchHistoryList();
 
 //#region (f) removeHeaderSearchHistoryItemLinksHover
 function removeHeaderSearchHistoryItemLinksHover () {
-    headerSearchHistoryItemLinks.forEach(function (headerSearchHistoryItemLink) {
+    headerSearchHistoryItemLinks.forEach((headerSearchHistoryItemLink) => {
+
         if (headerSearchHistoryItemLink.classList.contains('header__search-history-item__link--hover')) {
             headerSearchHistoryItemLink.classList.remove('header__search-history-item__link--hover');
         }
@@ -1410,24 +1410,22 @@ function removeHeaderSearchHistoryItemLinksHover () {
 }
 //#endregion
 
-//#region headerSearchFrameInput onclick(), onblur()
-headerSearchFrameInput.onclick = function () {
+//#region EventListeners
+headerSearchFrameInput.addEventListener('click', () => {
     headerSearchHistory.style.display = 'block';
-}
+});
 
-headerSearchFrameInput.onblur = function () {
+headerSearchFrameInput.addEventListener('blur', () => {
     // return default search option index, remove hover on all of item
     headerSearchHistoryItemIndex = 0;
     removeHeaderSearchHistoryItemLinksHover();
 
-    setTimeout(function() {
+    setTimeout(() => {
         headerSearchHistory.style.display = 'none';
     }, 200);
-}
-//#endregion
+});
 
-//#region headerSearchFrameInput onkeydown()
-headerSearchFrameInput.addEventListener('keydown', function(e) {
+headerSearchFrameInput.addEventListener('keydown', (e) => {
     // update nodelist headerSearchHistoryItemLinks
     headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
 
@@ -1485,11 +1483,10 @@ headerSearchFrameInput.addEventListener('keydown', function(e) {
         }
     }
 });
-//#endregion
 
-//#region headerSearchFrameBtn onclick() 
-headerSearchFrameBtn.addEventListener('click', function(e) {
+headerSearchFrameBtn.addEventListener('click', (e) => {
     if (headerSearchFrameInput.value != '') {
+
         var innerHTML = headerSearchFrameInput.value;
         var href = `https://shopee.vn/search?keyword=${innerHTML}`;
 
@@ -1500,7 +1497,7 @@ headerSearchFrameBtn.addEventListener('click', function(e) {
 
         // update array headerSearchHistoryListInfo
         addAndUpdateHeaderSearchHistoryListInfo(data);
-        // update in DOM
+        
         updateInDOMHeaderSearchHistoryList();
         
         // update headerSearchFrameBtn.href and take the default action (go new page)
@@ -1518,7 +1515,7 @@ function updateInDOMHeaderSearchHistoryKeywordsList () {
             return response.json();
         })
         .then(function(datas) {
-            var aTags = datas.headerSearchHistoryKeywordsListInfo.map(function (data) {
+            var aTags = datas.headerSearchHistoryKeywordsListInfo.map((data) => {
                 return `<a class="header__search-history-keywords-item" 
                     href="${data.href}">${data.innerHTML}</a>`;
             });
@@ -1536,11 +1533,10 @@ var headerNotificationPopupWhenLoggedInList =
 
 function updateInDOMHeaderNotificationPopupWhenLoggedInList () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
-            var liTags = datas.headerNotificationPopupWhenLoggedInListInfo.map(function (data) {
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var liTags = datas.headerNotificationPopupWhenLoggedInListInfo.map((data) => {
                 return `
                     <li class="header__notification__popup--when-logged-in__item">
                         <a href="${data.href}" class="header__notification__popup--when-logged-in__link">
@@ -1554,6 +1550,7 @@ function updateInDOMHeaderNotificationPopupWhenLoggedInList () {
                         </a>
                     </li>`;
             });
+
             headerNotificationPopupWhenLoggedInList.innerHTML = liTags.join('');
         })
 }
@@ -1564,9 +1561,9 @@ updateInDOMHeaderNotificationPopupWhenLoggedInList();
 //#region header__notification, header__notification__quantity onmouseleave()
 var headerNotification = $('.header__notification');
 
-headerNotification.onmouseleave = function () {
+headerNotification.addEventListener('mouseleave', () => {
     headerNotificationQuantity.style.display = 'none';
-}
+});
 //#endregion
 
 
@@ -1578,93 +1575,101 @@ var sliderMainMotionPartQueueItems = $$('.slider__main__motion-part__queue-item'
 var sliderMainMotionPartPreviousBtn = $('.slider__main__motion-part__previous-btn');
 var sliderMainMotionPartNextBtn = $('.slider__main__motion-part__next-btn');
 var sliderMainMotionPartQueueItemCurrentIndex = 0;
+var sliderMainMotionPartLinkInfo = [];
 
-var sliderMainMotionPartImg__hrefs = [
-    'https://shopee.vn/m/freeship-xtra',
-    'https://shopee.vn/m/8-8',
-    'https://shopee.vn/m/khung-gio-san-sale',
-    'https://shopee.vn/provence',
-    'https://shopee.vn/uu-dai-aptamil',
-    'https://shopee.vn/m/o-nha-khong-kho-co-shopee-lo',
-    'https://shopee.vn/m/sieu-sale-nganh-hang',
-    'https://shopee.vn/m/sieu-sale-fmcg',
-    'https://shopee.vn/m/mkbdaily-fmcg',
-    'https://shopee.vn/m/mua-hang-nhan-xu',
-    'https://shopee.vn/m/thoi-trang-mang-xa-hoi-2807',
-    'https://shopee.vn/m/mum-club'
-]; 
+function handleInPartSliderMainMotionPart () {
+    // get data in file db.json and assign to array sliderMainMotionPartLinkInfo
+    fetch("db.json")
+        .then((response) => response.json())
+
+        .then((datas) => {
+            sliderMainMotionPartLinkInfo = datas.sliderMainMotionPartLinkInfo;
+        })
 
 
-if (true) {
-    sliderMainMotionPartPreviousBtn.onclick = function () {
-        if(sliderMainMotionPartQueueItemCurrentIndex == 0) {   
-            sliderMainMotionPartQueueItems[0].classList.remove('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItems[11].classList.add('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItemCurrentIndex = 11;
-        } else {
-            sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex].classList.remove('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex-1].classList.add('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItemCurrentIndex--;    
+    // implement after get data done
+    setTimeout(() => {
+        var len = sliderMainMotionPartLinkInfo.length;
+
+        // Event listeners
+        sliderMainMotionPartPreviousBtn.addEventListener('click', () => {
+            if (sliderMainMotionPartQueueItemCurrentIndex == 0) {   
+
+                sliderMainMotionPartQueueItems[0].classList.remove('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItems[len-1].classList.add('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItemCurrentIndex = len-1;
+            } 
+            else {
+                sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex].classList.remove('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex-1].classList.add('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItemCurrentIndex--;    
+            }
+
+            sliderMainMotionPartImg.setAttribute('src', sliderMainMotionPartLinkInfo[sliderMainMotionPartQueueItemCurrentIndex].image);
+            sliderMainMotionPartLink.setAttribute('href', sliderMainMotionPartLinkInfo[sliderMainMotionPartQueueItemCurrentIndex].href);
+        });
+
+        sliderMainMotionPartNextBtn.addEventListener('click', () => {
+            if (sliderMainMotionPartQueueItemCurrentIndex == len-1) {  
+
+                sliderMainMotionPartQueueItems[len-1].classList.remove('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItems[0].classList.add('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItemCurrentIndex = 0;
+            } 
+            else {
+                sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex].classList.remove('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex+1].classList.add('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItemCurrentIndex++;   
+            }
+
+            sliderMainMotionPartImg.setAttribute('src', sliderMainMotionPartLinkInfo[sliderMainMotionPartQueueItemCurrentIndex].image);
+            sliderMainMotionPartLink.setAttribute('href', sliderMainMotionPartLinkInfo[sliderMainMotionPartQueueItemCurrentIndex].href);
+        });
+
+        for (var sliderMainMotionPartQueueItem of sliderMainMotionPartQueueItems) {
+
+            sliderMainMotionPartQueueItem.addEventListener('click', function () {
+                // get parent's queue
+                var parent = this.parentNode;
+
+                // get this's index in parent's queue
+                var index = Array.prototype.indexOf.call(parent.children, this);
+
+                // remove old, add new
+                sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex].classList.remove('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItems[index].classList.add('slider__main__motion-part__queue-item--current');
+                
+                // update img, href
+                sliderMainMotionPartImg.setAttribute('src', sliderMainMotionPartLinkInfo[index].image);
+                sliderMainMotionPartLink.setAttribute('href', sliderMainMotionPartLinkInfo[index].href);
+                
+                sliderMainMotionPartQueueItemCurrentIndex = index;
+            });
         }
-        sliderMainMotionPartImg.setAttribute('src', 
-        `./assests/img/container/slider/slider__main/motion_${sliderMainMotionPartQueueItemCurrentIndex+1}.png`);
-        sliderMainMotionPartLink.setAttribute('href', `${sliderMainMotionPartImg__hrefs[sliderMainMotionPartQueueItemCurrentIndex]}`);
-    }
 
-    sliderMainMotionPartNextBtn.onclick = function () {
-        if(sliderMainMotionPartQueueItemCurrentIndex == 11) {   
-            sliderMainMotionPartQueueItems[11].classList.remove('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItems[0].classList.add('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItemCurrentIndex = 0;
-        } else {
-            sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex].classList.remove('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex+1].classList.add('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItemCurrentIndex++;   
-        }
-        sliderMainMotionPartImg.setAttribute('src', 
-        `./assests/img/container/slider/slider__main/motion_${sliderMainMotionPartQueueItemCurrentIndex+1}.png`);
-        sliderMainMotionPartLink.setAttribute('href', `${sliderMainMotionPartImg__hrefs[sliderMainMotionPartQueueItemCurrentIndex]}`);
-    }
+        // auto increase index and change suit image
+        setInterval (() => {  
+            if (sliderMainMotionPartQueueItemCurrentIndex < len-1) {
 
-    for(var sliderMainMotionPartQueueItem of sliderMainMotionPartQueueItems) {
-        sliderMainMotionPartQueueItem.onclick = function () {
-            // get parent's queue
-            var parent = this.parentNode;
-            // get this's index in parent's queue
-            var index = Array.prototype.indexOf.call(parent.children, this);
+                sliderMainMotionPartQueueItemCurrentIndex++
+                sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex-1].classList.remove('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex].classList.add('slider__main__motion-part__queue-item--current');
+            } 
+            else {
+                sliderMainMotionPartQueueItemCurrentIndex = 0;
+                sliderMainMotionPartQueueItems[len-1].classList.remove('slider__main__motion-part__queue-item--current');
+                sliderMainMotionPartQueueItems[0].classList.add('slider__main__motion-part__queue-item--current');
+            }
 
-            // remove old, add new
-            sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex].classList.remove('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItems[index].classList.add('slider__main__motion-part__queue-item--current');
-            
-            // update img, href
-            sliderMainMotionPartImg.setAttribute('src', 
-            `./assests/img/container/slider/slider__main/motion_${index+1}.png`);
-            sliderMainMotionPartLink.setAttribute('href', `${sliderMainMotionPartImg__hrefs[index]}`);
-            
-            // update sliderMainMotionPartQueueItemCurrentIndex
-            sliderMainMotionPartQueueItemCurrentIndex = index;
-        }
-    }
+            sliderMainMotionPartImg.setAttribute('src', sliderMainMotionPartLinkInfo[sliderMainMotionPartQueueItemCurrentIndex].image);
+            sliderMainMotionPartLink.setAttribute('href', sliderMainMotionPartLinkInfo[sliderMainMotionPartQueueItemCurrentIndex].href);
 
-//#region increase index automatically (& change suitable image)
-    setInterval (function () {  
-        if(sliderMainMotionPartQueueItemCurrentIndex < 11) {
-            sliderMainMotionPartQueueItemCurrentIndex++
-            sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex-1].classList.remove('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItems[sliderMainMotionPartQueueItemCurrentIndex].classList.add('slider__main__motion-part__queue-item--current');
-        } else {
-            sliderMainMotionPartQueueItemCurrentIndex = 0;
-            sliderMainMotionPartQueueItems[11].classList.remove('slider__main__motion-part__queue-item--current');
-            sliderMainMotionPartQueueItems[0].classList.add('slider__main__motion-part__queue-item--current');
-        }
-        sliderMainMotionPartImg.setAttribute('src', 
-        `./assests/img/container/slider/slider__main/motion_${sliderMainMotionPartQueueItemCurrentIndex+1}.png`);
-        sliderMainMotionPartLink.setAttribute('href', `${sliderMainMotionPartImg__hrefs[sliderMainMotionPartQueueItemCurrentIndex]}`);
-    }, 5000);
-    //#endregion
+        }, 5000);
+
+    }, 1000);
 }
 
+handleInPartSliderMainMotionPart();
 //#endregion
 
 //#region updateInDOMSliderFavouriteSelections
@@ -1672,17 +1677,16 @@ var sliderFavouriteSelections = $('.slider__favourite-selections');
 
 function updateInDOMSliderFavouriteSelections () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
-            var aTags = datas.sliderFavouriteSelectionsInfo.map(function (data) {
-                return `
-                    <a class="slider__favourite-selections__link" href="${data.href}">
-                        <img class="slider__favourite-selections__link-img" src="${data.image}">
-                        <h4 class="slider__favourite-selections__link-text">${data.text}</h4>
-                    </a>`;
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var aTags = datas.sliderFavouriteSelectionsInfo.map((data) => {
+                return `<a class="slider__favourite-selections__link" href="${data.href}">
+                    <img class="slider__favourite-selections__link-img" src="${data.image}">
+                    <h4 class="slider__favourite-selections__link-text">${data.text}</h4>
+                </a>`;
             });
+
             sliderFavouriteSelections.innerHTML = aTags.join('');
         })
 }
@@ -1696,10 +1700,9 @@ var outstandingHotSellingProducts = $('.outstanding__hot-selling-products');
 
 function updateInDOMOutstandingHotSellingProducts () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) { 
+        .then((response) => response.json())
+
+        .then((datas) => { 
             handleUpdateInDOMOutstandingHotSellingProducts(datas);
         })
 }
@@ -1715,7 +1718,7 @@ function handleUpdateInDOMOutstandingHotSellingProducts (datas) {
             </a>
         </div>`;
 
-    var aTags = datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsListInfo.map(function (data) {
+    var aTags = datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsListInfo.map((data) => {
         return `<a href="${data.href}" class="outstanding__hot-selling-products__item">
             <img src="${data.image}" alt="" class="outstanding__hot-selling-products__img">
             <span class="outstanding__hot-selling-products__price">${data.price}</span>
@@ -1742,10 +1745,9 @@ var outstandingHotBrands = $('.outstanding__hot-brands');
 
 function updateInDOMOutstandingHotBrands () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) { 
+        .then((response) => response.json())
+
+        .then((datas) => { 
             handleUpdateInDOMOutstandingHotBrands(datas);
         })
 }
@@ -1761,7 +1763,7 @@ function handleUpdateInDOMOutstandingHotBrands (datas) {
             </a>
         </div>`;
 
-    var aTags = datas.outstandingHotBrandsInfo.outstandingHotBrandsListInfo.map(function (data) {
+    var aTags = datas.outstandingHotBrandsInfo.outstandingHotBrandsListInfo.map((data) => {
         return `
             <a href="${data.href}" class="outstanding__hot-brands__item">
                 <img src="${data.image}" alt="" class="outstanding__hot-brands__img">
@@ -1789,11 +1791,11 @@ var directoryMainList = $('.directory__main__list');
 
 function updateInDOMDirectoryMainList () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
+        .then((response) => response.json())
+
+        .then((datas) => {
             var liTags = '';
+
             for(var i = 0; i < datas.directoryMainItemListInfo.length; i+=2) {
                 liTags += `
                     <li class="directory__main__item">
@@ -1819,8 +1821,9 @@ var directoryMainList = $('.directory__main__list');
 var directoryMainNextBtn = $('.directory__main__next-btn');
 var directoryMainPreviousBtn = $('.directory__main__previous-btn');
 
-directoryMainNextBtn.addEventListener('click', function(e) {
-    setTimeout(function () {
+directoryMainNextBtn.addEventListener('click', (e) => {
+
+    setTimeout(() => {
         directoryMainNextBtn.style.display = 'none';
         directoryMainPreviousBtn.style.display = 'block';
 
@@ -1830,8 +1833,9 @@ directoryMainNextBtn.addEventListener('click', function(e) {
     }, 0);
 });
 
-directoryMainPreviousBtn.addEventListener('click', function(e) {
-    setTimeout(function () {
+directoryMainPreviousBtn.addEventListener('click', (e) => {
+
+    setTimeout(() => {
         directoryMainPreviousBtn.style.display = 'none';
         directoryMainNextBtn.style.display = 'block';
 
@@ -1848,16 +1852,16 @@ var flashSaleMainList = $$('.flash-sale__main__list');
 
 function updateInDOMFlashSaleMainList () {
     fetch("db.json")
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
+        .then((response) => response.json())
+
+        .then((datas) => {
             handleUpdateInDOMFlashSaleMainList(datas.flashSaleMainListInfo);
         })
 }
 
 function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
     var aTags = '';
+
     for (var i = 0; i < flashSaleMainListInfo.length; i++) {
 
         // add this element if conditions matched
@@ -1884,7 +1888,7 @@ function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
             </a>`;
     }
 
-    // add innerHTML for this element
+    
     flashSaleMainList.innerHTML = aTags;
 }
 
@@ -1897,7 +1901,7 @@ var flashSaleMainPreviousBtn = $('.flash-sale__main__previous-btn');
 var flashSaleMainList = $('.flash-sale__main__list');
 var flashSaleMainListCurrentIndex = 1;   
 
-flashSaleMainNextBtn.addEventListener('click', function(e) {
+flashSaleMainNextBtn.addEventListener('click', (e) => {
     // case 1: first list
     if(flashSaleMainListCurrentIndex == 1) {
         flashSaleMainListCurrentIndex = 2;
@@ -1922,7 +1926,7 @@ flashSaleMainNextBtn.addEventListener('click', function(e) {
     }
 });
 
-flashSaleMainPreviousBtn.addEventListener('click', function(e) {
+flashSaleMainPreviousBtn.addEventListener('click', (e) => {
     // case 1: second list
     if(flashSaleMainListCurrentIndex == 2) {
         flashSaleMainListCurrentIndex = 1;
@@ -1953,11 +1957,11 @@ var underFlashSalePart = $('.under-flash-sale__part');
 
 function updateInDOMFlashSalePart () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
-            var aTags = datas.underFlashSalePartInfo.map(function(data) {
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var aTags = datas.underFlashSalePartInfo.map((data) => {
+
                 return `<a href="${data.href}" class="under-flash-sale__link">
                     <img src="${data.image}" alt="" class="under-flash-sale__img">   
                 </a>`;
@@ -1979,10 +1983,9 @@ var shopeeMallMainMotionQueueItems = $$('.shopee-mall__main__motion__queue-item'
 
 function updateInDOMShopeeMallMainMotionLinkAndQueueItems () {
     fetch("db.json")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (datas) {
+        .then((response) => response.json())
+
+        .then((datas) => {
             handleShopeeMallMainMotionLinkAndQueueItems (datas.shopeeMallMainMotionLinkInfo);
         })
 }
@@ -1991,7 +1994,8 @@ function handleShopeeMallMainMotionLinkAndQueueItems (shopeeMallMainMotionLinkIn
     var currentIndex = 0;
     var queueLength = shopeeMallMainMotionQueueItems.length;
     
-    for(var shopeeMallMainMotionQueueItem of shopeeMallMainMotionQueueItems) {
+    for (var shopeeMallMainMotionQueueItem of shopeeMallMainMotionQueueItems) {
+        
         shopeeMallMainMotionQueueItem.addEventListener('click', function(e) {
             e.preventDefault();
 
@@ -2012,12 +2016,13 @@ function handleShopeeMallMainMotionLinkAndQueueItems (shopeeMallMainMotionLinkIn
         })
     }
     
-    setInterval (function () {
-        if(currentIndex < queueLength-1) {
+    setInterval (() => {
+        if (currentIndex < queueLength-1) {
             shopeeMallMainMotionQueueItems[currentIndex].classList.remove('shopee-mall__main__motion__queue-item--current');
             shopeeMallMainMotionQueueItems[currentIndex + 1].classList.add('shopee-mall__main__motion__queue-item--current');
             currentIndex++;
-        } else {
+        } 
+        else {
             shopeeMallMainMotionQueueItems[queueLength - 1].classList.remove('shopee-mall__main__motion__queue-item--current');
             shopeeMallMainMotionQueueItems[0].classList.add('shopee-mall__main__motion__queue-item--current');
             currentIndex = 0;
@@ -2037,11 +2042,10 @@ var shopeeMallHeadingText = $('.shopee-mall__heading__text');
 
 function updateInDOMShopeeMallHeadingText () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
-            var divTags = datas.shopeeMallHeadingTextInfo.map(function(data) {
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var divTags = datas.shopeeMallHeadingTextInfo.map((data) => {
                 return `
                     <div>
                         <img src="${data.image}" class="shopee-mall__heading__text__icon" alt="">
@@ -2061,16 +2065,16 @@ var shopeeMallMainProductList = $('.shopee-mall__main__product-list');
 
 function updateInDOMShopeeMallMainProductList () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
+        .then((response) => response.json())
+
+        .then((datas) => {
             handleUpdateInDOMShopeeMallMainProductList(datas.shopeeMallMainProductListInfo);
         })
 }
 
 function handleUpdateInDOMShopeeMallMainProductList (shopeeMallMainProductListInfo) {
     var liTags = '', i;
+
     for (i = 0; i < shopeeMallMainProductListInfo.length - 1; i += 2) {
         liTags += `
             <li class="shopee-mall__main__product-item">
@@ -2102,7 +2106,7 @@ function handleUpdateInDOMShopeeMallMainProductList (shopeeMallMainProductListIn
             </div>
         </li>`
 
-    // add innerHTML for this element
+    
     shopeeMallMainProductList.innerHTML = liTags;
 }
 
@@ -2115,7 +2119,7 @@ var shopeeMallMainProductPreviousBtn = $('.shopee-mall__main__product__previous-
 var shopeeMallMainProductList = $('.shopee-mall__main__product-list');
 var shopeeMallMainProductListCurrentIndex = 1;   
 
-shopeeMallMainProductNextBtn.addEventListener('click', function(e) {
+shopeeMallMainProductNextBtn.addEventListener('click', () => {
     // case 1: first list
     if(shopeeMallMainProductListCurrentIndex == 1) {
         shopeeMallMainProductListCurrentIndex = 2;
@@ -2140,7 +2144,7 @@ shopeeMallMainProductNextBtn.addEventListener('click', function(e) {
     }
 });
 
-shopeeMallMainProductPreviousBtn.addEventListener('click', function(e) {
+shopeeMallMainProductPreviousBtn.addEventListener('click', () => {
     // case 1: second list
     if(shopeeMallMainProductListCurrentIndex == 2) {
         shopeeMallMainProductListCurrentIndex = 1;
@@ -2172,11 +2176,11 @@ var searchTrendingMainList = $('.search-trending__main__list');
 
 function updateInDOMSearchTrendingMainList (listIndex) {
     fetch("db.json")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function(datas){
-            var aTags = datas.searchTrendingMainListInfo[listIndex].map(function (data) {
+        .then((response) => response.json())
+
+        .then((datas) => {
+
+            var aTags = datas.searchTrendingMainListInfo[listIndex].map((data) => {
                 return `
                     <a href="${data.href}" class="search-trending__main__item">
                         <div class="search-trending__main__text">
@@ -2186,7 +2190,7 @@ function updateInDOMSearchTrendingMainList (listIndex) {
                         <img src="${data.image}" alt="" class="search-trending__img">
                     </a>`;
             })
-            // add innerHTML for this element
+            
             searchTrendingMainList.innerHTML = aTags.join('');
         })
 }
@@ -2199,18 +2203,17 @@ var searchTrendingHeadingViewMoreBtn = $('.search-trending__heading__view-more-b
 var searchTrendingListCurrentIndex = 0, searchTrendingNumberList;
 
 fetch("db.json")
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function(datas){
+    .then((response) => response.json())
+
+    .then((datas) => {
         searchTrendingNumberList = datas.searchTrendingMainListInfo.length;
     })
 
 
-searchTrendingHeadingViewMoreBtn.addEventListener('click', function(e) {
+searchTrendingHeadingViewMoreBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
-    setTimeout(function () {
+    setTimeout(() => {
         if(searchTrendingListCurrentIndex == searchTrendingNumberList-1) {
             searchTrendingListCurrentIndex = 0;
             updateInDOMSearchTrendingMainList(0);
@@ -2229,10 +2232,9 @@ var topSearchMainList = $('.top-search__main__list');
 
 function updateInDOMTopSearchMainList () {
     fetch("db.json")
-        .then (function(response) {
-            return response.json();
-        })
-        .then (function(datas) {
+        .then((response) => response.json())
+
+        .then ((datas) => {
             handleUpdateInDOMTopSearchMainList(datas.topSearchMainListInfo);
         })
 }
@@ -2267,7 +2269,6 @@ function handleUpdateInDOMTopSearchMainList (topSearchMainListInfo) {
             </a>`
     }
 
-    // add innerHTML for this element
     topSearchMainList.innerHTML = theFirstATag + aTags;
 }
 
@@ -2280,67 +2281,73 @@ var topSearchMainListCurrentIndex = 1;
 var topSearchMainNextBtn = $('.top-search__main__next-btn');
 var topSearchMainPreviousBtn = $('.top-search__main__previous-btn');
 
-topSearchMainNextBtn.onclick = function () {
-    if(topSearchMainListCurrentIndex == 1) {
+topSearchMainNextBtn.addEventListener('click', () => {
+    if (topSearchMainListCurrentIndex == 1) {
         topSearchMainListCurrentIndex = 2;
         topSearchMainNextBtn.style.display = 'block';
         topSearchMainPreviousBtn.style.display = 'block';
+
         // animation
         topSearchMainList.style.transform = 'translate(-120rem, 0)';   
         topSearchMainList.style.transition = 'all 500ms ease 0s';
     }
     else {
-        if(topSearchMainListCurrentIndex == 2) {
+        if (topSearchMainListCurrentIndex == 2) {
             topSearchMainListCurrentIndex = 3;
             topSearchMainNextBtn.style.display = 'block';
             topSearchMainPreviousBtn.style.display = 'block';
+
             // animation
             topSearchMainList.style.transform = 'translate(-240rem, 0)';   
             topSearchMainList.style.transition = 'all 500ms ease 0s';
         } 
         else {
-            if(topSearchMainListCurrentIndex == 3) {
+            if (topSearchMainListCurrentIndex == 3) {
                 topSearchMainListCurrentIndex = 4;
                 topSearchMainNextBtn.style.display = 'none';
                 topSearchMainPreviousBtn.style.display = 'block';
+
                 // animation
                 topSearchMainList.style.transform = 'translate(-360rem, 0)';   
                 topSearchMainList.style.transition = 'all 500ms ease 0s';
             } 
         }
     }
-}
+});
 
-topSearchMainPreviousBtn.onclick = function () {
-    if(topSearchMainListCurrentIndex == 2) {
+topSearchMainPreviousBtn.addEventListener('click', () => {
+    if (topSearchMainListCurrentIndex == 2) {
         topSearchMainListCurrentIndex = 1;
         topSearchMainPreviousBtn.style.display = 'none';
         topSearchMainNextBtn.style.display = 'block';
+
         // animation
         topSearchMainList.style.transform = 'translate(0, 0)';   
         topSearchMainList.style.transition = 'all 500ms ease 0s';
     }
     else {
-        if(topSearchMainListCurrentIndex == 3) {
+        if (topSearchMainListCurrentIndex == 3) {
             topSearchMainListCurrentIndex = 2;
             topSearchMainPreviousBtn.style.display = 'block';
             topSearchMainNextBtn.style.display = 'block';
+
             // animation
             topSearchMainList.style.transform = 'translate(-120rem, 0)';   
             topSearchMainList.style.transition = 'all 500ms ease 0s';
         }
         else {
-            if(topSearchMainListCurrentIndex == 4) {
+            if (topSearchMainListCurrentIndex == 4) {
                 topSearchMainListCurrentIndex = 3;
                 topSearchMainPreviousBtn.style.display = 'block';
                 topSearchMainNextBtn.style.display = 'block';
+
                 // animation
                 topSearchMainList.style.transform = 'translate(-240rem, 0)';   
                 topSearchMainList.style.transition = 'all 500ms ease 0s';
             }
         }
     }
-}
+});
 //#endregion
 
 
@@ -2349,10 +2356,9 @@ var todaySuggestionMainTabMain = $('.today-suggestion__main__tab-main');
 
 function updateInDOMTodaySuggestionMainTabMain () {
     fetch("db.json")
-        .then (function(response) {
-            return response.json();
-        })
-        .then (function(datas) {
+        .then((response) => response.json())
+
+        .then ((datas) => {
             handleUpdateInDOMTodaySuggestionMainTabMain(datas.todaySuggestionMainTabMainInfo);
         })
 }
@@ -2463,6 +2469,7 @@ function handleCSSTodaySuggestionMainTabMain () {
         
         if (check) {
             list.style.height = '29.8rem';
+
             for(var j = 0; j < items.length; j++) {
                 items[j].style.height = '29.8rem';
                 products[j].style.height = '28.8rem';
@@ -2470,7 +2477,7 @@ function handleCSSTodaySuggestionMainTabMain () {
                 var saleOff = $(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
                     .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__sale-off`);
     
-                if(saleOff == null) {
+                if (saleOff == null) {
                     var priceAndSelledQuantity = $(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
                         .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__price-and-selled-quantity`);
                     priceAndSelledQuantity.style.marginTop = '2.6rem';
@@ -2479,6 +2486,7 @@ function handleCSSTodaySuggestionMainTabMain () {
         } 
         else {
             list.style.height = '27.7rem';
+
             for(var j = 0; j < items.length; j++) {
                 items[j].style.height = '27.7rem';
                 products[j].style.height = '26.7rem';
@@ -2487,7 +2495,7 @@ function handleCSSTodaySuggestionMainTabMain () {
     }
 }
 
-setTimeout(function () {
+setTimeout(() => {
     handleCSSTodaySuggestionMainTabMain();
 }, 2000)
 //#endregion 
@@ -2497,10 +2505,9 @@ var todaySuggestionMainTabSuperSale88 = $('.today-suggestion__main__tab-super-sa
 
 function updateInDOMTodaySuggestionMainTabSuperSale88 () {
     fetch("db.json")
-        .then (function(response) {
-            return response.json();
-        })
-        .then (function(datas) {
+        .then((response) => response.json())
+
+        .then ((datas) => {
             handleUpdateInDOMTodaySuggestionMainTabSuperSale88(datas.todaySuggestionMainTabSuperSale88Info);
         })
 }
@@ -2610,6 +2617,7 @@ function handleCSSTodaySuggestionMainTabSuperSale88 () {
         
         if (check) {
             list.style.height = '29.8rem';
+
             for(var j = 0; j < items.length; j++) {
                 items[j].style.height = '29.8rem';
                 products[j].style.height = '28.8rem';
@@ -2617,7 +2625,7 @@ function handleCSSTodaySuggestionMainTabSuperSale88 () {
                 var saleOff = $(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
                     .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__sale-off`);
     
-                if(saleOff == null) {
+                if (saleOff == null) {
                     var priceAndSelledQuantity = $(`.today-suggestion__main__tab-super-sale-8-8 .today-suggestion__main-list:nth-child(${i+1}) 
                         .today-suggestion__main-item:nth-child(${j+1}) .today-suggestion__main-product__price-and-selled-quantity`);
                     priceAndSelledQuantity.style.marginTop = '2.6rem';
@@ -2626,6 +2634,7 @@ function handleCSSTodaySuggestionMainTabSuperSale88 () {
         } 
         else {
             list.style.height = '27.7rem';
+
             for(var j = 0; j < items.length; j++) {
                 items[j].style.height = '27.7rem';
                 products[j].style.height = '26.7rem';
@@ -2634,7 +2643,7 @@ function handleCSSTodaySuggestionMainTabSuperSale88 () {
     }
 }
 
-setTimeout(function () {
+setTimeout(() => {
     handleCSSTodaySuggestionMainTabSuperSale88();
 }, 2000)
 //#endregion 
@@ -2649,8 +2658,8 @@ var todaySuggestionMainTabMain = $('.today-suggestion__main__tab-main');
 var todaySuggestionMainTabSuperSale88 = $('.today-suggestion__main__tab-super-sale-8-8');
 
 
-todaySuggestionHeadingTabMain.addEventListener('click', function() {
-    setTimeout(function () {
+todaySuggestionHeadingTabMain.addEventListener('click', () => {
+    setTimeout(() => {
         if(todaySuggestionHeadingTabSuperSale88.classList.contains('today-suggestion__heading-tab--active')) {
             todaySuggestionHeadingTabSuperSale88.classList.remove('today-suggestion__heading-tab--active');
         }   
@@ -2668,8 +2677,8 @@ todaySuggestionHeadingTabMain.addEventListener('click', function() {
 });
 
 
-todaySuggestionHeadingTabSuperSale88.addEventListener('click', function() {
-    setTimeout(function () {
+todaySuggestionHeadingTabSuperSale88.addEventListener('click', () => {
+    setTimeout(() => {
         if(todaySuggestionHeadingTabMain.classList.contains('today-suggestion__heading-tab--active')) {
             todaySuggestionHeadingTabMain.classList.remove('today-suggestion__heading-tab--active');
         }   
@@ -2694,11 +2703,10 @@ var footerTextATags = $$('.footer__text a');
 
 function updateInDOMFooterTextATags () {
     fetch("db.json")
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
-            for(var i = 0; i < footerTextATags.length; i++) {
+        .then((response) => response.json())
+
+        .then((datas) => {
+            for (var i = 0; i < footerTextATags.length; i++) {
                 footerTextATags[i].href = datas.footerTextATagsInfo[i].href;
                 footerTextATags[i].innerHTML = datas.footerTextATagsInfo[i].innerHTML;
             }
@@ -2713,10 +2721,9 @@ var footerDirectoryList = $('.footer__directory__list');
 
 function updateInDOMFooterDirectoryList () {
     fetch("db.json")
-        .then(function (response){
-            return response.json();
-        })
-        .then(function(datas) {
+        .then((response) => response.json())
+
+        .then((datas) => {
             handleUpdateInDOMFooterDirectoryList(datas.footerDirectoryListInfo);
         })
 }
@@ -2773,17 +2780,15 @@ var footerLinkAboutTextCSKH = $('.footer__link__about-text-CSKH');
 
 function updateInDOMFooterLinkAboutTextCSKH () {
     fetch("db.json")
-        .then(function (response){
-            return response.json();
-        })
-        .then(function(datas){
-            var divTags = datas.footerLinkAboutTextCSKHInfo.map(function(data) {
-                return `
-                    <div>
-                        <a href="${data.href}" class="footer__link__about-text-CSKH__link">${data.innerHTML}</a>
-                    </div>`
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var divTags = datas.footerLinkAboutTextCSKHInfo.map((data) => {
+                return `<div>
+                    <a href="${data.href}" class="footer__link__about-text-CSKH__link">${data.innerHTML}</a>
+                </div>`;
             })
-            // add innerHTML for this element
+            
             footerLinkAboutTextCSKH.innerHTML = divTags.join('');
         })
 }
@@ -2796,17 +2801,15 @@ var footerLinkAboutTextVeShopee = $('.footer__link__about-text-VeShopee');
 
 function updateInDOMFooterLinkAboutTextVeShopee () {
     fetch("db.json")
-        .then(function (response){
-            return response.json();
-        })
-        .then(function(datas){
-            var divTags = datas.footerLinkAboutTextVeShopeeInfo.map(function(data) {
-                return `
-                    <div>
-                        <a href="${data.href}" class="footer__link__about-text-VeShopee__link">${data.innerHTML}</a>
-                    </div>`
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var divTags = datas.footerLinkAboutTextVeShopeeInfo.map((data) => {
+                return `<div>
+                    <a href="${data.href}" class="footer__link__about-text-VeShopee__link">${data.innerHTML}</a>
+                </div>`;
             })
-            // add innerHTML for this element
+            
             footerLinkAboutTextVeShopee.innerHTML = divTags.join('');
         })
 }
@@ -2820,19 +2823,16 @@ var footerLinkAboutSocial = $('.footer__link__about-social');
 
 function updateInDOMFooterLinkAboutSocial () {
     fetch("db.json")
-        .then(function (response){
-            return response.json();
-        })
-        .then(function(datas){
-            var aTags = datas.footerLinkAboutSocialInfo.map(function(data) {
-                return `
-                    <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="footer__link__about-social__link">
-                        <img src="${data.image}" alt="" class="footer__link__about-social__icon">
-                        ${data.text}
-                    </a>`;
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var aTags = datas.footerLinkAboutSocialInfo.map((data) => {
+                return `<a target="_blank" rel="noopener noreferrer" href="${data.href}" class="footer__link__about-social__link">
+                    <img src="${data.image}" alt="" class="footer__link__about-social__icon">
+                    ${data.text}
+                </a>`;
             })
 
-            // add innerHTML for this element
             footerLinkAboutSocial.innerHTML = aTags.join('');
         })
 }
@@ -2846,16 +2846,13 @@ var footerLinkCopyrightCountryAndAreaList =
 
 function updateInDOMFooterLinkCopyrightCountryAndAreaList () {
     fetch("db.json")
-        .then(function (response){
-            return response.json();
-        })
-        .then(function(datas){
-            var aTags = datas.footerLinkCopyrightCountryAndAreaListInfo.map(function(data) {
-                return `
-                    <a href="${data.href}" class="footer__link__copyright__country-and-area__link">${data.innerHTML}</a>`;
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var aTags = datas.footerLinkCopyrightCountryAndAreaListInfo.map((data) => {
+                return `<a href="${data.href}" class="footer__link__copyright__country-and-area__link">${data.innerHTML}</a>`;
             })
 
-            // add innerHTML for this element
             footerLinkCopyrightCountryAndAreaList.innerHTML = aTags.join('');
         })
 }
@@ -2869,11 +2866,10 @@ var footerPolicyTermsPartTitle = $('.footer__policy-terms__part__title')
 
 function updateInDOMFooterPolicyTermsPartTitle () {
     fetch("db.json")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function(datas){
-            var divTags = datas.footerPolicyTermsPartTitleInfo.map(function (data) {
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var divTags = datas.footerPolicyTermsPartTitleInfo.map((data) => {
                 return `
                     <div class="footer__policy-terms__part__title__part">
                         <a href="${data.href}" class="footer__policy-terms__part__title__link">${data.innerHTML}</a>
@@ -2891,11 +2887,10 @@ var footerPolicyTermsPartCertificate = $('.footer__policy-terms__part__certifica
 
 function updateInDOMFooterPolicyTermsPartCertificate () {
     fetch("db.json")
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function(datas){
-            var aTags = datas.footerPolicyTermsPartCertificateInfo.map(function (data) {
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var aTags = datas.footerPolicyTermsPartCertificateInfo.map((data) => {
                 return `
                     <a target="_blank" rel="noopener noreferrer" href="${data.href}" class="footer__policy-terms__part__certificate__link">
                         <img src="${data.image}" alt="">
@@ -2913,11 +2908,10 @@ var footerPolicyTermsPartCompanyInfo = $('.footer__policy-terms__part__company-i
 
 function updateInDOMFooterPolicyTermsPartCompanyInfo() {
     fetch("db.json")
-        .then (function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
-            var spanTags = datas.footerPolicyTermsPartCompanyInfoInfo.map(function(data) {
+        .then((response) => response.json())
+
+        .then((datas) => {
+            var spanTags = datas.footerPolicyTermsPartCompanyInfoInfo.map((data) => {
                 return `<span class="footer__policy-terms__part__company-info__text">${data}</span>`;
             });
             footerPolicyTermsPartCompanyInfo.innerHTML = spanTags.join('');
@@ -2935,6 +2929,7 @@ var motionPartChatPopupMainSearchAndOptionsPopupNthChild2 =
     $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(2)');
 var motionPartChatPopupMainSearchAndOptionsPopupNthChild3 = 
     $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(3)');
+
 var motionPartChatPopupMainContent_all = 
     $('.motion-part__chat__popup__main__content--all');
 var motionPartChatPopupMainContent_unread = 
@@ -2948,26 +2943,29 @@ var motionPartChatPopupMainSearchAndOptionsText =
 motionPartChatPopupMainContent_unread.style.display = 'none';
 motionPartChatPopupMainContent_pinned.style.display = 'none';
 
-motionPartChatPopupMainSearchAndOptionsPopupNthChild1.onclick = function () {
-    motionPartChatPopupMainSearchAndOptionsText.innerHTML = this.innerHTML;
+motionPartChatPopupMainSearchAndOptionsPopupNthChild1.addEventListener('click', () => {
+    motionPartChatPopupMainSearchAndOptionsText.innerHTML = 
+        motionPartChatPopupMainSearchAndOptionsPopupNthChild1.innerHTML;
     motionPartChatPopupMainContent_all.style.display = 'flex';
     motionPartChatPopupMainContent_unread.style.display = 'none';
     motionPartChatPopupMainContent_pinned.style.display = 'none';
-}
+});
 
-motionPartChatPopupMainSearchAndOptionsPopupNthChild2.onclick = function () {
-    motionPartChatPopupMainSearchAndOptionsText.innerHTML = this.innerHTML;  
+motionPartChatPopupMainSearchAndOptionsPopupNthChild2.addEventListener('click', () => {
+    motionPartChatPopupMainSearchAndOptionsText.innerHTML = 
+        motionPartChatPopupMainSearchAndOptionsPopupNthChild2.innerHTML;  
     motionPartChatPopupMainContent_all.style.display = 'none';
     motionPartChatPopupMainContent_unread.style.display = 'flex';
     motionPartChatPopupMainContent_pinned.style.display = 'none';
-}
+});
 
-motionPartChatPopupMainSearchAndOptionsPopupNthChild3.onclick = function () {
-    motionPartChatPopupMainSearchAndOptionsText.innerHTML = this.innerHTML;   
+motionPartChatPopupMainSearchAndOptionsPopupNthChild3.addEventListener('click', () => {
+    motionPartChatPopupMainSearchAndOptionsText.innerHTML = 
+        motionPartChatPopupMainSearchAndOptionsPopupNthChild3.innerHTML;   
     motionPartChatPopupMainContent_all.style.display = 'none';
     motionPartChatPopupMainContent_unread.style.display = 'none';
     motionPartChatPopupMainContent_pinned.style.display = 'flex';
-}
+});
 //#endregion
 
 //#region motionPartChatPopupMainSearchAndOptionsInput (click, blur)
@@ -2978,27 +2976,30 @@ var motionPartChatPopupMainSearchAndOptionsPart =
 var motionPartChatPopupMainSearchAndOptionsPopup = 
     $('.motion-part__chat__popup__main__search-and-options__popup');
 
-motionPartChatPopupMainSearchAndOptionsInput.onclick = function () {
+motionPartChatPopupMainSearchAndOptionsInput.addEventListener('click', () => {
     motionPartChatPopupMainSearchAndOptionsPart.style.display = 'none';
     motionPartChatPopupMainSearchAndOptionsInput.style.width = '100%';
-}
-motionPartChatPopupMainSearchAndOptionsInput.onblur = function () {
-    setTimeout(function () {
+});
+
+motionPartChatPopupMainSearchAndOptionsInput.addEventListener('blur', () => {
+    setTimeout(() => {
         motionPartChatPopupMainSearchAndOptionsPart.style.display = 'flex';
         motionPartChatPopupMainSearchAndOptionsInput.style.width = '13.2rem';
     }, 200);
-}
+});
 //#endregion
 
 //#region motionPartChatPopupMainSearchAndOptionsPart onclick()
 motionPartChatPopupMainSearchAndOptionsPopup.style.display = 'none';
-motionPartChatPopupMainSearchAndOptionsPart.onclick =  function () {
+
+motionPartChatPopupMainSearchAndOptionsPart.addEventListener('click', () => {
     if (motionPartChatPopupMainSearchAndOptionsPopup.style.display == 'none') {
         motionPartChatPopupMainSearchAndOptionsPopup.style.display = 'block';
-    } else {
+    } 
+    else {
         motionPartChatPopupMainSearchAndOptionsPopup.style.display = 'none';
     }
-}
+});
 //#endregion
 
 //#region motionPartChatMain, motionPartChatPopupHeader_hidePopupBtn onclick()
@@ -3006,14 +3007,15 @@ var motionPartChatMain = $('.motion-part__chat__main');
 var motionPartChatPopup = $('.motion-part__chat__popup');
 var motionPartChatPopupHeader_hidePopupBtn = $('.motion-part__chat__popup__header__right-icons > svg:nth-child(3)');
 
-motionPartChatMain.onclick = function () {
-    this.style.display = 'none';
+motionPartChatMain,addEventListener('click', () => {
+    motionPartChatMain.style.display = 'none';
     motionPartChatPopup.style.display = 'block';
-}
-motionPartChatPopupHeader_hidePopupBtn.onclick = function () {
+});
+
+motionPartChatPopupHeader_hidePopupBtn,addEventListener('click', () => {
     motionPartChatPopup.style.display = 'none';
     motionPartChatMain.style.display = 'flex';
-}
+});
 //#endregion
 
 //#region motionPartChatPopupHeader_iconWhenNormal,...Expanded onclick()
@@ -3023,19 +3025,19 @@ var motionPartChatPopupHeader_iconWhenNormal = $('.motion-part__chat__popup__hea
 var motionPartChatPopupHeader_iconWhenExpanded = $('.motion-part__chat__popup__header__icon--when-expanded');
 
 
-motionPartChatPopupHeader_iconWhenNormal.onclick = function () {
+motionPartChatPopupHeader_iconWhenNormal.addEventListener('click', () => {
     motionPartChatPopupHeader_iconWhenNormal.style.display = 'none';
     motionPartChatPopupHeader_iconWhenExpanded.style.display = 'block';
     motionPartChatPopup.style.width = '50.8rem';
     motionPartChatPopupExpanded.style.display = 'block';
-}
+});
 
-motionPartChatPopupHeader_iconWhenExpanded.onclick = function () {
+motionPartChatPopupHeader_iconWhenExpanded.addEventListener('click', () => {
     motionPartChatPopupHeader_iconWhenExpanded.style.display = 'none';
     motionPartChatPopupHeader_iconWhenNormal.style.display = 'block';
     motionPartChatPopup.style.width = '22.2rem';
     motionPartChatPopupExpanded.style.display = 'none';
-}
+});
 //#endregion
 
 //#endregion 
@@ -3053,5 +3055,3 @@ else {
     loginSuccess();
 }
 //#endregion
-
-
