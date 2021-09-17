@@ -3,7 +3,7 @@
 //#region 1. Best Common
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
-const SHOPEE_LOCALSTORAGE_KEY = 'HDTTUAN1';
+const LOCALSTORAGE_KEY = 'shopee';
 var headerSearchHistoryListInfo = [];
 
 var html = $('html');
@@ -133,12 +133,12 @@ var pageLoadBannerCloseBtn = $('.page-load-banner__close-btn');
 //#region SETTING CONFIG
 
 // get localStorage object
-var systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) ?? {};
+var systemConfig = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) ?? {};
 
 // add each key: value into localStorage object
 function setConfig (key, value) {
     systemConfig[key] = value;
-    localStorage.setItem(SHOPEE_LOCALSTORAGE_KEY, JSON.stringify(systemConfig));
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(systemConfig));
 }
 
 function handleSettingInitialConfig () {
@@ -157,7 +157,7 @@ function handleSettingInitialConfig () {
             localStorage.clear();
 
             // update variable systemConfig
-            systemConfig = JSON.parse(localStorage.getItem(SHOPEE_LOCALSTORAGE_KEY)) || {};
+            systemConfig = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
             
             // set new date for lastVisitDay
             setConfig('lastVisitDay', todayDay);
@@ -1335,14 +1335,13 @@ loginPageContentFormOtherWaysApple.addEventListener('click', (e) => {
 
 //#region HANDLE DATA, UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION,...
     
-//#region headerSearchFrameInput, headerSearchHistory - variable declaration
+//#region headerSearchFrameInput, headerSearchHistory
 var headerSearchFrameInput = $('.header__search-frame__input');
 var headerSearchHistory = $('.header__search-history');
 var headerSearchFrameBtn = $('.header__search-frame__btn');
 var headerSearchHistoryList = $('.header__search-history-list');
 var headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
 var headerSearchHistoryItemIndex = 0;
-//#endregion
 
 //#region update headerSearchHistoryListInfo -> updateInDOMHeaderSearchHistoryList
 function updateInDOMHeaderSearchHistoryList () {
@@ -1504,6 +1503,8 @@ headerSearchFrameBtn.addEventListener('click', (e) => {
         headerSearchFrameBtn.href = href;
     }   
 });
+//#endregion
+
 //#endregion
 
 //#region updateInDOMHeaderSearchHistoryKeywordsList
