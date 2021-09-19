@@ -1,4 +1,4 @@
-/* css on all html elements */
+/* CSS on all html elements */
 * {
     box-sizing: inherit;
 }
@@ -6,8 +6,7 @@
 html {
     height: 100%;
     margin: 0;
-    /* default font-size: 16px */
-    /* -> 1 rem = 10px */
+    /* default font-size: 16px -> 1rem = 10px */
     font-size: 62.5%;
     line-height: 1.6rem;
     font-family: 'Roboto', sans-serif;
@@ -20,30 +19,16 @@ body {
     min-height: 100%;
 }
 
-
-/* responsive */
-.grid {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
+ul {
+    list-style: none;
 }
 
-.grid__row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.grid__column-8 {
-    width: 800px;
-}
-
-.grid__column-4 {
-    width: 400px;
+a {
+    text-decoration: none;
 }
 
 
-/* animation */
+/* Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -98,6 +83,8 @@ body {
     font-size: 1rem;
 }
 
+
+/* Input placeholder */
 ::-webkit-input-placeholder {
     color: rgba(0, 0, 0, 0.8);
     opacity: 0.5;

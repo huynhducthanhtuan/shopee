@@ -50,7 +50,6 @@
     line-height: 1.68rem;
     margin-right: 0.8rem;
     cursor: pointer;
-    text-decoration: none;
 }
 
 .register-page__content {
@@ -203,7 +202,6 @@
     text-align: center;
 }
 .register-page__content-form__terms-and-policy > a {
-    text-decoration: none;
     color: #ee4d2d;
     font-weight: 500;
 }
@@ -439,7 +437,6 @@
     justify-content: center;
 }
 .register-page__confirmation__first-form__content__help-btns > button {
-    text-decoration: none;
     color: #ee4d2d;
     font-weight: 500;
     border: none;
@@ -720,7 +717,6 @@
     line-height: 1.68rem;
     margin-right: 0.8rem;
     cursor: pointer;
-    text-decoration: none;
 }
 
 .login-page__content {
@@ -1017,7 +1013,6 @@ width: 13.5rem;
 
 .header__links > div > a,
 .header__notify-and-account > div > a {
-    text-decoration: none;
     color: #fff;
     font-size: 1.3rem;
 }
@@ -1073,7 +1068,6 @@ width: 13.5rem;
 
 .header__links-app-download-popup > a {
     display: block;
-    text-decoration: none;
     padding: 0 1px 2px 1px;
 }
 
@@ -1236,7 +1230,6 @@ width: 13.5rem;
     cursor: default;
 }
 .header__notification__popup--when-logged-in__list {
-    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -1245,7 +1238,6 @@ width: 13.5rem;
     justify-content: space-between;
     padding: 0.8rem 0 1.6rem 1rem;
     color: #f5f5f5;
-    text-decoration: none;
 }
 .header__notification__popup--when-logged-in__item:hover,
 .header__notification__popup--when-logged-in__view-all-btn:hover {
@@ -1284,7 +1276,6 @@ width: 13.5rem;
     padding: 13px;
     font-size: 1.4rem;
     text-align: center;
-    text-decoration: none;
     color: rgba(0, 0, 0, 0.8);
     background-color: #fff;
 }
@@ -1375,7 +1366,6 @@ width: 13.5rem;
     border-color: transparent transparent #fff transparent;
 }
 .header__user-account__popup-list {
-    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -1384,7 +1374,6 @@ width: 13.5rem;
     padding: 12px 15px;
     font-size: 1.4rem;
     color: rgba(0, 0, 0, 0.8);
-    text-decoration: none;
 }
 .header__user-account__popup-item:hover > a {
     cursor: pointer;
@@ -1496,7 +1485,6 @@ width: 13.5rem;
 }
 
 .header__search-history-list {
-    list-style: none;
     margin: 0;
     padding: 0;
 }
@@ -1505,7 +1493,6 @@ width: 13.5rem;
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    text-decoration: none;
     color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
 }
@@ -1532,7 +1519,6 @@ width: 13.5rem;
 .header__search-history-keywords-item {
     color: #ffdfd6;
     font-size: 1.2rem;
-    text-decoration: none;
 }
 
 .header__search-history-keywords-item:hover {
@@ -1550,7 +1536,6 @@ width: 13.5rem;
     display: block;
     font-size: 2.2rem;
     color: #fff;
-    text-decoration: none;
     padding: 10px 4px;
 }
 
@@ -1766,7 +1751,6 @@ width: 13.5rem;
 }
 
 .slider__favourite-selections__link {
-    text-decoration: none;
     width: 100px;
     height: 108px;
 }
@@ -1856,7 +1840,6 @@ width: 13.5rem;
     width: 19.2rem;
     height: 100%;
     padding: 1.5rem 1.5rem 0 1.5rem;
-    text-decoration: none;
     background-color: #fff;
     position: relative;
 }
@@ -1937,7 +1920,6 @@ width: 13.5rem;
 .outstanding__hot-selling-products__info__view-more-btn,
 .outstanding__hot-brands__info__view-more-btn {
     display: block;
-    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 400;
     color: #ee4d2d;
@@ -1954,7 +1936,6 @@ width: 13.5rem;
     width: 19.2rem;
     height: 100%;
     padding: 0 1.5rem;
-    text-decoration: none;
     background-color: #fff;
     position: relative;
 }
@@ -2052,7 +2033,6 @@ width: 13.5rem;
     height: 100%;
     padding: 0;
     margin: 0;
-    list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2074,7 +2054,6 @@ width: 13.5rem;
     height: 15rem;
     padding-top: 1.2rem;
     border: 1px solid rgba(0,0,0,.05);
-    text-decoration: none;
 }
 
 .directory__main__item__link:hover {
@@ -2161,7 +2140,6 @@ width: 13.5rem;
 }
 .flash-sale__heading__btn {
     display: block;
-    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 400;
     color: #ee4d2d;
@@ -2203,7 +2181,6 @@ width: 13.5rem;
     padding: 0.5rem 1.35rem 1.5rem;
     background-color: #fff;
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
-    text-decoration: none;
     position: relative;
     width: 20rem;
 }
@@ -2441,7 +2418,6 @@ width: 13.5rem;
     display: flex;
     align-items: center;
     height: 2.8rem;
-    text-decoration: none;
     font-size: 1.4rem;
     font-weight: 500;
     color: #d51e35;
@@ -2532,7 +2508,6 @@ width: 13.5rem;
     touch-action: pan-y;
 }
 .shopee-mall__main__product-list {
-    list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
@@ -2646,7 +2621,6 @@ width: 13.5rem;
 }
 
 .search-trending__heading__view-more-btn {
-    text-decoration: none;
     font-size: 1.4rem;
     color: #ee4d2d;
     width: 10rem;
@@ -2697,7 +2671,6 @@ width: 13.5rem;
     width: 20%;
     height: 100%;
     padding-right: 1rem;
-    text-decoration: none;
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
     border-right: 1px solid rgba(0,0,0,.05);
 }
@@ -2774,7 +2747,6 @@ width: 13.5rem;
 
 .top-search__heading__view-all-btn {
     display: block;
-    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 400;
     color: #ee4d2d;
@@ -2816,7 +2788,6 @@ width: 13.5rem;
     height: 100%;
     width: 20rem;
     padding: 2rem 1rem;
-    text-decoration: none;
     background-color: #fff;
     box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%);
     border: 1px solid rgba(0,0,0,.05);
@@ -2937,7 +2908,6 @@ width: 13.5rem;
 .today-suggestion__heading-tab-main {
     width: 21.6rem;
     height: 100%;
-    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2953,7 +2923,6 @@ width: 13.5rem;
 .today-suggestion__heading-tab-super-sale-8-8 {
     width: 25.2rem;
     height: 100%;
-    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3018,7 +2987,6 @@ width: 13.5rem;
     display: block;
     width: 100%;
     height: 100%;
-    text-decoration: none;
     text-align: center;
     padding: 1px;
     background-color: #fff;
@@ -3286,7 +3254,6 @@ width: 13.5rem;
     height: 4rem;
     margin: 1.6rem auto 0;
     text-align: center;
-    text-decoration: none;
     font-size: 1.4rem;
     line-height: 4rem;
     background-color: #fff;
@@ -3334,7 +3301,9 @@ width: 13.5rem;
 .footer__text__item__description__shopeemall {
     font-weight: 700;
 }
-
+.footer__text a {
+    text-decoration: underline;
+}
 
 /* 2.FOOTER__DICRECTORY */
 .footer__directory {
@@ -3355,7 +3324,6 @@ width: 13.5rem;
     margin: 0 0 2rem 0.4rem;
 }
 .footer__directory__list {
-    list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
@@ -3373,7 +3341,6 @@ width: 13.5rem;
     text-transform: uppercase;
     font-size: 1.2rem;
     font-weight: 700;
-    text-decoration: none;
     line-height: 1.4rem;
     padding: 0 0.4rem;
 }
@@ -3384,7 +3351,6 @@ width: 13.5rem;
     margin-top: 0.4rem;
 }
 .footer__directory__item__part__item {
-    text-decoration: none;
     display: inline-block;
     color: rgba(0,0,0,.54);
     padding: 0 0.4rem;
@@ -3428,7 +3394,6 @@ width: 13.5rem;
     text-transform: uppercase;
     font-size: 1.2rem;
     font-weight: 700;
-    text-decoration: none;
     line-height: 1.4rem;
 }
 .footer__link__about-text-CSKH > div,
@@ -3437,7 +3402,6 @@ width: 13.5rem;
 }
 .footer__link__about-text-CSKH__link, 
 .footer__link__about-text-VeShopee__link {
-    text-decoration: none;
     color: rgba(0,0,0,.54);
     line-height: 1.4rem;
     font-size: 1.2rem;
@@ -3462,7 +3426,6 @@ width: 13.5rem;
 }
 .footer__link__about-social__link {
     width: 8rem;
-    text-decoration: none;
     margin-bottom: 1.2rem;
     font-size: 1.2rem;
     font-weight: 400;
@@ -3524,7 +3487,6 @@ width: 13.5rem;
     font-weight: 400;
 }
 .footer__link__copyright__country-and-area__link {
-    text-decoration: none;
     color: rgba(0,0,0,.54);
     font-weight: 400;
     padding: 0 0.5rem;
@@ -3561,7 +3523,6 @@ width: 13.5rem;
     border-right: 1px solid rgba(0,0,0,.2);
 }
 .footer__policy-terms__part__title__link {
-    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 400;
     line-height: 1.5rem;
@@ -3613,7 +3574,6 @@ width: 13.5rem;
     display: block;
     width: 100%;
     height: 100%;
-    text-decoration: none;
 }
 .motion-part__sub-banner__img {
     display: block;
