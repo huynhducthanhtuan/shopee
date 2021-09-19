@@ -3855,7 +3855,7 @@ width: 13.5rem;
     line-height: 1.4rem;
 }
 .motion-part__chat__popup__main__content--unread {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
@@ -3875,7 +3875,7 @@ width: 13.5rem;
     line-height: 1.4rem;
 }
 .motion-part__chat__popup__main__content--pinned {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;

@@ -1,3 +1,5 @@
+"use strict";
+
 //#region VARIABLES, OBJECTS DECLARATION
 
 //#region 1. Best Common
@@ -16,9 +18,10 @@ var container = $('#container');
 var content = $('#content');
 var footerText = $('.footer__text');
 var footerDirectory = $('.footer__directory');
+
 var modal = $('#modal');
 var headerShopeeLogo = $('.header__shopee-logo');
-var initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+var initialPageOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
 //#endregion
 
 //#region 2. Register Page
@@ -26,6 +29,10 @@ var headerRegisterBtn = $('.header__register__btn');
 var registerPageHeader = $('.register-page__header');
 var registerPageContent = $('.register-page__content');
 var registerPageHeaderShopeeLink = $('.register-page__header-shopee__link');
+var confirmationCodes = [];
+var currentConfirmationCode;
+var checkValidPhoneNumberRegister = false;
+var checkForRegisterPageConfirmationFormContentThirdStep = true;
 
 var registerPageContentFormInput = $('.register-page__content-form__input');
 var registerPageContentFormInputTextInvalidPhoneNumber = $('.register-page__content-form__input-text--invalid-phone-number');
@@ -38,9 +45,6 @@ var registerPageContentFormAskForLoginBtn = $('.register-page__content-form__ask
 
 var registerPageConfirmation = $('.register-page__confirmation');
 var registerPageConfirmationFirstForm = $('.register-page__confirmation__first-form');
-var registerPageConfirmationSecondForm = $('.register-page__confirmation__second-form');
-var registerPageConfirmationThirdForm = $('.register-page__confirmation__third-form');
-
 var registerPageConfirmationFirstFormHeaderText = $('.register-page__confirmation__first-form__header__text');
 var registerPageConfirmationFirstFormHeaderBackBtn = $('.register-page__confirmation__first-form__header__back-btn');
 var registerPageConfirmationFirstFormContent = $('.register-page__confirmation__first-form__content');
@@ -51,7 +55,7 @@ var registerPageConfirmationFirstFormContentHelpOtherWayBtn = $('.register-page_
 var registerPageConfirmationFirstFormContentConfirmBtn = $('.register-page__confirmation__first-form__content__confirm-btn');
 var registerPageConfirmationFirstFormContentNotifyError = $('.register-page__confirmation__first-form__content__notify-error');
 
-
+var registerPageConfirmationSecondForm = $('.register-page__confirmation__second-form');
 var registerPageConfirmationSecondFormContent = $('.register-page__confirmation__second-form__content');
 var registerPageConfirmationSecondFormHeaderBackBtn = $('.register-page__confirmation__second-form__header__back-btn');
 var registerPageConfirmationSecondFormContentInput = $('.register-page__confirmation__second-form__content__input');
@@ -61,6 +65,7 @@ var registerPageConfirmationSecondFormContentInputStatusBtnHiding = $('.register
 var registerPageConfirmationSecondFormContentRegisterBtn = $('.register-page__confirmation__second-form__content__register-btn');
 var registerPageConfirmationSecondFormContentInputPart = $('.register-page__confirmation__second-form__content__input-part');
 
+var registerPageConfirmationThirdForm = $('.register-page__confirmation__third-form');
 var registerPageConfirmationThirdFormContentFirstNotifyUserPhoneNumber = $('.register-page__confirmation__third-form__content-first-notify__user-phone-number');
 var registerPageConfirmationThirdFormContentSecondNotifySecondsNumber = $('.register-page__confirmation__third-form__content-second-notify__seconds-number');
 var registerPageConfirmationThirdFormContentBackToShopeeBtn = $('.register-page__confirmation__third-form__content-back-to-shopee-btn');
@@ -71,20 +76,20 @@ var headerLoginBtn = $('.header__login__btn');
 var headerNotificationPopupWhenNotLoginLoginBtn = $('.header__notification__popup--when-not-login__login-btn');
 var headerLogoutBtn = $('.header__logout-btn');
 var loginPageHeaderShopeeLink = $('.login-page__header-shopee__link');
+var checkValidPhoneNumberLogin = false;
+var checkValidPasswordLogin = false;
 
 var loginPageContentForm = $('.login-page__content-form');
+var loginPageContentFormLoginBtn = $('.login-page__content-form__login-btn');
 var loginPageContentFormNotifyError = $('.login-page__content-form__notify-error');
 var loginPageContentFormFirstInput = $('.login-page__content-form__first-input');
 var loginPageContentFormFirstInputPartInvalid = $('.login-page__content-form__first-input-part--invalid');
 var loginPageContentFormFirstInputInvalid = $('.login-page__content-form__first-input--invalid');
 
-
 var loginPageContentFormSecondInputMain = $('.login-page__content-form__second-input-main');
 var loginPageContentFormSecondInput = $('.login-page__content-form__second-input');
 var loginPageContentFormSecondInputPartInvalid = $('.login-page__content-form__second-input-part--invalid');
 var loginPageContentFormSecondInputInvalid = $('.login-page__content-form__second-input--invalid');
-var loginPageContentFormLoginBtn = $('.login-page__content-form__login-btn');
-
 var loginPageContentFormSecondInputStatusBtn = $('.login-page__content-form__second-input-status-btn');
 var loginPageContentFormSecondInputStatusBtnShowing = $('.login-page__content-form__second-input-status-btn__showing');
 var loginPageContentFormSecondInputStatusBtnHiding = $('.login-page__content-form__second-input-status-btn__hiding');
@@ -95,36 +100,142 @@ var loginPageContentFormOtherWaysFacebook = $('.login-page__content-form__other-
 var loginPageContentFormOtherWaysGoogle = $('.login-page__content-form__other-ways__google');
 var loginPageContentFormOtherWaysApple = $('.login-page__content-form__other-ways__apple');
 var loginPageContentFormAskForRegisterRegisterBtn = $('.login-page__content-form__ask-for-register__register-btn');
-
-var checkValidPhoneNumberLogin = false;
-var checkValidPasswordLogin = false;
 //#endregion
 
 //#region 4. Header
-var headerLinksBecomeAShopeeSeller = $('.header__links-become-a-shopee-seller');
-
+var headerNotification = $('.header__notification');
 var headerNotificationLink = $('.header__notification__link');
 var headerNotificationPopupWhenNotLogin = $('.header__notification__popup--when-not-login');
 var headerNotificationPopupWhenNotLoginRegisterBtn = $('.header__notification__popup--when-not-login__register-btn');
 var headerNotificationQuantity = $('.header__notification__quantity');
 var headerNotificationPopupWhenLoggedIn = $('.header__notification__popup--when-logged-in');
-var headerCartLink = $('.header__cart__link');
+var headerNotificationPopupWhenLoggedInList = $('.header__notification__popup--when-logged-in__list');
 
+var headerLinksBecomeAShopeeSeller = $('.header__links-become-a-shopee-seller');
+var headerCartLink = $('.header__cart__link');
 var headerRegister = $('.header__register');
 var headerLogin = $('.header__login');
 var headerUserAccount = $('.header__user-account');
+
+var headerSearchFrameInput = $('.header__search-frame__input');
+var headerSearchHistory = $('.header__search-history');
+var headerSearchFrameBtn = $('.header__search-frame__btn');
+var headerSearchHistoryList = $('.header__search-history-list');
+var headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
+var headerSearchHistoryKeywordsList = $('.header__search-history-keywords-list');
+var headerSearchHistoryItemIndex = 0;
 //#endregion
 
-//#region 5. Motion Parts
-var motionPartSubBanner = $('.motion-part__sub-banner');
-var motionPartChat = $('.motion-part__chat');
+//#region 5. Content
 
+// slider
+var sliderMainMotionPart = $('.slider__main__motion-part');
+var sliderMainMotionPartLink = $('.slider__main__motion-part__link');
+var sliderMainMotionPartImg = $('.slider__main__motion-part__img');
+var sliderMainMotionPartQueueItems = $$('.slider__main__motion-part__queue-item');
+var sliderMainMotionPartPreviousBtn = $('.slider__main__motion-part__previous-btn');
+var sliderMainMotionPartNextBtn = $('.slider__main__motion-part__next-btn');
+var sliderFavouriteSelections = $('.slider__favourite-selections');
+var sliderMainMotionPartQueueItemCurrentIndex = 0;
+var sliderMainMotionPartLinkInfo = [];
+
+// giftBanner
 var giftBanner = $('.gift-banner');
 var giftBannerPopup = $('.gift-banner__popup');
 var giftBannerPopupCloseBtn = $('.gift-banner__popup__close-btn');
 
+// outstanding
+var outstandingHotSellingProducts = $('.outstanding__hot-selling-products');
+var outstandingHotBrands = $('.outstanding__hot-brands');
+
+// directory
+var directoryMainList = $('.directory__main__list');
+var directoryMainList = $('.directory__main__list');
+var directoryMainNextBtn = $('.directory__main__next-btn');
+var directoryMainPreviousBtn = $('.directory__main__previous-btn');
+
+// flashSale
+var flashSaleMainList = $$('.flash-sale__main__list');
+var flashSaleMainNextBtn = $('.flash-sale__main__next-btn');
+var flashSaleMainPreviousBtn = $('.flash-sale__main__previous-btn');
+var flashSaleMainList = $('.flash-sale__main__list');
+var flashSaleMainListCurrentIndex = 1;   
+
+// underFlashSale
+var underFlashSalePart = $('.under-flash-sale__part');
+
+// shopeeMall
+var shopeeMallMainMotion = $('.shopee-mall__main__motion');
+var shopeeMallMainMotionLink = $('.shopee-mall__main__motion__link');
+var shopeeMallMainMotionImage = $('.shopee-mall__main__motion__img');
+var shopeeMallMainMotionQueueItems = $$('.shopee-mall__main__motion__queue-item');
+var shopeeMallHeadingText = $('.shopee-mall__heading__text');
+var shopeeMallMainProductList = $('.shopee-mall__main__product-list');
+var shopeeMallMainProductNextBtn = $('.shopee-mall__main__product__next-btn');
+var shopeeMallMainProductPreviousBtn = $('.shopee-mall__main__product__previous-btn');
+var shopeeMallMainProductList = $('.shopee-mall__main__product-list');
+var shopeeMallMainProductListCurrentIndex = 1;   
+
+// searchTrending
+var searchTrendingMainList = $('.search-trending__main__list');
+var searchTrendingHeadingViewMoreBtn = $('.search-trending__heading__view-more-btn');
+var searchTrendingListCurrentIndex = 0, searchTrendingNumberList;
+
+// topSearch
+var topSearchMainList = $('.top-search__main__list');
+var topSearchMainList = $('.top-search__main__list');
+var topSearchMainListCurrentIndex = 1;   
+var topSearchMainNextBtn = $('.top-search__main__next-btn');
+var topSearchMainPreviousBtn = $('.top-search__main__previous-btn');
+
+// todaySuggestion
+var todaySuggestionMainTabMain = $('.today-suggestion__main__tab-main');
+var todaySuggestionMainTabSuperSale88 = $('.today-suggestion__main__tab-super-sale-8-8');
+var todaySuggestion = $('.today-suggestion');
+var todaySuggestionHeadingTabMain = $('.today-suggestion__heading-tab-main');
+var todaySuggestionHeadingTabSuperSale88 = $('.today-suggestion__heading-tab-super-sale-8-8');
+var todaySuggestionMainViewAllBtn = $('.today-suggestion__main__view-all-btn');
+var todaySuggestionMain = $('.today-suggestion__main');
+var todaySuggestionMainTabMain = $('.today-suggestion__main__tab-main');
+var todaySuggestionMainTabSuperSale88 = $('.today-suggestion__main__tab-super-sale-8-8');
+
+//#endregion
+
+//#region 6. Footer
+var footerTextATags = $$('.footer__text a');
+var footerDirectoryList = $('.footer__directory__list');
+var footerLinkAboutTextCSKH = $('.footer__link__about-text-CSKH');
+var footerLinkAboutTextVeShopee = $('.footer__link__about-text-VeShopee');
+var footerLinkAboutSocial = $('.footer__link__about-social');
+var footerLinkCopyrightCountryAndAreaList = $('.footer__link__copyright__country-and-area__list');
+var footerPolicyTermsPartTitle = $('.footer__policy-terms__part__title');
+var footerPolicyTermsPartCertificate = $('.footer__policy-terms__part__certificate');
+var footerPolicyTermsPartCompanyInfo = $('.footer__policy-terms__part__company-info');
+//#endregion
+
+//#region 7. Motion Parts
+var motionPartSubBanner = $('.motion-part__sub-banner');
 var pageLoadBanner = $('.page-load-banner');
 var pageLoadBannerCloseBtn = $('.page-load-banner__close-btn');
+var motionPartChat = $('.motion-part__chat');
+var motionPartChatMain = $('.motion-part__chat__main');
+var motionPartChatPopupHeader_hidePopupBtn = $('.motion-part__chat__popup__header__right-icons > svg:nth-child(3)');
+
+var motionPartChatPopup = $('.motion-part__chat__popup');
+var motionPartChatPopupExpanded = $('.motion-part__chat__popup__expanded');
+var motionPartChatPopupHeader_iconWhenNormal = $('.motion-part__chat__popup__header__icon--when-normal');
+var motionPartChatPopupHeader_iconWhenExpanded = $('.motion-part__chat__popup__header__icon--when-expanded');
+var motionPartChatPopupMainSearchAndOptionsPopup = $('.motion-part__chat__popup__main__search-and-options__popup');
+var motionPartChatPopupMainSearchAndOptionsPopup_all = $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(1)');
+var motionPartChatPopupMainSearchAndOptionsPopup_unread = $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(2)');
+var motionPartChatPopupMainSearchAndOptionsPopup_pinned = $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(3)');
+
+var motionPartChatPopupMainContent_all = $('.motion-part__chat__popup__main__content--all');
+var motionPartChatPopupMainContent_unread = $('.motion-part__chat__popup__main__content--unread');
+var motionPartChatPopupMainContent_pinned = $('.motion-part__chat__popup__main__content--pinned');
+var motionPartChatPopupMainSearchAndOptionsText = $('.motion-part__chat__popup__main__search-and-options__text');
+var motionPartChatPopupMainSearchAndOptionsInput = $('.motion-part__chat__popup__main__search-and-options > input');
+var motionPartChatPopupMainSearchAndOptionsPart = $('.motion-part__chat__popup__main__search-and-options__part');
 //#endregion
 
 //#endregion
@@ -188,10 +299,10 @@ function handleSettingInitialConfig () {
 //#endregion
 
 
-//#region INITIAL WEBSITE, REGISTER PAGE, LOGIN PAGE
+//#region HANDLE AT INITIAL PAGE, REGISTER PAGE, LOGIN PAGE
 
-//#region (f) loadInitialWebsiteNoModal
-function loadInitialWebsiteNoModal () {
+//#region (function) loadInitialPageNoModal
+function loadInitialPageNoModal () {
     registerPage.style.display = 'none';
     loginPage.style.display = 'none';
     headerNotificationLink.removeAttribute('href');
@@ -220,7 +331,7 @@ function loadInitialWebsiteNoModal () {
     footerText.style.display = 'block';
     footerDirectory.style.display = 'block';
 
-    window.scrollTo(0, initialWebsiteOffsetHeight);
+    window.scrollTo(0, initialPageOffsetHeight);
 }
 //#endregion
 
@@ -229,7 +340,7 @@ loginPageHeaderShopeeLink.addEventListener('click', (e) => {
     e.preventDefault();
 
     setTimeout(() => {
-        loadInitialWebsiteNoModal();
+        loadInitialPageNoModal();
     }, 200)
 });
 
@@ -237,12 +348,30 @@ registerPageHeaderShopeeLink.addEventListener('click', (e) => {
     e.preventDefault();
 
     setTimeout(() => {
-        loadInitialWebsiteNoModal();
+        loadInitialPageNoModal();
     }, 200)
 });
 //#endregion 
 
-//#region gift-banner onclick()
+//#region modal, giftBanner, giftBannerPopup, giftBannerPopupCloseBtn onclick()
+modal.onclick = (e) => {
+    setTimeout(() => {
+
+        body.style.overflow = 'visible';
+        modal.style.display = 'none';
+        app.style.position = 'absolute';
+        content.style.position = 'relative';
+        content.style.top = '0';
+
+        if (pageLoadBanner.style.display == 'block') {
+            pageLoadBanner.style.display = 'none';
+        } 
+        if (giftBannerPopup.style.display == 'block') {
+            giftBannerPopup.style.display = 'none';
+        }
+    }, 100);
+}
+
 giftBanner.addEventListener('click', () =>  {
 
     setTimeout(() => {
@@ -253,28 +382,7 @@ giftBanner.addEventListener('click', () =>  {
         body.style.overflow = 'hidden';
     }, 100)
 });
-//#endregion
-    
-//#region modal onclick() 
-modal.onclick = (e) => {
-    setTimeout(() => {
-        body.style.overflow = 'visible';
-        modal.style.display = 'none';
-        app.style.position = 'absolute';
-        content.style.position = 'relative';
-        content.style.top = '0';
 
-        if(pageLoadBanner.style.display == 'block') {
-            pageLoadBanner.style.display = 'none';
-        } 
-        if(giftBannerPopup.style.display == 'block') {
-            giftBannerPopup.style.display = 'none';
-        }
-    }, 100);
-}
-//#endregion   
-
-//#region giftBannerPopup, giftBannerPopupCloseBtn onclick()
 giftBannerPopup.onclick = (e) => {
     e.stopPropagation();
 }
@@ -283,6 +391,36 @@ giftBannerPopupCloseBtn.onclick = (e) => {
     e.stopPropagation();
     modal.click();
 }
+//#endregion
+
+//#region *Not handle these buttons, just preventDefault them
+registerPageContentFormFacebookBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+});
+registerPageContentFormGoogleBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+});
+registerPageContentFormAppleBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+});
+registerPageConfirmationFirstFormContentHelpOtherWayBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+});
+loginPageContentFormUnderLoginBtnForgetPasswordBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+loginPageContentFormUnderLoginBtnLoginWithSMS.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+loginPageContentFormOtherWaysFacebook.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+loginPageContentFormOtherWaysGoogle.addEventListener('click', (e) => {
+    e.preventDefault();
+});
+loginPageContentFormOtherWaysApple.addEventListener('click', (e) => {
+    e.preventDefault();
+});
 //#endregion
 
 
@@ -328,7 +466,7 @@ headerRegisterBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     // get current website offsetHeight
-    initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+    initialPageOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadRegisterPage();
     
     // set auto focus for this input
@@ -341,7 +479,7 @@ headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', (e) => 
     e.preventDefault();
 
     // get current website offsetHeight
-    initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+    initialPageOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadRegisterPage();
 
     // set auto focus for this input
@@ -351,9 +489,9 @@ headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener('click', (e) => 
 });
 //#endregion
 
-//#region ---> CONTENT PART
+//#region -> CONTENT PART
 
-//#region (f) set - unset RegisterPageConfirmationStepItemActive
+//#region (f) set / unset RegisterPageConfirmationStepItemActive
 function setRegisterPageConfirmationStepItemActive (nthChild) {
     var registerPageConfirmationStepItem = 
         $(`.register-page__confirmation__step-item:nth-child(${nthChild})`);
@@ -391,7 +529,7 @@ function unsetRegisterPageConfirmationStepItemActive (nthChild) {
 }
 //#endregion
 
-//#region (f) set - unset RegisterPageConfirmationStepLineActive
+//#region (f) set / unset RegisterPageConfirmationStepLineActive
 function setRegisterPageConfirmationStepLineActive (nthChild) {
     var registerPageConfirmationStepLine = 
         $(`.register-page__confirmation__step-line:nth-child(${nthChild})`);
@@ -419,25 +557,19 @@ function unsetRegisterPageConfirmationStepLineActive (nthChild) {
 }
 //#endregion
 
-//#region getAndUpdateConfirmationCodes
-var confirmationCodes = [];
-var currentConfirmationCode;
-
-function getAndUpdateConfirmationCodes () {
+//#region --OK--getAndUpdateConfirmationCodes
+(function getAndUpdateConfirmationCodes () {
     fetch("db.json")
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
+        .then((response) => response.json())
+        
+        .then((datas) => {
             confirmationCodes = datas.confirmationCodes;
         })
-}
-
-getAndUpdateConfirmationCodes();
+})();
 //#endregion
 
-var checkValidPhoneNumberRegister = false;
 
+//#region EventListeners
 registerPageContentFormInput.addEventListener('keydown', (e) => {
     if (e.code == 'Enter') {
         e.preventDefault();
@@ -620,26 +752,13 @@ registerPageConfirmationFirstFormContentHelpResendBtn.addEventListener('click', 
         registerPageConfirmationFirstFormContentInput.focus();
     }, 500)
 });
-
-//#region *Not handle these buttons, just preventDefault 
-registerPageContentFormFacebookBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-});
-registerPageContentFormGoogleBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-});
-registerPageContentFormAppleBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-});
-registerPageConfirmationFirstFormContentHelpOtherWayBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-});
 //#endregion
 
 //#endregion
 
-//#region ---> 1ST CONFIRMATION
+//#region -> 1ST CONFIRMATION
 
+//#region EventListeners
 registerPageConfirmationFirstFormHeaderBackBtn.addEventListener('click', (e) => {
     e.preventDefault()
 
@@ -686,8 +805,26 @@ registerPageConfirmationFirstFormContentInput.addEventListener('keydown', (e) =>
     }, 0);
 });
 
+registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseover', (e) => {
+    if (e.target.style.cursor == 'pointer') {
+        e.target.style.opacity = '0.92';
+    }
+    else {
+        e.preventDefault();
+    }
+});
 
-//#region Check for next step
+registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseleave', (e) => {
+    if (e.target.style.cursor == 'pointer') {
+        e.target.style.opacity = '1';
+    }
+    else {
+        e.preventDefault();
+    }
+});
+//#endregion
+
+// Check for next step
 registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -718,37 +855,12 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('click', (e)
         }
     }, 500);
 });
-//#endregion
-
-
-registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseover', (e) => {
-    if (e.target.style.cursor == 'pointer') {
-        e.target.style.opacity = '0.92';
-    }
-    else {
-        e.preventDefault();
-    }
-});
-
-registerPageConfirmationFirstFormContentConfirmBtn.addEventListener('mouseleave', (e) => {
-    if (e.target.style.cursor == 'pointer') {
-        e.target.style.opacity = '1';
-    }
-    else {
-        e.preventDefault();
-    }
-});
 
 //#endregion
 
-//#region ---> 2ND CONFIRMATION
+//#region -> 2ND CONFIRMATION
 
-// set default value for this input
-registerPageConfirmationSecondFormContentInput.value = "Wa.3n.en,mr6@YwT";
-
-// set for mouseover - mouseleave action
-registerPageConfirmationSecondFormContentRegisterBtn.style.cursor = 'pointer';
-
+//#region EventListeners
 registerPageConfirmationSecondFormContentInputStatusBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -766,10 +878,6 @@ registerPageConfirmationSecondFormContentInputStatusBtn.addEventListener('click'
     }   
 });
 
-// Because default value ('Wa.3n.en,mr6@YwT') is true, so...
-var checkForRegisterPageConfirmationFormContentThirdStep = true;
-
-//#region EventListeners
 registerPageConfirmationSecondFormContentInput.addEventListener('keydown', (e) => {
     var check1 = false, check2 = false, check3 = false;
     
@@ -817,7 +925,7 @@ registerPageConfirmationSecondFormContentInput.addEventListener('keydown', (e) =
                     > .register-page__confirmation__second-form__content__check-wrong-icon`);
     
     
-                if (checkArray[i] == true) {
+                if (checkArray[i]) {
                     registerPageConfirmationSecondFormContentCheckText.style.color = '#6c0';
                     registerPageConfirmationSecondFormContentCheckCorrectIcon.style.display = 'block';
                     registerPageConfirmationSecondFormContentCheckWrongIcon.style.display = 'none';
@@ -830,7 +938,7 @@ registerPageConfirmationSecondFormContentInput.addEventListener('keydown', (e) =
             }
             
             // If data entry operations is Success or Fail
-            if (check1 == true && check2 == true && check3 == true) {
+            if (check1 && check2 && check3) {
                 checkForRegisterPageConfirmationFormContentThirdStep = true;
 
                 registerPageConfirmationSecondFormContentInputPart.classList.remove('register-page__confirmation__second-form__content__input-part--wrong-value');
@@ -857,7 +965,6 @@ registerPageConfirmationSecondFormContentInput.addEventListener('keydown', (e) =
     }, 0);
 });
 
-
 registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('mouseover', (e) => {
     (e.target.style.cursor == 'pointer') ? e.target.style.opacity = '0.92' 
         : e.preventDefault();
@@ -867,7 +974,6 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('mouseleav
     (e.target.style.cursor == 'pointer') ? e.target.style.opacity = '1'
         : e.preventDefault();
 });
-
 
 registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -890,7 +996,7 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', (
             clearInterval(countdownInterval);
 
             setTimeout(() => {
-                loadInitialWebsiteNoModal();
+                loadInitialPageNoModal();
             }, 1000);
         });
 
@@ -917,7 +1023,7 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener('click', (
                 registerPageConfirmationThirdFormContentSecondNotifySecondsNumber.innerHTML = currentSecond--;
 
                 if (currentSecond == 0) {
-                    loadInitialWebsiteNoModal();
+                    loadInitialPageNoModal();
 
                     // stop setInterval()
                     clearInterval(countdownInterval);
@@ -956,13 +1062,11 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener('click', (e) =>
 });
 // #endregion
 
-// #endregion
-
+//#endregion
 //#endregion
 
 //#region II. LOGIN PAGE
 
-//#region (f) loadLoginPage, loginSuccess
 function loadLoginPage () {
     setTimeout(() => {
         loginPage.style.display = 'block';
@@ -1033,14 +1137,13 @@ function loginSuccess () {
 
     window.scrollTo(0, 0);
 } 
-//#endregion
 
 //#region click to Login / Logout / Register
 headerLoginBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     // get current website offsetHeight
-    initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+    initialPageOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadLoginPage();
 
     // set auto focus for this input
@@ -1051,8 +1154,9 @@ headerLoginBtn.addEventListener('click', (e) => {
 
 headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', (e) => {
     e.preventDefault();
+
     // get current website offsetHeight
-    initialWebsiteOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
+    initialPageOffsetHeight = -html.getBoundingClientRect().y + header.style.height;
     loadLoginPage();
 
     // set auto focus for this input
@@ -1063,13 +1167,16 @@ headerNotificationPopupWhenNotLoginLoginBtn.addEventListener('click', (e) => {
 
 headerLogoutBtn.onclick = () => {
     setTimeout(() => {
+
         setConfig('isLoggedIn', false);
-        loadInitialWebsiteNoModal();
+        loadInitialPageNoModal();
+
     }, 1000);
 }
 
 loginPageContentFormAskForRegisterRegisterBtn.addEventListener('click', (e) => {
     e.preventDefault();
+
     setTimeout(() => {
         loadRegisterPage();
 
@@ -1081,7 +1188,7 @@ loginPageContentFormAskForRegisterRegisterBtn.addEventListener('click', (e) => {
         window.scrollTo(0, 0);
     }, 200);
 })
-//#endregion click to Login / Logout / Register
+//#endregion
 
 //#region EventListeners
 loginPageContentFormFirstInput.addEventListener('keydown', (e) => {
@@ -1310,41 +1417,28 @@ loginPageContentFormLoginBtn.addEventListener('mouseleave', (e) => {
 });
 //#endregion
 
-//#region *Not handle these buttons, just preventDefault them
-loginPageContentFormUnderLoginBtnForgetPasswordBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-});
-loginPageContentFormUnderLoginBtnLoginWithSMS.addEventListener('click', (e) => {
-    e.preventDefault();
-});
-loginPageContentFormOtherWaysFacebook.addEventListener('click', (e) => {
-    e.preventDefault();
-});
-loginPageContentFormOtherWaysGoogle.addEventListener('click', (e) => {
-    e.preventDefault();
-});
-loginPageContentFormOtherWaysApple.addEventListener('click', (e) => {
-    e.preventDefault();
-});
-//#endregion
-
 //#endregion
 
 //#endregion
 
 
-//#region HANDLE DATA, UPDATE DATA IN DOM, LISTEN EVENT, ANIMATION,...
-    
-//#region headerSearchFrameInput, headerSearchHistory
-var headerSearchFrameInput = $('.header__search-frame__input');
-var headerSearchHistory = $('.header__search-history');
-var headerSearchFrameBtn = $('.header__search-frame__btn');
-var headerSearchHistoryList = $('.header__search-history-list');
-var headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
-var headerSearchHistoryItemIndex = 0;
+//#region HANDLE DATA, UPDATE DATA IN DOM, LISTEN EVENT,...
+
+// header
+//#region handle headerSearchFrameInput, headerSearchHistory
+
+function removeHeaderSearchHistoryItemLinksHover () {
+    headerSearchHistoryItemLinks.forEach((headerSearchHistoryItemLink) => {
+
+        if (headerSearchHistoryItemLink.classList.contains('header__search-history-item__link--hover')) {
+            headerSearchHistoryItemLink.classList.remove('header__search-history-item__link--hover');
+        }
+    });
+}
 
 //#region update headerSearchHistoryListInfo -> updateInDOMHeaderSearchHistoryList
 function updateInDOMHeaderSearchHistoryList () {
+
     var defaultHeaderSearchHistoryItem = `<li class="header__search-history-item header__search-history-item--default">
         <a href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
             Deal hot kèm 2 mã freeship
@@ -1398,17 +1492,6 @@ function addAndUpdateHeaderSearchHistoryListInfo (data) {
 updateInDOMHeaderSearchHistoryList();
 //#endregion
 
-//#region (f) removeHeaderSearchHistoryItemLinksHover
-function removeHeaderSearchHistoryItemLinksHover () {
-    headerSearchHistoryItemLinks.forEach((headerSearchHistoryItemLink) => {
-
-        if (headerSearchHistoryItemLink.classList.contains('header__search-history-item__link--hover')) {
-            headerSearchHistoryItemLink.classList.remove('header__search-history-item__link--hover');
-        }
-    });
-}
-//#endregion
-
 //#region EventListeners
 headerSearchFrameInput.addEventListener('click', () => {
     headerSearchHistory.style.display = 'block';
@@ -1425,7 +1508,7 @@ headerSearchFrameInput.addEventListener('blur', () => {
 });
 
 headerSearchFrameInput.addEventListener('keydown', (e) => {
-    // update nodelist headerSearchHistoryItemLinks
+    // update this nodelist
     headerSearchHistoryItemLinks = $$('.header__search-history-item__link');
 
     switch (e.code) {
@@ -1446,11 +1529,11 @@ headerSearchFrameInput.addEventListener('keydown', (e) => {
                 headerSearchHistoryItemIndex--;
             }
 
-            // 2. add class hover on next element
+            // 3. add class hover on next element
             removeHeaderSearchHistoryItemLinksHover();
             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
 
-            // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
+            // 4. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
             var headerSearchHistoryItemCurrent = $(`
                 .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
             headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
@@ -1469,11 +1552,11 @@ headerSearchFrameInput.addEventListener('keydown', (e) => {
                 headerSearchHistoryItemIndex++;
             }
 
-            // 2. add class hover on next element
+            // 3. add class hover on next element
             removeHeaderSearchHistoryItemLinksHover();
             headerSearchHistoryItemLinks[headerSearchHistoryItemIndex-1].classList.add('header__search-history-item__link--hover');
 
-            // 3. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
+            // 4. show current text in headerSearchFrameInput is innerText of headerSearchHistoryItemCurrent
             var headerSearchHistoryItemCurrent = $(`
                 .header__search-history-item:nth-child(${headerSearchHistoryItemIndex}) > .header__search-history-item__link`);
             headerSearchFrameInput.value = headerSearchHistoryItemCurrent.innerText.trim();
@@ -1508,31 +1591,23 @@ headerSearchFrameBtn.addEventListener('click', (e) => {
 //#endregion
 
 //#region updateInDOMHeaderSearchHistoryKeywordsList
-var headerSearchHistoryKeywordsList = $('.header__search-history-keywords-list');
-
-function updateInDOMHeaderSearchHistoryKeywordsList () {
+(function updateInDOMHeaderSearchHistoryKeywordsList () {
     fetch("db.json") 
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(datas) {
+        .then((response) => response.json())
+
+        .then((datas) => {
             var aTags = datas.headerSearchHistoryKeywordsListInfo.map((data) => {
                 return `<a class="header__search-history-keywords-item" 
                     href="${data.href}">${data.innerHTML}</a>`;
             });
+
             headerSearchHistoryKeywordsList.innerHTML = aTags.join('');
         })
-}
-
-updateInDOMHeaderSearchHistoryKeywordsList ();
+})();
 //#endregion
 
-
 //#region updateInDOMHeaderNotificationPopupWhenLoggedInList
-var headerNotificationPopupWhenLoggedInList = 
-    $('.header__notification__popup--when-logged-in__list');
-
-function updateInDOMHeaderNotificationPopupWhenLoggedInList () {
+(function updateInDOMHeaderNotificationPopupWhenLoggedInList () {
     fetch("db.json") 
         .then((response) => response.json())
 
@@ -1554,31 +1629,17 @@ function updateInDOMHeaderNotificationPopupWhenLoggedInList () {
 
             headerNotificationPopupWhenLoggedInList.innerHTML = liTags.join('');
         })
-}
-
-updateInDOMHeaderNotificationPopupWhenLoggedInList();
-//#endregion
-
-//#region header__notification, header__notification__quantity onmouseleave()
-var headerNotification = $('.header__notification');
+})();
 
 headerNotification.addEventListener('mouseleave', () => {
     headerNotificationQuantity.style.display = 'none';
 });
 //#endregion
 
+// slider
+//#region handleInPartSliderMainMotionPart
+(function handleInPartSliderMainMotionPart () {
 
-//#region slider__main__motion-part (img & queue motion; button onclick())
-var sliderMainMotionPart = $('.slider__main__motion-part');
-var sliderMainMotionPartLink = $('.slider__main__motion-part__link');
-var sliderMainMotionPartImg = $('.slider__main__motion-part__img');
-var sliderMainMotionPartQueueItems = $$('.slider__main__motion-part__queue-item');
-var sliderMainMotionPartPreviousBtn = $('.slider__main__motion-part__previous-btn');
-var sliderMainMotionPartNextBtn = $('.slider__main__motion-part__next-btn');
-var sliderMainMotionPartQueueItemCurrentIndex = 0;
-var sliderMainMotionPartLinkInfo = [];
-
-function handleInPartSliderMainMotionPart () {
     // get data in file db.json and assign to array sliderMainMotionPartLinkInfo
     fetch("db.json")
         .then((response) => response.json())
@@ -1668,15 +1729,11 @@ function handleInPartSliderMainMotionPart () {
         }, 5000);
 
     }, 1000);
-}
-
-handleInPartSliderMainMotionPart();
+})();
 //#endregion
 
 //#region updateInDOMSliderFavouriteSelections
-var sliderFavouriteSelections = $('.slider__favourite-selections');
-
-function updateInDOMSliderFavouriteSelections () {
+(function updateInDOMSliderFavouriteSelections () {
     fetch("db.json") 
         .then((response) => response.json())
 
@@ -1690,24 +1747,11 @@ function updateInDOMSliderFavouriteSelections () {
 
             sliderFavouriteSelections.innerHTML = aTags.join('');
         })
-}
-
-updateInDOMSliderFavouriteSelections();
+})();
 //#endregion
 
-
+// outstanding
 //#region updateInDOMOutstandingHotSellingProducts
-var outstandingHotSellingProducts = $('.outstanding__hot-selling-products');
-
-function updateInDOMOutstandingHotSellingProducts () {
-    fetch("db.json") 
-        .then((response) => response.json())
-
-        .then((datas) => { 
-            handleUpdateInDOMOutstandingHotSellingProducts(datas);
-        })
-}
-
 function handleUpdateInDOMOutstandingHotSellingProducts (datas) {
     var firstDivTag = `
         <div class="outstanding__hot-selling-products__info">
@@ -1738,21 +1782,17 @@ function handleUpdateInDOMOutstandingHotSellingProducts (datas) {
         </div>`;
 }
 
-updateInDOMOutstandingHotSellingProducts();
-//#endregion 
-
-//#region updateInDOMOutstandingHotBrands
-var outstandingHotBrands = $('.outstanding__hot-brands');
-
-function updateInDOMOutstandingHotBrands () {
+(function updateInDOMOutstandingHotSellingProducts () {
     fetch("db.json") 
         .then((response) => response.json())
 
         .then((datas) => { 
-            handleUpdateInDOMOutstandingHotBrands(datas);
+            handleUpdateInDOMOutstandingHotSellingProducts(datas);
         })
-}
+})();
+//#endregion 
 
+//#region updateInDOMOutstandingHotBrands
 function handleUpdateInDOMOutstandingHotBrands (datas) {
     var firstDivTag = `
         <div class="outstanding__hot-brands__info">
@@ -1783,14 +1823,19 @@ function handleUpdateInDOMOutstandingHotBrands (datas) {
         </div>`;
 }
 
-updateInDOMOutstandingHotBrands();
+(function updateInDOMOutstandingHotBrands () {
+    fetch("db.json") 
+        .then((response) => response.json())
+
+        .then((datas) => { 
+            handleUpdateInDOMOutstandingHotBrands(datas);
+        })
+})();
 //#endregion
 
-
+// directory
 //#region updateInDOMDirectoryMainList
-var directoryMainList = $('.directory__main__list');
-
-function updateInDOMDirectoryMainList () {
+(function updateInDOMDirectoryMainList () {
     fetch("db.json") 
         .then((response) => response.json())
 
@@ -1812,16 +1857,10 @@ function updateInDOMDirectoryMainList () {
             }
             directoryMainList.innerHTML = liTags;
         })
-}
-
-updateInDOMDirectoryMainList();
+})();
 //#endregion
 
 //#region directoryMainBtns onclick() 
-var directoryMainList = $('.directory__main__list');
-var directoryMainNextBtn = $('.directory__main__next-btn');
-var directoryMainPreviousBtn = $('.directory__main__previous-btn');
-
 directoryMainNextBtn.addEventListener('click', (e) => {
 
     setTimeout(() => {
@@ -1847,19 +1886,8 @@ directoryMainPreviousBtn.addEventListener('click', (e) => {
 });
 //#endregion
 
-
+// flashSale
 //#region updateInDOMFlashSaleMainList
-var flashSaleMainList = $$('.flash-sale__main__list');
-
-function updateInDOMFlashSaleMainList () {
-    fetch("db.json")
-        .then((response) => response.json())
-
-        .then((datas) => {
-            handleUpdateInDOMFlashSaleMainList(datas.flashSaleMainListInfo);
-        })
-}
-
 function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
     var aTags = '';
 
@@ -1893,18 +1921,20 @@ function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
     flashSaleMainList.innerHTML = aTags;
 }
 
-updateInDOMFlashSaleMainList();
+(function updateInDOMFlashSaleMainList () {
+    fetch("db.json")
+        .then((response) => response.json())
+
+        .then((datas) => {
+            handleUpdateInDOMFlashSaleMainList(datas.flashSaleMainListInfo);
+        })
+})();
 //#endregion
 
 //#region flashSaleMainBtn onclick() 
-var flashSaleMainNextBtn = $('.flash-sale__main__next-btn');
-var flashSaleMainPreviousBtn = $('.flash-sale__main__previous-btn');
-var flashSaleMainList = $('.flash-sale__main__list');
-var flashSaleMainListCurrentIndex = 1;   
-
 flashSaleMainNextBtn.addEventListener('click', (e) => {
     // case 1: first list
-    if(flashSaleMainListCurrentIndex == 1) {
+    if (flashSaleMainListCurrentIndex == 1) {
         flashSaleMainListCurrentIndex = 2;
         flashSaleMainPreviousBtn.style.display = 'block';
         flashSaleMainNextBtn.style.display = 'block';
@@ -1915,7 +1945,7 @@ flashSaleMainNextBtn.addEventListener('click', (e) => {
     }
     else {
         // case 2: second list
-        if(flashSaleMainListCurrentIndex == 2) {
+        if (flashSaleMainListCurrentIndex == 2) {
             flashSaleMainListCurrentIndex = 3;
             flashSaleMainPreviousBtn.style.display = 'block';
             flashSaleMainNextBtn.style.display = 'none';
@@ -1929,7 +1959,7 @@ flashSaleMainNextBtn.addEventListener('click', (e) => {
 
 flashSaleMainPreviousBtn.addEventListener('click', (e) => {
     // case 1: second list
-    if(flashSaleMainListCurrentIndex == 2) {
+    if (flashSaleMainListCurrentIndex == 2) {
         flashSaleMainListCurrentIndex = 1;
         flashSaleMainPreviousBtn.style.display = 'none';
         flashSaleMainNextBtn.style.display = 'block';
@@ -1940,7 +1970,7 @@ flashSaleMainPreviousBtn.addEventListener('click', (e) => {
     }
     else {
         // case 2: third list
-        if(flashSaleMainListCurrentIndex == 3) {
+        if (flashSaleMainListCurrentIndex == 3) {
             flashSaleMainListCurrentIndex = 2;
             flashSaleMainPreviousBtn.style.display = 'block';
             flashSaleMainNextBtn.style.display = 'block';
@@ -1953,10 +1983,8 @@ flashSaleMainPreviousBtn.addEventListener('click', (e) => {
 });
 //#endregion
 
-//#region updateInDOMFlashSalePart
-var underFlashSalePart = $('.under-flash-sale__part');
-
-function updateInDOMFlashSalePart () {
+//#region updateInDOMUnderFlashSalePart
+(function updateInDOMUnderFlashSalePart () {
     fetch("db.json") 
         .then((response) => response.json())
 
@@ -1970,27 +1998,11 @@ function updateInDOMFlashSalePart () {
             
             underFlashSalePart.innerHTML = aTags.join('');
         })
-}
-
-updateInDOMFlashSalePart();
+})();
 //#endregion
 
-
+// shopeeMall
 //#region updateInDOMShopeeMallMainMotionLinkAndQueueItems
-var shopeeMallMainMotion = $('.shopee-mall__main__motion');
-var shopeeMallMainMotionLink = $('.shopee-mall__main__motion__link');
-var shopeeMallMainMotionImage = $('.shopee-mall__main__motion__img');
-var shopeeMallMainMotionQueueItems = $$('.shopee-mall__main__motion__queue-item');
-
-function updateInDOMShopeeMallMainMotionLinkAndQueueItems () {
-    fetch("db.json")
-        .then((response) => response.json())
-
-        .then((datas) => {
-            handleShopeeMallMainMotionLinkAndQueueItems (datas.shopeeMallMainMotionLinkInfo);
-        })
-}
-
 function handleShopeeMallMainMotionLinkAndQueueItems (shopeeMallMainMotionLinkInfo) {
     var currentIndex = 0;
     var queueLength = shopeeMallMainMotionQueueItems.length;
@@ -2035,13 +2047,18 @@ function handleShopeeMallMainMotionLinkAndQueueItems (shopeeMallMainMotionLinkIn
     }, 5000);
 }
 
-updateInDOMShopeeMallMainMotionLinkAndQueueItems();
+(function updateInDOMShopeeMallMainMotionLinkAndQueueItems () {
+    fetch("db.json")
+        .then((response) => response.json())
+
+        .then((datas) => {
+            handleShopeeMallMainMotionLinkAndQueueItems (datas.shopeeMallMainMotionLinkInfo);
+        })
+})();
 //#endregion
 
 //#region updateInDOMShopeeMallHeadingText
-var shopeeMallHeadingText = $('.shopee-mall__heading__text');
-
-function updateInDOMShopeeMallHeadingText () {
+(function updateInDOMShopeeMallHeadingText () {
     fetch("db.json") 
         .then((response) => response.json())
 
@@ -2056,23 +2073,10 @@ function updateInDOMShopeeMallHeadingText () {
             
             shopeeMallHeadingText.innerHTML = divTags.join('');
         })
-}
-
-updateInDOMShopeeMallHeadingText();
+})();
 //#endregion
 
 //#region updateInDOMShopeeMallMainProductList
-var shopeeMallMainProductList = $('.shopee-mall__main__product-list');
-
-function updateInDOMShopeeMallMainProductList () {
-    fetch("db.json") 
-        .then((response) => response.json())
-
-        .then((datas) => {
-            handleUpdateInDOMShopeeMallMainProductList(datas.shopeeMallMainProductListInfo);
-        })
-}
-
 function handleUpdateInDOMShopeeMallMainProductList (shopeeMallMainProductListInfo) {
     var liTags = '', i;
 
@@ -2111,18 +2115,20 @@ function handleUpdateInDOMShopeeMallMainProductList (shopeeMallMainProductListIn
     shopeeMallMainProductList.innerHTML = liTags;
 }
 
-updateInDOMShopeeMallMainProductList();
+(function updateInDOMShopeeMallMainProductList () {
+    fetch("db.json") 
+        .then((response) => response.json())
+
+        .then((datas) => {
+            handleUpdateInDOMShopeeMallMainProductList(datas.shopeeMallMainProductListInfo);
+        })
+})();
 //#endregion
 
 //#region shopeeMallMainProductBtn onclick() 
-var shopeeMallMainProductNextBtn = $('.shopee-mall__main__product__next-btn');
-var shopeeMallMainProductPreviousBtn = $('.shopee-mall__main__product__previous-btn');
-var shopeeMallMainProductList = $('.shopee-mall__main__product-list');
-var shopeeMallMainProductListCurrentIndex = 1;   
-
 shopeeMallMainProductNextBtn.addEventListener('click', () => {
     // case 1: first list
-    if(shopeeMallMainProductListCurrentIndex == 1) {
+    if (shopeeMallMainProductListCurrentIndex == 1) {
         shopeeMallMainProductListCurrentIndex = 2;
         shopeeMallMainProductPreviousBtn.style.display = 'block';
         shopeeMallMainProductNextBtn.style.display = 'block';
@@ -2133,7 +2139,7 @@ shopeeMallMainProductNextBtn.addEventListener('click', () => {
     }
     else {
         // case 2: second list
-        if(shopeeMallMainProductListCurrentIndex == 2) {
+        if (shopeeMallMainProductListCurrentIndex == 2) {
             shopeeMallMainProductListCurrentIndex = 3;
             shopeeMallMainProductPreviousBtn.style.display = 'block';
             shopeeMallMainProductNextBtn.style.display = 'none';
@@ -2147,7 +2153,7 @@ shopeeMallMainProductNextBtn.addEventListener('click', () => {
 
 shopeeMallMainProductPreviousBtn.addEventListener('click', () => {
     // case 1: second list
-    if(shopeeMallMainProductListCurrentIndex == 2) {
+    if (shopeeMallMainProductListCurrentIndex == 2) {
         shopeeMallMainProductListCurrentIndex = 1;
         shopeeMallMainProductPreviousBtn.style.display = 'none';
         shopeeMallMainProductNextBtn.style.display = 'block';
@@ -2158,7 +2164,7 @@ shopeeMallMainProductPreviousBtn.addEventListener('click', () => {
     }
     else {
         // case 2: third list
-        if(shopeeMallMainProductListCurrentIndex == 3) {
+        if (shopeeMallMainProductListCurrentIndex == 3) {
             shopeeMallMainProductListCurrentIndex = 2;
             shopeeMallMainProductPreviousBtn.style.display = 'block';
             shopeeMallMainProductNextBtn.style.display = 'block';
@@ -2171,10 +2177,8 @@ shopeeMallMainProductPreviousBtn.addEventListener('click', () => {
 });
 //#endregion
 
-
+// searchTrending
 //#region updateInDOMSearchTrendingMainList
-var searchTrendingMainList = $('.search-trending__main__list');
-
 function updateInDOMSearchTrendingMainList (listIndex) {
     fetch("db.json")
         .then((response) => response.json())
@@ -2200,9 +2204,6 @@ updateInDOMSearchTrendingMainList(0);
 //#endregion
 
 //#region searchTrendingHeadingViewMoreBtn onclick() 
-var searchTrendingHeadingViewMoreBtn = $('.search-trending__heading__view-more-btn');
-var searchTrendingListCurrentIndex = 0, searchTrendingNumberList;
-
 fetch("db.json")
     .then((response) => response.json())
 
@@ -2215,7 +2216,7 @@ searchTrendingHeadingViewMoreBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
     setTimeout(() => {
-        if(searchTrendingListCurrentIndex == searchTrendingNumberList-1) {
+        if (searchTrendingListCurrentIndex == searchTrendingNumberList-1) {
             searchTrendingListCurrentIndex = 0;
             updateInDOMSearchTrendingMainList(0);
         }
@@ -2227,19 +2228,8 @@ searchTrendingHeadingViewMoreBtn.addEventListener('click', (e) => {
 })
 //#endregion
 
-
+// topSearch
 //#region updateInDOMTopSearchMainList
-var topSearchMainList = $('.top-search__main__list');
-
-function updateInDOMTopSearchMainList () {
-    fetch("db.json")
-        .then((response) => response.json())
-
-        .then ((datas) => {
-            handleUpdateInDOMTopSearchMainList(datas.topSearchMainListInfo);
-        })
-}
-
 function handleUpdateInDOMTopSearchMainList (topSearchMainListInfo) {
     var aTags = '';
     
@@ -2273,15 +2263,17 @@ function handleUpdateInDOMTopSearchMainList (topSearchMainListInfo) {
     topSearchMainList.innerHTML = theFirstATag + aTags;
 }
 
-updateInDOMTopSearchMainList();
+(function updateInDOMTopSearchMainList () {
+    fetch("db.json")
+        .then((response) => response.json())
+
+        .then ((datas) => {
+            handleUpdateInDOMTopSearchMainList(datas.topSearchMainListInfo);
+        })
+})();
 //#endregion
 
 //#region topSearchMainBtns onclick() 
-var topSearchMainList = $('.top-search__main__list');
-var topSearchMainListCurrentIndex = 1;   
-var topSearchMainNextBtn = $('.top-search__main__next-btn');
-var topSearchMainPreviousBtn = $('.top-search__main__previous-btn');
-
 topSearchMainNextBtn.addEventListener('click', () => {
     if (topSearchMainListCurrentIndex == 1) {
         topSearchMainListCurrentIndex = 2;
@@ -2351,19 +2343,8 @@ topSearchMainPreviousBtn.addEventListener('click', () => {
 });
 //#endregion
 
-
+// todaySuggestion
 //#region updateInDOMTodaySuggestionMainTabMain
-var todaySuggestionMainTabMain = $('.today-suggestion__main__tab-main');
-
-function updateInDOMTodaySuggestionMainTabMain () {
-    fetch("db.json")
-        .then((response) => response.json())
-
-        .then ((datas) => {
-            handleUpdateInDOMTodaySuggestionMainTabMain(datas.todaySuggestionMainTabMainInfo);
-        })
-}
-
 function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMainInfo) {
     var listDivTags = '';
 
@@ -2452,13 +2433,20 @@ function handleUpdateInDOMTodaySuggestionMainTabMain (todaySuggestionMainTabMain
     todaySuggestionMainTabMain.innerHTML = listDivTags;
 }
 
-updateInDOMTodaySuggestionMainTabMain();
+(function updateInDOMTodaySuggestionMainTabMain () {
+    fetch("db.json")
+        .then((response) => response.json())
+
+        .then ((datas) => {
+            handleUpdateInDOMTodaySuggestionMainTabMain(datas.todaySuggestionMainTabMainInfo);
+        })
+})();
 //#endregion 
 
 //#region handleCSSTodaySuggestionMainTabMain
 function handleCSSTodaySuggestionMainTabMain () {
 
-    for(var i = 0; i < 8; i++) {
+    for (var i = 0; i < 8; i++) {
         var check = ($$(`.today-suggestion__main__tab-main .today-suggestion__main-list:nth-child(${i+1}) 
             .today-suggestion__main-product__sale-off`).length  >=  1);
     
@@ -2502,17 +2490,6 @@ setTimeout(() => {
 //#endregion 
 
 //#region updateInDOMTodaySuggestionMainTabSuperSale88
-var todaySuggestionMainTabSuperSale88 = $('.today-suggestion__main__tab-super-sale-8-8');
-
-function updateInDOMTodaySuggestionMainTabSuperSale88 () {
-    fetch("db.json")
-        .then((response) => response.json())
-
-        .then ((datas) => {
-            handleUpdateInDOMTodaySuggestionMainTabSuperSale88(datas.todaySuggestionMainTabSuperSale88Info);
-        })
-}
-
 function handleUpdateInDOMTodaySuggestionMainTabSuperSale88 (todaySuggestionMainTabSuperSale88Info) {
     var listDivTags = '';
 
@@ -2600,7 +2577,14 @@ function handleUpdateInDOMTodaySuggestionMainTabSuperSale88 (todaySuggestionMain
     todaySuggestionMainTabSuperSale88.innerHTML = listDivTags;
 }
 
-updateInDOMTodaySuggestionMainTabSuperSale88();
+(function updateInDOMTodaySuggestionMainTabSuperSale88 () {
+    fetch("db.json")
+        .then((response) => response.json())
+
+        .then ((datas) => {
+            handleUpdateInDOMTodaySuggestionMainTabSuperSale88(datas.todaySuggestionMainTabSuperSale88Info);
+        })
+})();
 //#endregion 
 
 //#region handleCSSTodaySuggestionMainTabSuperSale88
@@ -2650,21 +2634,13 @@ setTimeout(() => {
 //#endregion 
 
 //#region todaySuggestionHeadings onclick()
-var todaySuggestion = $('.today-suggestion');
-var todaySuggestionHeadingTabMain = $('.today-suggestion__heading-tab-main');
-var todaySuggestionHeadingTabSuperSale88 = $('.today-suggestion__heading-tab-super-sale-8-8');
-var todaySuggestionMainViewAllBtn = $('.today-suggestion__main__view-all-btn');
-var todaySuggestionMain = $('.today-suggestion__main');
-var todaySuggestionMainTabMain = $('.today-suggestion__main__tab-main');
-var todaySuggestionMainTabSuperSale88 = $('.today-suggestion__main__tab-super-sale-8-8');
-
-
 todaySuggestionHeadingTabMain.addEventListener('click', () => {
     setTimeout(() => {
-        if(todaySuggestionHeadingTabSuperSale88.classList.contains('today-suggestion__heading-tab--active')) {
+
+        if (todaySuggestionHeadingTabSuperSale88.classList.contains('today-suggestion__heading-tab--active')) {
             todaySuggestionHeadingTabSuperSale88.classList.remove('today-suggestion__heading-tab--active');
         }   
-        if(! todaySuggestionHeadingTabMain.classList.contains('today-suggestion__heading-tab--active')) {
+        if (! todaySuggestionHeadingTabMain.classList.contains('today-suggestion__heading-tab--active')) {
             todaySuggestionHeadingTabMain.classList.add('today-suggestion__heading-tab--active');
         }
     
@@ -2677,13 +2653,13 @@ todaySuggestionHeadingTabMain.addEventListener('click', () => {
     }, 200);
 });
 
-
 todaySuggestionHeadingTabSuperSale88.addEventListener('click', () => {
     setTimeout(() => {
-        if(todaySuggestionHeadingTabMain.classList.contains('today-suggestion__heading-tab--active')) {
+
+        if (todaySuggestionHeadingTabMain.classList.contains('today-suggestion__heading-tab--active')) {
             todaySuggestionHeadingTabMain.classList.remove('today-suggestion__heading-tab--active');
         }   
-        if(! todaySuggestionHeadingTabSuperSale88.classList.contains('today-suggestion__heading-tab--active')) {
+        if (! todaySuggestionHeadingTabSuperSale88.classList.contains('today-suggestion__heading-tab--active')) {
             todaySuggestionHeadingTabSuperSale88.classList.add('today-suggestion__heading-tab--active');
         }
     
@@ -2695,14 +2671,11 @@ todaySuggestionHeadingTabSuperSale88.addEventListener('click', () => {
         window.scrollTo(0, todaySuggestion.offsetTop);
     }, 200);
 });
-
 //#endregion
 
-
+// footer
 //#region updateInDOMFooterTextATags
-var footerTextATags = $$('.footer__text a');
-
-function updateInDOMFooterTextATags () {
+(function updateInDOMFooterTextATags () {
     fetch("db.json")
         .then((response) => response.json())
 
@@ -2712,23 +2685,10 @@ function updateInDOMFooterTextATags () {
                 footerTextATags[i].innerHTML = datas.footerTextATagsInfo[i].innerHTML;
             }
         })
-}
-
-updateInDOMFooterTextATags();
+})();
 //#endregion
 
 //#region updateInDOMFooterDirectoryList
-var footerDirectoryList = $('.footer__directory__list');
-
-function updateInDOMFooterDirectoryList () {
-    fetch("db.json")
-        .then((response) => response.json())
-
-        .then((datas) => {
-            handleUpdateInDOMFooterDirectoryList(datas.footerDirectoryListInfo);
-        })
-}
-
 function handleUpdateInDOMFooterDirectoryList (footerDirectoryListInfo) {
     var partItemQuantity = [
         21, 11, 6, 18, 11, 15, 21, 10, 8, 8, 8, 11, 10, 8, 13, 6, 15, 6, 10, 10, 9, 10, 5, 6, 11, 6
@@ -2736,13 +2696,13 @@ function handleUpdateInDOMFooterDirectoryList (footerDirectoryListInfo) {
     
     var liTags = '', thisItemLength = 5, partIndex = 0;
 
-    for(var i = 0; i < footerDirectoryListInfo.length; i++) {
+    for (var i = 0; i < footerDirectoryListInfo.length; i++) {
         thisItemLength = (i == 0) ? 6 : 5;
         var divTags = '';
         
-        for(var j = 0; j < thisItemLength; j++) {
+        for (var j = 0; j < thisItemLength; j++) {
             var aTags = '';
-            for(var k = 0; k < partItemQuantity[partIndex]; k++) {
+            for (var k = 0; k < partItemQuantity[partIndex]; k++) {
                 var aTag = `<a class="footer__directory__item__part__item" href="${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].href}">
                     ${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].innerHTML}
                 </a>`;
@@ -2768,18 +2728,21 @@ function handleUpdateInDOMFooterDirectoryList (footerDirectoryListInfo) {
         liTags += liTag;
     }
 
-    //-> add innerHTML for this element
     footerDirectoryList.innerHTML = liTags;
 }
 
-updateInDOMFooterDirectoryList();
+(function updateInDOMFooterDirectoryList () {
+    fetch("db.json")
+        .then((response) => response.json())
+
+        .then((datas) => {
+            handleUpdateInDOMFooterDirectoryList(datas.footerDirectoryListInfo);
+        })
+})();
 //#endregion
 
-
 //#region updateInDOMFooterLinkAboutTextCSKH
-var footerLinkAboutTextCSKH = $('.footer__link__about-text-CSKH');
-
-function updateInDOMFooterLinkAboutTextCSKH () {
+(function updateInDOMFooterLinkAboutTextCSKH () {
     fetch("db.json")
         .then((response) => response.json())
 
@@ -2792,15 +2755,11 @@ function updateInDOMFooterLinkAboutTextCSKH () {
             
             footerLinkAboutTextCSKH.innerHTML = divTags.join('');
         })
-}
-
-updateInDOMFooterLinkAboutTextCSKH();
+})();
 //#endregion
 
 //#region updateInDOMFooterLinkAboutTextVeShopee
-var footerLinkAboutTextVeShopee = $('.footer__link__about-text-VeShopee');
-
-function updateInDOMFooterLinkAboutTextVeShopee () {
+(function updateInDOMFooterLinkAboutTextVeShopee () {
     fetch("db.json")
         .then((response) => response.json())
 
@@ -2813,16 +2772,11 @@ function updateInDOMFooterLinkAboutTextVeShopee () {
             
             footerLinkAboutTextVeShopee.innerHTML = divTags.join('');
         })
-}
-
-updateInDOMFooterLinkAboutTextVeShopee();
+})();
 //#endregion
 
-
 //#region updateInDOMFooterLinkAboutSocial
-var footerLinkAboutSocial = $('.footer__link__about-social');
-
-function updateInDOMFooterLinkAboutSocial () {
+(function updateInDOMFooterLinkAboutSocial () {
     fetch("db.json")
         .then((response) => response.json())
 
@@ -2836,16 +2790,11 @@ function updateInDOMFooterLinkAboutSocial () {
 
             footerLinkAboutSocial.innerHTML = aTags.join('');
         })
-}
-
-updateInDOMFooterLinkAboutSocial();
+})();
 //#endregion
 
 //#region updateInDOMFooterLinkCopyrightCountryAndAreaList
-var footerLinkCopyrightCountryAndAreaList = 
-    $('.footer__link__copyright__country-and-area__list');
-
-function updateInDOMFooterLinkCopyrightCountryAndAreaList () {
+(function updateInDOMFooterLinkCopyrightCountryAndAreaList () {
     fetch("db.json")
         .then((response) => response.json())
 
@@ -2856,16 +2805,11 @@ function updateInDOMFooterLinkCopyrightCountryAndAreaList () {
 
             footerLinkCopyrightCountryAndAreaList.innerHTML = aTags.join('');
         })
-}
-
-updateInDOMFooterLinkCopyrightCountryAndAreaList();
+})();
 //#endregion
 
-
 //#region updateInDOMFooterPolicyTermsPartTitle
-var footerPolicyTermsPartTitle = $('.footer__policy-terms__part__title')
-
-function updateInDOMFooterPolicyTermsPartTitle () {
+(function updateInDOMFooterPolicyTermsPartTitle () {
     fetch("db.json")
         .then((response) => response.json())
 
@@ -2878,15 +2822,11 @@ function updateInDOMFooterPolicyTermsPartTitle () {
             })
             footerPolicyTermsPartTitle.innerHTML = divTags.join('');
         })
-}
-
-updateInDOMFooterPolicyTermsPartTitle();
+})();
 //#endregion
 
 //#region updateInDOMFooterPolicyTermsPartCertificate
-var footerPolicyTermsPartCertificate = $('.footer__policy-terms__part__certificate')
-
-function updateInDOMFooterPolicyTermsPartCertificate () {
+(function updateInDOMFooterPolicyTermsPartCertificate () {
     fetch("db.json")
         .then((response) => response.json())
 
@@ -2899,15 +2839,11 @@ function updateInDOMFooterPolicyTermsPartCertificate () {
             })
             footerPolicyTermsPartCertificate.innerHTML = aTags.join('');
         })
-}
-
-updateInDOMFooterPolicyTermsPartCertificate();
+})();
 //#endregion
 
 //#region updateInDOMFooterPolicyTermsPartCompanyInfo
-var footerPolicyTermsPartCompanyInfo = $('.footer__policy-terms__part__company-info');
-
-function updateInDOMFooterPolicyTermsPartCompanyInfo() {
+(function updateInDOMFooterPolicyTermsPartCompanyInfo() {
     fetch("db.json")
         .then((response) => response.json())
 
@@ -2917,66 +2853,37 @@ function updateInDOMFooterPolicyTermsPartCompanyInfo() {
             });
             footerPolicyTermsPartCompanyInfo.innerHTML = spanTags.join('');
         })
-}
-
-updateInDOMFooterPolicyTermsPartCompanyInfo();
+})();
 //#endregion
 
-
+// motionPart
 //#region motionPartChatPopupMainSearchAndOptionsPopupNthChilds onclick()
-var motionPartChatPopupMainSearchAndOptionsPopupNthChild1 = 
-    $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(1)');
-var motionPartChatPopupMainSearchAndOptionsPopupNthChild2 = 
-    $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(2)');
-var motionPartChatPopupMainSearchAndOptionsPopupNthChild3 = 
-    $('.motion-part__chat__popup__main__search-and-options__popup > div:nth-child(3)');
+motionPartChatPopupMainSearchAndOptionsPopup_all.addEventListener('click', () => {
+    motionPartChatPopupMainSearchAndOptionsText.innerHTML = motionPartChatPopupMainSearchAndOptionsPopup_all.innerHTML;
 
-var motionPartChatPopupMainContent_all = 
-    $('.motion-part__chat__popup__main__content--all');
-var motionPartChatPopupMainContent_unread = 
-    $('.motion-part__chat__popup__main__content--unread');
-var motionPartChatPopupMainContent_pinned = 
-    $('.motion-part__chat__popup__main__content--pinned');
-var motionPartChatPopupMainSearchAndOptionsText = 
-    $('.motion-part__chat__popup__main__search-and-options__text');
-
-
-motionPartChatPopupMainContent_unread.style.display = 'none';
-motionPartChatPopupMainContent_pinned.style.display = 'none';
-
-motionPartChatPopupMainSearchAndOptionsPopupNthChild1.addEventListener('click', () => {
-    motionPartChatPopupMainSearchAndOptionsText.innerHTML = 
-        motionPartChatPopupMainSearchAndOptionsPopupNthChild1.innerHTML;
     motionPartChatPopupMainContent_all.style.display = 'flex';
     motionPartChatPopupMainContent_unread.style.display = 'none';
     motionPartChatPopupMainContent_pinned.style.display = 'none';
 });
 
-motionPartChatPopupMainSearchAndOptionsPopupNthChild2.addEventListener('click', () => {
-    motionPartChatPopupMainSearchAndOptionsText.innerHTML = 
-        motionPartChatPopupMainSearchAndOptionsPopupNthChild2.innerHTML;  
+motionPartChatPopupMainSearchAndOptionsPopup_unread.addEventListener('click', () => {
+    motionPartChatPopupMainSearchAndOptionsText.innerHTML = motionPartChatPopupMainSearchAndOptionsPopup_unread.innerHTML;  
+
     motionPartChatPopupMainContent_all.style.display = 'none';
     motionPartChatPopupMainContent_unread.style.display = 'flex';
     motionPartChatPopupMainContent_pinned.style.display = 'none';
 });
 
-motionPartChatPopupMainSearchAndOptionsPopupNthChild3.addEventListener('click', () => {
-    motionPartChatPopupMainSearchAndOptionsText.innerHTML = 
-        motionPartChatPopupMainSearchAndOptionsPopupNthChild3.innerHTML;   
+motionPartChatPopupMainSearchAndOptionsPopup_pinned.addEventListener('click', () => {
+    motionPartChatPopupMainSearchAndOptionsText.innerHTML = motionPartChatPopupMainSearchAndOptionsPopup_pinned.innerHTML;  
+
     motionPartChatPopupMainContent_all.style.display = 'none';
     motionPartChatPopupMainContent_unread.style.display = 'none';
     motionPartChatPopupMainContent_pinned.style.display = 'flex';
 });
 //#endregion
 
-//#region motionPartChatPopupMainSearchAndOptionsInput (click, blur)
-var motionPartChatPopupMainSearchAndOptionsInput = 
-    $('.motion-part__chat__popup__main__search-and-options > input');
-var motionPartChatPopupMainSearchAndOptionsPart = 
-    $('.motion-part__chat__popup__main__search-and-options__part');
-var motionPartChatPopupMainSearchAndOptionsPopup = 
-    $('.motion-part__chat__popup__main__search-and-options__popup');
-
+//#region motionPartChatPopupMainSearchAndOptionsInput onclick, onblur()
 motionPartChatPopupMainSearchAndOptionsInput.addEventListener('click', () => {
     motionPartChatPopupMainSearchAndOptionsPart.style.display = 'none';
     motionPartChatPopupMainSearchAndOptionsInput.style.width = '100%';
@@ -2991,8 +2898,6 @@ motionPartChatPopupMainSearchAndOptionsInput.addEventListener('blur', () => {
 //#endregion
 
 //#region motionPartChatPopupMainSearchAndOptionsPart onclick()
-motionPartChatPopupMainSearchAndOptionsPopup.style.display = 'none';
-
 motionPartChatPopupMainSearchAndOptionsPart.addEventListener('click', () => {
     if (motionPartChatPopupMainSearchAndOptionsPopup.style.display == 'none') {
         motionPartChatPopupMainSearchAndOptionsPopup.style.display = 'block';
@@ -3004,28 +2909,18 @@ motionPartChatPopupMainSearchAndOptionsPart.addEventListener('click', () => {
 //#endregion
 
 //#region motionPartChatMain, motionPartChatPopupHeader_hidePopupBtn onclick()
-var motionPartChatMain = $('.motion-part__chat__main');
-var motionPartChatPopup = $('.motion-part__chat__popup');
-var motionPartChatPopupHeader_hidePopupBtn = $('.motion-part__chat__popup__header__right-icons > svg:nth-child(3)');
-
-motionPartChatMain,addEventListener('click', () => {
+motionPartChatMain.addEventListener('click', () => {
     motionPartChatMain.style.display = 'none';
     motionPartChatPopup.style.display = 'block';
 });
 
-motionPartChatPopupHeader_hidePopupBtn,addEventListener('click', () => {
+motionPartChatPopupHeader_hidePopupBtn.addEventListener('click', () => {
     motionPartChatPopup.style.display = 'none';
     motionPartChatMain.style.display = 'flex';
 });
 //#endregion
 
-//#region motionPartChatPopupHeader_iconWhenNormal,...Expanded onclick()
-var motionPartChatPopup = $('.motion-part__chat__popup');
-var motionPartChatPopupExpanded = $('.motion-part__chat__popup__expanded');
-var motionPartChatPopupHeader_iconWhenNormal = $('.motion-part__chat__popup__header__icon--when-normal');
-var motionPartChatPopupHeader_iconWhenExpanded = $('.motion-part__chat__popup__header__icon--when-expanded');
-
-
+//#region motionPartChatPopupHeader_iconWhenNormal, ...Expanded onclick()
 motionPartChatPopupHeader_iconWhenNormal.addEventListener('click', () => {
     motionPartChatPopupHeader_iconWhenNormal.style.display = 'none';
     motionPartChatPopupHeader_iconWhenExpanded.style.display = 'block';
@@ -3045,12 +2940,11 @@ motionPartChatPopupHeader_iconWhenExpanded.addEventListener('click', () => {
 
 
 //#region START WEBSITE
-
 handleSettingInitialConfig();
 
 // Check for load initial page or page when logged in
 if (! systemConfig.isLoggedIn) {
-    loadInitialWebsiteNoModal();
+    loadInitialPageNoModal();
 } 
 else {
     loginSuccess();
