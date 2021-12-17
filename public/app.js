@@ -1854,7 +1854,7 @@ headerSearchFrameBtn.addEventListener("click", (e) => {
 
 //#endregion
 
-//#region updateInDOMHeaderSearchHistoryKeywordsList
+//#region updateInDOMHeaderSearchHistoryKeywordsList (--> OK)
 (function updateInDOMHeaderSearchHistoryKeywordsList() {
   fetch("db.json")
     .then((response) => response.json())
@@ -2045,7 +2045,7 @@ headerNotification.addEventListener("mouseleave", () => {
 })();
 //#endregion
 
-//#region updateInDOMSliderFavouriteSelections
+//#region updateInDOMSliderFavouriteSelections (-->OK)
 (function updateInDOMSliderFavouriteSelections() {
   fetch("db.json")
     .then((response) => response.json())
@@ -2402,7 +2402,7 @@ function handleShopeeMallMainMotionLinkAndQueueItems(
 })();
 //#endregion
 
-//#region updateInDOMShopeeMallHeadingText
+//#region updateInDOMShopeeMallHeadingText (-->OK)
 (function updateInDOMShopeeMallHeadingText() {
   fetch("db.json")
     .then((response) => response.json())
@@ -3189,7 +3189,7 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
 })();
 //#endregion
 
-//#region updateInDOMFooterLinkAboutTextCSKH
+//#region updateInDOMFooterLinkAboutTextCSKH (-->OK)
 (function updateInDOMFooterLinkAboutTextCSKH() {
   fetch("db.json")
     .then((response) => response.json())
@@ -3206,7 +3206,7 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
 })();
 //#endregion
 
-//#region updateInDOMFooterLinkAboutTextVeShopee
+//#region updateInDOMFooterLinkAboutTextVeShopee (-->OK)
 (function updateInDOMFooterLinkAboutTextVeShopee() {
   fetch("db.json")
     .then((response) => response.json())
@@ -3223,7 +3223,7 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
 })();
 //#endregion
 
-//#region updateInDOMFooterLinkAboutSocial
+//#region updateInDOMFooterLinkAboutSocial (-->OK)
 (function updateInDOMFooterLinkAboutSocial() {
   fetch("db.json")
     .then((response) => response.json())

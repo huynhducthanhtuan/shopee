@@ -7,6 +7,9 @@ yarn-error.log*
 firebase-debug.log*
 firebase-debug.*.log*
 
+# db (reference API)
+shopee-reactjs.json
+
 # Firebase cache
 .firebase/
 
