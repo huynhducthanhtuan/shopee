@@ -1509,8 +1509,6 @@ loginPageContentFormFirstInput.addEventListener("keydown", (e) => {
           // allowed button
           loginPageContentFormLoginBtn.style.opacity = "1";
           loginPageContentFormLoginBtn.style.cursor = "pointer";
-
-          console.log("btn click");
           loginPageContentFormLoginBtn.click();
         } else {
           e.preventDefault();
@@ -1584,8 +1582,6 @@ loginPageContentFormSecondInput.addEventListener("keydown", (e) => {
           // allowed button
           loginPageContentFormLoginBtn.style.opacity = "1";
           loginPageContentFormLoginBtn.style.cursor = "pointer";
-
-          console.log("btn click");
           loginPageContentFormLoginBtn.click();
         } else {
           e.preventDefault();
@@ -1853,6 +1849,8 @@ headerSearchFrameBtn.addEventListener("click", (e) => {
 //#endregion
 
 //#endregion
+
+// IIFE
 
 //#region updateInDOMHeaderSearchHistoryKeywordsList (--> OK)
 (function updateInDOMHeaderSearchHistoryKeywordsList() {
