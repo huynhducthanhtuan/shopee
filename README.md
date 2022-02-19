@@ -2,4 +2,3 @@
 
 ### Reference website: https://shopee.vn/
 
-## Server: Heroku
