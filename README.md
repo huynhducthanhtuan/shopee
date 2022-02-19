@@ -2,6 +2,8 @@
 
 ### Reference website: https://shopee.vn/
 
-### Deployed website: 
-https://shopee-hdttuan.web.app/
-https://shopee-hdttuan.herokuapp.com/
+### Deployed website:
+
+#### Firebase: https://shopee-hdttuan.web.app/
+
+#### Heroku: https://shopee-hdttuan.herokuapp.com/
