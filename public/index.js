@@ -1,7 +1,6 @@
 "use strict";
 
 //#region VARIABLES, OBJECTS DECLARATION
-
 //#region 1. Best Common
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -321,7 +320,6 @@ var todaySuggestionMainTabMain = $(".today-suggestion__main__tab-main");
 var todaySuggestionMainTabSuperSale88 = $(
   ".today-suggestion__main__tab-super-sale-8-8"
 );
-
 //#endregion
 
 //#region 6. Footer
@@ -392,7 +390,6 @@ var motionPartChatPopupMainSearchAndOptionsPart = $(
   ".motion-part__chat__popup__main__search-and-options__part"
 );
 //#endregion
-
 //#endregion
 
 //#region SETTING CONFIG
@@ -400,25 +397,19 @@ var systemConfig = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) ?? {};
 
 function setConfig(key, value) {
   systemConfig[key] = value;
-  // add into localStorage
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(systemConfig));
 }
 
 function handleSettingInitialConfig() {
   var todayDay = new Date().getDate();
 
-  // if exists in localStorage
   if (systemConfig.lastVisitDay) {
-    // auto delete all data in localStorage after one day
+    // auto delete all data after one day
     if (systemConfig.lastVisitDay != todayDay) {
       headerSearchHistoryListInfo = [];
 
       localStorage.clear();
-
-      // update systemConfig
       systemConfig = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
-
-      // set new date
       setConfig("lastVisitDay", todayDay);
     }
   } else {
@@ -438,8 +429,7 @@ function handleSettingInitialConfig() {
   }
 
   headerSearchHistoryListInfo = systemConfig.headerSearchHistoryListInfo;
-
-  updateInDOMHeaderSearchHistoryList();
+  renderHeaderSearchHistoryList();
 }
 //#endregion
 
@@ -479,7 +469,6 @@ function loadInitialPageNoModal() {
 //#region Listen Event
 loginPageHeaderShopeeLink.addEventListener("click", (e) => {
   e.preventDefault();
-
   setTimeout(() => {
     loadInitialPageNoModal();
   }, 200);
@@ -487,7 +476,6 @@ loginPageHeaderShopeeLink.addEventListener("click", (e) => {
 
 registerPageHeaderShopeeLink.addEventListener("click", (e) => {
   e.preventDefault();
-
   setTimeout(() => {
     loadInitialPageNoModal();
   }, 200);
@@ -514,41 +502,33 @@ giftBanner.addEventListener("click", () => {
   setTimeout(() => {
     modal.style.display = "block";
     giftBannerPopup.style.display = "block";
-
-    // prevent scrolling
     body.style.overflow = "hidden";
   }, 100);
 });
 
-giftBannerPopup.onclick = (e) => {
-  e.stopPropagation();
-};
+giftBannerPopup.onclick = (e) => e.stopPropagation();
 
 giftBannerPopupCloseBtn.onclick = (e) => {
   e.stopPropagation();
   modal.click();
 };
 
-registerPageContentFormFacebookBtn.addEventListener("click", function (e) {
+registerPageContentFormFacebookBtn.addEventListener("click", (e) => {
   e.preventDefault();
 });
-registerPageContentFormGoogleBtn.addEventListener("click", function (e) {
+registerPageContentFormGoogleBtn.addEventListener("click", (e) => {
   e.preventDefault();
 });
-registerPageContentFormAppleBtn.addEventListener("click", function (e) {
+registerPageContentFormAppleBtn.addEventListener("click", (e) => {
   e.preventDefault();
 });
 registerPageConfirmationFirstFormContentHelpOtherWayBtn.addEventListener(
   "click",
-  function (e) {
-    e.preventDefault();
-  }
+  (e) => e.preventDefault()
 );
 loginPageContentFormUnderLoginBtnForgetPasswordBtn.addEventListener(
   "click",
-  (e) => {
-    e.preventDefault();
-  }
+  (e) => e.preventDefault()
 );
 loginPageContentFormUnderLoginBtnLoginWithSMS.addEventListener("click", (e) => {
   e.preventDefault();
@@ -609,7 +589,7 @@ headerRegisterBtn.addEventListener("click", (e) => {
     -html.getBoundingClientRect().y + header.style.height;
   loadRegisterPage();
 
-  // set auto focus for this input
+  // auto focus
   setTimeout(() => {
     registerPageContentFormInput.focus();
   }, 500);
@@ -805,7 +785,6 @@ registerPageContentFormNextBtn.addEventListener("click", (e) => {
       registerPageContent.style.display = "none";
       registerPageConfirmation.style.display = "flex";
 
-      // set-unset registerPageConfirmationStepItemActive, registerPageConfirmationStepLineActive
       setRegisterPageConfirmationStepItemActive(1);
       unsetRegisterPageConfirmationStepLineActive(2);
       unsetRegisterPageConfirmationStepItemActive(3);
@@ -839,7 +818,7 @@ registerPageContentFormNextBtn.addEventListener("click", (e) => {
         alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
       }, 800);
 
-      // set auto focus for this input
+      // auto focus
       setTimeout(() => {
         registerPageConfirmationFirstFormContentInput.focus();
       }, 500);
@@ -855,7 +834,6 @@ registerPageContentFormNextBtn.addEventListener("click", (e) => {
 
 registerPageContentFormNextBtn.addEventListener("mousedown", (e) => {
   e.preventDefault();
-
   if (checkValidPhoneNumberRegister) {
     var currentInputValue = registerPageContentFormInput.value;
     registerPageContentFormInput.value = `(+84) ${currentInputValue.slice(-9)}`;
@@ -867,7 +845,7 @@ registerPageContentFormAskForLoginBtn.addEventListener("click", (e) => {
   setTimeout(() => {
     loadLoginPage();
 
-    // set auto focus for this input
+    // auto focus
     setTimeout(() => {
       loginPageContentFormFirstInput.focus();
     }, 500);
@@ -889,7 +867,7 @@ registerPageConfirmationFirstFormContentHelpResendBtn.addEventListener(
       alert(`Mã xác nhận của bạn là "${currentConfirmationCode}"`);
     }, 1000);
 
-    // set auto focus for this input
+    // auto focus
     setTimeout(() => {
       registerPageConfirmationFirstFormContentInput.focus();
     }, 500);
@@ -903,12 +881,11 @@ registerPageConfirmationFirstFormHeaderBackBtn.addEventListener(
   "click",
   (e) => {
     e.preventDefault();
-
     loadRegisterPage();
+
     registerPageConfirmationFirstFormContentUserPhoneNumber.innerHTML =
       registerPageContentFormInput.value;
 
-    // set-unset registerPageConfirmationStepItemActive, registerPageConfirmationStepLineActive
     unsetRegisterPageConfirmationStepItemActive(1);
     unsetRegisterPageConfirmationStepLineActive(2);
     unsetRegisterPageConfirmationStepItemActive(3);
@@ -1339,7 +1316,7 @@ headerLoginBtn.addEventListener("click", (e) => {
     -html.getBoundingClientRect().y + header.style.height;
   loadLoginPage();
 
-  // set auto focus
+  // auto focus
   setTimeout(() => {
     loginPageContentFormFirstInput.focus();
   }, 500);
@@ -1607,7 +1584,6 @@ loginPageContentFormLoginBtn.addEventListener("mouseleave", (e) => {
     : e.preventDefault();
 });
 //#endregion
-
 //#endregion
 //#endregion
 
@@ -1627,7 +1603,7 @@ function removeHeaderSearchHistoryItemLinksHover() {
   });
 }
 
-function updateInDOMHeaderSearchHistoryList() {
+function renderHeaderSearchHistoryList() {
   var defaultHeaderSearchHistoryItem = `<li class="header__search-history-item header__search-history-item--default">
         <a href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
             Deal hot kèm 2 mã freeship
@@ -1670,7 +1646,7 @@ function addAndUpdateHeaderSearchHistoryListInfo(data) {
   }
 }
 
-updateInDOMHeaderSearchHistoryList();
+renderHeaderSearchHistoryList();
 
 //#region EventListeners
 headerSearchFrameInput.addEventListener("click", () => {
@@ -1765,18 +1741,17 @@ headerSearchFrameBtn.addEventListener("click", (e) => {
     };
 
     addAndUpdateHeaderSearchHistoryListInfo(data);
-    updateInDOMHeaderSearchHistoryList();
+    renderHeaderSearchHistoryList();
 
-    // update headerSearchFrameBtn.href and take the default action (go new page)
+    // update headerSearchFrameBtn.href and take the default action
     headerSearchFrameBtn.href = href;
   }
 });
 //#endregion
 
-(function updateInDOMHeaderSearchHistoryKeywordsList() {
+(function renderHeaderSearchHistoryKeywordsList() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var aTags = datas.headerSearchHistoryKeywordsListInfo.map((data) => {
         return `<a class="header__search-history-keywords-item" 
@@ -1787,10 +1762,9 @@ headerSearchFrameBtn.addEventListener("click", (e) => {
     });
 })();
 
-(function updateInDOMHeaderNotificationPopupWhenLoggedInList() {
+(function renderHeaderNotificationPopupWhenLoggedInList() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var liTags = datas.headerNotificationPopupWhenLoggedInListInfo.map(
         (data) => {
@@ -1894,10 +1868,7 @@ headerNotification.addEventListener("mouseleave", () => {
 
     for (var sliderMainMotionPartQueueItem of sliderMainMotionPartQueueItems) {
       sliderMainMotionPartQueueItem.addEventListener("click", function () {
-        // get parent's queue
         var parent = this.parentNode;
-
-        // get this's index in parent's queue
         var index = Array.prototype.indexOf.call(parent.children, this);
 
         // remove old, add new
@@ -1956,7 +1927,7 @@ headerNotification.addEventListener("mouseleave", () => {
   }, 1000);
 })();
 
-(function updateInDOMSliderFavouriteSelections() {
+(function renderSliderFavouriteSelections() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2008,10 +1979,9 @@ function handleUpdateInDOMOutstandingHotSellingProducts(datas) {
         </div>`;
 }
 
-(function updateInDOMOutstandingHotSellingProducts() {
+(function renderOutstandingHotSellingProducts() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       handleUpdateInDOMOutstandingHotSellingProducts(datas);
     });
@@ -2051,7 +2021,7 @@ function handleUpdateInDOMOutstandingHotBrands(datas) {
         </div>`;
 }
 
-(function updateInDOMOutstandingHotBrands() {
+(function renderOutstandingHotBrands() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2061,7 +2031,7 @@ function handleUpdateInDOMOutstandingHotBrands(datas) {
 //#endregion
 
 //#region directory
-(function updateInDOMDirectoryMainList() {
+(function renderDirectoryMainList() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2100,8 +2070,6 @@ directoryMainNextBtn.addEventListener("click", (e) => {
   setTimeout(() => {
     directoryMainNextBtn.style.display = "none";
     directoryMainPreviousBtn.style.display = "block";
-
-    // animation
     directoryMainList.style.transform = "translate(-36rem, 0)";
     directoryMainList.style.transition = "all 500ms ease 0s";
   }, 0);
@@ -2111,8 +2079,6 @@ directoryMainPreviousBtn.addEventListener("click", (e) => {
   setTimeout(() => {
     directoryMainPreviousBtn.style.display = "none";
     directoryMainNextBtn.style.display = "block";
-
-    // animation
     directoryMainList.style.transform = "translate(0, 0)";
     directoryMainList.style.transition = "all 500ms ease 0s";
   }, 0);
@@ -2148,14 +2114,12 @@ function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
                 </div>
             </a>`;
   }
-
   flashSaleMainList.innerHTML = aTags;
 }
 
-(function updateInDOMFlashSaleMainList() {
+(function renderFlashSaleMainList() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       handleUpdateInDOMFlashSaleMainList(datas.flashSaleMainListInfo);
     });
@@ -2167,8 +2131,6 @@ flashSaleMainNextBtn.addEventListener("click", (e) => {
     flashSaleMainListCurrentIndex = 2;
     flashSaleMainPreviousBtn.style.display = "block";
     flashSaleMainNextBtn.style.display = "block";
-
-    // animation
     flashSaleMainList.style.transform = "translate(-100rem, 0)";
     flashSaleMainList.style.transition = "all 500ms ease 0s";
   } else {
@@ -2177,8 +2139,6 @@ flashSaleMainNextBtn.addEventListener("click", (e) => {
       flashSaleMainListCurrentIndex = 3;
       flashSaleMainPreviousBtn.style.display = "block";
       flashSaleMainNextBtn.style.display = "none";
-
-      // animation
       flashSaleMainList.style.transform = "translate(-200rem, 0)";
       flashSaleMainList.style.transition = "all 500ms ease 0s";
     }
@@ -2191,8 +2151,6 @@ flashSaleMainPreviousBtn.addEventListener("click", (e) => {
     flashSaleMainListCurrentIndex = 1;
     flashSaleMainPreviousBtn.style.display = "none";
     flashSaleMainNextBtn.style.display = "block";
-
-    // animation
     flashSaleMainList.style.transform = "translate(0, 0)";
     flashSaleMainList.style.transition = "all 500ms ease 0s";
   } else {
@@ -2201,15 +2159,13 @@ flashSaleMainPreviousBtn.addEventListener("click", (e) => {
       flashSaleMainListCurrentIndex = 2;
       flashSaleMainPreviousBtn.style.display = "block";
       flashSaleMainNextBtn.style.display = "block";
-
-      // animation
       flashSaleMainList.style.transform = "translate(-100rem, 0)";
       flashSaleMainList.style.transition = "all 500ms ease 0s";
     }
   }
 });
 
-(function updateInDOMUnderFlashSalePart() {
+(function renderUnderFlashSalePart() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2218,7 +2174,6 @@ flashSaleMainPreviousBtn.addEventListener("click", (e) => {
                     <img src="${data.image}" alt="" class="under-flash-sale__img">   
                 </a>`;
       });
-
       underFlashSalePart.innerHTML = aTags.join("");
     });
 })();
@@ -2281,10 +2236,9 @@ function handleShopeeMallMainMotionLinkAndQueueItems(
   }, 5000);
 }
 
-(function updateInDOMShopeeMallMainMotionLinkAndQueueItems() {
+(function renderShopeeMallMainMotionLinkAndQueueItems() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       handleShopeeMallMainMotionLinkAndQueueItems(
         datas.shopeeMallMainMotionLinkInfo
@@ -2292,7 +2246,7 @@ function handleShopeeMallMainMotionLinkAndQueueItems(
     });
 })();
 
-(function updateInDOMShopeeMallHeadingText() {
+(function renderShopeeMallHeadingText() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2303,7 +2257,6 @@ function handleShopeeMallMainMotionLinkAndQueueItems(
                         <span class="shopee-mall__heading__text__title">${data.title}</span>
                     </div>`;
       });
-
       shopeeMallHeadingText.innerHTML = divTags.join("");
     });
 })();
@@ -2360,7 +2313,7 @@ function handleUpdateInDOMShopeeMallMainProductList(
   shopeeMallMainProductList.innerHTML = liTags;
 }
 
-(function updateInDOMShopeeMallMainProductList() {
+(function renderShopeeMallMainProductList() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2376,8 +2329,6 @@ shopeeMallMainProductNextBtn.addEventListener("click", () => {
     shopeeMallMainProductListCurrentIndex = 2;
     shopeeMallMainProductPreviousBtn.style.display = "block";
     shopeeMallMainProductNextBtn.style.display = "block";
-
-    // animation
     shopeeMallMainProductList.style.transform = "translate(-80rem, 0)";
     shopeeMallMainProductList.style.transition = "all 500ms ease 0s";
   } else {
@@ -2386,8 +2337,6 @@ shopeeMallMainProductNextBtn.addEventListener("click", () => {
       shopeeMallMainProductListCurrentIndex = 3;
       shopeeMallMainProductPreviousBtn.style.display = "block";
       shopeeMallMainProductNextBtn.style.display = "none";
-
-      // animation
       shopeeMallMainProductList.style.transform = "translate(-160rem, 0)";
       shopeeMallMainProductList.style.transition = "all 500ms ease 0s";
     }
@@ -2400,8 +2349,6 @@ shopeeMallMainProductPreviousBtn.addEventListener("click", () => {
     shopeeMallMainProductListCurrentIndex = 1;
     shopeeMallMainProductPreviousBtn.style.display = "none";
     shopeeMallMainProductNextBtn.style.display = "block";
-
-    // animation
     shopeeMallMainProductList.style.transform = "translate(0, 0)";
     shopeeMallMainProductList.style.transition = "all 500ms ease 0s";
   } else {
@@ -2410,8 +2357,6 @@ shopeeMallMainProductPreviousBtn.addEventListener("click", () => {
       shopeeMallMainProductListCurrentIndex = 2;
       shopeeMallMainProductPreviousBtn.style.display = "block";
       shopeeMallMainProductNextBtn.style.display = "block";
-
-      // animation
       shopeeMallMainProductList.style.transform = "translate(-80rem, 0)";
       shopeeMallMainProductList.style.transition = "all 500ms ease 0s";
     }
@@ -2420,7 +2365,7 @@ shopeeMallMainProductPreviousBtn.addEventListener("click", () => {
 //#endregion
 
 //#region searchTrending
-function updateInDOMSearchTrendingMainList(listIndex) {
+function renderSearchTrendingMainList(listIndex) {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2434,12 +2379,11 @@ function updateInDOMSearchTrendingMainList(listIndex) {
                         <img src="${data.image}" alt="" class="search-trending__img">
                     </a>`;
       });
-
       searchTrendingMainList.innerHTML = aTags.join("");
     });
 }
 
-updateInDOMSearchTrendingMainList(0);
+renderSearchTrendingMainList(0);
 
 fetch("db.json")
   .then((response) => response.json())
@@ -2453,10 +2397,10 @@ searchTrendingHeadingViewMoreBtn.addEventListener("click", (e) => {
   setTimeout(() => {
     if (searchTrendingListCurrentIndex == searchTrendingNumberList - 1) {
       searchTrendingListCurrentIndex = 0;
-      updateInDOMSearchTrendingMainList(0);
+      renderSearchTrendingMainList(0);
     } else {
       searchTrendingListCurrentIndex++;
-      updateInDOMSearchTrendingMainList(searchTrendingListCurrentIndex);
+      renderSearchTrendingMainList(searchTrendingListCurrentIndex);
     }
   }, 100);
 });
@@ -2491,14 +2435,12 @@ function handleUpdateInDOMTopSearchMainList(topSearchMainListInfo) {
                 </div>
             </a>`;
   }
-
   topSearchMainList.innerHTML = theFirstATag + aTags;
 }
 
-(function updateInDOMTopSearchMainList() {
+(function renderTopSearchMainList() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       handleUpdateInDOMTopSearchMainList(datas.topSearchMainListInfo);
     });
@@ -2509,8 +2451,6 @@ topSearchMainNextBtn.addEventListener("click", () => {
     topSearchMainListCurrentIndex = 2;
     topSearchMainNextBtn.style.display = "block";
     topSearchMainPreviousBtn.style.display = "block";
-
-    // animation
     topSearchMainList.style.transform = "translate(-120rem, 0)";
     topSearchMainList.style.transition = "all 500ms ease 0s";
   } else {
@@ -2518,8 +2458,6 @@ topSearchMainNextBtn.addEventListener("click", () => {
       topSearchMainListCurrentIndex = 3;
       topSearchMainNextBtn.style.display = "block";
       topSearchMainPreviousBtn.style.display = "block";
-
-      // animation
       topSearchMainList.style.transform = "translate(-240rem, 0)";
       topSearchMainList.style.transition = "all 500ms ease 0s";
     } else {
@@ -2527,8 +2465,6 @@ topSearchMainNextBtn.addEventListener("click", () => {
         topSearchMainListCurrentIndex = 4;
         topSearchMainNextBtn.style.display = "none";
         topSearchMainPreviousBtn.style.display = "block";
-
-        // animation
         topSearchMainList.style.transform = "translate(-360rem, 0)";
         topSearchMainList.style.transition = "all 500ms ease 0s";
       }
@@ -2541,8 +2477,6 @@ topSearchMainPreviousBtn.addEventListener("click", () => {
     topSearchMainListCurrentIndex = 1;
     topSearchMainPreviousBtn.style.display = "none";
     topSearchMainNextBtn.style.display = "block";
-
-    // animation
     topSearchMainList.style.transform = "translate(0, 0)";
     topSearchMainList.style.transition = "all 500ms ease 0s";
   } else {
@@ -2550,8 +2484,6 @@ topSearchMainPreviousBtn.addEventListener("click", () => {
       topSearchMainListCurrentIndex = 2;
       topSearchMainPreviousBtn.style.display = "block";
       topSearchMainNextBtn.style.display = "block";
-
-      // animation
       topSearchMainList.style.transform = "translate(-120rem, 0)";
       topSearchMainList.style.transition = "all 500ms ease 0s";
     } else {
@@ -2559,8 +2491,6 @@ topSearchMainPreviousBtn.addEventListener("click", () => {
         topSearchMainListCurrentIndex = 3;
         topSearchMainPreviousBtn.style.display = "block";
         topSearchMainNextBtn.style.display = "block";
-
-        // animation
         topSearchMainList.style.transform = "translate(-240rem, 0)";
         topSearchMainList.style.transition = "all 500ms ease 0s";
       }
@@ -2659,18 +2589,15 @@ function handleUpdateInDOMTodaySuggestionMainTabMain(
                 </div>`;
       itemDivTags += itemDivTag;
     }
-
     listDivTag = `<div class="today-suggestion__main-list">${itemDivTags}</div>`;
     listDivTags += listDivTag;
   }
-
   todaySuggestionMainTabMain.innerHTML = listDivTags;
 }
 
-(function updateInDOMTodaySuggestionMainTabMain() {
+(function renderTodaySuggestionMainTabMain() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       handleUpdateInDOMTodaySuggestionMainTabMain(
         datas.todaySuggestionMainTabMainInfo
@@ -2704,7 +2631,6 @@ function handleCSSTodaySuggestionMainTabMain() {
 
     if (check) {
       list.style.height = "29.8rem";
-
       for (var j = 0; j < items.length; j++) {
         items[j].style.height = "29.8rem";
         products[j].style.height = "28.8rem";
@@ -2730,7 +2656,6 @@ function handleCSSTodaySuggestionMainTabMain() {
       }
     } else {
       list.style.height = "27.7rem";
-
       for (var j = 0; j < items.length; j++) {
         items[j].style.height = "27.7rem";
         products[j].style.height = "26.7rem";
@@ -2836,15 +2761,13 @@ function handleUpdateInDOMTodaySuggestionMainTabSuperSale88(
                 </div>`;
       itemDivTags += itemDivTag;
     }
-
     listDivTag = `<div class="today-suggestion__main-list">${itemDivTags}</div>`;
     listDivTags += listDivTag;
   }
-
   todaySuggestionMainTabSuperSale88.innerHTML = listDivTags;
 }
 
-(function updateInDOMTodaySuggestionMainTabSuperSale88() {
+(function renderTodaySuggestionMainTabSuperSale88() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2880,7 +2803,6 @@ function handleCSSTodaySuggestionMainTabSuperSale88() {
 
     if (check) {
       list.style.height = "29.8rem";
-
       for (var j = 0; j < items.length; j++) {
         items[j].style.height = "29.8rem";
         products[j].style.height = "28.8rem";
@@ -2906,7 +2828,6 @@ function handleCSSTodaySuggestionMainTabSuperSale88() {
       }
     } else {
       list.style.height = "27.7rem";
-
       for (var j = 0; j < items.length; j++) {
         items[j].style.height = "27.7rem";
         products[j].style.height = "26.7rem";
@@ -2983,7 +2904,7 @@ todaySuggestionHeadingTabSuperSale88.addEventListener("click", () => {
 //#endregion
 
 //#region footer
-(function updateInDOMFooterTextATags() {
+(function renderFooterTextATags() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -2994,7 +2915,7 @@ todaySuggestionHeadingTabSuperSale88.addEventListener("click", () => {
     });
 })();
 
-function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
+function handleRenderFooterDirectoryList(footerDirectoryListInfo) {
   var partItemQuantity = [
     21, 11, 6, 18, 11, 15, 21, 10, 8, 8, 8, 11, 10, 8, 13, 6, 15, 6, 10, 10, 9,
     10, 5, 6, 11, 6,
@@ -3014,7 +2935,6 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
         var aTag = `<a class="footer__directory__item__part__item" href="${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].href}">
                     ${footerDirectoryListInfo[i][j].footerDirectoryItemPartListInfo[k].innerHTML}
                 </a>`;
-
         aTags += aTag;
       }
 
@@ -3028,42 +2948,36 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
                 </div>`;
 
       divTags += divTag;
-
       partIndex++;
     }
-
     var liTag = `<li class="footer__directory__item">${divTags}</li>`;
     liTags += liTag;
   }
-
   footerDirectoryList.innerHTML = liTags;
 }
 
-(function updateInDOMFooterDirectoryList() {
+(function renderFooterDirectoryList() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
-      handleUpdateInDOMFooterDirectoryList(datas.footerDirectoryListInfo);
+      handleRenderFooterDirectoryList(datas.footerDirectoryListInfo);
     });
 })();
 
-(function updateInDOMFooterLinkAboutTextCSKH() {
+(function renderFooterLinkAboutTextCSKH() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var divTags = datas.footerLinkAboutTextCSKHInfo.map((data) => {
         return `<div>
                     <a href="${data.href}" class="footer__link__about-text-CSKH__link">${data.innerHTML}</a>
                 </div>`;
       });
-
       footerLinkAboutTextCSKH.innerHTML = divTags.join("");
     });
 })();
 
-(function updateInDOMFooterLinkAboutTextVeShopee() {
+(function renderFooterLinkAboutTextVeShopee() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -3072,12 +2986,11 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
                     <a href="${data.href}" class="footer__link__about-text-VeShopee__link">${data.innerHTML}</a>
                 </div>`;
       });
-
       footerLinkAboutTextVeShopee.innerHTML = divTags.join("");
     });
 })();
 
-(function updateInDOMFooterLinkAboutSocial() {
+(function renderFooterLinkAboutSocial() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -3087,12 +3000,11 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
                     ${data.text}
                 </a>`;
       });
-
       footerLinkAboutSocial.innerHTML = aTags.join("");
     });
 })();
 
-(function updateInDOMFooterLinkCopyrightCountryAndAreaList() {
+(function renderFooterLinkCopyrightCountryAndAreaList() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -3101,12 +3013,11 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
           return `<a href="${data.href}" class="footer__link__copyright__country-and-area__link">${data.innerHTML}</a>`;
         }
       );
-
       footerLinkCopyrightCountryAndAreaList.innerHTML = aTags.join("");
     });
 })();
 
-(function updateInDOMFooterPolicyTermsPartTitle() {
+(function renderFooterPolicyTermsPartTitle() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -3120,7 +3031,7 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
     });
 })();
 
-(function updateInDOMFooterPolicyTermsPartCertificate() {
+(function renderFooterPolicyTermsPartCertificate() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -3134,7 +3045,7 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
     });
 })();
 
-(function updateInDOMFooterPolicyTermsPartCompanyInfo() {
+(function renderFooterPolicyTermsPartCompanyInfo() {
   fetch("db.json")
     .then((response) => response.json())
     .then((datas) => {
@@ -3152,7 +3063,6 @@ motionPartChatPopupMainSearchAndOptionsPopup_all.addEventListener(
   () => {
     motionPartChatPopupMainSearchAndOptionsText.innerHTML =
       motionPartChatPopupMainSearchAndOptionsPopup_all.innerHTML;
-
     motionPartChatPopupMainContent_all.style.display = "flex";
     motionPartChatPopupMainContent_unread.style.display = "none";
     motionPartChatPopupMainContent_pinned.style.display = "none";
@@ -3164,7 +3074,6 @@ motionPartChatPopupMainSearchAndOptionsPopup_unread.addEventListener(
   () => {
     motionPartChatPopupMainSearchAndOptionsText.innerHTML =
       motionPartChatPopupMainSearchAndOptionsPopup_unread.innerHTML;
-
     motionPartChatPopupMainContent_all.style.display = "none";
     motionPartChatPopupMainContent_unread.style.display = "flex";
     motionPartChatPopupMainContent_pinned.style.display = "none";
@@ -3176,7 +3085,6 @@ motionPartChatPopupMainSearchAndOptionsPopup_pinned.addEventListener(
   () => {
     motionPartChatPopupMainSearchAndOptionsText.innerHTML =
       motionPartChatPopupMainSearchAndOptionsPopup_pinned.innerHTML;
-
     motionPartChatPopupMainContent_all.style.display = "none";
     motionPartChatPopupMainContent_unread.style.display = "none";
     motionPartChatPopupMainContent_pinned.style.display = "flex";
@@ -3227,13 +3135,11 @@ motionPartChatPopupHeader_iconWhenExpanded.addEventListener("click", () => {
   motionPartChatPopupExpanded.style.display = "none";
 });
 //#endregion
-
 //#endregion
 
 //#region START WEBSITE
 handleSettingInitialConfig();
 
-// Check to load initial page or page when logged in
 if (!systemConfig.isLoggedIn) {
   loadInitialPageNoModal();
 } else {
