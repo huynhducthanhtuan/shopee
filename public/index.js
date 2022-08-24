@@ -234,7 +234,6 @@ var headerSearchHistoryItemIndex = 0;
 //#endregion
 
 //#region 5. Content
-
 // slider
 var sliderMainMotionPart = $(".slider__main__motion-part");
 var sliderMainMotionPartLink = $(".slider__main__motion-part__link");
@@ -397,41 +396,37 @@ var motionPartChatPopupMainSearchAndOptionsPart = $(
 //#endregion
 
 //#region SETTING CONFIG
-
-// get localStorage object
 var systemConfig = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) ?? {};
 
-// add each key: value into localStorage object
 function setConfig(key, value) {
   systemConfig[key] = value;
+  // add into localStorage
   localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(systemConfig));
 }
 
 function handleSettingInitialConfig() {
-  // get today day
   var todayDay = new Date().getDate();
 
-  // if this key already exists in localStorage
+  // if exists in localStorage
   if (systemConfig.lastVisitDay) {
     // auto delete all data in localStorage after one day
     if (systemConfig.lastVisitDay != todayDay) {
       headerSearchHistoryListInfo = [];
 
-      // delete all data in localStorage
       localStorage.clear();
 
-      // update variable systemConfig
+      // update systemConfig
       systemConfig = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
 
-      // set new date for lastVisitDay
+      // set new date
       setConfig("lastVisitDay", todayDay);
     }
   } else {
-    // set default value
+    // default day
     setConfig("lastVisitDay", todayDay);
   }
 
-  // set default value if this key doesn't exist in localStorage
+  // set default value if this key doesn't exist
   if (!systemConfig.headerSearchHistoryListInfo) {
     setConfig("headerSearchHistoryListInfo", []);
   }
@@ -442,7 +437,6 @@ function handleSettingInitialConfig() {
     setConfig("userAccount", {});
   }
 
-  // update array headerSearchHistoryListInfo from localStorage
   headerSearchHistoryListInfo = systemConfig.headerSearchHistoryListInfo;
 
   updateInDOMHeaderSearchHistoryList();
@@ -450,8 +444,6 @@ function handleSettingInitialConfig() {
 //#endregion
 
 //#region HANDLE AT INITIAL PAGE, REGISTER PAGE, LOGIN PAGE
-
-//#region (function) loadInitialPageNoModal
 function loadInitialPageNoModal() {
   registerPage.style.display = "none";
   loginPage.style.display = "none";
@@ -483,9 +475,8 @@ function loadInitialPageNoModal() {
 
   window.scrollTo(0, initialPageOffsetHeight);
 }
-//#endregion
 
-//#region At registerPage/loginPage, click Shopee logo to back initial page (no reload)
+//#region Listen Event
 loginPageHeaderShopeeLink.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -501,9 +492,7 @@ registerPageHeaderShopeeLink.addEventListener("click", (e) => {
     loadInitialPageNoModal();
   }, 200);
 });
-//#endregion
 
-//#region modal, giftBanner, giftBannerPopup, giftBannerPopupCloseBtn onclick()
 modal.onclick = (e) => {
   setTimeout(() => {
     body.style.overflow = "visible";
@@ -539,9 +528,7 @@ giftBannerPopupCloseBtn.onclick = (e) => {
   e.stopPropagation();
   modal.click();
 };
-//#endregion
 
-//#region *Not handle these buttons, just preventDefault them
 registerPageContentFormFacebookBtn.addEventListener("click", function (e) {
   e.preventDefault();
 });
@@ -578,8 +565,6 @@ loginPageContentFormOtherWaysApple.addEventListener("click", (e) => {
 //#endregion
 
 //#region I. REGISTER PAGE
-
-//#region Click to go to REGISTER PAGE
 function loadRegisterPage() {
   setTimeout(() => {
     registerPage.style.display = "block";
@@ -646,11 +631,8 @@ headerNotificationPopupWhenNotLoginRegisterBtn.addEventListener(
     }, 500);
   }
 );
-//#endregion
 
 //#region -> CONTENT PART
-
-//#region (f) set / unset RegisterPageConfirmationStepItemActive
 function setRegisterPageConfirmationStepItemActive(nthChild) {
   var registerPageConfirmationStepItem = $(
     `.register-page__confirmation__step-item:nth-child(${nthChild})`
@@ -692,14 +674,8 @@ function unsetRegisterPageConfirmationStepItemActive(nthChild) {
       "rgba(0, 0, 0, 0.26)";
   }
 }
-//#endregion
 
-//#region (f) set / unset RegisterPageConfirmationStepLineActive
 function setRegisterPageConfirmationStepLineActive(nthChild) {
-  var registerPageConfirmationStepLine = $(
-    `.register-page__confirmation__step-line:nth-child(${nthChild})`
-  );
-
   var registerPageConfirmationStepLineLine = $(`
         .register-page__confirmation__step-line:nth-child(${nthChild}) > .register-page__confirmation__step-line__line`);
   var registerPageConfirmationStepLineIcon = $(`
@@ -711,10 +687,6 @@ function setRegisterPageConfirmationStepLineActive(nthChild) {
 }
 
 function unsetRegisterPageConfirmationStepLineActive(nthChild) {
-  var registerPageConfirmationStepLine = $(
-    `.register-page__confirmation__step-line:nth-child(${nthChild})`
-  );
-
   var registerPageConfirmationStepLineLine = $(`
         .register-page__confirmation__step-line:nth-child(${nthChild}) > .register-page__confirmation__step-line__line`);
   var registerPageConfirmationStepLineIcon = $(`
@@ -726,16 +698,13 @@ function unsetRegisterPageConfirmationStepLineActive(nthChild) {
 }
 //#endregion
 
-//#region --OK--getAndUpdateConfirmationCodes
 (function getAndUpdateConfirmationCodes() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       confirmationCodes = datas.confirmationCodes;
     });
 })();
-//#endregion
 
 //#region EventListeners
 registerPageContentFormInput.addEventListener("keydown", (e) => {
@@ -893,7 +862,6 @@ registerPageContentFormNextBtn.addEventListener("mousedown", (e) => {
   }
 });
 
-// Related actions
 registerPageContentFormAskForLoginBtn.addEventListener("click", (e) => {
   e.preventDefault();
   setTimeout(() => {
@@ -929,10 +897,7 @@ registerPageConfirmationFirstFormContentHelpResendBtn.addEventListener(
 );
 //#endregion
 
-//#endregion
-
 //#region -> 1ST CONFIRMATION
-
 //#region EventListeners
 registerPageConfirmationFirstFormHeaderBackBtn.addEventListener(
   "click",
@@ -1023,7 +988,6 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener(
           registerPageConfirmationFirstFormContentInput.value ==
           currentConfirmationCode
         ) {
-          // set-unset registerPageConfirmationStepItemActive, registerPageConfirmationStepLineActive
           setRegisterPageConfirmationStepItemActive(1);
           setRegisterPageConfirmationStepLineActive(2);
           setRegisterPageConfirmationStepItemActive(3);
@@ -1048,12 +1012,9 @@ registerPageConfirmationFirstFormContentConfirmBtn.addEventListener(
     }, 500);
   }
 );
-
 //#endregion
 
 //#region -> 2ND CONFIRMATION
-
-//#region EventListeners
 registerPageConfirmationSecondFormContentInputStatusBtn.addEventListener(
   "click",
   (e) => {
@@ -1206,7 +1167,6 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener(
     var countdownInterval;
 
     if (checkForRegisterPageConfirmationFormContentThirdStep == true) {
-      // -> Add the account user just registered to localStorage
       var userAccount = {
         phoneNumber: registerPageContentFormInput.value,
         password: registerPageConfirmationSecondFormContentInput.value,
@@ -1217,8 +1177,6 @@ registerPageConfirmationSecondFormContentRegisterBtn.addEventListener(
         "click",
         (e) => {
           e.preventDefault();
-
-          // stop setInterval()
           clearInterval(countdownInterval);
 
           setTimeout(() => {
@@ -1270,7 +1228,6 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener(
   (e) => {
     e.preventDefault();
 
-    // set-unset registerPageConfirmationStepItemActive, registerPageConfirmationStepLineActive
     setRegisterPageConfirmationStepItemActive(1);
     unsetRegisterPageConfirmationStepLineActive(2);
     unsetRegisterPageConfirmationStepItemActive(3);
@@ -1287,19 +1244,16 @@ registerPageConfirmationSecondFormHeaderBackBtn.addEventListener(
     registerPageConfirmationFirstFormContentConfirmBtn.style.cursor =
       "not-allowed";
 
-    // set auto focus for this input
+    // auto focus for this input
     setTimeout(() => {
       registerPageConfirmationFirstFormContentInput.focus();
     }, 500);
   }
 );
-// #endregion
-
 //#endregion
 //#endregion
 
 //#region II. LOGIN PAGE
-
 function loadLoginPage() {
   setTimeout(() => {
     loginPage.style.display = "block";
@@ -1368,7 +1322,6 @@ function loginSuccess() {
   motionPartChat.style.display = "block";
   motionPartSubBanner.style.display = "block";
 
-  // modal, body
   body.style.overflow = "visible";
   app.style.position = "absolute";
   content.style.position = "relative";
@@ -1377,7 +1330,7 @@ function loginSuccess() {
   window.scrollTo(0, 0);
 }
 
-//#region click to Login / Logout / Register
+//#region Listen Event
 headerLoginBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
@@ -1386,7 +1339,7 @@ headerLoginBtn.addEventListener("click", (e) => {
     -html.getBoundingClientRect().y + header.style.height;
   loadLoginPage();
 
-  // set auto focus for this input
+  // set auto focus
   setTimeout(() => {
     loginPageContentFormFirstInput.focus();
   }, 500);
@@ -1418,8 +1371,6 @@ loginPageContentFormAskForRegisterRegisterBtn.addEventListener("click", (e) => {
 
   setTimeout(() => {
     loadRegisterPage();
-
-    // set auto focus for this input
     setTimeout(() => {
       registerPageContentFormInput.focus();
     }, 500);
@@ -1427,9 +1378,7 @@ loginPageContentFormAskForRegisterRegisterBtn.addEventListener("click", (e) => {
     window.scrollTo(0, 0);
   }, 200);
 });
-//#endregion
 
-//#region EventListeners
 loginPageContentFormFirstInput.addEventListener("keydown", (e) => {
   if (e.code == "Enter") {
     e.preventDefault();
@@ -1461,7 +1410,6 @@ loginPageContentFormFirstInput.addEventListener("keydown", (e) => {
           );
 
           if (checkValidPasswordLogin) {
-            // allowed button
             loginPageContentFormLoginBtn.style.opacity = "1";
             loginPageContentFormLoginBtn.style.cursor = "pointer";
           }
@@ -1474,7 +1422,6 @@ loginPageContentFormFirstInput.addEventListener("keydown", (e) => {
             "login-page__content-form__first-input--invalid"
           );
 
-          // not-allowed button
           loginPageContentFormLoginBtn.style.opacity = "0.7";
           loginPageContentFormLoginBtn.style.cursor = "not-allowed";
         }
@@ -1487,7 +1434,6 @@ loginPageContentFormFirstInput.addEventListener("keydown", (e) => {
           "login-page__content-form__first-input--invalid"
         );
 
-        // not-allowed button
         loginPageContentFormLoginBtn.style.opacity = "0.7";
         loginPageContentFormLoginBtn.style.cursor = "not-allowed";
       }
@@ -1501,18 +1447,15 @@ loginPageContentFormFirstInput.addEventListener("keydown", (e) => {
           "login-page__content-form__first-input--invalid"
         );
 
-        // not-allowed button
         loginPageContentFormLoginBtn.style.opacity = "0.7";
         loginPageContentFormLoginBtn.style.cursor = "not-allowed";
       } else {
         if (checkValidPasswordLogin) {
-          // allowed button
           loginPageContentFormLoginBtn.style.opacity = "1";
           loginPageContentFormLoginBtn.style.cursor = "pointer";
           loginPageContentFormLoginBtn.click();
         } else {
           e.preventDefault();
-          // not-allowed button
           loginPageContentFormLoginBtn.style.opacity = "0.7";
           loginPageContentFormLoginBtn.style.cursor = "not-allowed";
         }
@@ -1666,14 +1609,10 @@ loginPageContentFormLoginBtn.addEventListener("mouseleave", (e) => {
 //#endregion
 
 //#endregion
-
 //#endregion
 
 //#region HANDLE DATA, UPDATE DATA IN DOM, LISTEN EVENT,...
-
-// header
-//#region handle headerSearchFrameInput, headerSearchHistory
-
+//#region header
 function removeHeaderSearchHistoryItemLinksHover() {
   headerSearchHistoryItemLinks.forEach((headerSearchHistoryItemLink) => {
     if (
@@ -1688,7 +1627,6 @@ function removeHeaderSearchHistoryItemLinksHover() {
   });
 }
 
-//#region update headerSearchHistoryListInfo -> updateInDOMHeaderSearchHistoryList
 function updateInDOMHeaderSearchHistoryList() {
   var defaultHeaderSearchHistoryItem = `<li class="header__search-history-item header__search-history-item--default">
         <a href="https://shopee.vn/search?noCorrection=true&searchPrefill=1037" class="header__search-history-item__link">
@@ -1715,7 +1653,6 @@ function updateInDOMHeaderSearchHistoryList() {
 
 function addAndUpdateHeaderSearchHistoryListInfo(data) {
   var length = systemConfig.headerSearchHistoryListInfo.length;
-
   var checkDuplication = headerSearchHistoryListInfo.some((item) => {
     return item.innerHTML == data.innerHTML;
   });
@@ -1723,26 +1660,17 @@ function addAndUpdateHeaderSearchHistoryListInfo(data) {
   // if new item no match with items in old array
   if (!checkDuplication) {
     if (length == 10) {
-      // delete the last element from array
       headerSearchHistoryListInfo.pop();
-
-      // add new element to the first order of array
       headerSearchHistoryListInfo.unshift(data);
-
-      // update headerSearchHistoryListInfo into localStorage
       setConfig("headerSearchHistoryListInfo", headerSearchHistoryListInfo);
     } else {
-      // add new element to the first order of array
       headerSearchHistoryListInfo.unshift(data);
-
-      // update headerSearchHistoryListInfo into localStorage
       setConfig("headerSearchHistoryListInfo", headerSearchHistoryListInfo);
     }
   }
 }
 
 updateInDOMHeaderSearchHistoryList();
-//#endregion
 
 //#region EventListeners
 headerSearchFrameInput.addEventListener("click", () => {
@@ -1760,7 +1688,6 @@ headerSearchFrameInput.addEventListener("blur", () => {
 });
 
 headerSearchFrameInput.addEventListener("keydown", (e) => {
-  // update this nodelist
   headerSearchHistoryItemLinks = $$(".header__search-history-item__link");
 
   switch (e.code) {
@@ -1837,9 +1764,7 @@ headerSearchFrameBtn.addEventListener("click", (e) => {
       innerHTML: innerHTML,
     };
 
-    // update array headerSearchHistoryListInfo
     addAndUpdateHeaderSearchHistoryListInfo(data);
-
     updateInDOMHeaderSearchHistoryList();
 
     // update headerSearchFrameBtn.href and take the default action (go new page)
@@ -1848,11 +1773,6 @@ headerSearchFrameBtn.addEventListener("click", (e) => {
 });
 //#endregion
 
-//#endregion
-
-// IIFE
-
-//#region updateInDOMHeaderSearchHistoryKeywordsList (--> OK)
 (function updateInDOMHeaderSearchHistoryKeywordsList() {
   fetch("db.json")
     .then((response) => response.json())
@@ -1866,9 +1786,7 @@ headerSearchFrameBtn.addEventListener("click", (e) => {
       headerSearchHistoryKeywordsList.innerHTML = aTags.join("");
     });
 })();
-//#endregion
 
-//#region updateInDOMHeaderNotificationPopupWhenLoggedInList
 (function updateInDOMHeaderNotificationPopupWhenLoggedInList() {
   fetch("db.json")
     .then((response) => response.json())
@@ -1900,13 +1818,10 @@ headerNotification.addEventListener("mouseleave", () => {
 });
 //#endregion
 
-// slider
-//#region handleInPartSliderMainMotionPart
+//#region slider
 (function handleInPartSliderMainMotionPart() {
-  // get data in file db.json and assign to array sliderMainMotionPartLinkInfo
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       sliderMainMotionPartLinkInfo = datas.sliderMainMotionPartLinkInfo;
     });
@@ -1915,7 +1830,6 @@ headerNotification.addEventListener("mouseleave", () => {
   setTimeout(() => {
     var len = sliderMainMotionPartLinkInfo.length;
 
-    // Event listeners
     sliderMainMotionPartPreviousBtn.addEventListener("click", () => {
       if (sliderMainMotionPartQueueItemCurrentIndex == 0) {
         sliderMainMotionPartQueueItems[0].classList.remove(
@@ -2041,13 +1955,10 @@ headerNotification.addEventListener("mouseleave", () => {
     }, 5000);
   }, 1000);
 })();
-//#endregion
 
-//#region updateInDOMSliderFavouriteSelections (-->OK)
 (function updateInDOMSliderFavouriteSelections() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var aTags = datas.sliderFavouriteSelectionsInfo.map((data) => {
         return `<a class="slider__favourite-selections__link" href="${data.href}">
@@ -2061,18 +1972,17 @@ headerNotification.addEventListener("mouseleave", () => {
 })();
 //#endregion
 
-// outstanding
-//#region updateInDOMOutstandingHotSellingProducts
+//#region outstanding
 function handleUpdateInDOMOutstandingHotSellingProducts(datas) {
   var firstDivTag = `
-        <div class="outstanding__hot-selling-products__info">
-            <h4 class="outstanding__hot-selling-products__info__heading">
-                ${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.heading}
-            </h4>
-            <a href="${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.href}" class="outstanding__hot-selling-products__info__view-more-btn">
-                Xem thêm <i class="fas fa-chevron-right"></i>
-            </a>
-        </div>`;
+    <div class="outstanding__hot-selling-products__info">
+        <h4 class="outstanding__hot-selling-products__info__heading">
+            ${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.heading}
+        </h4>
+        <a href="${datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsInfoInfo.href}" class="outstanding__hot-selling-products__info__view-more-btn">
+            Xem thêm <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>`;
 
   var aTags =
     datas.outstandingHotSellingProductsInfo.outstandingHotSellingProductsListInfo.map(
@@ -2106,9 +2016,7 @@ function handleUpdateInDOMOutstandingHotSellingProducts(datas) {
       handleUpdateInDOMOutstandingHotSellingProducts(datas);
     });
 })();
-//#endregion
 
-//#region updateInDOMOutstandingHotBrands
 function handleUpdateInDOMOutstandingHotBrands(datas) {
   var firstDivTag = `
         <div class="outstanding__hot-brands__info">
@@ -2146,19 +2054,16 @@ function handleUpdateInDOMOutstandingHotBrands(datas) {
 (function updateInDOMOutstandingHotBrands() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       handleUpdateInDOMOutstandingHotBrands(datas);
     });
 })();
 //#endregion
 
-// directory
-//#region updateInDOMDirectoryMainList
+//#region directory
 (function updateInDOMDirectoryMainList() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var liTags = "";
 
@@ -2190,9 +2095,7 @@ function handleUpdateInDOMOutstandingHotBrands(datas) {
       directoryMainList.innerHTML = liTags;
     });
 })();
-//#endregion
 
-//#region directoryMainBtns onclick()
 directoryMainNextBtn.addEventListener("click", (e) => {
   setTimeout(() => {
     directoryMainNextBtn.style.display = "none";
@@ -2216,13 +2119,11 @@ directoryMainPreviousBtn.addEventListener("click", (e) => {
 });
 //#endregion
 
-// flashSale
-//#region updateInDOMFlashSaleMainList
+//#region flashSale
 function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
   var aTags = "";
 
   for (var i = 0; i < flashSaleMainListInfo.length; i++) {
-    // add this element if conditions matched
     var flashSaleMainPercentBarHot =
       flashSaleMainListInfo[i].selledPartWidthPercent >= 70
         ? '<div class="flash-sale__main__percent-bar--hot"></div>'
@@ -2259,9 +2160,7 @@ function handleUpdateInDOMFlashSaleMainList(flashSaleMainListInfo) {
       handleUpdateInDOMFlashSaleMainList(datas.flashSaleMainListInfo);
     });
 })();
-//#endregion
 
-//#region flashSaleMainBtn onclick()
 flashSaleMainNextBtn.addEventListener("click", (e) => {
   // case 1: first list
   if (flashSaleMainListCurrentIndex == 1) {
@@ -2309,13 +2208,10 @@ flashSaleMainPreviousBtn.addEventListener("click", (e) => {
     }
   }
 });
-//#endregion
 
-//#region updateInDOMUnderFlashSalePart
 (function updateInDOMUnderFlashSalePart() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var aTags = datas.underFlashSalePartInfo.map((data) => {
         return `<a href="${data.href}" class="under-flash-sale__link">
@@ -2328,8 +2224,7 @@ flashSaleMainPreviousBtn.addEventListener("click", (e) => {
 })();
 //#endregion
 
-// shopeeMall
-//#region updateInDOMShopeeMallMainMotionLinkAndQueueItems
+//#region shopeeMall
 function handleShopeeMallMainMotionLinkAndQueueItems(
   shopeeMallMainMotionLinkInfo
 ) {
@@ -2341,7 +2236,6 @@ function handleShopeeMallMainMotionLinkAndQueueItems(
       e.preventDefault();
 
       var parent = this.parentNode;
-      // get this's index in parent's queue
       var index = Array.prototype.indexOf.call(parent.children, this);
 
       // update current item
@@ -2356,7 +2250,6 @@ function handleShopeeMallMainMotionLinkAndQueueItems(
       shopeeMallMainMotionLink.href = shopeeMallMainMotionLinkInfo[index].href;
       shopeeMallMainMotionImage.src = shopeeMallMainMotionLinkInfo[index].image;
 
-      // update currentIndex
       currentIndex = index;
     });
   }
@@ -2398,13 +2291,10 @@ function handleShopeeMallMainMotionLinkAndQueueItems(
       );
     });
 })();
-//#endregion
 
-//#region updateInDOMShopeeMallHeadingText (-->OK)
 (function updateInDOMShopeeMallHeadingText() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var divTags = datas.shopeeMallHeadingTextInfo.map((data) => {
         return `
@@ -2417,9 +2307,7 @@ function handleShopeeMallMainMotionLinkAndQueueItems(
       shopeeMallHeadingText.innerHTML = divTags.join("");
     });
 })();
-//#endregion
 
-//#region updateInDOMShopeeMallMainProductList
 function handleUpdateInDOMShopeeMallMainProductList(
   shopeeMallMainProductListInfo
 ) {
@@ -2475,16 +2363,13 @@ function handleUpdateInDOMShopeeMallMainProductList(
 (function updateInDOMShopeeMallMainProductList() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       handleUpdateInDOMShopeeMallMainProductList(
         datas.shopeeMallMainProductListInfo
       );
     });
 })();
-//#endregion
 
-//#region shopeeMallMainProductBtn onclick()
 shopeeMallMainProductNextBtn.addEventListener("click", () => {
   // case 1: first list
   if (shopeeMallMainProductListCurrentIndex == 1) {
@@ -2534,12 +2419,10 @@ shopeeMallMainProductPreviousBtn.addEventListener("click", () => {
 });
 //#endregion
 
-// searchTrending
-//#region updateInDOMSearchTrendingMainList
+//#region searchTrending
 function updateInDOMSearchTrendingMainList(listIndex) {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var aTags = datas.searchTrendingMainListInfo[listIndex].map((data) => {
         return `
@@ -2557,12 +2440,9 @@ function updateInDOMSearchTrendingMainList(listIndex) {
 }
 
 updateInDOMSearchTrendingMainList(0);
-//#endregion
 
-//#region searchTrendingHeadingViewMoreBtn onclick()
 fetch("db.json")
   .then((response) => response.json())
-
   .then((datas) => {
     searchTrendingNumberList = datas.searchTrendingMainListInfo.length;
   });
@@ -2582,11 +2462,9 @@ searchTrendingHeadingViewMoreBtn.addEventListener("click", (e) => {
 });
 //#endregion
 
-// topSearch
-//#region updateInDOMTopSearchMainList
+//#region topSearch
 function handleUpdateInDOMTopSearchMainList(topSearchMainListInfo) {
   var aTags = "";
-
   var theFirstATag = `
         <a href="${topSearchMainListInfo[0].href}" class="top-search__main__link">
             <div class="top-search__main__product">
@@ -2625,9 +2503,7 @@ function handleUpdateInDOMTopSearchMainList(topSearchMainListInfo) {
       handleUpdateInDOMTopSearchMainList(datas.topSearchMainListInfo);
     });
 })();
-//#endregion
 
-//#region topSearchMainBtns onclick()
 topSearchMainNextBtn.addEventListener("click", () => {
   if (topSearchMainListCurrentIndex == 1) {
     topSearchMainListCurrentIndex = 2;
@@ -2693,8 +2569,7 @@ topSearchMainPreviousBtn.addEventListener("click", () => {
 });
 //#endregion
 
-// todaySuggestion
-//#region updateInDOMTodaySuggestionMainTabMain
+//#region todaySuggestion
 function handleUpdateInDOMTodaySuggestionMainTabMain(
   todaySuggestionMainTabMainInfo
 ) {
@@ -2802,9 +2677,7 @@ function handleUpdateInDOMTodaySuggestionMainTabMain(
       );
     });
 })();
-//#endregion
 
-//#region handleCSSTodaySuggestionMainTabMain
 function handleCSSTodaySuggestionMainTabMain() {
   for (var i = 0; i < 8; i++) {
     var check =
@@ -2869,9 +2742,7 @@ function handleCSSTodaySuggestionMainTabMain() {
 setTimeout(() => {
   handleCSSTodaySuggestionMainTabMain();
 }, 2000);
-//#endregion
 
-//#region updateInDOMTodaySuggestionMainTabSuperSale88
 function handleUpdateInDOMTodaySuggestionMainTabSuperSale88(
   todaySuggestionMainTabSuperSale88Info
 ) {
@@ -2976,16 +2847,13 @@ function handleUpdateInDOMTodaySuggestionMainTabSuperSale88(
 (function updateInDOMTodaySuggestionMainTabSuperSale88() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       handleUpdateInDOMTodaySuggestionMainTabSuperSale88(
         datas.todaySuggestionMainTabSuperSale88Info
       );
     });
 })();
-//#endregion
 
-//#region handleCSSTodaySuggestionMainTabSuperSale88
 function handleCSSTodaySuggestionMainTabSuperSale88() {
   for (var i = 0; i < 8; i++) {
     var check =
@@ -3050,9 +2918,7 @@ function handleCSSTodaySuggestionMainTabSuperSale88() {
 setTimeout(() => {
   handleCSSTodaySuggestionMainTabSuperSale88();
 }, 2000);
-//#endregion
 
-//#region todaySuggestionHeadings onclick()
 todaySuggestionHeadingTabMain.addEventListener("click", () => {
   setTimeout(() => {
     if (
@@ -3116,12 +2982,10 @@ todaySuggestionHeadingTabSuperSale88.addEventListener("click", () => {
 });
 //#endregion
 
-// footer
-//#region updateInDOMFooterTextATags
+//#region footer
 (function updateInDOMFooterTextATags() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       for (var i = 0; i < footerTextATags.length; i++) {
         footerTextATags[i].href = datas.footerTextATagsInfo[i].href;
@@ -3129,9 +2993,7 @@ todaySuggestionHeadingTabSuperSale88.addEventListener("click", () => {
       }
     });
 })();
-//#endregion
 
-//#region updateInDOMFooterDirectoryList
 function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
   var partItemQuantity = [
     21, 11, 6, 18, 11, 15, 21, 10, 8, 8, 8, 11, 10, 8, 13, 6, 15, 6, 10, 10, 9,
@@ -3185,9 +3047,7 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
       handleUpdateInDOMFooterDirectoryList(datas.footerDirectoryListInfo);
     });
 })();
-//#endregion
 
-//#region updateInDOMFooterLinkAboutTextCSKH (-->OK)
 (function updateInDOMFooterLinkAboutTextCSKH() {
   fetch("db.json")
     .then((response) => response.json())
@@ -3202,13 +3062,10 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
       footerLinkAboutTextCSKH.innerHTML = divTags.join("");
     });
 })();
-//#endregion
 
-//#region updateInDOMFooterLinkAboutTextVeShopee (-->OK)
 (function updateInDOMFooterLinkAboutTextVeShopee() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var divTags = datas.footerLinkAboutTextVeShopeeInfo.map((data) => {
         return `<div>
@@ -3219,13 +3076,10 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
       footerLinkAboutTextVeShopee.innerHTML = divTags.join("");
     });
 })();
-//#endregion
 
-//#region updateInDOMFooterLinkAboutSocial (-->OK)
 (function updateInDOMFooterLinkAboutSocial() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var aTags = datas.footerLinkAboutSocialInfo.map((data) => {
         return `<a target="_blank" rel="noopener noreferrer" href="${data.href}" class="footer__link__about-social__link">
@@ -3237,13 +3091,10 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
       footerLinkAboutSocial.innerHTML = aTags.join("");
     });
 })();
-//#endregion
 
-//#region updateInDOMFooterLinkCopyrightCountryAndAreaList
 (function updateInDOMFooterLinkCopyrightCountryAndAreaList() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var aTags = datas.footerLinkCopyrightCountryAndAreaListInfo.map(
         (data) => {
@@ -3254,13 +3105,10 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
       footerLinkCopyrightCountryAndAreaList.innerHTML = aTags.join("");
     });
 })();
-//#endregion
 
-//#region updateInDOMFooterPolicyTermsPartTitle
 (function updateInDOMFooterPolicyTermsPartTitle() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var divTags = datas.footerPolicyTermsPartTitleInfo.map((data) => {
         return `
@@ -3271,13 +3119,10 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
       footerPolicyTermsPartTitle.innerHTML = divTags.join("");
     });
 })();
-//#endregion
 
-//#region updateInDOMFooterPolicyTermsPartCertificate
 (function updateInDOMFooterPolicyTermsPartCertificate() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var aTags = datas.footerPolicyTermsPartCertificateInfo.map((data) => {
         return `
@@ -3288,13 +3133,10 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
       footerPolicyTermsPartCertificate.innerHTML = aTags.join("");
     });
 })();
-//#endregion
 
-//#region updateInDOMFooterPolicyTermsPartCompanyInfo
 (function updateInDOMFooterPolicyTermsPartCompanyInfo() {
   fetch("db.json")
     .then((response) => response.json())
-
     .then((datas) => {
       var spanTags = datas.footerPolicyTermsPartCompanyInfoInfo.map((data) => {
         return `<span class="footer__policy-terms__part__company-info__text">${data}</span>`;
@@ -3304,8 +3146,7 @@ function handleUpdateInDOMFooterDirectoryList(footerDirectoryListInfo) {
 })();
 //#endregion
 
-// motionPart
-//#region motionPartChatPopupMainSearchAndOptionsPopupNthChilds onclick()
+//#region motionPart
 motionPartChatPopupMainSearchAndOptionsPopup_all.addEventListener(
   "click",
   () => {
@@ -3341,9 +3182,7 @@ motionPartChatPopupMainSearchAndOptionsPopup_pinned.addEventListener(
     motionPartChatPopupMainContent_pinned.style.display = "flex";
   }
 );
-//#endregion
 
-//#region motionPartChatPopupMainSearchAndOptionsInput onclick, onblur()
 motionPartChatPopupMainSearchAndOptionsInput.addEventListener("click", () => {
   motionPartChatPopupMainSearchAndOptionsPart.style.display = "none";
   motionPartChatPopupMainSearchAndOptionsInput.style.width = "100%";
@@ -3355,9 +3194,7 @@ motionPartChatPopupMainSearchAndOptionsInput.addEventListener("blur", () => {
     motionPartChatPopupMainSearchAndOptionsInput.style.width = "13.2rem";
   }, 200);
 });
-//#endregion
 
-//#region motionPartChatPopupMainSearchAndOptionsPart onclick()
 motionPartChatPopupMainSearchAndOptionsPart.addEventListener("click", () => {
   if (motionPartChatPopupMainSearchAndOptionsPopup.style.display == "none") {
     motionPartChatPopupMainSearchAndOptionsPopup.style.display = "block";
@@ -3365,9 +3202,7 @@ motionPartChatPopupMainSearchAndOptionsPart.addEventListener("click", () => {
     motionPartChatPopupMainSearchAndOptionsPopup.style.display = "none";
   }
 });
-//#endregion
 
-//#region motionPartChatMain, motionPartChatPopupHeader_hidePopupBtn onclick()
 motionPartChatMain.addEventListener("click", () => {
   motionPartChatMain.style.display = "none";
   motionPartChatPopup.style.display = "block";
@@ -3377,9 +3212,7 @@ motionPartChatPopupHeader_hidePopupBtn.addEventListener("click", () => {
   motionPartChatPopup.style.display = "none";
   motionPartChatMain.style.display = "flex";
 });
-//#endregion
 
-//#region motionPartChatPopupHeader_iconWhenNormal, ...Expanded onclick()
 motionPartChatPopupHeader_iconWhenNormal.addEventListener("click", () => {
   motionPartChatPopupHeader_iconWhenNormal.style.display = "none";
   motionPartChatPopupHeader_iconWhenExpanded.style.display = "block";
@@ -3400,7 +3233,7 @@ motionPartChatPopupHeader_iconWhenExpanded.addEventListener("click", () => {
 //#region START WEBSITE
 handleSettingInitialConfig();
 
-// Check for load initial page or page when logged in
+// Check to load initial page or page when logged in
 if (!systemConfig.isLoggedIn) {
   loadInitialPageNoModal();
 } else {
